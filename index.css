@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+p, input::-webkit-input-placeholder {
+    font-size: x-large;
+    font-family: 'Poppins', sans-serif;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: x-large;
+    padding: 0;
+    margin: 0;
+}
