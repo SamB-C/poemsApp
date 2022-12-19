@@ -12,9 +12,10 @@ My name is Ozymandias, King of Kings;
 Look on my Works, ye Mighty, and despair!
 Nothing beside remains. Round the decay
 Of that colossal Wreck, boundless and bare
-The lone and level sands stretch far away."
-`;
-const NUMBER_OF_WORDS_TO_REPLACE = 30;
+The lone and level sands stretch far away."`;
+const NUMBER_OF_WORDS_TO_REPLACE = 500;
+const POEM_ID = '1poem_id1';
+let numberOfWordsInPoem = 0;
 // ============================================================================
 // ================= Event handler (Assigned in replaceWord) =================
 // ============================================================================
@@ -23,10 +24,7 @@ const NUMBER_OF_WORDS_TO_REPLACE = 30;
 function onInputEventHandler(word, event) {
     // Check if letter is incorrect
     const targetInput = event.target;
-    if (targetInput.value === '') {
-        return;
-    }
-    if (compareInputToLetterId(targetInput.value, targetInput.id)) {
+    if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         // Destroy handler and replace after 1s
         targetInput.oninput = () => { };
@@ -46,7 +44,7 @@ function compareInputToLetterId(input, id) {
     const wordAndLetterList = id.split('_');
     const letterInBinary = wordAndLetterList[wordAndLetterList.length - 1];
     const letter = String.fromCharCode(parseInt(letterInBinary, 2));
-    return input !== letter;
+    return input === letter || (letter === '—' && input === '-');
 }
 // --------------------------- Letter Wrong ---------------------------
 // Reverts a word back to underscores after incorrect input
@@ -108,20 +106,17 @@ function completeWord() {
     for (let i = 0; i < arrayOfChildren.length; i++) {
         userInput = userInput + arrayOfChildren[i].value;
     }
-    // Checks if the word the user input was correct
-    if (userInput === focusedWord) {
-        // Marks as complete
-        revertToTextAsComplete(focusedWord);
-        wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
-        // Changes the word that is focused
-        focusedWord = wordsNotCompleted[0];
-        focusFirstLetterOfWord(focusedWord);
-    }
+    // Marks as complete
+    revertToTextAsComplete(focusedWord);
+    wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
+    // Changes the word that is focused
+    focusedWord = wordsNotCompleted[0];
+    focusFirstLetterOfWord(focusedWord);
 }
 // Marks a word as complete by converting back to text and cahnging colour to green
 function revertToTextAsComplete(wordToRevert) {
     const wordToRevertElement = getElementOfWord(wordToRevert);
-    wordToRevertElement.innerHTML = wordToRevert;
+    wordToRevertElement.innerHTML = removeNumberFromWord(wordToRevert);
     wordToRevertElement.style.color = 'green';
 }
 // ============================================================================
@@ -131,6 +126,8 @@ function revertToTextAsComplete(wordToRevert) {
 // Removes a certain number of words from the poem, and returns the words that were removed
 // in order of appearance
 function replaceWords(poem, numberOfWords) {
+    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords, poem);
+    console.log(numberOfWords);
     const wordsReplaced = [];
     while (wordsReplaced.length < numberOfWords) {
         const potentialWord = selectRandomWordFromPoem(poem);
@@ -141,6 +138,16 @@ function replaceWords(poem, numberOfWords) {
     insertionSortIntoOrderInPoem(poem, wordsReplaced);
     wordsReplaced.forEach((word) => replaceWord(word));
     return wordsReplaced;
+}
+// Checks if number of words is greater than number of words in poem
+// If yes, return number of words in poem, else return original number
+function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace, poem) {
+    if (numberOfWordsToReplace > numberOfWordsInPoem) {
+        return numberOfWordsInPoem;
+    }
+    else {
+        return numberOfWordsToReplace;
+    }
 }
 // Selects a word at random from the poem
 function selectRandomWordFromPoem(poem) {
@@ -173,12 +180,12 @@ function insertionSortIntoOrderInPoem(poem, words) {
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 function replaceWord(word) {
     // Turn each word into letter inputs
-    console.log(word);
     const wordToHide = getElementOfWord(word);
     const wordInUnderScores = word.split('').map((letter) => {
-        const htmlForLetter = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(word, letter)}"></input>`;
-        console.log(htmlForLetter);
-        return htmlForLetter;
+        if (!isIlleagalLetter(letter)) {
+            const htmlForLetter = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(word, letter)}"></input>`;
+            return htmlForLetter;
+        }
     }).join('');
     wordToHide.innerHTML = wordInUnderScores;
     // Adds the event handlers for the input
@@ -201,24 +208,52 @@ function splitPoemToNewLines(poem) {
 function splitLineToWords(line) {
     const split_line = line.split(/ /);
     return split_line.map((word) => {
+        numberOfWordsInPoem++;
         const wordId = getIdForWord(word);
-        return `<span id="${wordId}">` + word + "</span>";
+        return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
     }).join(' ');
+}
+// --------------------------- Convert poem to remove duplicates ---------------------------
+function addInstanceNumbersToWords(poem) {
+    const wordsAlreadyInPoem = {};
+    const convertedPoem = poem.split(/\n/).map((line) => {
+        return line.split(' ').map((word) => {
+            if (word in wordsAlreadyInPoem) {
+                wordsAlreadyInPoem[word] = wordsAlreadyInPoem[word] + 1;
+            }
+            else {
+                wordsAlreadyInPoem[word] = 1;
+            }
+            return word + wordsAlreadyInPoem[word];
+        }).join(' ');
+    }).join('\n');
+    return convertedPoem;
+}
+// Utilities for feature
+function removeNumberFromWord(word) {
+    return word.split('').filter(letter => !isIlleagalLetter(letter)).join('');
+}
+function isIlleagalLetter(letter) {
+    return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(letter);
 }
 // =========================== Intitalise poem ===========================
 // Initialises the poem, by rendering it in
 function initialise(poem) {
-    const poemElement = document.getElementById("1poem_id1");
+    const poemElement = getPoemElement();
     poemElement.innerHTML = splitPoemToNewLines(poem);
     const wordsThatHaveBeenReplaced = replaceWords(poem, NUMBER_OF_WORDS_TO_REPLACE);
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     return wordsThatHaveBeenReplaced;
 }
-const wordsNotCompleted = initialise(POEM);
+const convertedPoem = addInstanceNumbersToWords(POEM);
+const wordsNotCompleted = initialise(convertedPoem);
 let focusedWord = wordsNotCompleted[0];
-console.log(wordsNotCompleted);
 // HELPER FUNCTIONS
+// Gets the poem element
+function getPoemElement() {
+    return document.getElementById(POEM_ID);
+}
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word) {
     const inputToFocusId = `${getIdForLetter(word, word[0])}`;
@@ -237,7 +272,7 @@ function getIdForLetter(word, letter) {
 // Abstraction for getting the id of a specific word
 function getIdForWord(word) {
     if (word.includes('"')) {
-        return word.replace(/"/, getBinaryFromLetter('"'));
+        return word.replace(/"/, "'");
     }
     else {
         return word;
