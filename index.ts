@@ -45,6 +45,17 @@ function onInputEventHandler(word: string, event: Event) {
     }
 }
 
+// --------------------------- Compare letter ---------------------------
+
+// Compares the input to the correct answer
+function compareInputToLetterId(input: string, id: string): boolean {
+    const wordAndLetterList: Array<string> = id.split('_');
+    const letterInBinary: string = wordAndLetterList[wordAndLetterList.length - 1];
+    const letter: string = String.fromCharCode(parseInt(letterInBinary, 2));
+    return input !== letter
+}
+
+
 // --------------------------- Letter Wrong ---------------------------
 
 // Reverts a word back to underscores after incorrect input
@@ -271,14 +282,20 @@ function focusFirstLetterOfWord(word: string) {
 }
 
 
+
+// Sorting IDs
+
+// Get a letter in the form of its binary code
 function getBinaryFromLetter(letter:string): string {
     return letter.charCodeAt(0).toString(2);
 }
 
+// Abstraction for getting the id for a specific letter
 function getIdForLetter(word: string, letter: string): string {
     return `${getIdForWord(word)}_${getBinaryFromLetter(letter)}`
 }
 
+// Abstraction for getting the id of a specific word
 function getIdForWord(word: string): string {
     if (word.includes('"')) {
         return word.replace(/"/, getBinaryFromLetter('"'));
@@ -287,15 +304,9 @@ function getIdForWord(word: string): string {
     }
 }
 
+// Gets the HTML element of a specific word
 function getElementOfWord(word: string): HTMLSpanElement {
-    console.log('this')
     const wordElement: HTMLSpanElement = document.getElementById(getIdForWord(word))!;
     return wordElement;
 }
 
-function compareInputToLetterId(input: string, id: string): boolean {
-    const wordAndLetterList: Array<string> = id.split('_');
-    const letterInBinary: string = wordAndLetterList[wordAndLetterList.length - 1];
-    const letter: string = String.fromCharCode(parseInt(letterInBinary, 2));
-    return input !== letter
-}
