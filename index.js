@@ -1,5 +1,5 @@
 "use strict";
-const poem = `I met a traveller from an antique land,
+const POEM = `I met a traveller from an antique land,
 Who said—"Two vast and trunkless legs of stone
 Stand in the desert. . . . Near them, on the sand,
 Half sunk a shattered visage lies, whose frown,
@@ -14,6 +14,7 @@ Nothing beside remains. Round the decay
 Of that colossal Wreck, boundless and bare
 The lone and level sands stretch far away."
 `;
+const NUMBER_OF_WORDS_TO_REPLACE = 30;
 // ============================================================================
 // ================= Event handler (Assigned in replaceWord) =================
 // ============================================================================
@@ -25,7 +26,7 @@ function onInputEventHandler(word, event) {
     if (targetInput.value === '') {
         return;
     }
-    if (targetInput.value !== targetInput.id[targetInput.id.length - 1]) {
+    if (compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         // Destroy handler and replace after 1s
         targetInput.oninput = () => { };
@@ -43,7 +44,7 @@ function onInputEventHandler(word, event) {
 // Reverts a word back to underscores after incorrect input
 function revertWordToEmpty(word) {
     // Retrive all inputs
-    const wordElement = document.getElementById(word);
+    const wordElement = getElementOfWord(word);
     const arrayOfChildren = Array.from(wordElement.children);
     // Resets word
     for (let i = 0; i < arrayOfChildren.length; i++) {
@@ -93,7 +94,7 @@ function checkAllLettersFull(singleLetter) {
 // When a word is completed, check if it is correct, if so, move onto next word
 function completeWord() {
     // Get the input values and combine into guessed word
-    const focusedWordElement = document.getElementById(focusedWord);
+    const focusedWordElement = getElementOfWord(focusedWord);
     const arrayOfChildren = Array.from(focusedWordElement.children);
     let userInput = '';
     for (let i = 0; i < arrayOfChildren.length; i++) {
@@ -111,20 +112,13 @@ function completeWord() {
 }
 // Marks a word as complete by converting back to text and cahnging colour to green
 function revertToTextAsComplete(wordToRevert) {
-    const wordToRevertElement = document.getElementById(wordToRevert);
+    const wordToRevertElement = getElementOfWord(wordToRevert);
     wordToRevertElement.innerHTML = wordToRevert;
     wordToRevertElement.style.color = 'green';
 }
 // ============================================================================
 // ============================== Initialisation ==============================
 // ============================================================================
-// --------------------------- Focus on first Word ---------------------------
-// Finds the element for the first letter of a missing word
-function focusFirstLetterOfWord(word) {
-    const inputToFocusId = `${word}_${word[0]}`;
-    const firstInputElement = document.getElementById(inputToFocusId);
-    firstInputElement.focus();
-}
 // --------------------------- Replace words in the poem ---------------------------
 // Removes a certain number of words from the poem, and returns the words that were removed
 // in order of appearance
@@ -171,9 +165,12 @@ function insertionSortIntoOrderInPoem(poem, words) {
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 function replaceWord(word) {
     // Turn each word into letter inputs
-    const wordToHide = document.getElementById(word);
+    console.log(word);
+    const wordToHide = getElementOfWord(word);
     const wordInUnderScores = word.split('').map((letter) => {
-        return `<input placeholder="_" size="1" maxlength="1" id="${word}_${letter}"></input>`;
+        const htmlForLetter = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(word, letter)}"></input>`;
+        console.log(htmlForLetter);
+        return htmlForLetter;
     }).join('');
     wordToHide.innerHTML = wordInUnderScores;
     // Adds the event handlers for the input
@@ -196,7 +193,8 @@ function splitPoemToNewLines(poem) {
 function splitLineToWords(line) {
     const split_line = line.split(/ /);
     return split_line.map((word) => {
-        return `<span id="${word}">` + word + "</span>";
+        const wordId = getIdForWord(word);
+        return `<span id="${wordId}">` + word + "</span>";
     }).join(' ');
 }
 // =========================== Intitalise poem ===========================
@@ -204,11 +202,43 @@ function splitLineToWords(line) {
 function initialise(poem) {
     const poemElement = document.getElementById("1poem_id1");
     poemElement.innerHTML = splitPoemToNewLines(poem);
-    const wordsThatHaveBeenReplaced = replaceWords(poem, 15);
+    const wordsThatHaveBeenReplaced = replaceWords(poem, NUMBER_OF_WORDS_TO_REPLACE);
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     return wordsThatHaveBeenReplaced;
 }
-const wordsNotCompleted = initialise(poem);
+const wordsNotCompleted = initialise(POEM);
 let focusedWord = wordsNotCompleted[0];
 console.log(wordsNotCompleted);
+// HELPER FUNCTIONS
+// Finds the element for the first letter of a missing word
+function focusFirstLetterOfWord(word) {
+    const inputToFocusId = `${getIdForLetter(word, word[0])}`;
+    const firstInputElement = document.getElementById(inputToFocusId);
+    firstInputElement.focus();
+}
+function getBinaryFromLetter(letter) {
+    return letter.charCodeAt(0).toString(2);
+}
+function getIdForLetter(word, letter) {
+    return `${getIdForWord(word)}_${getBinaryFromLetter(letter)}`;
+}
+function getIdForWord(word) {
+    if (word.includes('"')) {
+        return word.replace(/"/, getBinaryFromLetter('"'));
+    }
+    else {
+        return word;
+    }
+}
+function getElementOfWord(word) {
+    console.log('this');
+    const wordElement = document.getElementById(getIdForWord(word));
+    return wordElement;
+}
+function compareInputToLetterId(input, id) {
+    const wordAndLetterList = id.split('_');
+    const letterInBinary = wordAndLetterList[wordAndLetterList.length - 1];
+    const letter = String.fromCharCode(parseInt(letterInBinary, 2));
+    return input !== letter;
+}

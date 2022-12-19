@@ -1,4 +1,4 @@
-const poem: string = `I met a traveller from an antique land,
+const POEM: string = `I met a traveller from an antique land,
 Who said—"Two vast and trunkless legs of stone
 Stand in the desert. . . . Near them, on the sand,
 Half sunk a shattered visage lies, whose frown,
@@ -13,7 +13,7 @@ Nothing beside remains. Round the decay
 Of that colossal Wreck, boundless and bare
 The lone and level sands stretch far away."
 `
-
+const NUMBER_OF_WORDS_TO_REPLACE = 30;
 
 
 // ============================================================================
@@ -30,7 +30,7 @@ function onInputEventHandler(word: string, event: Event) {
     if (targetInput.value === '') {
         return
     }
-    if (targetInput.value !== targetInput.id[targetInput.id.length - 1]) {
+    if (compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         
         // Destroy handler and replace after 1s
@@ -50,7 +50,7 @@ function onInputEventHandler(word: string, event: Event) {
 // Reverts a word back to underscores after incorrect input
 function revertWordToEmpty(word: string):void {
     // Retrive all inputs
-    const wordElement: HTMLSpanElement = document.getElementById(word)!;
+    const wordElement: HTMLSpanElement = getElementOfWord(word);
     const arrayOfChildren: Array<HTMLInputElement> = Array.from(wordElement.children);
     // Resets word
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
@@ -107,7 +107,7 @@ function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement |
 // When a word is completed, check if it is correct, if so, move onto next word
 function completeWord():void {
     // Get the input values and combine into guessed word
-    const focusedWordElement: HTMLSpanElement = document.getElementById(focusedWord)!;
+    const focusedWordElement: HTMLSpanElement = getElementOfWord(focusedWord);
     const arrayOfChildren: Array<HTMLInputElement> = Array.from(focusedWordElement.children);
     let userInput: string = '';
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
@@ -127,7 +127,7 @@ function completeWord():void {
 
 // Marks a word as complete by converting back to text and cahnging colour to green
 function revertToTextAsComplete(wordToRevert: string): void {
-    const wordToRevertElement: HTMLSpanElement = document.getElementById(wordToRevert)!;
+    const wordToRevertElement: HTMLSpanElement = getElementOfWord(wordToRevert);
     wordToRevertElement.innerHTML = wordToRevert;
     wordToRevertElement.style.color = 'green';
 }
@@ -144,18 +144,6 @@ function revertToTextAsComplete(wordToRevert: string): void {
 // ============================================================================
 // ============================== Initialisation ==============================
 // ============================================================================
-
-
-
-// --------------------------- Focus on first Word ---------------------------
-
-// Finds the element for the first letter of a missing word
-function focusFirstLetterOfWord(word: string) {
-    const inputToFocusId: string = `${word}_${word[0]}`;
-    const firstInputElement: HTMLElement = document.getElementById(inputToFocusId)!;
-    firstInputElement.focus();
-}
-
 
 // --------------------------- Replace words in the poem ---------------------------
 
@@ -210,9 +198,12 @@ function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 function replaceWord(word: string):void {
     // Turn each word into letter inputs
-    const wordToHide: HTMLSpanElement = document.getElementById(word)!;
+    console.log(word);
+    const wordToHide: HTMLSpanElement = getElementOfWord(word);
     const wordInUnderScores: string = word.split('').map((letter) => {
-        return `<input placeholder="_" size="1" maxlength="1" id="${word}_${letter}"></input>`;
+        const htmlForLetter: string = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(word, letter)}"></input>`
+        console.log(htmlForLetter);
+        return htmlForLetter;
     }).join('');
     wordToHide.innerHTML = wordInUnderScores;
     // Adds the event handlers for the input
@@ -240,7 +231,8 @@ function splitPoemToNewLines(poem: string):string {
 function splitLineToWords(line: string):string {
     const split_line: Array<string> = line.split(/ /)
     return split_line.map((word: string):string => {
-        return `<span id="${word}">` + word + "</span>";
+        const wordId = getIdForWord(word)
+        return `<span id="${wordId}">` + word + "</span>";
     }).join(' ');
 }
 
@@ -255,14 +247,55 @@ function splitLineToWords(line: string):string {
 function initialise(poem: string): Array<string> {
     const poemElement: HTMLElement = document.getElementById("1poem_id1")!;
     poemElement.innerHTML = splitPoemToNewLines(poem);
-    const wordsThatHaveBeenReplaced = replaceWords(poem, 15);
+    const wordsThatHaveBeenReplaced = replaceWords(poem, NUMBER_OF_WORDS_TO_REPLACE);
     const firstWord: string = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     return wordsThatHaveBeenReplaced;
 }
 
 
-const wordsNotCompleted: Array<string> = initialise(poem);
+const wordsNotCompleted: Array<string> = initialise(POEM);
 let focusedWord = wordsNotCompleted[0];
 console.log(wordsNotCompleted);
 
+
+
+
+// HELPER FUNCTIONS
+
+// Finds the element for the first letter of a missing word
+function focusFirstLetterOfWord(word: string) {
+    const inputToFocusId: string = `${getIdForLetter(word, word[0])}`;
+    const firstInputElement: HTMLElement = document.getElementById(inputToFocusId)!;
+    firstInputElement.focus();
+}
+
+
+function getBinaryFromLetter(letter:string): string {
+    return letter.charCodeAt(0).toString(2);
+}
+
+function getIdForLetter(word: string, letter: string): string {
+    return `${getIdForWord(word)}_${getBinaryFromLetter(letter)}`
+}
+
+function getIdForWord(word: string): string {
+    if (word.includes('"')) {
+        return word.replace(/"/, getBinaryFromLetter('"'));
+    } else {
+        return word
+    }
+}
+
+function getElementOfWord(word: string): HTMLSpanElement {
+    console.log('this')
+    const wordElement: HTMLSpanElement = document.getElementById(getIdForWord(word))!;
+    return wordElement;
+}
+
+function compareInputToLetterId(input: string, id: string): boolean {
+    const wordAndLetterList: Array<string> = id.split('_');
+    const letterInBinary: string = wordAndLetterList[wordAndLetterList.length - 1];
+    const letter: string = String.fromCharCode(parseInt(letterInBinary, 2));
+    return input !== letter
+}
