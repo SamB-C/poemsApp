@@ -53,7 +53,7 @@ function compareInputToLetterId(input, id) {
 function revertWordToEmpty(word) {
     // Retrive all inputs
     const wordElement = getElementOfWord(word);
-    const arrayOfChildren = Array.from(wordElement.children);
+    const arrayOfChildren = getArrayOfChildren(wordElement);
     // Resets word
     for (let i = 0; i < arrayOfChildren.length; i++) {
         arrayOfChildren[i].value = '';
@@ -89,7 +89,7 @@ function focusMissingLetter(letterToCheckUsing, poem) {
 function checkAllLettersFull(singleLetter) {
     // Retrieves all the letters in the word
     const parentSpan = singleLetter.parentElement;
-    const allLetterInputs = Array.from(parentSpan.children);
+    const allLetterInputs = getArrayOfChildren(parentSpan);
     // Tries to find an empty letter
     for (let i = 0; i < allLetterInputs.length; i++) {
         if (allLetterInputs[i].value === '') {
@@ -103,7 +103,7 @@ function checkAllLettersFull(singleLetter) {
 function completeWord(poem) {
     // Get the input values and combine into guessed word
     const focusedWordElement = getElementOfWord(focusedWord);
-    const arrayOfChildren = Array.from(focusedWordElement.children);
+    const arrayOfChildren = getArrayOfChildren(focusedWordElement);
     let userInput = '';
     for (let i = 0; i < arrayOfChildren.length; i++) {
         userInput = userInput + arrayOfChildren[i].value;
@@ -118,6 +118,7 @@ function revertToTextAsComplete(wordToRevert) {
     wordToRevertElement.innerHTML = removeNumberFromWord(wordToRevert);
     wordToRevertElement.style.color = 'green';
 }
+// Moves to the next word, if none left, marks poem as complete
 function moveToNextWord(poem) {
     wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
     if (wordsNotCompleted.length > 0) {
@@ -128,6 +129,7 @@ function moveToNextWord(poem) {
         completePoem(poem);
     }
 }
+// Uses an animation to turn all text green and add message below poem
 function completePoem(poem) {
     const poemElement = getPoemElement();
     const completionColor = '#00FF00';
@@ -136,6 +138,7 @@ function completePoem(poem) {
         poemElement.innerHTML = poemElement.innerHTML + '</br>Complete!';
     });
 }
+// Splits the poem into a list of words
 function getAllWordsInPoem(poem) {
     const allLinesInPoem = poem.split(/\n/);
     const allWordsInPoem = allLinesInPoem.map((line) => {
@@ -145,16 +148,21 @@ function getAllWordsInPoem(poem) {
     });
     return allWordsInPoem;
 }
+// Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption) {
+    // pops off next word to change color for
     const wordToChange = wordsToChange.shift();
+    // Base case - word undefined
     if (wordToChange === undefined) {
         return setTimeout(callbackOption, 200);
     }
+    // Only change color if it was not on of the words completed by the user (can be overridden)
     if (!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) {
         const wordElement = getElementOfWord(wordToChange);
         wordElement.style.color = color;
     }
-    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion);
+    // Recursive call with setTimeout so words don't all change colour at once
+    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion - 1, callbackOption), timeBetweenConversion);
 }
 // ============================================================================
 // ============================== Initialisation ==============================
@@ -163,7 +171,7 @@ function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetwe
 // Removes a certain number of words from the poem, and returns the words that were removed
 // in order of appearance
 function replaceWords(poem, numberOfWords) {
-    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords, poem);
+    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords);
     const wordsReplaced = [];
     while (wordsReplaced.length < numberOfWords) {
         const potentialWord = selectRandomWordFromPoem(poem);
@@ -287,6 +295,9 @@ const wordsNotCompleted = initialise(convertedPoem);
 const wordsNotCompletedCopy = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
 // HELPER FUNCTIONS
+function getArrayOfChildren(element) {
+    return Array.from(element.children);
+}
 // Gets the poem element
 function getPoemElement() {
     return document.getElementById(POEM_ID);

@@ -15,7 +15,7 @@ The lone and level sands stretch far away."`
 const NUMBER_OF_WORDS_TO_REPLACE = 10;
 const POEM_ID = '1poem_id1';
 let numberOfWordsInPoem = 0;
-const ANIMATION_SPEED: number1 = 30
+const ANIMATION_SPEED: number = 30
 const COVER_OVER_COMPLETED_WORDS = false;
 
 // ============================================================================
@@ -61,7 +61,7 @@ function compareInputToLetterId(input: string, id: string): boolean {
 function revertWordToEmpty(word: string):void {
     // Retrive all inputs
     const wordElement: HTMLSpanElement = getElementOfWord(word);
-    const arrayOfChildren: Array<HTMLInputElement> = Array.from(wordElement.children);
+    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildren(wordElement);
     // Resets word
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
         arrayOfChildren[i].value = '';
@@ -102,7 +102,7 @@ function focusMissingLetter(letterToCheckUsing: HTMLInputElement, poem: string):
 function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement | null {
     // Retrieves all the letters in the word
     const parentSpan: HTMLElement = singleLetter.parentElement!;
-    const allLetterInputs: Array<HTMLInputElement> = Array.from(parentSpan.children);
+    const allLetterInputs: Array<HTMLInputElement> = getArrayOfChildren(parentSpan);
     // Tries to find an empty letter
     for (let i: number = 0; i < allLetterInputs.length; i++) {
         if (allLetterInputs[i].value === '') {
@@ -118,7 +118,7 @@ function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement |
 function completeWord(poem: string):void {
     // Get the input values and combine into guessed word
     const focusedWordElement: HTMLSpanElement = getElementOfWord(focusedWord);
-    const arrayOfChildren: Array<HTMLInputElement> = Array.from(focusedWordElement.children);
+    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildren(focusedWordElement)
     let userInput: string = '';
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
         userInput = userInput + arrayOfChildren[i].value;
@@ -135,7 +135,7 @@ function revertToTextAsComplete(wordToRevert: string): void {
     wordToRevertElement.style.color = 'green';
 }
 
-
+// Moves to the next word, if none left, marks poem as complete
 function moveToNextWord(poem: string): void {
     wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
     if (wordsNotCompleted.length > 0) {
@@ -146,7 +146,7 @@ function moveToNextWord(poem: string): void {
     }
 }
 
-
+// Uses an animation to turn all text green and add message below poem
 function completePoem(poem: string): void {
     const poemElement: HTMLElement = getPoemElement();
     const completionColor: string = '#00FF00';
@@ -156,6 +156,7 @@ function completePoem(poem: string): void {
     });
 }
 
+// Splits the poem into a list of words
 function getAllWordsInPoem(poem: string): Array<string> {
     const allLinesInPoem: Array<string> = poem.split(/\n/);
     const allWordsInPoem: Array<string> = allLinesInPoem.map((line: string): Array<string> => {
@@ -166,16 +167,21 @@ function getAllWordsInPoem(poem: string): Array<string> {
     return allWordsInPoem;
 }
 
+// Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: Array<string>, color: string, timeBetweenConversion: number, callbackOption: Function) {
+    // pops off next word to change color for
     const wordToChange: string | undefined = wordsToChange.shift();
+    // Base case - word undefined
     if (wordToChange === undefined) {
         return setTimeout(callbackOption, 200)
     }
+    // Only change color if it was not on of the words completed by the user (can be overridden)
     if (!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) {
         const wordElement = getElementOfWord(wordToChange);
         wordElement.style.color = color;
     }
-    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion)
+    // Recursive call with setTimeout so words don't all change colour at once
+    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion - 1, callbackOption), timeBetweenConversion)
 
 }
 
@@ -192,7 +198,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
 // Removes a certain number of words from the poem, and returns the words that were removed
 // in order of appearance
 function replaceWords(poem: string, numberOfWords: number): Array<string> {
-    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords, poem);
+    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords);
     const wordsReplaced: Array<string> = [];
     while (wordsReplaced.length < numberOfWords) {
         const potentialWord: string = selectRandomWordFromPoem(poem);
@@ -339,6 +345,10 @@ let focusedWord = wordsNotCompleted[0];
 
 
 // HELPER FUNCTIONS
+
+function getArrayOfChildren(element: HTMLElement): Array<HTMLInputElement> {
+    return Array.from(element.children)
+}
 
 // Gets the poem element
 function getPoemElement():HTMLElement {
