@@ -12,9 +12,11 @@ Look on my Works, ye Mighty, and despair!
 Nothing beside remains. Round the decay
 Of that colossal Wreck, boundless and bare
 The lone and level sands stretch far away."`
-const NUMBER_OF_WORDS_TO_REPLACE = 500;
+const NUMBER_OF_WORDS_TO_REPLACE = 10;
 const POEM_ID = '1poem_id1';
 let numberOfWordsInPoem = 0;
+const ANIMATION_SPEED: number1 = 30
+const COVER_OVER_COMPLETED_WORDS = false;
 
 // ============================================================================
 // ================= Event handler (Assigned in replaceWord) =================
@@ -24,7 +26,7 @@ let numberOfWordsInPoem = 0;
 
 
 // Event handler for each individual letter input
-function onInputEventHandler(word: string, event: Event) {
+function onInputEventHandler(word: string, event: Event, poem: string) {
     // Check if letter is incorrect
     const targetInput: HTMLInputElement = event.target!;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
@@ -34,11 +36,11 @@ function onInputEventHandler(word: string, event: Event) {
         targetInput.oninput = () => {};
         setTimeout(() => {
             revertWordToEmpty(word);
-            targetInput.oninput = (event) => onInputEventHandler(word, event);
+            targetInput.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.style.color = 'black';
         }, 1000)
     } else {
-        focusNextLetter(event.target);
+        focusNextLetter(event.target, poem);
     }
 }
 
@@ -71,13 +73,13 @@ function revertWordToEmpty(word: string):void {
 // --------------------------- Letter Right ---------------------------
 
 // Focuses on the next/missing letter in the word, or if it is complete, move to next word
-function focusNextLetter(currentLetter) {
+function focusNextLetter(currentLetter, poem: string) {
     // Check if this letter is full
     if (currentLetter.value.length > 0) {
         // Focuses on the next letter
         const nextLetter: HTMLInputElement | null = currentLetter.nextSibling;
         if (nextLetter === null || nextLetter.value !== '') {
-            focusMissingLetter(currentLetter)
+            focusMissingLetter(currentLetter, poem)
         } else {
             nextLetter.focus()
         }
@@ -86,10 +88,10 @@ function focusNextLetter(currentLetter) {
 
 
 // Check if word is full, completes if so, else focuses on missing letter
-function focusMissingLetter(letterToCheckUsing: HTMLInputElement): void {
+function focusMissingLetter(letterToCheckUsing: HTMLInputElement, poem: string): void {
     const missingLetter: HTMLInputElement | null = checkAllLettersFull(letterToCheckUsing);
     if (missingLetter === null) {
-        completeWord();
+        completeWord(poem);
     } else {
         missingLetter.focus()
     }
@@ -113,7 +115,7 @@ function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement |
 
 
 // When a word is completed, check if it is correct, if so, move onto next word
-function completeWord():void {
+function completeWord(poem: string):void {
     // Get the input values and combine into guessed word
     const focusedWordElement: HTMLSpanElement = getElementOfWord(focusedWord);
     const arrayOfChildren: Array<HTMLInputElement> = Array.from(focusedWordElement.children);
@@ -123,10 +125,7 @@ function completeWord():void {
     }
     // Marks as complete
     revertToTextAsComplete(focusedWord);
-    wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
-    // Changes the word that is focused
-    focusedWord = wordsNotCompleted[0]
-    focusFirstLetterOfWord(focusedWord);
+    moveToNextWord(poem);
 }
 
 // Marks a word as complete by converting back to text and cahnging colour to green
@@ -137,9 +136,48 @@ function revertToTextAsComplete(wordToRevert: string): void {
 }
 
 
+function moveToNextWord(poem: string): void {
+    wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
+    if (wordsNotCompleted.length > 0) {
+        focusedWord = wordsNotCompleted[0];
+        focusFirstLetterOfWord(focusedWord);
+    } else {
+        completePoem(poem);
+    }
+}
 
 
+function completePoem(poem: string): void {
+    const poemElement: HTMLElement = getPoemElement();
+    const completionColor: string = '#00FF00';
+    const allWordsInPoem: Array<string> = getAllWordsInPoem(poem);
+    changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => {
+        poemElement.innerHTML = poemElement.innerHTML + '</br>Complete!'
+    });
+}
 
+function getAllWordsInPoem(poem: string): Array<string> {
+    const allLinesInPoem: Array<string> = poem.split(/\n/);
+    const allWordsInPoem: Array<string> = allLinesInPoem.map((line: string): Array<string> => {
+        return line.split(' ');
+    }).reduce((accumulator: Array<string>, current: Array<string>) => {
+        return accumulator.concat(current);
+    })
+    return allWordsInPoem;
+}
+
+function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: Array<string>, color: string, timeBetweenConversion: number, callbackOption: Function) {
+    const wordToChange: string | undefined = wordsToChange.shift();
+    if (wordToChange === undefined) {
+        return setTimeout(callbackOption, 200)
+    }
+    if (!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) {
+        const wordElement = getElementOfWord(wordToChange);
+        wordElement.style.color = color;
+    }
+    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion)
+
+}
 
 
 
@@ -163,14 +201,14 @@ function replaceWords(poem: string, numberOfWords: number): Array<string> {
         }
     }
     insertionSortIntoOrderInPoem(poem, wordsReplaced)
-    wordsReplaced.forEach((word: string): void => replaceWord(word));
+    wordsReplaced.forEach((word: string): void => replaceWord(word, poem));
     return wordsReplaced;
 }
 
 
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
-function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number, poem: string): number {
+function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number): number {
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
     } else {
@@ -211,7 +249,7 @@ function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array
 
 
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-function replaceWord(word: string):void {
+function replaceWord(word: string, poem: string):void {
     // Turn each word into letter inputs
     const wordToHide: HTMLSpanElement = getElementOfWord(word);
     const wordInUnderScores: string = word.split('').map((letter) => {
@@ -222,7 +260,7 @@ function replaceWord(word: string):void {
     }).join('');
     wordToHide.innerHTML = wordInUnderScores;
     // Adds the event handlers for the input
-    wordToHide.oninput = (event) => onInputEventHandler(word, event)
+    wordToHide.oninput = (event) => onInputEventHandler(word, event, poem)
     wordToHide.onclick = () => {
         focusedWord = word
     }
@@ -294,6 +332,7 @@ function initialise(poem: string): Array<string> {
 
 const convertedPoem = addInstanceNumbersToWords(POEM)
 const wordsNotCompleted: Array<string> = initialise(convertedPoem);
+const wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
 
 
@@ -305,6 +344,13 @@ let focusedWord = wordsNotCompleted[0];
 function getPoemElement():HTMLElement {
     return document.getElementById(POEM_ID)!;
 }
+
+// Gets the HTML element of a specific word
+function getElementOfWord(word: string): HTMLSpanElement {
+    const wordElement: HTMLSpanElement = document.getElementById(getIdForWord(word))!;
+    return wordElement;
+}
+
 
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word: string) {
@@ -336,9 +382,4 @@ function getIdForWord(word: string): string {
     }
 }
 
-// Gets the HTML element of a specific word
-function getElementOfWord(word: string): HTMLSpanElement {
-    const wordElement: HTMLSpanElement = document.getElementById(getIdForWord(word))!;
-    return wordElement;
-}
 

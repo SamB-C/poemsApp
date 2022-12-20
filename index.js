@@ -13,15 +13,17 @@ Look on my Works, ye Mighty, and despair!
 Nothing beside remains. Round the decay
 Of that colossal Wreck, boundless and bare
 The lone and level sands stretch far away."`;
-const NUMBER_OF_WORDS_TO_REPLACE = 500;
+const NUMBER_OF_WORDS_TO_REPLACE = 10;
 const POEM_ID = '1poem_id1';
 let numberOfWordsInPoem = 0;
+const ANIMATION_SPEED = 30;
+const COVER_OVER_COMPLETED_WORDS = false;
 // ============================================================================
 // ================= Event handler (Assigned in replaceWord) =================
 // ============================================================================
 // =========================== Main event handler function ===========================
 // Event handler for each individual letter input
-function onInputEventHandler(word, event) {
+function onInputEventHandler(word, event, poem) {
     // Check if letter is incorrect
     const targetInput = event.target;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
@@ -30,12 +32,12 @@ function onInputEventHandler(word, event) {
         targetInput.oninput = () => { };
         setTimeout(() => {
             revertWordToEmpty(word);
-            targetInput.oninput = (event) => onInputEventHandler(word, event);
+            targetInput.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.style.color = 'black';
         }, 1000);
     }
     else {
-        focusNextLetter(event.target);
+        focusNextLetter(event.target, poem);
     }
 }
 // --------------------------- Compare letter ---------------------------
@@ -60,13 +62,13 @@ function revertWordToEmpty(word) {
 }
 // --------------------------- Letter Right ---------------------------
 // Focuses on the next/missing letter in the word, or if it is complete, move to next word
-function focusNextLetter(currentLetter) {
+function focusNextLetter(currentLetter, poem) {
     // Check if this letter is full
     if (currentLetter.value.length > 0) {
         // Focuses on the next letter
         const nextLetter = currentLetter.nextSibling;
         if (nextLetter === null || nextLetter.value !== '') {
-            focusMissingLetter(currentLetter);
+            focusMissingLetter(currentLetter, poem);
         }
         else {
             nextLetter.focus();
@@ -74,10 +76,10 @@ function focusNextLetter(currentLetter) {
     }
 }
 // Check if word is full, completes if so, else focuses on missing letter
-function focusMissingLetter(letterToCheckUsing) {
+function focusMissingLetter(letterToCheckUsing, poem) {
     const missingLetter = checkAllLettersFull(letterToCheckUsing);
     if (missingLetter === null) {
-        completeWord();
+        completeWord(poem);
     }
     else {
         missingLetter.focus();
@@ -98,7 +100,7 @@ function checkAllLettersFull(singleLetter) {
     return null;
 }
 // When a word is completed, check if it is correct, if so, move onto next word
-function completeWord() {
+function completeWord(poem) {
     // Get the input values and combine into guessed word
     const focusedWordElement = getElementOfWord(focusedWord);
     const arrayOfChildren = Array.from(focusedWordElement.children);
@@ -108,16 +110,51 @@ function completeWord() {
     }
     // Marks as complete
     revertToTextAsComplete(focusedWord);
-    wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
-    // Changes the word that is focused
-    focusedWord = wordsNotCompleted[0];
-    focusFirstLetterOfWord(focusedWord);
+    moveToNextWord(poem);
 }
 // Marks a word as complete by converting back to text and cahnging colour to green
 function revertToTextAsComplete(wordToRevert) {
     const wordToRevertElement = getElementOfWord(wordToRevert);
     wordToRevertElement.innerHTML = removeNumberFromWord(wordToRevert);
     wordToRevertElement.style.color = 'green';
+}
+function moveToNextWord(poem) {
+    wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
+    if (wordsNotCompleted.length > 0) {
+        focusedWord = wordsNotCompleted[0];
+        focusFirstLetterOfWord(focusedWord);
+    }
+    else {
+        completePoem(poem);
+    }
+}
+function completePoem(poem) {
+    const poemElement = getPoemElement();
+    const completionColor = '#00FF00';
+    const allWordsInPoem = getAllWordsInPoem(poem);
+    changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => {
+        poemElement.innerHTML = poemElement.innerHTML + '</br>Complete!';
+    });
+}
+function getAllWordsInPoem(poem) {
+    const allLinesInPoem = poem.split(/\n/);
+    const allWordsInPoem = allLinesInPoem.map((line) => {
+        return line.split(' ');
+    }).reduce((accumulator, current) => {
+        return accumulator.concat(current);
+    });
+    return allWordsInPoem;
+}
+function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption) {
+    const wordToChange = wordsToChange.shift();
+    if (wordToChange === undefined) {
+        return setTimeout(callbackOption, 200);
+    }
+    if (!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) {
+        const wordElement = getElementOfWord(wordToChange);
+        wordElement.style.color = color;
+    }
+    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion);
 }
 // ============================================================================
 // ============================== Initialisation ==============================
@@ -127,7 +164,6 @@ function revertToTextAsComplete(wordToRevert) {
 // in order of appearance
 function replaceWords(poem, numberOfWords) {
     numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords, poem);
-    console.log(numberOfWords);
     const wordsReplaced = [];
     while (wordsReplaced.length < numberOfWords) {
         const potentialWord = selectRandomWordFromPoem(poem);
@@ -136,12 +172,12 @@ function replaceWords(poem, numberOfWords) {
         }
     }
     insertionSortIntoOrderInPoem(poem, wordsReplaced);
-    wordsReplaced.forEach((word) => replaceWord(word));
+    wordsReplaced.forEach((word) => replaceWord(word, poem));
     return wordsReplaced;
 }
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
-function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace, poem) {
+function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
     }
@@ -178,7 +214,7 @@ function insertionSortIntoOrderInPoem(poem, words) {
     return words;
 }
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-function replaceWord(word) {
+function replaceWord(word, poem) {
     // Turn each word into letter inputs
     const wordToHide = getElementOfWord(word);
     const wordInUnderScores = word.split('').map((letter) => {
@@ -189,7 +225,7 @@ function replaceWord(word) {
     }).join('');
     wordToHide.innerHTML = wordInUnderScores;
     // Adds the event handlers for the input
-    wordToHide.oninput = (event) => onInputEventHandler(word, event);
+    wordToHide.oninput = (event) => onInputEventHandler(word, event, poem);
     wordToHide.onclick = () => {
         focusedWord = word;
     };
@@ -248,11 +284,17 @@ function initialise(poem) {
 }
 const convertedPoem = addInstanceNumbersToWords(POEM);
 const wordsNotCompleted = initialise(convertedPoem);
+const wordsNotCompletedCopy = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
 // HELPER FUNCTIONS
 // Gets the poem element
 function getPoemElement() {
     return document.getElementById(POEM_ID);
+}
+// Gets the HTML element of a specific word
+function getElementOfWord(word) {
+    const wordElement = document.getElementById(getIdForWord(word));
+    return wordElement;
 }
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word) {
@@ -277,9 +319,4 @@ function getIdForWord(word) {
     else {
         return word;
     }
-}
-// Gets the HTML element of a specific word
-function getElementOfWord(word) {
-    const wordElement = document.getElementById(getIdForWord(word));
-    return wordElement;
 }
