@@ -1,5 +1,5 @@
 "use strict";
-const POEM = `I met a traveller from an antique land,
+const POEM1 = `I met a traveller from an antique land,
 Who said—"Two vast and trunkless legs of stone
 Stand in the desert. . . . Near them, on the sand,
 Half sunk a shattered visage lies, whose frown,
@@ -13,15 +13,47 @@ Look on my Works, ye Mighty, and despair!
 Nothing beside remains. Round the decay
 Of that colossal Wreck, boundless and bare
 The lone and level sands stretch far away."`;
-const NUMBER_OF_WORDS_TO_REPLACE = 10;
-const POEM_ID = '1poem_id1';
+const POEM2 = `How do I love thee? Let me count the ways.
+I love thee to the depth and breadth and height
+My soul can reach, when feeling out of sight
+For the ends of being and ideal grace.
+I love thee to the level of every day's
+Most quiet need, by sun and candle-light.
+I love thee freely, as men strive for right.
+I love thee purely, as they turn from praise.
+I love thee with the passion put to use
+In my old griefs, and with my childhood's faith.
+I love thee with a love I seemed to lose
+With my lost saints. I love thee with the breath,
+Smiles, tears, of all my life; and, if God choose,
+I shall but love thee better after death.`;
+let number_of_words_to_replace = 3;
+const POEM_ID = '__poem_id__';
+const RANGEBAR_ID = '__range_bar__';
+const RANGEBAR_RESULT_ID = '__range_bar_result__';
 let numberOfWordsInPoem = 0;
-const ANIMATION_SPEED = 30;
+const ANIMATION_SPEED = 20;
 const COVER_OVER_COMPLETED_WORDS = false;
+let currentPoem = POEM1;
+let wordsNotCompleted = [];
+let wordsNotCompletedCopy = [...wordsNotCompleted];
+let focusedWord = wordsNotCompleted[0];
+initialise(currentPoem, number_of_words_to_replace);
+initialiseRangebar();
 // ============================================================================
 // ================= Event handler (Assigned in replaceWord) =================
 // ============================================================================
-// =========================== Main event handler function ===========================
+// =========================== Letter input onchange event handler ===========================
+// Event handler for the rangebar input that changes the number of missing words
+function onRangebarInput(event) {
+    // Get new value from range
+    const newValue = event.target.value;
+    // Restart the poem with a new number of words
+    initialise(currentPoem, newValue);
+    // Changes the global variable pertaining to the number of missing words
+    number_of_words_to_replace = newValue;
+}
+// =========================== Letter input onchange event handler ===========================
 // Event handler for each individual letter input
 function onInputEventHandler(word, event, poem) {
     // Check if letter is incorrect
@@ -135,7 +167,12 @@ function completePoem(poem) {
     const completionColor = '#00FF00';
     const allWordsInPoem = getAllWordsInPoem(poem);
     changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => {
-        poemElement.innerHTML = poemElement.innerHTML + '</br>Complete!';
+        poemElement.innerHTML = poemElement.innerHTML + '</br>Complete! <span id="1try_again1">Try again</span>';
+        const try_again = document.getElementById('1try_again1');
+        try_again.onclick = () => {
+            initialise(currentPoem, number_of_words_to_replace);
+            initialiseRangebar();
+        };
     });
 }
 // Splits the poem into a list of words
@@ -162,7 +199,7 @@ function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetwe
         wordElement.style.color = color;
     }
     // Recursive call with setTimeout so words don't all change colour at once
-    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion - 1, callbackOption), timeBetweenConversion);
+    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion);
 }
 // ============================================================================
 // ============================== Initialisation ==============================
@@ -282,18 +319,38 @@ function isIlleagalLetter(letter) {
 }
 // =========================== Intitalise poem ===========================
 // Initialises the poem, by rendering it in
-function initialise(poem) {
+function initialise(poem, numberOfWordsToRemove) {
+    poem = addInstanceNumbersToWords(poem);
     const poemElement = getPoemElement();
+    numberOfWordsInPoem = 0;
     poemElement.innerHTML = splitPoemToNewLines(poem);
-    const wordsThatHaveBeenReplaced = replaceWords(poem, NUMBER_OF_WORDS_TO_REPLACE);
+    const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
-    return wordsThatHaveBeenReplaced;
+    wordsNotCompleted = wordsThatHaveBeenReplaced;
+    wordsNotCompletedCopy = [...wordsNotCompleted];
+    focusedWord = wordsNotCompleted[0];
 }
-const convertedPoem = addInstanceNumbersToWords(POEM);
-const wordsNotCompleted = initialise(convertedPoem);
-const wordsNotCompletedCopy = [...wordsNotCompleted];
-let focusedWord = wordsNotCompleted[0];
+// =========================== Intitalise range bar ===========================
+// Initisalisation for the rangebar slider
+function initialiseRangebar() {
+    const rangeBar = document.getElementById(RANGEBAR_ID);
+    // Sets min/max values for rangebar
+    rangeBar.value = `${number_of_words_to_replace}`;
+    rangeBar.min = "1";
+    rangeBar.max = `${numberOfWordsInPoem}`;
+    console.log(number_of_words_to_replace, 1, numberOfWordsInPoem);
+    // Sets up the element that displays the value of the rangebar
+    const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
+    rangeBarResult.innerHTML = rangeBar.value;
+    // Don't re-render poem every time bar is dragged
+    rangeBar.onpointerup = (event) => onRangebarInput(event, rangeBarResult);
+    // Only update the displayed value of the input
+    rangeBar.oninput = (event) => {
+        const newValue = event.target.value;
+        rangeBarResult.innerHTML = newValue;
+    };
+}
 // HELPER FUNCTIONS
 function getArrayOfChildren(element) {
     return Array.from(element.children);
