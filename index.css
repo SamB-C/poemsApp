@@ -15,7 +15,7 @@ input {
     margin: 0;
 }
 
-#__range_slider_container__ {
+#__range_slider_container__, #__poem_selection_container__ {
     display: flex;
     flex-direction: row;
 }

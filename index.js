@@ -1,32 +1,4 @@
-"use strict";
-const POEM1 = `I met a traveller from an antique land,
-Who said—"Two vast and trunkless legs of stone
-Stand in the desert. . . . Near them, on the sand,
-Half sunk a shattered visage lies, whose frown,
-And wrinkled lip, and sneer of cold command,
-Tell that its sculptor well those passions read
-Which yet survive, stamped on these lifeless things,
-The hand that mocked them, and the heart that fed;
-And on the pedestal, these words appear:
-My name is Ozymandias, King of Kings;
-Look on my Works, ye Mighty, and despair!
-Nothing beside remains. Round the decay
-Of that colossal Wreck, boundless and bare
-The lone and level sands stretch far away."`;
-const POEM2 = `How do I love thee? Let me count the ways.
-I love thee to the depth and breadth and height
-My soul can reach, when feeling out of sight
-For the ends of being and ideal grace.
-I love thee to the level of every day's
-Most quiet need, by sun and candle-light.
-I love thee freely, as men strive for right.
-I love thee purely, as they turn from praise.
-I love thee with the passion put to use
-In my old griefs, and with my childhood's faith.
-I love thee with a love I seemed to lose
-With my lost saints. I love thee with the breath,
-Smiles, tears, of all my life; and, if God choose,
-I shall but love thee better after death.`;
+import { poems } from "./poems.js";
 let number_of_words_to_replace = 3;
 const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
@@ -34,16 +6,50 @@ const RANGEBAR_RESULT_ID = '__range_bar_result__';
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED = 20;
 const COVER_OVER_COMPLETED_WORDS = false;
-let currentPoem = POEM1;
+let currentPoem = poems['Ozymandias'];
 let wordsNotCompleted = [];
 let wordsNotCompletedCopy = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
+initialisePoemOptions(poems);
 initialise(currentPoem, number_of_words_to_replace);
 initialiseRangebar();
-// ============================================================================
-// ================= Event handler (Assigned in replaceWord) =================
-// ============================================================================
-// =========================== Letter input onchange event handler ===========================
+// =========================== Intitalise poem select bar ===========================
+function initialisePoemOptions(poems) {
+    const poemSelect = document.getElementById('__poem_selection__');
+    for (let pomeName in poems) {
+        let newOption = `<option value="${pomeName}">${pomeName}</option>`;
+        if (poems[pomeName] === currentPoem) {
+            newOption = `<option value="${pomeName}" selected="seleted">${pomeName}</option>`;
+        }
+        poemSelect.innerHTML = poemSelect.innerHTML + newOption;
+    }
+    poemSelect.oninput = (event) => {
+        const poemSelected = poemSelect.value;
+        currentPoem = poems[poemSelected];
+        initialise(currentPoem, number_of_words_to_replace);
+        initialiseRangebar();
+    };
+}
+// =========================== Intitalise range bar ===========================
+// Initisalisation for the rangebar slider
+function initialiseRangebar() {
+    const rangeBar = document.getElementById(RANGEBAR_ID);
+    // Sets min/max values for rangebar
+    rangeBar.value = `${number_of_words_to_replace}`;
+    rangeBar.min = "1";
+    rangeBar.max = `${numberOfWordsInPoem}`;
+    console.log(number_of_words_to_replace, 1, numberOfWordsInPoem);
+    // Sets up the element that displays the value of the rangebar
+    const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
+    rangeBarResult.innerHTML = rangeBar.value;
+    // Don't re-render poem every time bar is dragged
+    rangeBar.onpointerup = (event) => onRangebarInput(event, rangeBarResult);
+    // Only update the displayed value of the input
+    rangeBar.oninput = (event) => {
+        const newValue = event.target.value;
+        rangeBarResult.innerHTML = newValue;
+    };
+}
 // Event handler for the rangebar input that changes the number of missing words
 function onRangebarInput(event) {
     // Get new value from range
@@ -53,6 +59,9 @@ function onRangebarInput(event) {
     // Changes the global variable pertaining to the number of missing words
     number_of_words_to_replace = newValue;
 }
+// ============================================================================
+// ================= Event handler (Assigned in replaceWord) =================
+// ============================================================================
 // =========================== Letter input onchange event handler ===========================
 // Event handler for each individual letter input
 function onInputEventHandler(word, event, poem) {
@@ -330,26 +339,6 @@ function initialise(poem, numberOfWordsToRemove) {
     wordsNotCompleted = wordsThatHaveBeenReplaced;
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
-}
-// =========================== Intitalise range bar ===========================
-// Initisalisation for the rangebar slider
-function initialiseRangebar() {
-    const rangeBar = document.getElementById(RANGEBAR_ID);
-    // Sets min/max values for rangebar
-    rangeBar.value = `${number_of_words_to_replace}`;
-    rangeBar.min = "1";
-    rangeBar.max = `${numberOfWordsInPoem}`;
-    console.log(number_of_words_to_replace, 1, numberOfWordsInPoem);
-    // Sets up the element that displays the value of the rangebar
-    const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
-    rangeBarResult.innerHTML = rangeBar.value;
-    // Don't re-render poem every time bar is dragged
-    rangeBar.onpointerup = (event) => onRangebarInput(event, rangeBarResult);
-    // Only update the displayed value of the input
-    rangeBar.oninput = (event) => {
-        const newValue = event.target.value;
-        rangeBarResult.innerHTML = newValue;
-    };
 }
 // HELPER FUNCTIONS
 function getArrayOfChildren(element) {
