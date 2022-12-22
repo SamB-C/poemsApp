@@ -248,7 +248,7 @@ function selectRandomWordFromPoem(poem) {
     const randomLine = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
     // Select random word
     const words = randomLine.split(/ /);
-    const nonEmptyWords = words.filter((word) => word !== '');
+    const nonEmptyWords = words.filter((word) => !word.match(/^[0-9]+$/));
     const randomWord = nonEmptyWords[Math.floor(Math.random() * nonEmptyWords.length)];
     return randomWord;
 }
@@ -299,9 +299,11 @@ function splitPoemToNewLines(poem) {
 function splitLineToWords(line) {
     const split_line = line.split(/ /);
     return split_line.map((word) => {
-        numberOfWordsInPoem++;
-        const wordId = getIdForWord(word);
-        return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+        if (!word.match(/^[0-9]+$/)) {
+            numberOfWordsInPoem++;
+            const wordId = getIdForWord(word);
+            return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+        }
     }).join(' ');
 }
 // --------------------------- Convert poem to remove duplicates ---------------------------
@@ -315,7 +317,7 @@ function addInstanceNumbersToWords(poem) {
             else {
                 wordsAlreadyInPoem[word] = 1;
             }
-            return word + wordsAlreadyInPoem[word];
+            return wordsAlreadyInPoem[word] + word + wordsAlreadyInPoem[word];
         }).join(' ');
     }).join('\n');
     return convertedPoem;
@@ -357,7 +359,7 @@ function getElementOfWord(word) {
 }
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word) {
-    const inputToFocusId = `${getIdForLetter(word, word[0])}`;
+    const inputToFocusId = `${getIdForLetter(word, word[1])}`;
     const firstInputElement = document.getElementById(inputToFocusId);
     firstInputElement.focus();
 }

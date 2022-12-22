@@ -240,8 +240,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
         wordElement.style.color = color;
     }
     // Recursive call with setTimeout so words don't all change colour at once
-    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion)
-
+    return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion);
 }
 
 
@@ -289,7 +288,7 @@ function selectRandomWordFromPoem(poem: string):string {
     const randomLine: string = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
     // Select random word
     const words: Array<string> = randomLine.split(/ /);
-    const nonEmptyWords: Array<string> = words.filter((word:string) => word !== '');
+    const nonEmptyWords: Array<string> = words.filter((word:string) => !word.match(/^[0-9]+$/));
     const randomWord: string = nonEmptyWords[Math.floor(Math.random() * nonEmptyWords.length)];
     return randomWord;
 }
@@ -348,10 +347,12 @@ function splitPoemToNewLines(poem: string):string {
 // Then joins all the words back together and returns a line
 function splitLineToWords(line: string):string {
     const split_line: Array<string> = line.split(/ /)
-    return split_line.map((word: string):string => {
-        numberOfWordsInPoem++;
-        const wordId = getIdForWord(word);
-        return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+    return split_line.map((word: string):string | undefined => {
+        if (!word.match(/^[0-9]+$/)) {
+            numberOfWordsInPoem++;
+            const wordId = getIdForWord(word);
+            return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+        }
     }).join(' ');
 }
 
@@ -367,7 +368,7 @@ function addInstanceNumbersToWords(poem: string): string {
             } else {
                 wordsAlreadyInPoem[word] = 1
             }
-            return word + wordsAlreadyInPoem[word];
+            return wordsAlreadyInPoem[word] + word + wordsAlreadyInPoem[word];
         }).join(' ');
     }).join('\n');
     return convertedPoem
@@ -421,7 +422,7 @@ function getElementOfWord(word: string): HTMLSpanElement {
 
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word: string) {
-    const inputToFocusId: string = `${getIdForLetter(word, word[0])}`;
+    const inputToFocusId: string = `${getIdForLetter(word, word[1])}`;
     const firstInputElement: HTMLElement = document.getElementById(inputToFocusId)!;
     firstInputElement.focus();
 }
