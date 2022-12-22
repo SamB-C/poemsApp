@@ -4,6 +4,7 @@ const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
 const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__';
+const TRY_AGAIN_LINK_ID = '__try_again__';
 const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED = 20;
@@ -25,12 +26,13 @@ function initialisePoemOptions(poems) {
         }
         poemSelect.innerHTML = poemSelect.innerHTML + newOption;
     }
-    poemSelect.oninput = () => {
-        const poemSelected = poemSelect.value;
-        currentPoem = poems[poemSelected];
-        initialise(currentPoem, number_of_words_to_replace);
-        initialiseRangebar();
-    };
+    poemSelect.oninput = () => onPoemSelectInput(poems, poemSelect);
+}
+function onPoemSelectInput(poems, poemSelect) {
+    const poemSelected = poemSelect.value;
+    currentPoem = poems[poemSelected];
+    initialise(currentPoem, number_of_words_to_replace);
+    initialiseRangebar();
 }
 // =========================== Intitalise range bar ===========================
 // Initisalisation for the rangebar slider
@@ -43,6 +45,9 @@ function initialiseRangebar() {
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
     rangeBarResult.innerHTML = rangeBar.value;
+    addRangebarEvents(rangeBar, rangeBarResult);
+}
+function addRangebarEvents(rangeBar, rangeBarResult) {
     // Don't re-render poem every time bar is dragged
     rangeBar.onpointerup = () => onRangebarInput(rangeBar);
     // Only update the displayed value of the input
@@ -175,17 +180,15 @@ function moveToNextWord(poem) {
 }
 // Uses an animation to turn all text green and add message below poem
 function completePoem(poem) {
-    const poemElement = getPoemElement();
     const completionColor = '#00FF00';
     const allWordsInPoem = getAllWordsInPoem(poem);
-    changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => {
-        poemElement.innerHTML = poemElement.innerHTML + '</br>Complete! <span id="1try_again1">Try again</span>';
-        const try_again = document.getElementById('1try_again1');
-        try_again.onclick = () => {
-            initialise(currentPoem, number_of_words_to_replace);
-            initialiseRangebar();
-        };
-    });
+    // Disable the inputs that re-render the poem
+    const rangeBar = document.getElementById(RANGEBAR_ID);
+    const poemSelectInput = document.getElementById(POEM_SELECT_ID);
+    const rangeBarIntitialValue = rangeBar.value;
+    disableInputs(rangeBar, poemSelectInput);
+    // Do animation
+    changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, rangeBarIntitialValue));
 }
 // Splits the poem into a list of words
 function getAllWordsInPoem(poem) {
@@ -197,21 +200,56 @@ function getAllWordsInPoem(poem) {
     });
     return allWordsInPoem;
 }
+// Disables inputs that re-render the poem, so it is not re-rendered mid-animation (opposite to resetInputs)
+function disableInputs(rangeBar, poemSelectInput) {
+    rangeBar.onpointerup = () => { };
+    poemSelectInput.disabled = true;
+}
+// Resets event handler once the animation is complete (opposite to disableInputs)
+function resetInputs(rangeBar, poemSelectInput) {
+    // Reset the inputs' event handlers
+    const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
+    addRangebarEvents(rangeBar, rangeBarResult);
+    poemSelectInput.disabled = false;
+}
 // Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption) {
     // pops off next word to change color for
     const wordToChange = wordsToChange.shift();
     // Base case - word undefined
-    if (wordToChange === undefined || wordToChange.match(NUMBER_ONLY_REGEX)) {
-        return setTimeout(callbackOption, 200);
+    if (wordToChange === undefined) {
+        return setTimeout(callbackOption, timeBetweenConversion);
     }
-    // Only change color if it was not on of the words completed by the user (can be overridden)
-    if (!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) {
+    // Only change color if it was not on of the words completed by the user and is a actual word not a number (can be overridden)
+    if ((!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) && !wordToChange.match(NUMBER_ONLY_REGEX)) {
         const wordElement = getElementOfWord(wordToChange);
         wordElement.style.color = color;
     }
     // Recursive call with setTimeout so words don't all change colour at once
     return setTimeout(() => changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption), timeBetweenConversion);
+}
+// Cleanup function for after animation
+function changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, rangeBarIntitialValue) {
+    // Tells the user they completed the poem
+    const poemElement = getPoemElement();
+    poemElement.innerHTML = poemElement.innerHTML + `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`;
+    // Add try again selection
+    const try_again = document.getElementById(TRY_AGAIN_LINK_ID);
+    try_again.onclick = onTryAgainClick;
+    // Resets the disabled inputs
+    resetInputs(rangeBar, poemSelectInput);
+    setTimeout(() => updateRangeBar(rangeBar, rangeBarIntitialValue), 500);
+}
+// Event handler for try again link
+function onTryAgainClick() {
+    initialise(currentPoem, number_of_words_to_replace);
+    initialiseRangebar();
+}
+// Updates range bar in case it has been changed
+function updateRangeBar(rangeBar, initialValue) {
+    if (initialValue !== rangeBar.value) {
+        onRangebarInput(rangeBar);
+    }
 }
 // ============================================================================
 // ============================== Initialisation ==============================
