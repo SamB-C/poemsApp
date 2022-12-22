@@ -4,6 +4,7 @@ const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
 const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__';
+const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED = 20;
 const COVER_OVER_COMPLETED_WORDS = false;
@@ -39,7 +40,6 @@ function initialiseRangebar() {
     rangeBar.value = `${number_of_words_to_replace}`;
     rangeBar.min = "1";
     rangeBar.max = `${numberOfWordsInPoem}`;
-    console.log(number_of_words_to_replace, 1, numberOfWordsInPoem);
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
     rangeBarResult.innerHTML = rangeBar.value;
@@ -70,11 +70,12 @@ function onInputEventHandler(word, event, poem) {
     const targetInput = event.target;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
+        const parent = targetInput.parentElement;
         // Destroy handler and replace after 1s
-        targetInput.oninput = () => { };
+        parent.oninput = () => { };
         setTimeout(() => {
             revertWordToEmpty(word);
-            targetInput.oninput = (event) => onInputEventHandler(word, event, poem);
+            parent.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.style.color = 'black';
         }, 1000);
     }
@@ -85,6 +86,7 @@ function onInputEventHandler(word, event, poem) {
 // --------------------------- Compare letter ---------------------------
 // Compares the input to the correct answer
 function compareInputToLetterId(input, id) {
+    // Splits the id into a list [word, letterInBinary]
     const wordAndLetterList = id.split('_');
     const letterInBinary = wordAndLetterList[wordAndLetterList.length - 1];
     const letter = String.fromCharCode(parseInt(letterInBinary, 2));
@@ -200,7 +202,7 @@ function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetwe
     // pops off next word to change color for
     const wordToChange = wordsToChange.shift();
     // Base case - word undefined
-    if (wordToChange === undefined) {
+    if (wordToChange === undefined || wordToChange.match(NUMBER_ONLY_REGEX)) {
         return setTimeout(callbackOption, 200);
     }
     // Only change color if it was not on of the words completed by the user (can be overridden)
@@ -244,11 +246,11 @@ function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
 function selectRandomWordFromPoem(poem) {
     // Select random line
     const lines = poem.split(/\n/);
-    const nonEmptyLines = lines.filter((line) => !line.match(/^[0-9]+$/));
+    const nonEmptyLines = lines.filter((line) => !line.match(NUMBER_ONLY_REGEX));
     const randomLine = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
     // Select random word
     const words = randomLine.split(/ /);
-    const nonEmptyWords = words.filter((word) => !word.match(/^[0-9]+$/));
+    const nonEmptyWords = words.filter((word) => !word.match(NUMBER_ONLY_REGEX));
     const randomWord = nonEmptyWords[Math.floor(Math.random() * nonEmptyWords.length)];
     return randomWord;
 }
@@ -299,7 +301,7 @@ function splitPoemToNewLines(poem) {
 function splitLineToWords(line) {
     const split_line = line.split(/ /);
     return split_line.map((word) => {
-        if (!word.match(/^[0-9]+$/)) {
+        if (!word.match(NUMBER_ONLY_REGEX)) {
             numberOfWordsInPoem++;
             const wordId = getIdForWord(word);
             return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";

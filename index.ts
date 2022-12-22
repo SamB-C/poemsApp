@@ -5,6 +5,7 @@ const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
 const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__'
+const NUMBER_ONLY_REGEX = /^[0-9]+$/
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
@@ -47,7 +48,6 @@ function initialiseRangebar() {
     rangeBar.value = `${number_of_words_to_replace}`;
     rangeBar.min = "1";
     rangeBar.max = `${numberOfWordsInPoem}`;
-    console.log(number_of_words_to_replace, 1, numberOfWordsInPoem)
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult: HTMLElement = document.getElementById(RANGEBAR_RESULT_ID)!;
     rangeBarResult.innerHTML = rangeBar.value;
@@ -85,12 +85,13 @@ function onInputEventHandler(word: string, event: Event, poem: string) {
     const targetInput = event.target as HTMLInputElement;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
-        
+        const parent = targetInput.parentElement as HTMLSpanElement;
+
         // Destroy handler and replace after 1s
-        targetInput.oninput = () => {};
+        parent.oninput = () => {};
         setTimeout(() => {
             revertWordToEmpty(word);
-            targetInput.oninput = (event) => onInputEventHandler(word, event, poem);
+            parent.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.style.color = 'black';
         }, 1000)
     } else {
@@ -102,6 +103,7 @@ function onInputEventHandler(word: string, event: Event, poem: string) {
 
 // Compares the input to the correct answer
 function compareInputToLetterId(input: string, id: string): boolean {
+    // Splits the id into a list [word, letterInBinary]
     const wordAndLetterList: Array<string> = id.split('_');
     const letterInBinary: string = wordAndLetterList[wordAndLetterList.length - 1];
     const letter: string = String.fromCharCode(parseInt(letterInBinary, 2));
@@ -131,7 +133,7 @@ function focusNextLetter(currentLetter: HTMLInputElement, poem: string) {
     // Check if this letter is full
     if (currentLetter.value.length > 0) {
         // Focuses on the next letter
-        const nextLetter= currentLetter.nextSibling as HTMLInputElement | null;
+        const nextLetter = currentLetter.nextSibling as HTMLInputElement | null;
         if (nextLetter === null || nextLetter.value !== '') {
             focusMissingLetter(currentLetter, poem);
         } else {
@@ -155,7 +157,7 @@ function focusMissingLetter(letterToCheckUsing: HTMLInputElement, poem: string):
 // Checks if all the letters in a word are full - returns the letter that isn't if there is one
 function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement | null {
     // Retrieves all the letters in the word
-    const parentSpan: HTMLElement = singleLetter.parentElement!;
+    const parentSpan = singleLetter.parentElement as HTMLSpanElement;
     const allLetterInputs: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(parentSpan);
     // Tries to find an empty letter
     for (let i: number = 0; i < allLetterInputs.length; i++) {
@@ -231,7 +233,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
     // pops off next word to change color for
     const wordToChange: string | undefined = wordsToChange.shift();
     // Base case - word undefined
-    if (wordToChange === undefined) {
+    if (wordToChange === undefined || wordToChange.match(NUMBER_ONLY_REGEX)) {
         return setTimeout(callbackOption, 200)
     }
     // Only change color if it was not on of the words completed by the user (can be overridden)
@@ -284,11 +286,11 @@ function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number
 function selectRandomWordFromPoem(poem: string):string {
     // Select random line
     const lines: Array<string> = poem.split(/\n/);
-    const nonEmptyLines: Array<string> = lines.filter((line:string) => !line.match(/^[0-9]+$/));
+    const nonEmptyLines: Array<string> = lines.filter((line:string) => !line.match(NUMBER_ONLY_REGEX));
     const randomLine: string = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
     // Select random word
     const words: Array<string> = randomLine.split(/ /);
-    const nonEmptyWords: Array<string> = words.filter((word:string) => !word.match(/^[0-9]+$/));
+    const nonEmptyWords: Array<string> = words.filter((word:string) => !word.match(NUMBER_ONLY_REGEX));
     const randomWord: string = nonEmptyWords[Math.floor(Math.random() * nonEmptyWords.length)];
     return randomWord;
 }
@@ -348,7 +350,7 @@ function splitPoemToNewLines(poem: string):string {
 function splitLineToWords(line: string):string {
     const split_line: Array<string> = line.split(/ /)
     return split_line.map((word: string):string | undefined => {
-        if (!word.match(/^[0-9]+$/)) {
+        if (!word.match(NUMBER_ONLY_REGEX)) {
             numberOfWordsInPoem++;
             const wordId = getIdForWord(word);
             return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
@@ -403,7 +405,7 @@ function initialise(poem: string, numberOfWordsToRemove: number) {
 
 // HELPER FUNCTIONS
 
-function getArrayOfChildrenThatAreInputs(element: HTMLElement): Array<HTMLInputElement> {
+function getArrayOfChildrenThatAreInputs(element: HTMLSpanElement): Array<HTMLInputElement> {
     const arrayOfChildren = Array.from(element.children) as Array<HTMLInputElement>;
     return arrayOfChildren;
 }
