@@ -4,6 +4,7 @@ let number_of_words_to_replace = 3;
 const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
 const RANGEBAR_RESULT_ID = '__range_bar_result__';
+const POEM_SELECT_ID = '__poem_selection__'
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
@@ -20,15 +21,15 @@ initialiseRangebar();
 // =========================== Intitalise poem select bar ===========================
 
 function initialisePoemOptions(poems: {[key: string]: string}): void {
-    const poemSelect: HTMLSelectElement = document.getElementById('__poem_selection__')!;
-    for (let pomeName: string in poems) {
+    const poemSelect = document.getElementById(POEM_SELECT_ID) as HTMLInputElement;
+    for (let pomeName in poems) {
         let newOption: string = `<option value="${pomeName}">${pomeName}</option>`
         if (poems[pomeName] === currentPoem) {
             newOption = `<option value="${pomeName}" selected="seleted">${pomeName}</option>`
         }
         poemSelect.innerHTML = poemSelect.innerHTML + newOption
     }
-    poemSelect.oninput = (event) => {
+    poemSelect.oninput = () => {
         const poemSelected = poemSelect.value;
         currentPoem = poems[poemSelected];
         initialise(currentPoem, number_of_words_to_replace);
@@ -41,7 +42,7 @@ function initialisePoemOptions(poems: {[key: string]: string}): void {
 
 // Initisalisation for the rangebar slider
 function initialiseRangebar() {
-    const rangeBar: HTMLInputElement = document.getElementById(RANGEBAR_ID)!;
+    const rangeBar = document.getElementById(RANGEBAR_ID) as HTMLInputElement;
     // Sets min/max values for rangebar
     rangeBar.value = `${number_of_words_to_replace}`;
     rangeBar.min = "1";
@@ -51,18 +52,18 @@ function initialiseRangebar() {
     const rangeBarResult: HTMLElement = document.getElementById(RANGEBAR_RESULT_ID)!;
     rangeBarResult.innerHTML = rangeBar.value;
     // Don't re-render poem every time bar is dragged
-    rangeBar.onpointerup = (event) => onRangebarInput(event, rangeBarResult)
+    rangeBar.onpointerup = () => onRangebarInput(rangeBar)
     // Only update the displayed value of the input
-    rangeBar.oninput = (event) => {
-        const newValue = event.target!.value;
+    rangeBar.oninput = () => {
+        const newValue = rangeBar.value;
         rangeBarResult.innerHTML = newValue;
     }
 }
 
 // Event handler for the rangebar input that changes the number of missing words
-function onRangebarInput(event: Event) {
+function onRangebarInput(rangeBar: HTMLInputElement) {
     // Get new value from range
-    const newValue = event.target!.value;    
+    const newValue: number = parseInt(rangeBar.value);
     // Restart the poem with a new number of words
     initialise(currentPoem, newValue);
     // Changes the global variable pertaining to the number of missing words
@@ -81,7 +82,7 @@ function onRangebarInput(event: Event) {
 // Event handler for each individual letter input
 function onInputEventHandler(word: string, event: Event, poem: string) {
     // Check if letter is incorrect
-    const targetInput: HTMLInputElement = event.target!;
+    const targetInput = event.target as HTMLInputElement;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         
@@ -93,7 +94,7 @@ function onInputEventHandler(word: string, event: Event, poem: string) {
             targetInput.style.color = 'black';
         }, 1000)
     } else {
-        focusNextLetter(event.target, poem);
+        focusNextLetter(targetInput, poem);
     }
 }
 
@@ -114,7 +115,7 @@ function compareInputToLetterId(input: string, id: string): boolean {
 function revertWordToEmpty(word: string):void {
     // Retrive all inputs
     const wordElement: HTMLSpanElement = getElementOfWord(word);
-    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildren(wordElement);
+    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(wordElement);
     // Resets word
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
         arrayOfChildren[i].value = '';
@@ -126,15 +127,15 @@ function revertWordToEmpty(word: string):void {
 // --------------------------- Letter Right ---------------------------
 
 // Focuses on the next/missing letter in the word, or if it is complete, move to next word
-function focusNextLetter(currentLetter, poem: string) {
+function focusNextLetter(currentLetter: HTMLInputElement, poem: string) {
     // Check if this letter is full
     if (currentLetter.value.length > 0) {
         // Focuses on the next letter
-        const nextLetter: HTMLInputElement | null = currentLetter.nextSibling;
+        const nextLetter= currentLetter.nextSibling as HTMLInputElement | null;
         if (nextLetter === null || nextLetter.value !== '') {
-            focusMissingLetter(currentLetter, poem)
+            focusMissingLetter(currentLetter, poem);
         } else {
-            nextLetter.focus()
+            nextLetter.focus();
         }
     }
 }
@@ -155,7 +156,7 @@ function focusMissingLetter(letterToCheckUsing: HTMLInputElement, poem: string):
 function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement | null {
     // Retrieves all the letters in the word
     const parentSpan: HTMLElement = singleLetter.parentElement!;
-    const allLetterInputs: Array<HTMLInputElement> = getArrayOfChildren(parentSpan);
+    const allLetterInputs: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(parentSpan);
     // Tries to find an empty letter
     for (let i: number = 0; i < allLetterInputs.length; i++) {
         if (allLetterInputs[i].value === '') {
@@ -171,7 +172,7 @@ function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement |
 function completeWord(poem: string):void {
     // Get the input values and combine into guessed word
     const focusedWordElement: HTMLSpanElement = getElementOfWord(focusedWord);
-    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildren(focusedWordElement)
+    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(focusedWordElement)
     let userInput: string = '';
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
         userInput = userInput + arrayOfChildren[i].value;
@@ -284,7 +285,7 @@ function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number
 function selectRandomWordFromPoem(poem: string):string {
     // Select random line
     const lines: Array<string> = poem.split(/\n/);
-    const nonEmptyLines: Array<string> = lines.filter((line:string) => line !== '');
+    const nonEmptyLines: Array<string> = lines.filter((line:string) => !line.match(/^[0-9]+$/));
     const randomLine: string = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
     // Select random word
     const words: Array<string> = randomLine.split(/ /);
@@ -401,8 +402,9 @@ function initialise(poem: string, numberOfWordsToRemove: number) {
 
 // HELPER FUNCTIONS
 
-function getArrayOfChildren(element: HTMLElement): Array<HTMLInputElement> {
-    return Array.from(element.children)
+function getArrayOfChildrenThatAreInputs(element: HTMLElement): Array<HTMLInputElement> {
+    const arrayOfChildren = Array.from(element.children) as Array<HTMLInputElement>;
+    return arrayOfChildren;
 }
 
 // Gets the poem element
