@@ -344,6 +344,10 @@ function splitLineToWords(line) {
             const wordId = getIdForWord(word);
             return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
         }
+        else {
+            // Code for a space
+            return '&nbsp';
+        }
     }).join(' ');
 }
 // --------------------------- Convert poem to remove duplicates ---------------------------
