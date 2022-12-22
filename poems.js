@@ -52,7 +52,7 @@ Smiles, tears, of all my life! - and, if God choose,
 I shall but love thee better after death.`;
 const Ozymandias = `I met a traveller from an antique land
 Who said: Two vast and trunkless legs of stone
-Stand in the desert. . .  Near them, on the sand,
+Stand in the desert. . . Near them, on the sand,
 Half sunk, a shattered visage lies, whose frown,
 And wrinkled lip, and sneer of cold command,
 Tell that its sculptor well those passions read
