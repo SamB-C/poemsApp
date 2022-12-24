@@ -10,7 +10,7 @@ const NUMBER_ONLY_REGEX = /^[0-9]+$/
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
-let currentPoem = poems['Ozymandias'];
+let currentPoem = poems['The Manhunt'];
 
 let wordsNotCompleted: Array<string> = [];
 let wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];

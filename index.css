@@ -5,7 +5,7 @@ p, input::-webkit-input-placeholder {
     font-family: 'Poppins', sans-serif;
 }
 
-input {
+input, select {
     border: none;
     background-color: transparent;
     resize: none;
@@ -13,6 +13,11 @@ input {
     font-size: x-large;
     padding: 0;
     margin: 0;
+}
+
+select {
+    font-size: xx-large;
+    font-weight: bold;
 }
 
 #__range_slider_container__, #__poem_selection_container__ {

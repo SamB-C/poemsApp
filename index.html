@@ -12,15 +12,15 @@
 </head>
 <body>
     <!-- Id's have to be surrounded by 1s in case the word is in the poem -->
-    <div id="__poem_selection_container__">
-        <label for="poem_selection" id="__poem_selection_label__"><p>Choose a poem:</p></label>
-        <select name="poem_selection" id="__poem_selection__">
-            <!-- Options inserted in index.js -->
-        </select>
-    </div>
     <div id="__range_slider_container__">
         <input type="range" id="__range_bar__" value="1" min="1" max="10">
         <p id="__range_bar_result__"></p>
+    </div>
+    <div id="__poem_selection_container__">
+        <!-- <label for="poem_selection" id="__poem_selection_label__"><p>Choose a poem:</p></label> -->
+        <select name="poem_selection" id="__poem_selection__">
+            <!-- Options inserted in index.js -->
+        </select>
     </div>
     <p id="__poem_id__"></p>
 </body>
