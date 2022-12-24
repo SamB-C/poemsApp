@@ -6,10 +6,13 @@ const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__';
 const TRY_AGAIN_LINK_ID = '__try_again__';
 const NUMBER_ONLY_REGEX = /^[0-9]+$/;
+const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
+const FAKE_SPACE = '|+|';
+const FAKE_SPACE_HTML_ELEMENT = `<p class="fakeSpace">${FAKE_SPACE}</p>`;
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED = 20;
 const COVER_OVER_COMPLETED_WORDS = false;
-let currentPoem = poems['Ozymandias'];
+let currentPoem = poems['The Manhunt'];
 let wordsNotCompleted = [];
 let wordsNotCompletedCopy = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
@@ -181,7 +184,7 @@ function moveToNextWord(poem) {
 // Uses an animation to turn all text green and add message below poem
 function completePoem(poem) {
     const completionColor = '#00FF00';
-    const allWordsInPoem = getAllWordsInPoem(poem);
+    const allWordsInPoem = getAllWordSectionsInPoem(poem);
     // Disable the inputs that re-render the poem
     const rangeBar = document.getElementById(RANGEBAR_ID);
     const poemSelectInput = document.getElementById(POEM_SELECT_ID);
@@ -191,14 +194,19 @@ function completePoem(poem) {
     changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, rangeBarIntitialValue));
 }
 // Splits the poem into a list of words
-function getAllWordsInPoem(poem) {
+function getAllWordSectionsInPoem(poem) {
     const allLinesInPoem = poem.split(/\n/);
     const allWordsInPoem = allLinesInPoem.map((line) => {
         return line.split(' ');
     }).reduce((accumulator, current) => {
         return accumulator.concat(current);
     });
-    return allWordsInPoem;
+    const allWordSectionsInPoem = allWordsInPoem.map((word) => {
+        return getWordSectionsFromWord(word);
+    }).reduce((accumulator, wordSections) => {
+        return accumulator.concat(wordSections);
+    });
+    return allWordSectionsInPoem;
 }
 // Disables inputs that re-render the poem, so it is not re-rendered mid-animation (opposite to resetInputs)
 function disableInputs(rangeBar, poemSelectInput) {
@@ -267,8 +275,10 @@ function replaceWords(poem, numberOfWords) {
         }
     }
     insertionSortIntoOrderInPoem(poem, wordsReplaced);
-    wordsReplaced.forEach((word) => replaceWord(word, poem));
-    return wordsReplaced;
+    const wordSectionsReplaced = wordsReplaced.map((word) => replaceWord(word, poem));
+    return wordSectionsReplaced.reduce((accumulator, wordSections) => {
+        return accumulator.concat(wordSections);
+    });
 }
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
@@ -311,19 +321,23 @@ function insertionSortIntoOrderInPoem(poem, words) {
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 function replaceWord(word, poem) {
     // Turn each word into letter inputs
-    const wordToHide = getElementOfWord(word);
-    const wordInUnderScores = word.split('').map((letter) => {
-        if (!isIlleagalLetter(letter)) {
-            const htmlForLetter = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(word, letter)}"></input>`;
-            return htmlForLetter;
-        }
-    }).join('');
-    wordToHide.innerHTML = wordInUnderScores;
-    // Adds the event handlers for the input
-    wordToHide.oninput = (event) => onInputEventHandler(word, event, poem);
-    wordToHide.onclick = () => {
-        focusedWord = word;
-    };
+    const wordSectionsToHide = getWordSectionsFromWord(word);
+    wordSectionsToHide.forEach((wordSection) => {
+        const wordToHide = getElementOfWord(wordSection);
+        const wordInUnderScores = wordSection.split('').map((letter) => {
+            if (!isIlleagalLetter(letter)) {
+                const htmlForLetter = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(wordSection, letter)}"></input>`;
+                return htmlForLetter;
+            }
+        }).join('');
+        wordToHide.innerHTML = wordInUnderScores;
+        // Adds the event handlers for the input
+        wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem);
+        wordToHide.onclick = () => {
+            focusedWord = wordSection;
+        };
+    });
+    return wordSectionsToHide;
 }
 // --------------------------- Split poem and converty to HTML ---------------------------
 // Splits a poem into lines, adds breaks to the end of each line (whilst also calling splitLineToWords to each line)
@@ -339,32 +353,61 @@ function splitPoemToNewLines(poem) {
 function splitLineToWords(line) {
     const split_line = line.split(/ /);
     return split_line.map((word) => {
-        if (!word.match(NUMBER_ONLY_REGEX)) {
-            numberOfWordsInPoem++;
-            const wordId = getIdForWord(word);
-            return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+        const sectionsToMakeSpanFor = getWordSectionsFromWord(word);
+        if (sectionsToMakeSpanFor.length === 1) {
+            return makeSpanForWord(word);
         }
         else {
-            // Code for a space
-            return '&nbsp';
+            return sectionsToMakeSpanFor.map((word) => {
+                return makeSpanForWord(word);
+            }).join(FAKE_SPACE_HTML_ELEMENT);
         }
     }).join(' ');
+}
+function makeSpanForWord(word) {
+    if (!word.match(NUMBER_ONLY_REGEX)) {
+        numberOfWordsInPoem++;
+        const wordId = getIdForWord(word);
+        return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+    }
+    else {
+        // Code for a space
+        return '&nbsp';
+    }
 }
 // --------------------------- Convert poem to remove duplicates ---------------------------
 function addInstanceNumbersToWords(poem) {
     const wordsAlreadyInPoem = {};
     const convertedPoem = poem.split(/\n/).map((line) => {
         return line.split(' ').map((word) => {
-            if (word in wordsAlreadyInPoem) {
-                wordsAlreadyInPoem[word] = wordsAlreadyInPoem[word] + 1;
+            if (word.match(SPECIAL_CHARACTER_REGEX)) {
+                const newWord = word.split('').map((letter) => {
+                    if (letter.match(SPECIAL_CHARACTER_REGEX)) {
+                        return FAKE_SPACE + letter;
+                    }
+                    else {
+                        return letter;
+                    }
+                }).join('');
+                return newWord.split(FAKE_SPACE).map((sectionOfWord) => {
+                    return giveWordInstanceNumber(sectionOfWord, wordsAlreadyInPoem);
+                }).join(FAKE_SPACE);
             }
             else {
-                wordsAlreadyInPoem[word] = 1;
+                return giveWordInstanceNumber(word, wordsAlreadyInPoem);
             }
-            return wordsAlreadyInPoem[word] + word + wordsAlreadyInPoem[word];
         }).join(' ');
     }).join('\n');
     return convertedPoem;
+}
+function giveWordInstanceNumber(word, instances) {
+    if (word in instances) {
+        instances[word] = instances[word] + 1;
+    }
+    else {
+        instances[word] = 1;
+    }
+    return instances[word] + word + instances[word];
 }
 // Utilities for feature
 function removeNumberFromWord(word) {
@@ -381,6 +424,7 @@ function initialise(poem, numberOfWordsToRemove) {
     numberOfWordsInPoem = 0;
     poemElement.innerHTML = splitPoemToNewLines(poem);
     const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
+    console.log(wordsThatHaveBeenReplaced);
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     wordsNotCompleted = wordsThatHaveBeenReplaced;
@@ -424,4 +468,9 @@ function getIdForWord(word) {
     else {
         return word;
     }
+}
+function getWordSectionsFromWord(word) {
+    return word.split(FAKE_SPACE).filter((wordSection) => {
+        return wordSection !== '';
+    });
 }

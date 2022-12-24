@@ -20,6 +20,10 @@ select {
     font-weight: bold;
 }
 
+.fakeSpace {
+    display: none;
+}
+
 #__range_slider_container__, #__poem_selection_container__ {
     display: flex;
     flex-direction: row;

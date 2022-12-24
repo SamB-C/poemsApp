@@ -7,6 +7,9 @@ const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__'
 const TRY_AGAIN_LINK_ID = '__try_again__'
 const NUMBER_ONLY_REGEX = /^[0-9]+$/
+const SPECIAL_CHARACTER_REGEX = /[.,:;]/
+const FAKE_SPACE: string = '|+|';
+const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
@@ -212,7 +215,7 @@ function moveToNextWord(poem: string): void {
 // Uses an animation to turn all text green and add message below poem
 function completePoem(poem: string): void {
     const completionColor: string = '#00FF00';
-    const allWordsInPoem: Array<string> = getAllWordsInPoem(poem);
+    const allWordsInPoem: Array<string> = getAllWordSectionsInPoem(poem);
     // Disable the inputs that re-render the poem
     const rangeBar = document.getElementById(RANGEBAR_ID) as HTMLInputElement;
     const poemSelectInput = document.getElementById(POEM_SELECT_ID) as HTMLSelectElement;
@@ -223,14 +226,19 @@ function completePoem(poem: string): void {
 }
 
 // Splits the poem into a list of words
-function getAllWordsInPoem(poem: string): Array<string> {
+function getAllWordSectionsInPoem(poem: string): Array<string> {
     const allLinesInPoem: Array<string> = poem.split(/\n/);
     const allWordsInPoem: Array<string> = allLinesInPoem.map((line: string): Array<string> => {
         return line.split(' ');
     }).reduce((accumulator: Array<string>, current: Array<string>) => {
         return accumulator.concat(current);
     })
-    return allWordsInPoem;
+    const allWordSectionsInPoem: Array<string> = allWordsInPoem.map((word: string) => {
+        return getWordSectionsFromWord(word);
+    }).reduce((accumulator: Array<string>, wordSections: Array<string>) => {
+        return accumulator.concat(wordSections);
+    })
+    return allWordSectionsInPoem;
 }
 
 // Disables inputs that re-render the poem, so it is not re-rendered mid-animation (opposite to resetInputs)
@@ -312,8 +320,10 @@ function replaceWords(poem: string, numberOfWords: number): Array<string> {
         }
     }
     insertionSortIntoOrderInPoem(poem, wordsReplaced)
-    wordsReplaced.forEach((word: string): void => replaceWord(word, poem));
-    return wordsReplaced;
+    const wordSectionsReplaced: Array<Array<string>> = wordsReplaced.map((word: string): Array<string> => replaceWord(word, poem));
+    return wordSectionsReplaced.reduce((accumulator: Array<string>, wordSections) => {
+        return accumulator.concat(wordSections);
+    });
 }
 
 
@@ -360,22 +370,28 @@ function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array
 
 
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-function replaceWord(word: string, poem: string):void {
+function replaceWord(word: string, poem: string): Array<string> {
     // Turn each word into letter inputs
-    const wordToHide: HTMLSpanElement = getElementOfWord(word);
-    const wordInUnderScores: string = word.split('').map((letter) => {
-        if (!isIlleagalLetter(letter)) {
-            const htmlForLetter: string = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(word, letter)}"></input>`
-            return htmlForLetter;
+    const wordSectionsToHide = getWordSectionsFromWord(word);
+    wordSectionsToHide.forEach((wordSection) => {
+        const wordToHide: HTMLSpanElement = getElementOfWord(wordSection);
+        const wordInUnderScores: string = wordSection.split('').map((letter) => {
+            if (!isIlleagalLetter(letter)) {
+                const htmlForLetter: string = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(wordSection, letter)}"></input>`
+                return htmlForLetter;
+            }
+        }).join('');
+        wordToHide.innerHTML = wordInUnderScores;
+        // Adds the event handlers for the input
+        wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem)
+        wordToHide.onclick = () => {
+            focusedWord = wordSection
         }
-    }).join('');
-    wordToHide.innerHTML = wordInUnderScores;
-    // Adds the event handlers for the input
-    wordToHide.oninput = (event) => onInputEventHandler(word, event, poem)
-    wordToHide.onclick = () => {
-        focusedWord = word
-    }
+    });
+    return wordSectionsToHide;
 }
+
+
 
 
 // --------------------------- Split poem and converty to HTML ---------------------------
@@ -395,17 +411,28 @@ function splitPoemToNewLines(poem: string):string {
 function splitLineToWords(line: string):string {
     const split_line: Array<string> = line.split(/ /)
     return split_line.map((word: string):string | undefined => {
-        if (!word.match(NUMBER_ONLY_REGEX)) {
-            numberOfWordsInPoem++;
-            const wordId = getIdForWord(word);
-            return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+        const sectionsToMakeSpanFor = getWordSectionsFromWord(word);
+        if (sectionsToMakeSpanFor.length === 1) {
+            return makeSpanForWord(word);
         } else {
-            // Code for a space
-            return '&nbsp'
+            return sectionsToMakeSpanFor.map((word: string) => {
+                return makeSpanForWord(word)
+            }).join(FAKE_SPACE_HTML_ELEMENT);
         }
     }).join(' ');
 }
 
+
+function makeSpanForWord(word: string): string {
+    if (!word.match(NUMBER_ONLY_REGEX)) {
+        numberOfWordsInPoem++;
+        const wordId = getIdForWord(word);
+        return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+    } else {
+        // Code for a space
+        return '&nbsp'
+    }
+}
 
 
 // --------------------------- Convert poem to remove duplicates ---------------------------
@@ -413,16 +440,34 @@ function addInstanceNumbersToWords(poem: string): string {
     const wordsAlreadyInPoem: {[word: string]: number} = {};
     const convertedPoem: string = poem.split(/\n/).map((line: string): string => {
         return line.split(' ').map((word): string => {
-            if (word in wordsAlreadyInPoem) {
-                wordsAlreadyInPoem[word] = wordsAlreadyInPoem[word] + 1;
+            if (word.match(SPECIAL_CHARACTER_REGEX)) {
+                const newWord: string = word.split('').map((letter: string) => {
+                    if (letter.match(SPECIAL_CHARACTER_REGEX)) {
+                        return FAKE_SPACE + letter
+                    } else {
+                        return letter
+                    }
+                }).join('');
+                return newWord.split(FAKE_SPACE).map((sectionOfWord: string): string => {
+                    return giveWordInstanceNumber(sectionOfWord, wordsAlreadyInPoem);
+                }).join(FAKE_SPACE)
             } else {
-                wordsAlreadyInPoem[word] = 1
+                return giveWordInstanceNumber(word, wordsAlreadyInPoem);
             }
-            return wordsAlreadyInPoem[word] + word + wordsAlreadyInPoem[word];
         }).join(' ');
     }).join('\n');
     return convertedPoem
 }
+
+function giveWordInstanceNumber(word: string, instances: {[word: string]: number}) {
+    if (word in instances) {
+        instances[word] = instances[word] + 1;
+    } else {
+        instances[word] = 1
+    }
+    return instances[word] + word + instances[word];
+}
+
 
 // Utilities for feature
 
@@ -443,6 +488,7 @@ function initialise(poem: string, numberOfWordsToRemove: number) {
     numberOfWordsInPoem = 0
     poemElement.innerHTML = splitPoemToNewLines(poem);
     const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
+    console.log(wordsThatHaveBeenReplaced);
     const firstWord: string = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     wordsNotCompleted = wordsThatHaveBeenReplaced;
@@ -498,6 +544,12 @@ function getIdForWord(word: string): string {
     } else {
         return word
     }
+}
+
+function getWordSectionsFromWord(word: string): Array<string> {
+    return word.split(FAKE_SPACE).filter((wordSection: string) => {
+        return wordSection !== '';
+    })
 }
 
 
