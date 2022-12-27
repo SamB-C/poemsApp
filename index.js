@@ -1,4 +1,4 @@
-import { poems } from "./poems.js";
+"use strict";
 let number_of_words_to_replace = 3;
 const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
@@ -12,13 +12,20 @@ const FAKE_SPACE_HTML_ELEMENT = `<p class="fakeSpace">${FAKE_SPACE}</p>`;
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED = 20;
 const COVER_OVER_COMPLETED_WORDS = false;
-let currentPoem = poems['The Manhunt'];
 let wordsNotCompleted = [];
 let wordsNotCompletedCopy = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
-initialisePoemOptions(poems);
-initialise(currentPoem, number_of_words_to_replace);
-initialiseRangebar();
+let currentPoem;
+let poems = {};
+fetch("convertedPoems.json")
+    .then(response => response.json())
+    .then(data => {
+    poems = data;
+    currentPoem = poems['The Manhunt'];
+    initialisePoemOptions(poems);
+    initialise(currentPoem, number_of_words_to_replace);
+    initialiseRangebar();
+});
 // =========================== Intitalise poem select bar ===========================
 function initialisePoemOptions(poems) {
     const poemSelect = document.getElementById(POEM_SELECT_ID);
@@ -419,7 +426,6 @@ function isIlleagalLetter(letter) {
 // =========================== Intitalise poem ===========================
 // Initialises the poem, by rendering it in
 function initialise(poem, numberOfWordsToRemove) {
-    poem = addInstanceNumbersToWords(poem);
     const poemElement = getPoemElement();
     numberOfWordsInPoem = 0;
     poemElement.innerHTML = splitPoemToNewLines(poem);
@@ -474,8 +480,3 @@ function getWordSectionsFromWord(word) {
         return wordSection !== '';
     });
 }
-fetch("convertedPoems.json")
-    .then(response => response.json())
-    .then(data => {
-    console.log(data);
-});

@@ -1,5 +1,3 @@
-import { poems } from "./poems.js";
-
 let number_of_words_to_replace = 3;
 const POEM_ID = '__poem_id__';
 const RANGEBAR_ID = '__range_bar__';
@@ -13,14 +11,25 @@ const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
-let currentPoem = poems['The Manhunt'];
 
 let wordsNotCompleted: Array<string> = [];
 let wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
-initialisePoemOptions(poems);
-initialise(currentPoem, number_of_words_to_replace);
-initialiseRangebar();
+let currentPoem: string;
+
+let poems: {[key: string]: string} = {}
+fetch("convertedPoems.json")
+    .then(response => response.json())
+    .then(data => {
+        poems = data;
+        currentPoem = poems['The Manhunt'];
+        initialisePoemOptions(poems);
+        initialise(currentPoem, number_of_words_to_replace);
+        initialiseRangebar();
+    });
+
+
+
 
 
 // =========================== Intitalise poem select bar ===========================
@@ -483,7 +492,6 @@ function isIlleagalLetter(letter: string): boolean {
 
 // Initialises the poem, by rendering it in
 function initialise(poem: string, numberOfWordsToRemove: number) {
-    poem = addInstanceNumbersToWords(poem)
     const poemElement: HTMLElement = getPoemElement();
     numberOfWordsInPoem = 0
     poemElement.innerHTML = splitPoemToNewLines(poem);
@@ -553,8 +561,3 @@ function getWordSectionsFromWord(word: string): Array<string> {
 }
 
 
-fetch("convertedPoems.json")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    });
