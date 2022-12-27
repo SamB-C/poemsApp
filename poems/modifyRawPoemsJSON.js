@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { CompletionInfoFlags } = require('typescript');
 
 fs.readdir('.', function(err, files) {
     if (err) {
@@ -7,7 +6,9 @@ fs.readdir('.', function(err, files) {
     } else {
         const poemFiles = getAllTextFiles(files);
         const resultJSON = getJSONofPoems(poemFiles);
-        updateRawPoemsJSON(resultJSON);
+        const order = getPoemOrder();
+        const poemsInOrderJSON = orderPoems(order, resultJSON)
+        updateRawPoemsJSON(poemsInOrderJSON);
     }
 })
 
@@ -32,6 +33,19 @@ function addPoemToJSON(file, jsonFile) {
     const poemName = file.replace('.txt', '');
     const content = fs.readFileSync(file, {encoding: 'utf8'});
     jsonFile[poemName] = content
+}
+
+function getPoemOrder() {
+    const orderJSON = fs.readFileSync('poemOrder.json', {encoding: 'utf8'});
+    return JSON.parse(orderJSON)['order'];
+}
+
+function orderPoems(order, poems) {
+    const poemsInOrder = {};
+    order.forEach(poem => {
+        poemsInOrder[poem] = poems[poem];
+    })
+    return poemsInOrder;
 }
 
 function updateRawPoemsJSON(jsonObj) {
