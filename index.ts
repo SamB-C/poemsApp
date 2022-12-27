@@ -553,3 +553,8 @@ function getWordSectionsFromWord(word: string): Array<string> {
 }
 
 
+fetch("convertedPoems.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });

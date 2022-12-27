@@ -474,3 +474,8 @@ function getWordSectionsFromWord(word) {
         return wordSection !== '';
     });
 }
+fetch("convertedPoems.json")
+    .then(response => response.json())
+    .then(data => {
+    console.log(data);
+});
