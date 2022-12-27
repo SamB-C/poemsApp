@@ -1,9 +1,19 @@
 const fs = require('fs');
 
+const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
+const FAKE_SPACE = '|+|';
+
 fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     if (err) throw err;
+    const result = {};
     const poems = JSON.parse(data);
-    
+    Object.entries(poems).map((keyValuePair) => {
+        const poemName = keyValuePair[0];
+        const poemContent = keyValuePair[1];
+        const newPoemContent = addInstanceNumbersToWords(poemContent);
+        result[poemName] = newPoemContent;
+    })
+    fs.writeFile('../convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('complete')}});
 });
 
 function addInstanceNumbersToWords(poem) {
