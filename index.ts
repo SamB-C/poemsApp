@@ -422,8 +422,18 @@ function replaceWord(word: string, poem: string): Array<string> {
         wordToHide.onclick = () => {
             focusedWord = wordSection
         }
+        const childrenToAddOnInputTo: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(wordToHide);
+        childrenToAddOnInputTo.forEach((input: HTMLInputElement) => {
+            input.oninput = ensureMaxLengthNotExceeded;
+        })
     });
     return wordSectionsToHide;
+}
+
+function ensureMaxLengthNotExceeded(event: Event) {
+    const targetInput = event.target as HTMLInputElement;
+    const firstLetter = targetInput.value.charAt(0);
+    targetInput.value = firstLetter;
 }
 
 

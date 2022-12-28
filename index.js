@@ -359,8 +359,17 @@ function replaceWord(word, poem) {
         wordToHide.onclick = () => {
             focusedWord = wordSection;
         };
+        const childrenToAddOnInputTo = getArrayOfChildrenThatAreInputs(wordToHide);
+        childrenToAddOnInputTo.forEach((input) => {
+            input.oninput = ensureMaxLengthNotExceeded;
+        });
     });
     return wordSectionsToHide;
+}
+function ensureMaxLengthNotExceeded(event) {
+    const targetInput = event.target;
+    const firstLetter = targetInput.value.charAt(0);
+    targetInput.value = firstLetter;
 }
 // --------------------------- Split poem and converty to HTML ---------------------------
 // Splits a poem into lines, adds breaks to the end of each line (whilst also calling splitLineToWords to each line)
