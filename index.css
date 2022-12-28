@@ -24,8 +24,14 @@ select {
     display: none;
 }
 
-#__range_slider_container__, #__poem_selection_container__ {
+#__range_slider_container__, #__poem_selection_container__, #__main_content__ {
     display: flex;
     flex-direction: row;
 }
 
+#__update_info_container__ {
+    border: 1px solid black;
+    padding: 0 8px 0 8px;
+    border-radius: 10px;
+    margin-left: 30px;
+}
