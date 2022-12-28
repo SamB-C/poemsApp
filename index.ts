@@ -21,7 +21,8 @@ let currentPoem: string;
 type convertedPoemsJSON = {
     [nameOfPoem: string]: {
         convertedPoem: string,
-        wordCount: number
+        wordCount: number,
+        centered: boolean
     }
 }
 
@@ -437,6 +438,17 @@ function ensureMaxLengthNotExceeded(event: Event) {
 }
 
 
+// Align the text of poems either to side or center
+function centerPoem(poemElement: HTMLElement) {
+    const currentPoemName = getCurrentPoemName(poems);
+    if (poems[currentPoemName]['centered']) {
+        console.log('center')
+        poemElement.style.textAlign = 'center';
+    } else {
+        poemElement.style.textAlign = 'left';
+    }
+    
+}
 
 
 // --------------------------- Split poem and converty to HTML ---------------------------
@@ -528,17 +540,16 @@ function isIlleagalLetter(letter: string): boolean {
 // Initialises the poem, by rendering it in
 function initialise(poem: string, numberOfWordsToRemove: number) {
     const poemElement: HTMLElement = getPoemElement();
-    numberOfWordsInPoem = 0
     poemElement.innerHTML = splitPoemToNewLines(poem);
+    centerPoem(poemElement);
     const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
-    console.log(wordsThatHaveBeenReplaced);
+    // console.log(wordsThatHaveBeenReplaced);
     const firstWord: string = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     wordsNotCompleted = wordsThatHaveBeenReplaced;
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
 }
-
 
 // HELPER FUNCTIONS
 

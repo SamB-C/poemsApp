@@ -9,10 +9,10 @@ const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
 const FAKE_SPACE = '|+|';
 const FAKE_SPACE_HTML_ELEMENT = `<p class="fakeSpace">${FAKE_SPACE}</p>`;
-let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED = 20;
 const COVER_OVER_COMPLETED_WORDS = false;
 const INPUT_OPTIONS = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
+let numberOfWordsInPoem = 0;
 let wordsNotCompleted = [];
 let wordsNotCompletedCopy = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
@@ -371,6 +371,17 @@ function ensureMaxLengthNotExceeded(event) {
     const firstLetter = targetInput.value.charAt(0);
     targetInput.value = firstLetter;
 }
+// Align the text of poems either to side or center
+function centerPoem(poemElement) {
+    const currentPoemName = getCurrentPoemName(poems);
+    if (poems[currentPoemName]['centered']) {
+        console.log('center');
+        poemElement.style.textAlign = 'center';
+    }
+    else {
+        poemElement.style.textAlign = 'left';
+    }
+}
 // --------------------------- Split poem and converty to HTML ---------------------------
 // Splits a poem into lines, adds breaks to the end of each line (whilst also calling splitLineToWords to each line)
 // Then joins all the lines back together and returns the poem
@@ -451,10 +462,10 @@ function isIlleagalLetter(letter) {
 // Initialises the poem, by rendering it in
 function initialise(poem, numberOfWordsToRemove) {
     const poemElement = getPoemElement();
-    numberOfWordsInPoem = 0;
     poemElement.innerHTML = splitPoemToNewLines(poem);
+    centerPoem(poemElement);
     const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
-    console.log(wordsThatHaveBeenReplaced);
+    // console.log(wordsThatHaveBeenReplaced);
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     wordsNotCompleted = wordsThatHaveBeenReplaced;
