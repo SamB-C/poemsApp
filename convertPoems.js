@@ -7,24 +7,42 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     if (err) throw err;
     const result = {};
     const poems = JSON.parse(data);
+    const poemSettings = getPoemSettings();
     Object.entries(poems).map((keyValuePair) => {
         const poemName = keyValuePair[0];
         const poemContent = keyValuePair[1];
-        const poemInfo = addInstanceNumbersToWords(poemContent);
+        const poemInfo = addInstanceNumbersToWords(poemName, poemContent);
         result[poemName] = poemInfo;
+        addSettings(poemSettings, poemName, result)
         console.log(poemName, poemInfo['wordCount']);
     })
     fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('\nAll poems complete!')}});
 });
 
+function getPoemSettings() {
+    const poemSettingsJSON = fs.readFileSync('./poems/poemSettings.json', {encoding: 'utf8'});
+    const poemSettings = JSON.parse(poemSettingsJSON)
+    return poemSettings
+}
+
+function addSettings(poemSettings, poemName, result) {
+    const centeredPoems = poemSettings["centered"];
+    if (centeredPoems.includes(poemName)) {
+        result[poemName]['centered'] = true;
+    } else {
+        result[poemName]['centered'] = false;
+    }
+}
+
 // Gets add the instance numbers to the words in the poem, and gets the poem's word count
-function addInstanceNumbersToWords(poem) {
+function addInstanceNumbersToWords(poemName, poemContent) {
     const wordsAlreadyInPoem = {"__words__": 0};
     return {
-        'convertedPoem': mapOverLines(poem, wordsAlreadyInPoem), 
-        'wordCount': wordsAlreadyInPoem['__words__']
+        'convertedPoem': mapOverLines(poemContent, wordsAlreadyInPoem), 
+        'wordCount': wordsAlreadyInPoem['__words__'],
     };
 }
+
 
 // Maps over all the lines in the poem
 function mapOverLines(poem, wordsAlreadyInPoem) {

@@ -36,7 +36,7 @@ function addPoemToJSON(file, jsonFile) {
 }
 
 function getPoemOrder() {
-    const orderJSON = fs.readFileSync('./poems/poemOrder.json', {encoding: 'utf8'});
+    const orderJSON = fs.readFileSync('./poems/poemSettings.json', {encoding: 'utf8'});
     return JSON.parse(orderJSON)['order'];
 }
 

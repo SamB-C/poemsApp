@@ -8,11 +8,11 @@ const NUMBER_ONLY_REGEX = /^[0-9]+$/
 const SPECIAL_CHARACTER_REGEX = /[.,:;]/
 const FAKE_SPACE: string = '|+|';
 const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
-let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
 const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"'
 
+let numberOfWordsInPoem = 0;
 let wordsNotCompleted: Array<string> = [];
 let wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
