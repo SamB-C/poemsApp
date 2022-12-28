@@ -13,7 +13,7 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
         const newPoemContent = addInstanceNumbersToWords(poemContent);
         result[poemName] = newPoemContent;
     })
-    fs.writeFile('../convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('complete')}});
+    fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('complete')}});
 });
 
 function addInstanceNumbersToWords(poem) {

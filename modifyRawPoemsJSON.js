@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-fs.readdir('.', function(err, files) {
+fs.readdir('./poems/', function(err, files) {
     if (err) {
         console.error('Could not list files in directory.', err)
     } else {
@@ -31,12 +31,12 @@ function getJSONofPoems(poemFiles) {
 
 function addPoemToJSON(file, jsonFile) {
     const poemName = file.replace('.txt', '');
-    const content = fs.readFileSync(file, {encoding: 'utf8'});
+    const content = fs.readFileSync(`./poems/${file}`, {encoding: 'utf8'});
     jsonFile[poemName] = content
 }
 
 function getPoemOrder() {
-    const orderJSON = fs.readFileSync('poemOrder.json', {encoding: 'utf8'});
+    const orderJSON = fs.readFileSync('./poems/poemOrder.json', {encoding: 'utf8'});
     return JSON.parse(orderJSON)['order'];
 }
 
