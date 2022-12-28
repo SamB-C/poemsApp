@@ -11,6 +11,7 @@ const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
 let numberOfWordsInPoem = 0;
 const ANIMATION_SPEED: number = 20
 const COVER_OVER_COMPLETED_WORDS = false;
+const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off"'
 
 let wordsNotCompleted: Array<string> = [];
 let wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];
@@ -411,7 +412,7 @@ function replaceWord(word: string, poem: string): Array<string> {
         const wordToHide: HTMLSpanElement = getElementOfWord(wordSection);
         const wordInUnderScores: string = wordSection.split('').map((letter) => {
             if (!isIlleagalLetter(letter)) {
-                const htmlForLetter: string = `<input placeholder="_" size="1" maxlength="1" id="${getIdForLetter(wordSection, letter)}"></input>`
+                const htmlForLetter: string = `<input ${INPUT_OPTIONS} id="${getIdForLetter(wordSection, letter)}"></input>`
                 return htmlForLetter;
             }
         }).join('');
