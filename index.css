@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 p, input::-webkit-input-placeholder {
-    font-size: x-large;
+    font-size: 3.1vh;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -10,9 +10,14 @@ input, select {
     background-color: transparent;
     resize: none;
     outline: none;
-    font-size: x-large;
+    font-size: 3.1vh;
     padding: 0;
     margin: 0;
+}
+
+.letter_input {
+    width: 2.5vh;
+    font-size: 3.1vh;
 }
 
 select {
