@@ -37,8 +37,8 @@ function mapOverLines(poem, wordsAlreadyInPoem) {
 function lineMapFunction(line, wordsAlreadyInPoem) {
     return line.split(' ')
                 .map((word) => {
-                    wordMapFunction(word, wordsAlreadyInPoem)
                     increaseWordCount(word, wordsAlreadyInPoem)
+                    return wordMapFunction(word, wordsAlreadyInPoem)
                 })
                 .join(' ');
 }
