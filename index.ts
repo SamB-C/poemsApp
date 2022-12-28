@@ -17,15 +17,23 @@ let wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
 let currentPoem: string;
 
-let poems: {[key: string]: string} = {}
+type convertedPoemsJSON = {
+    [nameOfPoem: string]: {
+        convertedPoem: string,
+        wordCount: number
+    }
+}
+
+let poems: convertedPoemsJSON = {}
 fetch("convertedPoems.json")
     .then(response => response.json())
     .then(data => {
         poems = data;
-        currentPoem = poems['The Manhunt'];
+        currentPoem = poems['The Manhunt']['convertedPoem'];
         initialisePoemOptions(poems);
         initialise(currentPoem, number_of_words_to_replace);
-        initialiseRangebar();
+        initialiseRangebar(poems);
+
     });
 
 
@@ -34,11 +42,11 @@ fetch("convertedPoems.json")
 
 // =========================== Intitalise poem select bar ===========================
 
-function initialisePoemOptions(poems: {[key: string]: string}): void {
+function initialisePoemOptions(poems: convertedPoemsJSON): void {
     const poemSelect = document.getElementById(POEM_SELECT_ID) as HTMLSelectElement;
     for (let pomeName in poems) {
         let newOption: string = `<option value="${pomeName}">${pomeName}</option>`
-        if (poems[pomeName] === currentPoem) {
+        if (poems[pomeName].convertedPoem === currentPoem) {
             newOption = `<option value="${pomeName}" selected="seleted">${pomeName}</option>`
         }
         poemSelect.innerHTML = poemSelect.innerHTML + newOption
@@ -46,27 +54,43 @@ function initialisePoemOptions(poems: {[key: string]: string}): void {
     poemSelect.oninput = () => onPoemSelectInput(poems, poemSelect)
 }
 
-function onPoemSelectInput(poems: {[key: string]: string}, poemSelect: HTMLSelectElement): void {
+function onPoemSelectInput(poems: convertedPoemsJSON, poemSelect: HTMLSelectElement): void {
     const poemSelected: string = poemSelect.value;
-    currentPoem = poems[poemSelected];
+    currentPoem = poems[poemSelected].convertedPoem;
     initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar();
+    initialiseRangebar(poems);
 }
 
 
 // =========================== Intitalise range bar ===========================
 
 // Initisalisation for the rangebar slider
-function initialiseRangebar() {
+function initialiseRangebar(poems: convertedPoemsJSON) {
     const rangeBar = document.getElementById(RANGEBAR_ID) as HTMLInputElement;
     // Sets min/max values for rangebar
     rangeBar.value = `${number_of_words_to_replace}`;
     rangeBar.min = "1";
+    numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems)
     rangeBar.max = `${numberOfWordsInPoem}`;
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID) as HTMLParagraphElement;
     rangeBarResult.innerHTML = rangeBar.value;
     addRangebarEvents(rangeBar, rangeBarResult)
+}
+
+function getNumberOfWordsInCurrentPoem(poems: convertedPoemsJSON) {
+    const currentPoemName: string = getCurrentPoemName(poems);
+    return poems[currentPoemName].wordCount;
+}
+
+function getCurrentPoemName(poems: convertedPoemsJSON): string {
+    for (let poemName in poems) {
+        if (poems[poemName].convertedPoem === currentPoem) {
+            return poemName
+        }
+    }
+    console.error('Name of currentPoem can not be found in poems');
+    return '';
 }
 
 function addRangebarEvents(rangeBar: HTMLInputElement, rangeBarResult: HTMLParagraphElement) {
@@ -297,7 +321,7 @@ function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, poem
 // Event handler for try again link
 function onTryAgainClick() {
     initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar();
+    initialiseRangebar(poems);
 }
 
 // Updates range bar in case it has been changed
@@ -339,6 +363,7 @@ function replaceWords(poem: string, numberOfWords: number): Array<string> {
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
 function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number): number {
+    numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
     } else {
@@ -434,7 +459,6 @@ function splitLineToWords(line: string):string {
 
 function makeSpanForWord(word: string): string {
     if (!word.match(NUMBER_ONLY_REGEX)) {
-        numberOfWordsInPoem++;
         const wordId = getIdForWord(word);
         return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
     } else {

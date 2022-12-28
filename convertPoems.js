@@ -10,11 +10,11 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     Object.entries(poems).map((keyValuePair) => {
         const poemName = keyValuePair[0];
         const poemContent = keyValuePair[1];
-        const { convertedPoem, wordCount} = addInstanceNumbersToWords(poemContent);
-        result[poemName] = convertedPoem;
-        console.log(poemName, wordCount);
+        const poemInfo = addInstanceNumbersToWords(poemContent);
+        result[poemName] = poemInfo;
+        console.log(poemName, poemInfo['wordCount']);
     })
-    fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('complete')}});
+    fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('\nAll poems complete!')}});
 });
 
 // Gets add the instance numbers to the words in the poem, and gets the poem's word count
@@ -28,19 +28,21 @@ function addInstanceNumbersToWords(poem) {
 
 // Maps over all the lines in the poem
 function mapOverLines(poem, wordsAlreadyInPoem) {
-    return poem.split(/\n/)
+    const returnValue =  poem.split(/\n/)
                 .map((line) => lineMapFunction(line, wordsAlreadyInPoem))
                 .join('\n');
+    return returnValue
 }
 
 // Maps over all the words in the poem
 function lineMapFunction(line, wordsAlreadyInPoem) {
-    return line.split(' ')
+    const returnValue = line.split(' ')
                 .map((word) => {
                     increaseWordCount(word, wordsAlreadyInPoem)
                     return wordMapFunction(word, wordsAlreadyInPoem)
                 })
                 .join(' ');
+    return returnValue;
 }
 
 // Increases the word count (if not space)

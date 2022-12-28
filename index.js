@@ -21,17 +21,17 @@ fetch("convertedPoems.json")
     .then(response => response.json())
     .then(data => {
     poems = data;
-    currentPoem = poems['The Manhunt'];
+    currentPoem = poems['The Manhunt']['convertedPoem'];
     initialisePoemOptions(poems);
     initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar();
+    initialiseRangebar(poems);
 });
 // =========================== Intitalise poem select bar ===========================
 function initialisePoemOptions(poems) {
     const poemSelect = document.getElementById(POEM_SELECT_ID);
     for (let pomeName in poems) {
         let newOption = `<option value="${pomeName}">${pomeName}</option>`;
-        if (poems[pomeName] === currentPoem) {
+        if (poems[pomeName].convertedPoem === currentPoem) {
             newOption = `<option value="${pomeName}" selected="seleted">${pomeName}</option>`;
         }
         poemSelect.innerHTML = poemSelect.innerHTML + newOption;
@@ -40,22 +40,36 @@ function initialisePoemOptions(poems) {
 }
 function onPoemSelectInput(poems, poemSelect) {
     const poemSelected = poemSelect.value;
-    currentPoem = poems[poemSelected];
+    currentPoem = poems[poemSelected].convertedPoem;
     initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar();
+    initialiseRangebar(poems);
 }
 // =========================== Intitalise range bar ===========================
 // Initisalisation for the rangebar slider
-function initialiseRangebar() {
+function initialiseRangebar(poems) {
     const rangeBar = document.getElementById(RANGEBAR_ID);
     // Sets min/max values for rangebar
     rangeBar.value = `${number_of_words_to_replace}`;
     rangeBar.min = "1";
+    numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
     rangeBar.max = `${numberOfWordsInPoem}`;
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
     rangeBarResult.innerHTML = rangeBar.value;
     addRangebarEvents(rangeBar, rangeBarResult);
+}
+function getNumberOfWordsInCurrentPoem(poems) {
+    const currentPoemName = getCurrentPoemName(poems);
+    return poems[currentPoemName].wordCount;
+}
+function getCurrentPoemName(poems) {
+    for (let poemName in poems) {
+        if (poems[poemName].convertedPoem === currentPoem) {
+            return poemName;
+        }
+    }
+    console.error('Name of currentPoem can not be found in poems');
+    return '';
 }
 function addRangebarEvents(rangeBar, rangeBarResult) {
     // Don't re-render poem every time bar is dragged
@@ -258,7 +272,7 @@ function changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, range
 // Event handler for try again link
 function onTryAgainClick() {
     initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar();
+    initialiseRangebar(poems);
 }
 // Updates range bar in case it has been changed
 function updateRangeBar(rangeBar, initialValue) {
@@ -290,6 +304,7 @@ function replaceWords(poem, numberOfWords) {
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
 function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
+    numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
     }
@@ -373,7 +388,6 @@ function splitLineToWords(line) {
 }
 function makeSpanForWord(word) {
     if (!word.match(NUMBER_ONLY_REGEX)) {
-        numberOfWordsInPoem++;
         const wordId = getIdForWord(word);
         return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
     }
