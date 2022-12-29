@@ -10,11 +10,15 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     const poemSettings = getPoemSettings();
     Object.entries(poems).map((keyValuePair) => {
         const poemName = keyValuePair[0];
-        const poemContent = keyValuePair[1];
+        const poemContentWAuthor = keyValuePair[1];
+        const listOfLines = poemContentWAuthor.split('\n');
+        const poemAuthor = listOfLines.splice(listOfLines.length - 2, 2)[1];
+        const poemContent = listOfLines.join('\n');
         const poemInfo = addInstanceNumbersToWords(poemName, poemContent);
         result[poemName] = poemInfo;
+        result[poemName]["author"] = poemAuthor;
         addSettings(poemSettings, poemName, result)
-        console.log(poemName, poemInfo['wordCount']);
+        console.log(poemName, `by ${poemAuthor}` , poemInfo['wordCount']);
     })
     fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('\nAll poems complete!')}});
 });

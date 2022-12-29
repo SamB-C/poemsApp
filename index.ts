@@ -22,6 +22,7 @@ type convertedPoemsJSON = {
     [nameOfPoem: string]: {
         convertedPoem: string,
         wordCount: number,
+        author: string,
         centered: boolean
     }
 }
@@ -552,6 +553,13 @@ function initialise(poem: string, numberOfWordsToRemove: number) {
     wordsNotCompleted = wordsThatHaveBeenReplaced;
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
+    addPoemAuthor(poemElement);
+}
+
+function addPoemAuthor(poemElement: HTMLElement) {
+    const poemName: string = getCurrentPoemName(poems);
+    const poemAuthor: string = poems[poemName]['author'];
+    poemElement.innerHTML = poemElement.innerHTML + `<p id="__poem_author__">${poemAuthor.toUpperCase()}</p>`;
 }
 
 // HELPER FUNCTIONS

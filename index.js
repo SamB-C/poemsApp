@@ -474,6 +474,12 @@ function initialise(poem, numberOfWordsToRemove) {
     wordsNotCompleted = wordsThatHaveBeenReplaced;
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
+    addPoemAuthor(poemElement);
+}
+function addPoemAuthor(poemElement) {
+    const poemName = getCurrentPoemName(poems);
+    const poemAuthor = poems[poemName]['author'];
+    poemElement.innerHTML = poemElement.innerHTML + `<p id="__poem_author__">${poemAuthor.toUpperCase()}</p>`;
 }
 // HELPER FUNCTIONS
 function getArrayOfChildrenThatAreInputs(element) {
