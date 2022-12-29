@@ -5,6 +5,7 @@ const RANGEBAR_ID = '__range_bar__';
 const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__';
 const TRY_AGAIN_LINK_ID = '__try_again__';
+const POEM_AUTHOR_ID = "__poem_author__";
 const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
 const FAKE_SPACE = '|+|';
@@ -284,6 +285,13 @@ function updateRangeBar(rangeBar, initialValue) {
 // ============================================================================
 // ============================== Initialisation ==============================
 // ============================================================================
+// --------------------------- Render the poem author ---------------------------
+function addPoemAuthor() {
+    const poemName = getCurrentPoemName(poems);
+    const poemAuthor = poems[poemName]['author'];
+    const poemAuthorElement = document.getElementById(POEM_AUTHOR_ID);
+    poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
+}
 // --------------------------- Replace words in the poem ---------------------------
 // Removes a certain number of words from the poem, and returns the words that were removed
 // in order of appearance
@@ -375,13 +383,16 @@ function ensureMaxLengthNotExceeded(event) {
 function centerPoem(poemElement) {
     const currentPoemName = getCurrentPoemName(poems);
     const poemSelect = document.getElementById(POEM_SELECT_ID);
+    const poemAuthor = document.getElementById(POEM_AUTHOR_ID);
     if (poems[currentPoemName]['centered']) {
         poemElement.style.textAlign = 'center';
         poemSelect.style.textAlign = 'center';
+        poemAuthor.style.textAlign = 'center';
     }
     else {
         poemElement.style.textAlign = 'left';
         poemSelect.style.textAlign = 'left';
+        poemAuthor.style.textAlign = 'left';
     }
 }
 // --------------------------- Split poem and converty to HTML ---------------------------
@@ -474,12 +485,6 @@ function initialise(poem, numberOfWordsToRemove) {
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
     addPoemAuthor();
-}
-function addPoemAuthor() {
-    const poemName = getCurrentPoemName(poems);
-    const poemAuthor = poems[poemName]['author'];
-    const poemAuthorElement = document.getElementById("__poem_author__");
-    poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
 // HELPER FUNCTIONS
 function getArrayOfChildrenThatAreInputs(element) {

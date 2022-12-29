@@ -4,6 +4,7 @@ const RANGEBAR_ID = '__range_bar__';
 const RANGEBAR_RESULT_ID = '__range_bar_result__';
 const POEM_SELECT_ID = '__poem_selection__'
 const TRY_AGAIN_LINK_ID = '__try_again__'
+const POEM_AUTHOR_ID = "__poem_author__";
 const NUMBER_ONLY_REGEX = /^[0-9]+$/
 const SPECIAL_CHARACTER_REGEX = /[.,:;]/
 const FAKE_SPACE: string = '|+|';
@@ -342,6 +343,17 @@ function updateRangeBar(rangeBar: HTMLInputElement, initialValue: string) {
 // ============================== Initialisation ==============================
 // ============================================================================
 
+// --------------------------- Render the poem author ---------------------------
+
+function addPoemAuthor() {
+    const poemName: string = getCurrentPoemName(poems);
+    const poemAuthor: string = poems[poemName]['author'];
+    const poemAuthorElement = document.getElementById(POEM_AUTHOR_ID) as HTMLParagraphElement;
+    poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
+}
+
+
+
 // --------------------------- Replace words in the poem ---------------------------
 
 // Removes a certain number of words from the poem, and returns the words that were removed
@@ -443,12 +455,15 @@ function ensureMaxLengthNotExceeded(event: Event) {
 function centerPoem(poemElement: HTMLElement) {
     const currentPoemName = getCurrentPoemName(poems);
     const poemSelect = document.getElementById(POEM_SELECT_ID) as HTMLSelectElement;
+    const poemAuthor = document.getElementById(POEM_AUTHOR_ID) as HTMLParagraphElement;
     if (poems[currentPoemName]['centered']) {
         poemElement.style.textAlign = 'center';
         poemSelect.style.textAlign = 'center';
+        poemAuthor.style.textAlign = 'center';
     } else {
         poemElement.style.textAlign = 'left';
         poemSelect.style.textAlign = 'left';
+        poemAuthor.style.textAlign = 'left';
     }
     
 }
@@ -553,13 +568,6 @@ function initialise(poem: string, numberOfWordsToRemove: number) {
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
     addPoemAuthor();
-}
-
-function addPoemAuthor() {
-    const poemName: string = getCurrentPoemName(poems);
-    const poemAuthor: string = poems[poemName]['author'];
-    const poemAuthorElement = document.getElementById("__poem_author__") as HTMLParagraphElement;
-    poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
 
 // HELPER FUNCTIONS
