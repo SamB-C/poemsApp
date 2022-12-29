@@ -374,12 +374,15 @@ function ensureMaxLengthNotExceeded(event) {
 // Align the text of poems either to side or center
 function centerPoem(poemElement) {
     const currentPoemName = getCurrentPoemName(poems);
+    const poemSelect = document.getElementById(POEM_SELECT_ID);
     if (poems[currentPoemName]['centered']) {
         console.log('center');
         poemElement.style.textAlign = 'center';
+        poemSelect.style.textAlign = 'center';
     }
     else {
         poemElement.style.textAlign = 'left';
+        poemSelect.style.textAlign = 'left';
     }
 }
 // --------------------------- Split poem and converty to HTML ---------------------------

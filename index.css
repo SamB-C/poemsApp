@@ -23,13 +23,20 @@ input, select {
 select {
     font-size: xx-large;
     font-weight: bold;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+select:hover {
+    border: 1px solid black;
 }
 
 .fakeSpace {
     display: none;
 }
 
-#__range_slider_container__, #__poem_selection_container__, #__main_content__ {
+#__range_slider_container__, #__main_content__ {
     display: flex;
     flex-direction: row;
 }
