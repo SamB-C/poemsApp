@@ -376,7 +376,6 @@ function centerPoem(poemElement) {
     const currentPoemName = getCurrentPoemName(poems);
     const poemSelect = document.getElementById(POEM_SELECT_ID);
     if (poems[currentPoemName]['centered']) {
-        console.log('center');
         poemElement.style.textAlign = 'center';
         poemSelect.style.textAlign = 'center';
     }
@@ -474,12 +473,13 @@ function initialise(poem, numberOfWordsToRemove) {
     wordsNotCompleted = wordsThatHaveBeenReplaced;
     wordsNotCompletedCopy = [...wordsNotCompleted];
     focusedWord = wordsNotCompleted[0];
-    addPoemAuthor(poemElement);
+    addPoemAuthor();
 }
-function addPoemAuthor(poemElement) {
+function addPoemAuthor() {
     const poemName = getCurrentPoemName(poems);
     const poemAuthor = poems[poemName]['author'];
-    poemElement.innerHTML = poemElement.innerHTML + `<p id="__poem_author__">${poemAuthor.toUpperCase()}</p>`;
+    const poemAuthorElement = document.getElementById("__poem_author__");
+    poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
 // HELPER FUNCTIONS
 function getArrayOfChildrenThatAreInputs(element) {
