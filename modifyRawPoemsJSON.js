@@ -32,7 +32,11 @@ function getJSONofPoems(poemFiles) {
 function addPoemToJSON(file, jsonFile) {
     const poemName = file.replace('.txt', '');
     const content = fs.readFileSync(`./poems/${file}`, {encoding: 'utf8'});
-    jsonFile[poemName] = content
+    jsonFile[poemName] = content;
+    const poemNameInFile = content.split('\n')[0];
+    if (poemNameInFile !== poemName) {
+        throw new Error(`Poem file name doesn't equal poem name in file:\n${poemName} !== ${poemNameInFile}\n`)
+    }
 }
 
 function getPoemOrder() {

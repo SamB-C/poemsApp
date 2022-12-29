@@ -10,10 +10,8 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     const poemSettings = getPoemSettings();
     Object.entries(poems).map((keyValuePair) => {
         const poemName = keyValuePair[0];
-        const poemContentWAuthor = keyValuePair[1];
-        const listOfLines = poemContentWAuthor.split('\n');
-        const poemAuthor = listOfLines.splice(listOfLines.length - 2, 2)[1];
-        const poemContent = listOfLines.join('\n');
+        const poemFileContent = keyValuePair[1];
+        const { poemContent, poemAuthor } = getPoemNameContentAuthor(poemFileContent);
         const poemInfo = addInstanceNumbersToWords(poemName, poemContent);
         result[poemName] = poemInfo;
         result[poemName]["author"] = poemAuthor;
@@ -22,6 +20,18 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     })
     fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('\nAll poems complete!')}});
 });
+
+function getPoemNameContentAuthor(poemFileContent) {
+    const listOfLines = poemFileContent.split('\n');
+    const poemName = listOfLines.splice(0, 2)[0];
+    const poemAuthor = listOfLines.splice(listOfLines.length - 2, 2)[1];
+    const poemContent = listOfLines.join('\n');
+    return {
+        poemName,
+        poemContent,
+        poemAuthor
+    }
+}
 
 function getPoemSettings() {
     const poemSettingsJSON = fs.readFileSync('./poems/poemSettings.json', {encoding: 'utf8'});
