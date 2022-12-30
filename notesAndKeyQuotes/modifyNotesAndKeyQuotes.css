@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-p, input::-webkit-input-placeholder {
+p, input::-webkit-input-placeholder, h1 {
     font-size: 3.1vh;
     font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 3.5vh;
 }
 
 input, select {
@@ -41,7 +45,7 @@ select:hover {
     flex-direction: row;
 }
 
-#__update_info_container__ {
+#__notations_container__ {
     border: 1px solid black;
     padding: 0 8px 0 8px;
     border-radius: 10px;
