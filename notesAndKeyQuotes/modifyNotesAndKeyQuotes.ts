@@ -55,6 +55,8 @@ function renderPoem(poemContent: string, author: string, centered: boolean): voi
 function splitToWords(line: string): string {
     // Split at space of fake space
     const words: Array<string> = line.split(/ /);
+    // Accumulator for reduce needs to start as '' so first word gets split as well.
+    words.unshift('')
     const wordSectionsString: string = words.reduce((acc: string, word: string) => {
         const wordSections: Array<string> = word.split('|+|');
         return acc + ' ' + wordSections.join(' ')
