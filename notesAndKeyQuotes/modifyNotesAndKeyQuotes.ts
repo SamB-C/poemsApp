@@ -1,11 +1,9 @@
-type Quotes = {
-    [poemName: string]: Array<string>
-}
+// Types for data fetched from JSON
+
+type Quotes = Array<Array<string>>
 
 type Notes = {
-    [poemName: string]: {
-        [noteText: string]: Array<string>
-    }
+    [noteText: string]: Array<string>
 }
 
 type convertedPoem = {
@@ -21,11 +19,18 @@ type ConvertedPoems = {
     [poemName: string]: convertedPoem
 }
 
+
+// Constants for ids
 const POEM_DISPLAY_ID: string = '__poem_id__';
 const POEM_AUTHOR_DISPLAY_ID: string = '__poem_author__';
 const POEM_SELECT_DISPLAY_ID: string = '__poem_selection__';
+const POEM_NOTAIONS_DISPLAY_ID: string = '__notations__';
+const POEM_NOTES_DISPLAY_ID: string = '__notes__';
+const POEM_QUOTES_DISPLAY_ID: string = '__quotes__';
 
+const color = 'purple';
 
+// Initialisation
 fetch('../convertedPoems.json')
     .then(response => response.json())
     .then((data: ConvertedPoems) => main(data));
@@ -39,21 +44,26 @@ function main(data: ConvertedPoems): void {
     const currentPoemContent = data[currentPoemName].convertedPoem;
     const currentPoemAuthor = data[currentPoemName].author;
     const isCurrentPoemCentered = data[currentPoemName].centered;
-    renderPoem(currentPoemContent, currentPoemAuthor, isCurrentPoemCentered);
-
+    const currentPoemNotes = data[currentPoemName].notes;
+    const currentPoemQuotes = data[currentPoemName].quotes;
+    renderPoem(currentPoemContent, currentPoemAuthor, isCurrentPoemCentered, currentPoemNotes, currentPoemQuotes);
 }
 
-function renderPoem(poemContent: string, author: string, centered: boolean): void {
-    const poemLines: Array<string> = poemContent.split(/\n/)
+
+// Rendering
+function renderPoem(poemContent: string, author: string, centered: boolean, notes: Notes, quotes: Quotes): void {
+    const poemLines: Array<string> = poemContent.split(/\n/);
     const toRender = poemLines.map((line: string): string => {
         return splitToWords(line) + '</br>';
     }).join('');
     
-    const poemElement = getPoemElementFromDOM()
+    const poemElement = getPoemElementFromDOM();
     poemElement.innerHTML = toRender;
-    renderPoemAuthor(author)
+    renderPoemAuthor(author);
     
-    centerThePoem(centered)
+    centerThePoem(centered);
+
+    renderNotes(notes, quotes);
 }
 
 function renderPoemSelect(poemNames: Array<string>, currentPoemName: string, poemData: ConvertedPoems) {
@@ -69,13 +79,42 @@ function renderPoemSelect(poemNames: Array<string>, currentPoemName: string, poe
     poemSelectElement.oninput = (event) => changePoem(event, currentPoemName, poemData);
 }
 
+function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
+    const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID) as HTMLDivElement;
+    const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID) as HTMLDivElement;
+
+    Object.keys(notesForPoem).forEach((noteText) => {
+        const noteTextElementAsStr = `<p id="${noteText}">${noteText}</p>`
+        notesElement.innerHTML = notesElement.innerHTML + noteTextElementAsStr;
+        const noteTextElement = document.getElementById(noteText) as HTMLParagraphElement;
+        noteTextElement.onclick = () => highlightText(notesForPoem[noteText], color);
+    });
+
+    quotesForPoem.forEach((quote: Array<string>) => {
+        const reducedQuote: string = quote.reduce((acc: string, curr: string) => acc + curr);
+        const quoteElement = `<p id="${reducedQuote}">${quote}</p>`;
+        quotesElement.innerHTML = quotesElement.innerHTML + quoteElement;
+    }) 
+}
+
+function highlightText(textToHighlight: Array<string>, color: string) {
+    textToHighlight.forEach((word: string) => {
+        const wordSpan = document.getElementById(word) as HTMLSpanElement;
+        wordSpan.style.color = color;
+    })
+}
+
+
+
 function changePoem(event: Event, currentPoemName: string, poemData: ConvertedPoems): void {
     const target = event.target as HTMLSelectElement
     const newPoemName = target.value;
     const poemContent = poemData[newPoemName].convertedPoem;
     const poemAuthor = poemData[newPoemName].author;
     const isCentered = poemData[newPoemName].centered;
-    renderPoem(poemContent, poemAuthor, isCentered);
+    const poemNotes = poemData[newPoemName].notes;
+    const poemQuotes = poemData[newPoemName].quotes;
+    renderPoem(poemContent, poemAuthor, isCentered, poemNotes, poemQuotes);
     currentPoemName = newPoemName;
 }
 

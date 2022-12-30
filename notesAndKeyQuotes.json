@@ -1,10 +1,10 @@
 {
     "quotes": {
-        "The Manhunt": ["1After1 1the1 1first1 1phase1", "1fractured1 1rudder1 2of2 1a1 1shoulder-blade1"]
+        "The Manhunt": [["1After1", "1the1", "1first1", "1phase1"], ["1fractured1", "1rudder1", "2of2", "1a1", "1shoulder-blade1"]]
     },
     "notes": {
         "The Manhunt": {
-            "This is the note text": ["Where it is shown", "Another place it is shown"]
+            "This is the note text": ["1finally1", "1buried1"]
         }
     }
 }
