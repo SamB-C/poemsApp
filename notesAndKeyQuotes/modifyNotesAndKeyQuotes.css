@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+p, input::-webkit-input-placeholder {
+    font-size: 3.1vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+input, select {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: 3.1vh;
+    padding: 0;
+    margin: 0;
+}
+
+.letter_input {
+    width: 2.5vh;
+    font-size: 3.1vh;
+}
+
+select {
+    font-size: xx-large;
+    font-weight: bold;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+select:hover {
+    border: 1px solid black;
+}
+
+.fakeSpace {
+    display: none;
+}
+
+#__range_slider_container__, #__main_content__ {
+    display: flex;
+    flex-direction: row;
+}
+
+#__update_info_container__ {
+    border: 1px solid black;
+    padding: 0 8px 0 8px;
+    border-radius: 10px;
+    margin-left: 30px;
+}
