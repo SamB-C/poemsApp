@@ -23,6 +23,7 @@ type ConvertedPoems = {
 
 const POEM_DISPLAY_ID: string = '__poem_id__';
 const POEM_AUTHOR_DISPLAY_ID: string = '__poem_author__';
+const POEM_SELECT_DISPLAY_ID: string = '__poem_selection__';
 
 
 fetch('../convertedPoems.json')
@@ -31,11 +32,15 @@ fetch('../convertedPoems.json')
 
 
 function main(data: ConvertedPoems): void {
-    let currentPoem = Object.keys(data)[0];
-    const currentPoemContent = data[currentPoem].convertedPoem;
-    const currentPoemAuthor = data[currentPoem].author;
-    const isCurrentPoemCentered = data[currentPoem].centered;
-    renderPoem(currentPoemContent, currentPoemAuthor, isCurrentPoemCentered)
+    const allPoemNames: Array<string> = Object.keys(data);
+    let currentPoemName = allPoemNames[0];
+    renderPoemSelect(allPoemNames, currentPoemName, data);
+    
+    const currentPoemContent = data[currentPoemName].convertedPoem;
+    const currentPoemAuthor = data[currentPoemName].author;
+    const isCurrentPoemCentered = data[currentPoemName].centered;
+    renderPoem(currentPoemContent, currentPoemAuthor, isCurrentPoemCentered);
+
 }
 
 function renderPoem(poemContent: string, author: string, centered: boolean): void {
@@ -46,10 +51,32 @@ function renderPoem(poemContent: string, author: string, centered: boolean): voi
     
     const poemElement = getPoemElementFromDOM()
     poemElement.innerHTML = toRender;
-
     renderPoemAuthor(author)
-
+    
     centerThePoem(centered)
+}
+
+function renderPoemSelect(poemNames: Array<string>, currentPoemName: string, poemData: ConvertedPoems) {
+    const selectionOptions: Array<string> = poemNames.map((poemName: string): string => {
+        if (poemName === currentPoemName) {
+            return `<option value="${poemName}" selected="seleted">${poemName}</option>`
+        } else {
+            return  `<option value="${poemName}">${poemName}</option>`
+        }
+    });
+    const poemSelectElement = document.getElementById(POEM_SELECT_DISPLAY_ID) as HTMLSelectElement;
+    poemSelectElement.innerHTML = selectionOptions.reduce((acc: string, current: string) => acc + current);
+    poemSelectElement.oninput = (event) => changePoem(event, currentPoemName, poemData);
+}
+
+function changePoem(event: Event, currentPoemName: string, poemData: ConvertedPoems): void {
+    const target = event.target as HTMLSelectElement
+    const newPoemName = target.value;
+    const poemContent = poemData[newPoemName].convertedPoem;
+    const poemAuthor = poemData[newPoemName].author;
+    const isCentered = poemData[newPoemName].centered;
+    renderPoem(poemContent, poemAuthor, isCentered);
+    currentPoemName = newPoemName;
 }
 
 function splitToWords(line: string): string {
@@ -92,12 +119,15 @@ function renderPoemAuthor(author: string) {
 }
 
 function centerThePoem(centered: boolean) {
-    const poemAuthor = document.getElementById(POEM_AUTHOR_DISPLAY_ID) as HTMLParagraphElement;
+    const poemSelectElement = document.getElementById(POEM_SELECT_DISPLAY_ID) as HTMLSelectElement
     const poemElement = getPoemElementFromDOM();
+    const poemAuthor = document.getElementById(POEM_AUTHOR_DISPLAY_ID) as HTMLParagraphElement;
     if (centered) {
+        poemSelectElement.style.textAlign = 'center';
         poemElement.style.textAlign = 'center';
         poemAuthor.style.textAlign = 'center';
     } else {
+        poemSelectElement.style.textAlign = 'left';
         poemElement.style.textAlign = 'left';
         poemAuthor.style.textAlign = 'left';
     }
