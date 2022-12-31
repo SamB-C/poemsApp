@@ -52,22 +52,24 @@ function renderPoemSelect(poemNames, currentPoemName, poemData) {
 function renderNotes(notesForPoem, quotesForPoem) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID);
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID);
-    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color);
-    addQuotes(quotesElement, quotesForPoem, color);
+    const toggleSwitch = '<div class="switch_container"><label class="switch"><input id="__slider_checkbox__" type="checkbox"><span class="slider round"></span></label></div>';
+    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color, toggleSwitch);
+    addQuotes(quotesElement, quotesForPoem, color, toggleSwitch);
 }
-function addNotes(elmentToInsertInto, arrNotes, notesObject, color) {
+``;
+function addNotes(elmentToInsertInto, arrNotes, notesObject, color, toggleSwitchHTML) {
     arrNotes.forEach((noteText) => {
-        const noteTextElementAsStr = `<p id="${noteText}">${noteText}</p>`;
+        const noteTextElementAsStr = `<div class="inline_container">${toggleSwitchHTML}<p id="${noteText}">${noteText}</p></div>`;
         elmentToInsertInto.insertAdjacentHTML('beforeend', noteTextElementAsStr);
         const noteTextElement = document.getElementById(noteText);
         noteTextElement.onclick = (event) => highlightNote(event, notesObject[noteText], color);
         noteTextElement.style.cursor = "pointer";
     });
 }
-function addQuotes(elmentToInsertInto, arrQuotes, color) {
+function addQuotes(elmentToInsertInto, arrQuotes, color, toggleSwitchHTML) {
     arrQuotes.forEach((quote) => {
         const reducedQuote = quote.reduce((acc, curr) => acc + curr);
-        const quoteElementAsStr = `<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p>`;
+        const quoteElementAsStr = `<div class="inline_container">${toggleSwitchHTML}<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p></div>`;
         elmentToInsertInto.insertAdjacentHTML('beforeend', quoteElementAsStr);
         const quoteElement = document.getElementById(reducedQuote);
         quoteElement.onclick = (event) => highlightNote(event, quote, color);

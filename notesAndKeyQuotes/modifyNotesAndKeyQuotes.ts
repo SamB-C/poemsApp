@@ -85,14 +85,18 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID) as HTMLDivElement;
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID) as HTMLDivElement;
 
-    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color);
+    const toggleSwitch = '<div class="switch_container"><label class="switch"><input id="__slider_checkbox__" type="checkbox"><span class="slider round"></span></label></div>'
 
-    addQuotes(quotesElement, quotesForPoem, color);
+    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color, toggleSwitch);
+
+    addQuotes(quotesElement, quotesForPoem, color, toggleSwitch);
 }
 
-function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, notesObject: Notes, color: string): void {
+``
+
+function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, notesObject: Notes, color: string, toggleSwitchHTML: string): void {
     arrNotes.forEach((noteText) => {
-        const noteTextElementAsStr = `<p id="${noteText}">${noteText}</p>`
+        const noteTextElementAsStr = `<div class="inline_container">${toggleSwitchHTML}<p id="${noteText}">${noteText}</p></div>`
         elmentToInsertInto.insertAdjacentHTML('beforeend', noteTextElementAsStr);
         const noteTextElement = document.getElementById(noteText) as HTMLParagraphElement;
         noteTextElement.onclick = (event) => highlightNote(event, notesObject[noteText], color);
@@ -100,10 +104,10 @@ function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, n
     });
 }
 
-function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, color: string) {
+function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, color: string, toggleSwitchHTML: string) {
     arrQuotes.forEach((quote: Array<string>) => {
         const reducedQuote: string = quote.reduce((acc: string, curr: string) => acc + curr);
-        const quoteElementAsStr = `<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p>`;
+        const quoteElementAsStr = `<div class="inline_container">${toggleSwitchHTML}<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p></div>`;
         elmentToInsertInto.insertAdjacentHTML('beforeend', quoteElementAsStr);
         const quoteElement: HTMLParagraphElement = document.getElementById(reducedQuote) as HTMLParagraphElement;
         quoteElement.onclick = (event) => highlightNote(event, quote, color);
