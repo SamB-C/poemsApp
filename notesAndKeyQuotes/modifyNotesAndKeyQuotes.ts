@@ -30,6 +30,8 @@ const POEM_QUOTES_DISPLAY_ID: string = '__quotes__';
 
 const color = 'purple';
 
+let highlightedText: Array<string> = [];
+
 // Initialisation
 fetch('../convertedPoems.json')
     .then(response => response.json())
@@ -83,28 +85,58 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID) as HTMLDivElement;
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID) as HTMLDivElement;
 
-    Object.keys(notesForPoem).forEach((noteText) => {
-        const noteTextElementAsStr = `<p id="${noteText}">${noteText}</p>`
-        notesElement.innerHTML = notesElement.innerHTML + noteTextElementAsStr;
-        const noteTextElement = document.getElementById(noteText) as HTMLParagraphElement;
-        noteTextElement.onclick = () => highlightText(notesForPoem[noteText], color);
-    });
+    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color);
 
-    quotesForPoem.forEach((quote: Array<string>) => {
+    addQuotes(quotesElement, quotesForPoem, color);
+}
+
+function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, notesObject: Notes, color: string): void {
+    arrNotes.forEach((noteText) => {
+        const noteTextElementAsStr = `<p id="${noteText}">${noteText}</p>`
+        elmentToInsertInto.insertAdjacentHTML('beforeend', noteTextElementAsStr);
+        const noteTextElement = document.getElementById(noteText) as HTMLParagraphElement;
+        noteTextElement.onclick = (event) => highlightNote(event, notesObject[noteText], color);
+        noteTextElement.style.cursor = "pointer";
+    });
+}
+
+function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, color: string) {
+    arrQuotes.forEach((quote: Array<string>) => {
         const reducedQuote: string = quote.reduce((acc: string, curr: string) => acc + curr);
-        const quoteElement = `<p id="${reducedQuote}">${quote}</p>`;
-        quotesElement.innerHTML = quotesElement.innerHTML + quoteElement;
-    }) 
+        const quoteElementAsStr = `<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p>`;
+        elmentToInsertInto.insertAdjacentHTML('beforeend', quoteElementAsStr);
+        const quoteElement: HTMLParagraphElement = document.getElementById(reducedQuote) as HTMLParagraphElement;
+        quoteElement.onclick = (event) => highlightNote(event, quote, color);
+        quoteElement.style.cursor = "pointer";
+    });
+}
+
+function highlightNote(event: Event, textToHighlight: Array<string>, color: string) {
+    const target = event.target as HTMLElement;
+    if (target.style.color !== color) {
+        unHighlightText()
+        highlightText(textToHighlight.concat([target.id]), color);
+    } else {
+        unHighlightText();
+    }
+
 }
 
 function highlightText(textToHighlight: Array<string>, color: string) {
     textToHighlight.forEach((word: string) => {
         const wordSpan = document.getElementById(word) as HTMLSpanElement;
         wordSpan.style.color = color;
-    })
+    });
+    highlightedText = textToHighlight;
 }
 
-
+function unHighlightText() {
+    highlightedText.forEach((word: string) => {
+        const wordSpan = document.getElementById(word) as HTMLSpanElement;
+        wordSpan.style.color = 'black';
+    });
+    highlightedText = [];
+}
 
 function changePoem(event: Event, currentPoemName: string, poemData: ConvertedPoems): void {
     const target = event.target as HTMLSelectElement

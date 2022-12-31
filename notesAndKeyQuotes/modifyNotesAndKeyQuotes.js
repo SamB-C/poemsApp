@@ -8,6 +8,7 @@ const POEM_NOTAIONS_DISPLAY_ID = '__notations__';
 const POEM_NOTES_DISPLAY_ID = '__notes__';
 const POEM_QUOTES_DISPLAY_ID = '__quotes__';
 const color = 'purple';
+let highlightedText = [];
 // Initialisation
 fetch('../convertedPoems.json')
     .then(response => response.json())
@@ -51,15 +52,51 @@ function renderPoemSelect(poemNames, currentPoemName, poemData) {
 function renderNotes(notesForPoem, quotesForPoem) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID);
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID);
-    Object.keys(notesForPoem).forEach((noteText) => {
+    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color);
+    addQuotes(quotesElement, quotesForPoem, color);
+}
+function addNotes(elmentToInsertInto, arrNotes, notesObject, color) {
+    arrNotes.forEach((noteText) => {
         const noteTextElementAsStr = `<p id="${noteText}">${noteText}</p>`;
-        notesElement.innerHTML = notesElement.innerHTML + noteTextElementAsStr;
+        elmentToInsertInto.insertAdjacentHTML('beforeend', noteTextElementAsStr);
+        const noteTextElement = document.getElementById(noteText);
+        noteTextElement.onclick = (event) => highlightNote(event, notesObject[noteText], color);
+        noteTextElement.style.cursor = "pointer";
     });
-    quotesForPoem.forEach((quote) => {
+}
+function addQuotes(elmentToInsertInto, arrQuotes, color) {
+    arrQuotes.forEach((quote) => {
         const reducedQuote = quote.reduce((acc, curr) => acc + curr);
-        const quoteElement = `<p id="${reducedQuote}">${quote}</p>`;
-        quotesElement.innerHTML = quotesElement.innerHTML + quoteElement;
+        const quoteElementAsStr = `<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p>`;
+        elmentToInsertInto.insertAdjacentHTML('beforeend', quoteElementAsStr);
+        const quoteElement = document.getElementById(reducedQuote);
+        quoteElement.onclick = (event) => highlightNote(event, quote, color);
+        quoteElement.style.cursor = "pointer";
     });
+}
+function highlightNote(event, textToHighlight, color) {
+    const target = event.target;
+    if (target.style.color !== color) {
+        unHighlightText();
+        highlightText(textToHighlight.concat([target.id]), color);
+    }
+    else {
+        unHighlightText();
+    }
+}
+function highlightText(textToHighlight, color) {
+    textToHighlight.forEach((word) => {
+        const wordSpan = document.getElementById(word);
+        wordSpan.style.color = color;
+    });
+    highlightedText = textToHighlight;
+}
+function unHighlightText() {
+    highlightedText.forEach((word) => {
+        const wordSpan = document.getElementById(word);
+        wordSpan.style.color = 'black';
+    });
+    highlightedText = [];
 }
 function changePoem(event, currentPoemName, poemData) {
     const target = event.target;
