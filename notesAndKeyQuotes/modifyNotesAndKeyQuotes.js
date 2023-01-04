@@ -55,7 +55,7 @@ function renderNotes(notesForPoem, quotesForPoem) {
     quotesElement.innerHTML = '<h1>Quotes:</h1>';
     if (quotesForPoem) {
         addQuotes(quotesElement, quotesForPoem, checkboxes);
-        textsToHighlight.concat(quotesForPoem);
+        textsToHighlight = textsToHighlight.concat(quotesForPoem);
     }
     else {
         quotesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
@@ -65,7 +65,7 @@ function renderNotes(notesForPoem, quotesForPoem) {
         const notesKeys = Object.keys(notesForPoem);
         const notesValues = notesKeys.map(key => notesForPoem[key]);
         addNotes(notesElement, notesKeys, checkboxes);
-        textsToHighlight.concat(notesValues);
+        textsToHighlight = textsToHighlight.concat(notesValues);
     }
     else {
         notesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');

@@ -24,7 +24,7 @@ export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes,
 function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, displayText: string, checkboxes: Array<HTMLInputElement>): void {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
     const textId = `__${idText}__`
-    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}">${displayText}</p></div>`;
+    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p></div>`;
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
     const elementAsElement = document.getElementById(textId) as HTMLParagraphElement;
     initialiseToggleSwitch(elementAsElement, checkboxes);
@@ -32,6 +32,11 @@ function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, d
 
 function initialiseToggleSwitch(paragraphElement: HTMLParagraphElement, checkboxes: Array<HTMLInputElement>): void {
     const { toggleSwitchInputCheckbox } = getToggleSwitchFromParagraphElement(paragraphElement);
+    toggleSwitchInputCheckbox.style.opacity = '0';
+    toggleSwitchInputCheckbox.style.width = '0';
+    toggleSwitchInputCheckbox.style.height = '0';
+    const parent = toggleSwitchInputCheckbox.parentElement as HTMLLabelElement;
+    parent.style.marginRight = '1vh';
     checkboxes.push(toggleSwitchInputCheckbox);
 }
 

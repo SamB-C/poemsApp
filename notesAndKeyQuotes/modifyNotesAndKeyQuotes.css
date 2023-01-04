@@ -55,7 +55,18 @@ select:hover {
 
 #__notations_container__ h1 {
     width: 130px;
+    margin-bottom: 0;
 }
+
+.note_or_quote_text {
+    margin: 1.5vh 0 1vh 0;
+}
+
+
+
+
+
+
 
 /* For the toggle siwtches */
 .switch_container {

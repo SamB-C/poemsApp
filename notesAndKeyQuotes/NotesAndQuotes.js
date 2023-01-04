@@ -19,13 +19,18 @@ export function addQuotes(elmentToInsertInto, arrQuotes, checkboxes) {
 function insertNoteOrQuote(elmentToInsertInto, idText, displayText, checkboxes) {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
     const textId = `__${idText}__`;
-    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}">${displayText}</p></div>`;
+    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p></div>`;
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
     const elementAsElement = document.getElementById(textId);
     initialiseToggleSwitch(elementAsElement, checkboxes);
 }
 function initialiseToggleSwitch(paragraphElement, checkboxes) {
     const { toggleSwitchInputCheckbox } = getToggleSwitchFromParagraphElement(paragraphElement);
+    toggleSwitchInputCheckbox.style.opacity = '0';
+    toggleSwitchInputCheckbox.style.width = '0';
+    toggleSwitchInputCheckbox.style.height = '0';
+    const parent = toggleSwitchInputCheckbox.parentElement;
+    parent.style.marginRight = '1vh';
     checkboxes.push(toggleSwitchInputCheckbox);
 }
 function getToggleSwitchFromParagraphElement(paragraphElement) {
