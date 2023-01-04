@@ -52,39 +52,70 @@ function renderPoemSelect(poemNames, currentPoemName, poemData) {
 function renderNotes(notesForPoem, quotesForPoem) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID);
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID);
-    const toggleSwitch = '<div class="switch_container"><label class="switch"><input id="__slider_checkbox__" type="checkbox"><span class="slider round"></span></label></div>';
-    addNotes(notesElement, Object.keys(notesForPoem), notesForPoem, color, toggleSwitch);
-    addQuotes(quotesElement, quotesForPoem, color, toggleSwitch);
+    const checkboxes = [];
+    addNotes(notesElement, Object.keys(notesForPoem), checkboxes);
+    addQuotes(quotesElement, quotesForPoem, checkboxes);
+    const textsToHighlight = quotesForPoem.concat(Object.keys(notesForPoem).map(key => notesForPoem[key]));
+    initialiseEventHandlers(checkboxes, textsToHighlight, color);
 }
-``;
-function addNotes(elmentToInsertInto, arrNotes, notesObject, color, toggleSwitchHTML) {
-    arrNotes.forEach((noteText) => {
-        const noteTextElementAsStr = `<div class="inline_container">${toggleSwitchHTML}<p id="${noteText}">${noteText}</p></div>`;
-        elmentToInsertInto.insertAdjacentHTML('beforeend', noteTextElementAsStr);
-        const noteTextElement = document.getElementById(noteText);
-        noteTextElement.onclick = (event) => highlightNote(event, notesObject[noteText], color);
-        noteTextElement.style.cursor = "pointer";
+function initialiseEventHandlers(checkboxes, textsToHighlight, color) {
+    checkboxes.forEach((checkbox, index) => {
+        checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes);
     });
 }
-function addQuotes(elmentToInsertInto, arrQuotes, color, toggleSwitchHTML) {
+function addNotes(elmentToInsertInto, arrNotes, checkboxes) {
+    arrNotes.forEach((noteText) => {
+        insertNoteOrQuote(elmentToInsertInto, noteText, noteText, checkboxes);
+    });
+}
+function addQuotes(elmentToInsertInto, arrQuotes, checkboxes) {
     arrQuotes.forEach((quote) => {
         const reducedQuote = quote.reduce((acc, curr) => acc + curr);
-        const quoteElementAsStr = `<div class="inline_container">${toggleSwitchHTML}<p id="${reducedQuote}">${removeNumbers(quote.join(' '))}</p></div>`;
-        elmentToInsertInto.insertAdjacentHTML('beforeend', quoteElementAsStr);
-        const quoteElement = document.getElementById(reducedQuote);
-        quoteElement.onclick = (event) => highlightNote(event, quote, color);
-        quoteElement.style.cursor = "pointer";
+        insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), checkboxes);
     });
 }
-function highlightNote(event, textToHighlight, color) {
+function insertNoteOrQuote(elmentToInsertInto, idText, displayText, checkboxes) {
+    const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
+    const textId = `__${idText}__`;
+    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}">${displayText}</p></div>`;
+    elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
+    const elementAsElement = document.getElementById(textId);
+    initialiseToggleSwitch(elementAsElement, checkboxes);
+}
+function initialiseToggleSwitch(paragraphElement, checkboxes) {
+    const { toggleSwitchInputCheckbox } = getToggleSwitchFromParagraphElement(paragraphElement);
+    checkboxes.push(toggleSwitchInputCheckbox);
+}
+function getToggleSwitchFromParagraphElement(paragraphElement) {
+    const paragraphElementContainer = paragraphElement.parentElement;
+    const toggleSwitchContainer = paragraphElementContainer.firstChild;
+    const toggleSwitchLabel = toggleSwitchContainer.firstChild;
+    const toggleSwitchInputCheckbox = toggleSwitchLabel.firstChild;
+    const toggleSwitchBackground = toggleSwitchInputCheckbox.nextSibling;
+    return { toggleSwitchInputCheckbox, toggleSwitchBackground, };
+}
+function highlightNote(event, textToHighlight, color, checkboxes) {
     const target = event.target;
-    if (target.style.color !== color) {
+    const targetBackground = target.nextSibling;
+    if (target.checked) {
         unHighlightText();
-        highlightText(textToHighlight.concat([target.id]), color);
+        highlightText(textToHighlight, color);
+        uncheckOtherCheckboxes(target, checkboxes);
+        targetBackground.style.backgroundColor = 'green';
     }
     else {
         unHighlightText();
+        targetBackground.style.backgroundColor = '#ccc';
     }
+}
+function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes) {
+    checkboxes.forEach(input => {
+        const background = input.nextSibling;
+        background.style.backgroundColor = '#ccc';
+        if (input.id !== checkboxToKeepChecked.id) {
+            input.checked = false;
+        }
+    });
 }
 function highlightText(textToHighlight, color) {
     textToHighlight.forEach((word) => {
