@@ -53,6 +53,10 @@ select:hover {
 }
 
 
+#__notations_container__ h1 {
+    width: 130px;
+}
+
 /* For the toggle siwtches */
 .switch_container {
     display: flex;

@@ -64,13 +64,26 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID) as HTMLDivElement;
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID) as HTMLDivElement;
     const checkboxes: Array<HTMLInputElement> = [];
+    let textsToHighlight: Array<Array<string>> = [];
 
-    // Quotes must be rendered (and so pushed to checkboxes) before Notes
-    addQuotes(quotesElement, quotesForPoem, checkboxes);
+    quotesElement.innerHTML = '<h1>Quotes:</h1>';
+    if (quotesForPoem) {
+        addQuotes(quotesElement, quotesForPoem, checkboxes);
+        textsToHighlight.concat(quotesForPoem)
+    } else {
+        quotesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
+    }
     
-    addNotes(notesElement, Object.keys(notesForPoem), checkboxes);
-
-    const textsToHighlight = quotesForPoem.concat(Object.keys(notesForPoem).map(key => notesForPoem[key]))
+    notesElement.innerHTML = '<h1>Notes:</h1>';
+    if (notesForPoem) {
+        const notesKeys = Object.keys(notesForPoem);
+        const notesValues = notesKeys.map(key => notesForPoem[key]);
+        addNotes(notesElement, notesKeys, checkboxes);
+        textsToHighlight.concat(notesValues)
+    } else {
+        notesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>')
+    }
+    
     initialiseEventHandlers(checkboxes, textsToHighlight, color);
 }
 
