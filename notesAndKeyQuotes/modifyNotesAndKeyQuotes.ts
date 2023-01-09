@@ -12,7 +12,7 @@ const color = 'purple';
 
 
 // Initialisation
-fetch('../convertedPoems.json')
+fetch('http://localhost:8080/convertedPoems.json')
     .then(response => response.json())
     .then((data: ConvertedPoems) => main(data));
 
