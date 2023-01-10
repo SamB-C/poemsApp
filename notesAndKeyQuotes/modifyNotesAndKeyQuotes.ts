@@ -7,12 +7,16 @@ const POEM_AUTHOR_DISPLAY_ID: string = '__poem_author__';
 const POEM_SELECT_DISPLAY_ID: string = '__poem_selection__';
 const POEM_NOTES_DISPLAY_ID: string = '__notes__';
 const POEM_QUOTES_DISPLAY_ID: string = '__quotes__';
+const ADD_NEW_QUOTE_DISPLAY_ID: string = '__add_new_quote__';
+const ADD_NEW_NOTE_DISPLAY_ID: string = '__add_new_note__';
 
+// Other constants
+const serverAddress = 'http://localhost:8080/';
 const color = 'purple';
 
 
 // Initialisation
-fetch('http://localhost:8080/convertedPoems.json')
+fetch(`${serverAddress}convertedPoems.json`)
     .then(response => response.json())
     .then((data: ConvertedPoems) => main(data));
 
@@ -73,6 +77,13 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
     } else {
         quotesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
     }
+    quotesElement.insertAdjacentHTML('beforeend', `<button id="${ADD_NEW_QUOTE_DISPLAY_ID}">&plus;</button>`);
+    const addNewQuoteButton = document.getElementById(ADD_NEW_QUOTE_DISPLAY_ID) as HTMLButtonElement;
+    addNewQuoteButton.onclick = () => {
+        const newQuotes: Quotes = [...quotesForPoem, []];
+        renderNotes(notesForPoem, newQuotes);
+    }
+
     
     notesElement.innerHTML = '<h1>Notes:</h1>';
     if (notesForPoem) {
@@ -82,6 +93,15 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
         textsToHighlight = textsToHighlight.concat(notesValues)
     } else {
         notesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>')
+    }
+    notesElement.insertAdjacentHTML('beforeend', `<button id="${ADD_NEW_NOTE_DISPLAY_ID}">&plus;</button>`);
+    const addNewNoteButton = document.getElementById(ADD_NEW_NOTE_DISPLAY_ID) as HTMLButtonElement;
+    addNewNoteButton.onclick = () => {
+        const newNotes: Notes = {
+            ...notesForPoem,
+            '<i>New Note</i>': []
+        }
+        renderNotes(newNotes, quotesForPoem)
     }
     
     initialiseEventHandlers(checkboxes, textsToHighlight, color);

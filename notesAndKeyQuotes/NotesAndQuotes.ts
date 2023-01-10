@@ -16,7 +16,7 @@ export function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<str
 
 export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, checkboxes: Array<HTMLInputElement>) {
     arrQuotes.forEach((quote: Array<string>) => {
-        const reducedQuote: string = quote.reduce((acc: string, curr: string) => acc + curr);
+        const reducedQuote: string = quote.join(' ');
         insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), checkboxes)
     });
 }

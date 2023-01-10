@@ -12,7 +12,7 @@ export function addNotes(elmentToInsertInto, arrNotes, checkboxes) {
 }
 export function addQuotes(elmentToInsertInto, arrQuotes, checkboxes) {
     arrQuotes.forEach((quote) => {
-        const reducedQuote = quote.reduce((acc, curr) => acc + curr);
+        const reducedQuote = quote.join(' ');
         insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), checkboxes);
     });
 }
