@@ -14,6 +14,7 @@ const ADD_NEW_NOTE_DISPLAY_ID: string = '__add_new_note__';
 const serverAddress = 'http://localhost:8080/';
 const color = 'purple';
 
+let currentPoemName: string = '';
 
 // Initialisation
 fetch(`${serverAddress}convertedPoems.json`)
@@ -23,7 +24,7 @@ fetch(`${serverAddress}convertedPoems.json`)
 
 function main(data: ConvertedPoems): void {
     const allPoemNames: Array<string> = Object.keys(data);
-    let currentPoemName = allPoemNames[0];
+    currentPoemName = allPoemNames[0];
     renderPoemSelect(allPoemNames, currentPoemName, data);
     
     const currentPoemContent = data[currentPoemName].convertedPoem;
@@ -61,7 +62,7 @@ function renderPoemSelect(poemNames: Array<string>, currentPoemName: string, poe
     });
     const poemSelectElement = document.getElementById(POEM_SELECT_DISPLAY_ID) as HTMLSelectElement;
     poemSelectElement.innerHTML = selectionOptions.reduce((acc: string, current: string) => acc + current);
-    poemSelectElement.oninput = (event) => changePoem(event, currentPoemName, poemData);
+    poemSelectElement.oninput = (event) => changePoem(event, poemData);
 }
 
 function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
@@ -72,7 +73,7 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
 
     quotesElement.innerHTML = '<h1>Quotes:</h1>';
     if (quotesForPoem) {
-        addQuotes(quotesElement, quotesForPoem, checkboxes);
+        addQuotes(quotesElement, quotesForPoem, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(quotesForPoem)
     } else {
         quotesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
@@ -89,7 +90,7 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
     if (notesForPoem) {
         const notesKeys = Object.keys(notesForPoem);
         const notesValues = notesKeys.map(key => notesForPoem[key]);
-        addNotes(notesElement, notesKeys, checkboxes);
+        addNotes(notesElement, notesKeys, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(notesValues)
     } else {
         notesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>')
@@ -108,7 +109,7 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
 }
 
 
-function changePoem(event: Event, currentPoemName: string, poemData: ConvertedPoems): void {
+function changePoem(event: Event, poemData: ConvertedPoems): void {
     const target = event.target as HTMLSelectElement
     const newPoemName = target.value;
     const poemContent = poemData[newPoemName].convertedPoem;
@@ -116,8 +117,8 @@ function changePoem(event: Event, currentPoemName: string, poemData: ConvertedPo
     const isCentered = poemData[newPoemName].centered;
     const poemNotes = poemData[newPoemName].notes;
     const poemQuotes = poemData[newPoemName].quotes;
-    renderPoem(poemContent, poemAuthor, isCentered, poemNotes, poemQuotes);
     currentPoemName = newPoemName;
+    renderPoem(poemContent, poemAuthor, isCentered, poemNotes, poemQuotes);
 }
 
 function splitToWords(line: string): string {

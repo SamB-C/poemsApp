@@ -11,13 +11,14 @@ const ADD_NEW_NOTE_DISPLAY_ID = '__add_new_note__';
 // Other constants
 const serverAddress = 'http://localhost:8080/';
 const color = 'purple';
+let currentPoemName = '';
 // Initialisation
 fetch(`${serverAddress}convertedPoems.json`)
     .then(response => response.json())
     .then((data) => main(data));
 function main(data) {
     const allPoemNames = Object.keys(data);
-    let currentPoemName = allPoemNames[0];
+    currentPoemName = allPoemNames[0];
     renderPoemSelect(allPoemNames, currentPoemName, data);
     const currentPoemContent = data[currentPoemName].convertedPoem;
     const currentPoemAuthor = data[currentPoemName].author;
@@ -49,7 +50,7 @@ function renderPoemSelect(poemNames, currentPoemName, poemData) {
     });
     const poemSelectElement = document.getElementById(POEM_SELECT_DISPLAY_ID);
     poemSelectElement.innerHTML = selectionOptions.reduce((acc, current) => acc + current);
-    poemSelectElement.oninput = (event) => changePoem(event, currentPoemName, poemData);
+    poemSelectElement.oninput = (event) => changePoem(event, poemData);
 }
 function renderNotes(notesForPoem, quotesForPoem) {
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID);
@@ -58,7 +59,7 @@ function renderNotes(notesForPoem, quotesForPoem) {
     let textsToHighlight = [];
     quotesElement.innerHTML = '<h1>Quotes:</h1>';
     if (quotesForPoem) {
-        addQuotes(quotesElement, quotesForPoem, checkboxes);
+        addQuotes(quotesElement, quotesForPoem, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(quotesForPoem);
     }
     else {
@@ -74,7 +75,7 @@ function renderNotes(notesForPoem, quotesForPoem) {
     if (notesForPoem) {
         const notesKeys = Object.keys(notesForPoem);
         const notesValues = notesKeys.map(key => notesForPoem[key]);
-        addNotes(notesElement, notesKeys, checkboxes);
+        addNotes(notesElement, notesKeys, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(notesValues);
     }
     else {
@@ -88,7 +89,7 @@ function renderNotes(notesForPoem, quotesForPoem) {
     };
     initialiseEventHandlers(checkboxes, textsToHighlight, color);
 }
-function changePoem(event, currentPoemName, poemData) {
+function changePoem(event, poemData) {
     const target = event.target;
     const newPoemName = target.value;
     const poemContent = poemData[newPoemName].convertedPoem;
@@ -96,8 +97,8 @@ function changePoem(event, currentPoemName, poemData) {
     const isCentered = poemData[newPoemName].centered;
     const poemNotes = poemData[newPoemName].notes;
     const poemQuotes = poemData[newPoemName].quotes;
-    renderPoem(poemContent, poemAuthor, isCentered, poemNotes, poemQuotes);
     currentPoemName = newPoemName;
+    renderPoem(poemContent, poemAuthor, isCentered, poemNotes, poemQuotes);
 }
 function splitToWords(line) {
     // Split at space of fake space

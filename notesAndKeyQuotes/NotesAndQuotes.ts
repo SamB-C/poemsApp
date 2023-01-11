@@ -8,26 +8,31 @@ export function initialiseEventHandlers(checkboxes: Array<HTMLInputElement>, tex
     })
 }
 
-export function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, checkboxes: Array<HTMLInputElement>): void {
+export function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, checkboxes: Array<HTMLInputElement>, poemName: string): void {
     arrNotes.forEach((noteText) => {
-        insertNoteOrQuote(elmentToInsertInto, noteText, noteText, checkboxes);
+        const newNoteElement: HTMLParagraphElement = insertNoteOrQuote(elmentToInsertInto, noteText, noteText);
+        initialiseToggleSwitch(newNoteElement, checkboxes);
+        initialiseDeleteButton(newNoteElement, noteText, 'Note', poemName);
     });
 }
 
-export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, checkboxes: Array<HTMLInputElement>) {
+export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, checkboxes: Array<HTMLInputElement>, poemName: string) {
     arrQuotes.forEach((quote: Array<string>) => {
         const reducedQuote: string = quote.join(' ');
-        insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), checkboxes)
+        const newQuoteElement: HTMLParagraphElement = insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')));
+        initialiseToggleSwitch(newQuoteElement, checkboxes);
+        initialiseDeleteButton(newQuoteElement, reducedQuote, "Quote", poemName);
     });
 }
 
-function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, displayText: string, checkboxes: Array<HTMLInputElement>): void {
+function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, displayText: string): HTMLParagraphElement {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
+    const deleteButton = `<button>&times;</button>`;
     const textId = `__${idText}__`
-    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p></div>`;
+    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p>${deleteButton}</div>`;
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
     const elementAsElement = document.getElementById(textId) as HTMLParagraphElement;
-    initialiseToggleSwitch(elementAsElement, checkboxes);
+    return elementAsElement
 }
 
 function initialiseToggleSwitch(paragraphElement: HTMLParagraphElement, checkboxes: Array<HTMLInputElement>): void {
@@ -89,4 +94,14 @@ function unHighlightText() {
         wordSpan.style.color = 'black';
     });
     highlightedText = [];
+}
+
+function initialiseDeleteButton(paragraphElement: HTMLParagraphElement, jsonRepresentation: string, noteOrQuote: 'Note' | 'Quote', poemName: string) {
+    const deleteButtonElement = paragraphElement.nextSibling as HTMLButtonElement;
+    deleteButtonElement.onclick = () => {
+        fetch("http://localhost:8080/post", {
+            method: "DELETE",
+            body: JSON.stringify({identifierFor: noteOrQuote, identifier: jsonRepresentation, poemName,}),
+        }).then(res => console.log('Request Complete! response: ', res)) 
+    }
 }

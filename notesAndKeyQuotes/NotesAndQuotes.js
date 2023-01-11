@@ -5,24 +5,29 @@ export function initialiseEventHandlers(checkboxes, textsToHighlight, color) {
         checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes);
     });
 }
-export function addNotes(elmentToInsertInto, arrNotes, checkboxes) {
+export function addNotes(elmentToInsertInto, arrNotes, checkboxes, poemName) {
     arrNotes.forEach((noteText) => {
-        insertNoteOrQuote(elmentToInsertInto, noteText, noteText, checkboxes);
+        const newNoteElement = insertNoteOrQuote(elmentToInsertInto, noteText, noteText);
+        initialiseToggleSwitch(newNoteElement, checkboxes);
+        initialiseDeleteButton(newNoteElement, noteText, 'Note', poemName);
     });
 }
-export function addQuotes(elmentToInsertInto, arrQuotes, checkboxes) {
+export function addQuotes(elmentToInsertInto, arrQuotes, checkboxes, poemName) {
     arrQuotes.forEach((quote) => {
         const reducedQuote = quote.join(' ');
-        insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), checkboxes);
+        const newQuoteElement = insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')));
+        initialiseToggleSwitch(newQuoteElement, checkboxes);
+        initialiseDeleteButton(newQuoteElement, reducedQuote, "Quote", poemName);
     });
 }
-function insertNoteOrQuote(elmentToInsertInto, idText, displayText, checkboxes) {
+function insertNoteOrQuote(elmentToInsertInto, idText, displayText) {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
+    const deleteButton = `<button>&times;</button>`;
     const textId = `__${idText}__`;
-    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p></div>`;
+    const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p>${deleteButton}</div>`;
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
     const elementAsElement = document.getElementById(textId);
-    initialiseToggleSwitch(elementAsElement, checkboxes);
+    return elementAsElement;
 }
 function initialiseToggleSwitch(paragraphElement, checkboxes) {
     const { toggleSwitchInputCheckbox } = getToggleSwitchFromParagraphElement(paragraphElement);
@@ -77,4 +82,13 @@ function unHighlightText() {
         wordSpan.style.color = 'black';
     });
     highlightedText = [];
+}
+function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuote, poemName) {
+    const deleteButtonElement = paragraphElement.nextSibling;
+    deleteButtonElement.onclick = () => {
+        fetch("http://localhost:8080/post", {
+            method: "DELETE",
+            body: JSON.stringify({ identifierFor: noteOrQuote, identifier: jsonRepresentation, poemName, }),
+        }).then(res => console.log('Request Complete! response: ', res));
+    };
 }
