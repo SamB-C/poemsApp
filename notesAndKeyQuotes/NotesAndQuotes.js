@@ -22,9 +22,9 @@ export function addQuotes(elmentToInsertInto, arrQuotes, checkboxes, poemName) {
 }
 function insertNoteOrQuote(elmentToInsertInto, idText, displayText) {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
-    const deleteButton = `<button>&times;</button>`;
+    const deleteButton = `<div class="vertical_center delete_button_container"><span class="cross_button">&times;</span></div>`;
     const modal_options = '<div class="inline_container"><div class="modal_options"><button>Yes</button><button>No</button></div></div>';
-    const modal = `<div class="modal"><div class="modal-content"><span class="close">&times;</span><p>Are you sure you want to delete:</p><p>"${displayText}"</p>${modal_options}</div></div>`;
+    const modal = `<div class="modal"><div class="modal-content"><span class="cross_button">&times;</span><p>Are you sure you want to delete:</p><p>"${displayText}"</p>${modal_options}</div></div>`;
     const textId = `__${idText}__`;
     const elementAsStr = `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p>${deleteButton}${modal}</div>`;
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
@@ -86,8 +86,9 @@ function unHighlightText() {
     highlightedText = [];
 }
 function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuote, poemName) {
-    const deleteButtonElement = paragraphElement.nextSibling;
-    const modal = deleteButtonElement.nextSibling;
+    const deleteButtonElementContainer = paragraphElement.nextSibling;
+    const deleteButtonElement = deleteButtonElementContainer.firstChild;
+    const modal = deleteButtonElementContainer.nextSibling;
     const modalContent = modal.firstChild;
     const close = modalContent.firstChild;
     close.onclick = () => {
