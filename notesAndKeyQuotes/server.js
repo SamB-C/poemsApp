@@ -81,20 +81,55 @@ function handleDelete(req, res) {
     let body = '';
     req.on('data', (data) => {
         body += data;
-        console.log('Partial data -> ', body);
+        console.log('Partial data ->', body);
     });
     req.on('end', () => {
         body = JSON.parse(body);
-        console.log('Body -> ', body);
+        console.log('Body ->', body);
         deleteNoteOrQuote(body.poemName, body.identifierFor, body.identifier)
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end('deleted successfuly');
     });
 }
 
+function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
+    const convertedPoemsJSON = fs.readFileSync('../convertedPoems.json', {encoding: 'utf-8'});
+    const convertedPoems = JSON.parse(convertedPoemsJSON);
+    if (noteType === 'Note') {
+        const existingNotes = convertedPoems[poemName].notes;
+        const remainingNotes = {}
+        Object.keys(existingNotes).forEach(noteText => {
+            if (noteText !== oldIdentifier) {
+                remainingNotes[noteText] = existingNotes[noteText];
+            }
+        });
+        remainingNotes[newVersion.key] = newVersion.value;
+        convertedPoems[poemName].notes = remainingNotes;
+    }
+    fs.writeFile('../convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}})
+}
+
+function handlePost(req, res) {
+    console.log('POST request:');
+    let body = '';
+    req.on('data', (data) => {
+        body += data;
+        console.log('Partial data ->', body);
+    });
+    req.on('end', () => {
+        body = JSON.parse(body);
+        console.log('Body ->', body);
+        editNoteOrQuote(body.noteType, body.oldIdentifier, body.newVersion, body.poemName)
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('post recivied');
+    });
+}
+
 http.createServer((req, res) => {
     if (req.method === 'DELETE') {
         handleDelete(req, res);
+    } else if (req.method === 'POST'){
+        handlePost(req, res)
     } else {
         handleGet(req, res);
     }

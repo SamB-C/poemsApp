@@ -85,3 +85,10 @@ select:hover {
     margin-left: auto;
     padding: 0 2vh 0 2.5vh;
 }
+
+.note_input_box {
+    outline: 1px solid black;
+    padding: 4px;
+    border-radius: 2px;
+    width: 100%;
+}

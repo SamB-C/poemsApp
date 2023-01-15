@@ -11,20 +11,20 @@ const ADD_NEW_QUOTE_DISPLAY_ID: string = '__add_new_quote__';
 const ADD_NEW_NOTE_DISPLAY_ID: string = '__add_new_note__';
 
 // Other constants
-const serverAddress = 'http://localhost:8080/';
+export const serverAddress = 'http://localhost:8080/';
 const color = 'purple';
 
-let currentPoemName: string = '';
+export let currentPoemName: string = '';
 
 // Initialisation
 fetch(`${serverAddress}convertedPoems.json`)
     .then(response => response.json())
-    .then((data: ConvertedPoems) => main(data));
+    .then((data: ConvertedPoems) => main(data, Object.keys(data)[0]));
 
 
-function main(data: ConvertedPoems): void {
+export function main(data: ConvertedPoems, initialPoemName: string): void {
     const allPoemNames: Array<string> = Object.keys(data);
-    currentPoemName = allPoemNames[0];
+    currentPoemName = initialPoemName;
     renderPoemSelect(allPoemNames, currentPoemName, data);
     
     const currentPoemContent = data[currentPoemName].convertedPoem;
@@ -105,7 +105,7 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
         renderNotes(newNotes, quotesForPoem)
     }
     
-    initialiseEventHandlers(checkboxes, textsToHighlight, color);
+    initialiseEventHandlers(checkboxes, textsToHighlight, color, notesForPoem);
 }
 
 
