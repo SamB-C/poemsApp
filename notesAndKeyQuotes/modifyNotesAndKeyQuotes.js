@@ -72,7 +72,7 @@ export function renderNotes(notesForPoem, quotesForPoem) {
         quotesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
     }
     // Add the add new quote button
-    quotesElement.insertAdjacentHTML('beforeend', `<button id="${ADD_NEW_QUOTE_DISPLAY_ID}">&plus;</button>`);
+    quotesElement.insertAdjacentHTML('beforeend', `<button class="add_button" id="${ADD_NEW_QUOTE_DISPLAY_ID}">&plus;</button>`);
     const addNewQuoteButton = document.getElementById(ADD_NEW_QUOTE_DISPLAY_ID);
     addNewQuoteButton.onclick = () => {
         const newQuotes = [...quotesForPoem, []];
@@ -94,7 +94,7 @@ export function renderNotes(notesForPoem, quotesForPoem) {
         notesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
     }
     // Add the add new note button
-    notesElement.insertAdjacentHTML('beforeend', `<button id="${ADD_NEW_NOTE_DISPLAY_ID}">&plus;</button>`);
+    notesElement.insertAdjacentHTML('beforeend', `<button class="add_button" id="${ADD_NEW_NOTE_DISPLAY_ID}">&plus;</button>`);
     const addNewNoteButton = document.getElementById(ADD_NEW_NOTE_DISPLAY_ID);
     addNewNoteButton.onclick = () => {
         const newNotes = Object.assign(Object.assign({}, notesForPoem), { '': [] });
