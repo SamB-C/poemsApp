@@ -1,4 +1,4 @@
-import { addNotes, addQuotes, highlightedText, highlightText, initialiseEventHandlers, unHighlightText } from './NotesAndQuotes.js';
+import { addNotes, addQuotes, currentQuote, highlightedText, highlightText, initialiseEventHandlers, unHighlightText } from './NotesAndQuotes.js';
 import { removeNumbers } from './utilities.js';
 // Constants for ids
 const POEM_DISPLAY_ID = '__poem_id__';
@@ -35,7 +35,7 @@ function renderPoem(poemContent, author, centered, notes, quotes) {
     }).join('');
     const poemElement = getPoemElementFromDOM();
     poemElement.innerHTML = toRender;
-    poemLines.forEach(line => addEventListenerToWords(line));
+    poemLines.forEach(line => addEventListenerToWords(poemContent, line));
     renderPoemAuthor(author);
     centerThePoem(centered);
     renderNotes(notes, quotes);
@@ -132,26 +132,59 @@ function makeElementForWord(word, isfirstWord) {
         return prefix + `<span id="${word}">${removeNumbers(word)}</span>`;
     }
 }
-function addEventListenerToWords(line) {
+// Sorts the missing word in the poem into the order of appearance so they can be focused in order
+function insertionSortIntoOrderInPoem(poem, words) {
+    for (let i = 1; i < words.length; i++) {
+        let currentWordIndex = i;
+        let comparingWordIndex = i - 1;
+        while (poem.indexOf(words[currentWordIndex]) < poem.indexOf(words[comparingWordIndex])) {
+            [words[comparingWordIndex], words[currentWordIndex]] = [words[currentWordIndex], words[comparingWordIndex]];
+            currentWordIndex--;
+            comparingWordIndex--;
+            if (currentWordIndex === 0) {
+                break;
+            }
+        }
+    }
+    return words;
+}
+function addEventListenerToWords(poem, line) {
     const wordSections = getWordSections(line);
     const validWords = wordSections
         .filter(word => !word.match(/^[0-9]+$/))
         .filter(word => word !== '');
     validWords.forEach(word => {
         const wordElement = document.getElementById(word);
-        wordElement.onclick = () => {
-            if (wordElement.style.color === 'purple') {
-                unHighlightText([word]);
-                const index = highlightedText.indexOf(word);
-                highlightedText.splice(index, 1);
-            }
-            else {
-                highlightText([word], 'purple');
-                highlightedText.push(word);
-            }
-        };
+        wordElement.onclick = () => wordEventListener(wordElement, word, poem);
         wordElement.style.cursor = 'pointer';
     });
+}
+function wordEventListener(wordElement, word, poem) {
+    if (wordElement.style.color === 'purple') {
+        unHighlightText([word]);
+        const index = highlightedText.indexOf(word);
+        highlightedText.splice(index, 1);
+    }
+    else {
+        highlightText([word], 'purple');
+        highlightedText.push(word);
+    }
+    if (currentQuote !== undefined) {
+        changeQuoteText(poem, currentQuote);
+    }
+}
+function changeQuoteText(poem, quoteParagraphElement) {
+    const content = insertionSortIntoOrderInPoem(poem, highlightedText);
+    let result = '';
+    content.forEach(word => {
+        const noNumbers = removeNumbers(word);
+        let prefix = ' ';
+        if (noNumbers.match(/[.,:;]/)) {
+            prefix = '';
+        }
+        result = result + prefix + noNumbers;
+    });
+    quoteParagraphElement.innerHTML = result;
 }
 function renderPoemAuthor(author) {
     const poemAuthorElement = document.getElementById(POEM_AUTHOR_DISPLAY_ID);

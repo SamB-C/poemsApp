@@ -129,6 +129,15 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
         // Add the changed note in its new form
         remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
         convertedPoems[poemName].notes = remainingNotes;
+
+    } else if (noteType === 'Quote') {
+        const existingQuotes = convertedPoems[poemName].quotes;
+        const remainingQuotes = existingQuotes.filter(existingQuote => {
+            return existingQuote.join(' ') !== oldIdentifier
+        });
+        remainingQuotes.push(newVersion);
+        console.log(remainingQuotes)
+        convertedPoems[poemName].quotes = remainingQuotes;
     }
     // Write the converted poems object back to file
     fs.writeFile('../convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}})

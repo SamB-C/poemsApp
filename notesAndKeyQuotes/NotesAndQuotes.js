@@ -1,6 +1,7 @@
 import { currentPoemName, serverAddress } from "./modifyNotesAndKeyQuotes.js";
 import { removeNumbers } from "./utilities.js";
 export let highlightedText = [];
+export let currentQuote = undefined;
 export function initialiseEventHandlers(checkboxes, textsToHighlight, color) {
     checkboxes.forEach((checkbox, index) => {
         checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes);
@@ -72,12 +73,23 @@ function highlightNote(event, textToHighlight, color, checkboxes) {
         highlightedText = textToHighlight;
         uncheckOtherCheckboxes(target, checkboxes, highlightedTextCopy);
         targetBackground.style.backgroundColor = 'green';
+        // Make the currentQuote be the selected quote 
+        const labelElement = target.parentElement;
+        const switchContainer = labelElement.parentElement;
+        const textSection = switchContainer.nextSibling;
+        if (textSection.nodeName === 'P') {
+            currentQuote = textSection;
+        }
+        else {
+            currentQuote = undefined;
+        }
     }
     else {
         unHighlightText(highlightedText);
         highlightedText = [];
         targetBackground.style.backgroundColor = '#ccc';
         updateNoteOrQuote(target, highlightedTextCopy);
+        currentQuote = undefined;
     }
 }
 function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes, associatedText) {
@@ -91,9 +103,10 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes, associatedTex
     });
 }
 function updateNoteOrQuote(unchecked, associatedText) {
-    console.log(associatedText);
+    // Get the content of the 
     const currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
     const noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
+    console.log(noteTextElement);
     if (noteTextElement.nodeName === 'INPUT') {
         const noteElement = noteTextElement;
         const newNoteText = noteElement.value;
@@ -108,6 +121,18 @@ function updateNoteOrQuote(unchecked, associatedText) {
             newVersion,
         };
         fetch(`${serverAddress}/note`, {
+            method: 'POST',
+            body: JSON.stringify(body)
+        }).then(res => console.log('Request Complete! response: ', res));
+    }
+    else {
+        const body = {
+            poemName: currentPoemName,
+            noteType: 'Quote',
+            oldIdentifier: currentNoteOrQuote,
+            newVersion: associatedText
+        };
+        fetch(`${serverAddress}/quote`, {
             method: 'POST',
             body: JSON.stringify(body)
         }).then(res => console.log('Request Complete! response: ', res));

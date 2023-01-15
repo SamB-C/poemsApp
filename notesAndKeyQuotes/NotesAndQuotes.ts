@@ -1,9 +1,10 @@
-import { currentPoemName, main, serverAddress } from "./modifyNotesAndKeyQuotes.js";
+import { currentPoemName, serverAddress } from "./modifyNotesAndKeyQuotes.js";
 import { Quotes, removeNumbers } from "./utilities.js";
 
 type NoteType = "Note" | "Quote";
 
 export let highlightedText: Array<string> = [];
+export let currentQuote: HTMLParagraphElement | undefined = undefined;
 
 export function initialiseEventHandlers(checkboxes: Array<HTMLInputElement>, textsToHighlight: Array<Array<string>>, color: string): void {
     checkboxes.forEach((checkbox, index) => {
@@ -83,11 +84,22 @@ function highlightNote(event: Event, textToHighlight: Array<string>, color: stri
         highlightedText = textToHighlight;
         uncheckOtherCheckboxes(target, checkboxes, highlightedTextCopy);
         targetBackground.style.backgroundColor = 'green';
+
+        // Make the currentQuote be the selected quote 
+        const labelElement = target.parentElement as HTMLLabelElement;
+        const switchContainer = labelElement.parentElement as HTMLDivElement;
+        const textSection = switchContainer.nextSibling as HTMLInputElement | HTMLParagraphElement;
+        if (textSection.nodeName === 'P') {
+            currentQuote = textSection
+        } else {
+            currentQuote = undefined
+        }
     } else {
         unHighlightText(highlightedText);
         highlightedText = []
         targetBackground.style.backgroundColor = '#ccc';
         updateNoteOrQuote(target, highlightedTextCopy);
+        currentQuote = undefined
     }
 
 }
@@ -104,9 +116,10 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked: HTMLInputElement, checkbo
 }
 
 function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<string>) {
-    console.log(associatedText);
+    // Get the content of the 
     const currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
     const noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`) as HTMLParagraphElement | HTMLInputElement;
+    console.log(noteTextElement);
     if (noteTextElement.nodeName === 'INPUT') {
         const noteElement = noteTextElement as HTMLInputElement;
         const newNoteText: string = noteElement.value;
@@ -121,6 +134,17 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<st
             newVersion,
         }
         fetch(`${serverAddress}/note`, {
+            method: 'POST',
+            body: JSON.stringify(body)
+        }).then(res => console.log('Request Complete! response: ', res))
+    } else {
+        const body = {
+            poemName: currentPoemName,
+            noteType: 'Quote',
+            oldIdentifier: currentNoteOrQuote,
+            newVersion: associatedText
+        }
+        fetch(`${serverAddress}/quote`, {
             method: 'POST',
             body: JSON.stringify(body)
         }).then(res => console.log('Request Complete! response: ', res))
