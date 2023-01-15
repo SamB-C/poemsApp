@@ -68,7 +68,7 @@ function renderPoemSelect(poemNames: Array<string>, currentPoemName: string, poe
     poemSelectElement.oninput = (event) => changePoem(event, poemData);
 }
 
-function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
+export function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
     // Get the notes and quotes elements from the DOM
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID) as HTMLDivElement;
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID) as HTMLDivElement;

@@ -1,4 +1,4 @@
-import { currentPoemName, serverAddress } from "./modifyNotesAndKeyQuotes.js";
+import { currentPoemName, main, renderNotes, serverAddress } from "./modifyNotesAndKeyQuotes.js";
 import { removeNumbers } from "./utilities.js";
 export let highlightedText = [];
 export let currentQuote = undefined;
@@ -35,7 +35,7 @@ function insertNoteOrQuote(elmentToInsertInto, idText, displayText, noteType) {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
     const deleteButton = `<div class="vertical_center delete_button_container"><span class="cross_button">&times;</span></div>`;
     const modal_options = '<div class="inline_container"><div class="modal_options"><button>Yes</button><button>No</button></div></div>';
-    const modal = `<div class="modal"><div class="modal-content"><span class="cross_button">&times;</span><p>Are you sure you want to delete:</p><p>"${displayText}"</p>${modal_options}</div></div>`;
+    const modal = `<div class="modal"><div class="modal-content"><span class="cross_button">&times;</span><p>Are you sure you want to delete:</p><p id="__modal_quote__">"${displayText}"</p>${modal_options}</div></div>`;
     const textId = `__${idText}__`;
     const elementAsStr = getElementAsStr(toggleSwitch, textId, displayText, deleteButton, modal, noteType);
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
@@ -152,6 +152,9 @@ function updateNoteOrQuote(unchecked, associatedText) {
             body: JSON.stringify(body)
         }).then(res => console.log('Request Complete! response: ', res));
     }
+    fetch(`${serverAddress}convertedPoems.json`)
+        .then(response => response.json())
+        .then((data) => renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes));
 }
 export function highlightText(textToHighlight, color) {
     textToHighlight.forEach((word) => {
@@ -180,7 +183,18 @@ function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuot
         }
     };
     deleteButtonElement.onclick = () => {
+        var _a, _b;
         modal.style.display = 'block';
+        const modalQuote = (_b = (_a = modalContent.firstChild) === null || _a === void 0 ? void 0 : _a.nextSibling) === null || _b === void 0 ? void 0 : _b.nextSibling;
+        console.log(modalQuote);
+        if (paragraphElement.nodeName === 'INPUT') {
+            const displayTextElement = paragraphElement;
+            console.log(displayTextElement.value);
+            modalQuote.innerText = `"${displayTextElement.value}"`;
+        }
+        else {
+            modalQuote.innerText = `"${paragraphElement.innerHTML.trim()}"`;
+        }
     };
     const modalOptionsContainer = modalContent.lastChild;
     const modalOptions = modalOptionsContainer.firstChild;
@@ -190,9 +204,12 @@ function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuot
         modal.style.display = 'none';
     };
     optionYes.onclick = () => {
-        fetch("http://localhost:8080/post", {
+        fetch(`${serverAddress}/post`, {
             method: "DELETE",
             body: JSON.stringify({ identifierFor: noteOrQuote, identifier: jsonRepresentation, poemName, }),
         }).then(res => console.log('Request Complete! response: ', res));
+        fetch(`${serverAddress}convertedPoems.json`)
+            .then(response => response.json())
+            .then((data) => main(data, currentPoemName));
     };
 }
