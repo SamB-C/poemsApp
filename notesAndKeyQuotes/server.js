@@ -119,15 +119,17 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
         const existingNotes = convertedPoems[poemName].notes;
         const remainingNotes = {}
         
-        // Keep all notes that are not the note in question
-        Object.keys(existingNotes).forEach(noteText => {
-            if (noteText !== oldIdentifier) {
-                remainingNotes[noteText] = existingNotes[noteText];
-            } else {
-                // Add the changed note in its new form
-                remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
-            }
-        });
+        if (existingNotes) {
+            // Keep all notes that are not the note in question
+            Object.keys(existingNotes).forEach(noteText => {
+                if (noteText !== oldIdentifier) {
+                    remainingNotes[noteText] = existingNotes[noteText];
+                } else {
+                    // Add the changed note in its new form
+                    remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
+                }
+            });
+        }
 
         if (oldIdentifier === '__NEW__') {
             remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
@@ -136,7 +138,7 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
         // Alter converted poems
         convertedPoems[poemName].notes = remainingNotes;
 
-    } else if (noteType === 'Quote') {
+    } else if (noteType === 'Quote' && convertedPoems[poemName].quotes) {
         const existingQuotes = convertedPoems[poemName].quotes;
         const remainingQuotes = existingQuotes.map(existingQuote => {
             if (existingQuote.join(' ') !== oldIdentifier) {
@@ -151,7 +153,10 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
         }
 
         convertedPoems[poemName].quotes = remainingQuotes;
+    } else if (noteType === 'Quote') {
+        convertedPoems[poemName].quotes = [newVersion]
     }
+
     // Write the converted poems object back to file
     fs.writeFile('../convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}})
 }

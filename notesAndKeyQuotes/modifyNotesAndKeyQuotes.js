@@ -75,7 +75,13 @@ export function renderNotes(notesForPoem, quotesForPoem) {
     quotesElement.insertAdjacentHTML('beforeend', `<button class="add_button" id="${ADD_NEW_QUOTE_DISPLAY_ID}">&plus;</button>`);
     const addNewQuoteButton = document.getElementById(ADD_NEW_QUOTE_DISPLAY_ID);
     addNewQuoteButton.onclick = () => {
-        const newQuotes = [...quotesForPoem, []];
+        let newQuotes = [];
+        if (quotesForPoem) {
+            newQuotes = [...quotesForPoem, []];
+        }
+        else {
+            newQuotes = [[]];
+        }
         renderNotes(notesForPoem, newQuotes);
         const checkbox = document.getElementById('___checkbox__');
         checkbox.click();
