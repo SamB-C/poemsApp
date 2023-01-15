@@ -92,20 +92,45 @@ function handleDelete(req, res) {
     });
 }
 
+function insertionSortIntoOrderInPoem(poem, words) {
+    for (let i = 1; i < words.length; i++) {
+        let currentWordIndex = i;
+        let comparingWordIndex = i - 1;
+        while (poem.indexOf(words[currentWordIndex]) < poem.indexOf(words[comparingWordIndex])) {
+            [words[comparingWordIndex], words[currentWordIndex]] = [words[currentWordIndex], words[comparingWordIndex]];
+            currentWordIndex--;
+            comparingWordIndex--;
+            if (currentWordIndex === 0) {
+                break;
+            }
+        }
+    }
+    return words;
+}
+
 function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
+    // Gets the converted Poems object from file
     const convertedPoemsJSON = fs.readFileSync('../convertedPoems.json', {encoding: 'utf-8'});
     const convertedPoems = JSON.parse(convertedPoemsJSON);
+
+    // Only if the type is a note
     if (noteType === 'Note') {
+        // Setup
         const existingNotes = convertedPoems[poemName].notes;
         const remainingNotes = {}
+
+        // Keep all notes that are not the note in question
         Object.keys(existingNotes).forEach(noteText => {
             if (noteText !== oldIdentifier) {
                 remainingNotes[noteText] = existingNotes[noteText];
             }
         });
-        remainingNotes[newVersion.key] = newVersion.value;
+
+        // Add the changed note in its new form
+        remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
         convertedPoems[poemName].notes = remainingNotes;
     }
+    // Write the converted poems object back to file
     fs.writeFile('../convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}})
 }
 

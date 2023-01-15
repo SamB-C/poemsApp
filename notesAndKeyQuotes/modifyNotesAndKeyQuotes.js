@@ -1,4 +1,4 @@
-import { addNotes, addQuotes, initialiseEventHandlers } from './NotesAndQuotes.js';
+import { addNotes, addQuotes, highlightedText, highlightText, initialiseEventHandlers, unHighlightText } from './NotesAndQuotes.js';
 import { removeNumbers } from './utilities.js';
 // Constants for ids
 const POEM_DISPLAY_ID = '__poem_id__';
@@ -35,6 +35,7 @@ function renderPoem(poemContent, author, centered, notes, quotes) {
     }).join('');
     const poemElement = getPoemElementFromDOM();
     poemElement.innerHTML = toRender;
+    poemLines.forEach(line => addEventListenerToWords(line));
     renderPoemAuthor(author);
     centerThePoem(centered);
     renderNotes(notes, quotes);
@@ -87,7 +88,7 @@ function renderNotes(notesForPoem, quotesForPoem) {
         const newNotes = Object.assign(Object.assign({}, notesForPoem), { '<i>New Note</i>': [] });
         renderNotes(newNotes, quotesForPoem);
     };
-    initialiseEventHandlers(checkboxes, textsToHighlight, color, notesForPoem);
+    initialiseEventHandlers(checkboxes, textsToHighlight, color);
 }
 function changePoem(event, poemData) {
     const target = event.target;
@@ -101,6 +102,14 @@ function changePoem(event, poemData) {
     renderPoem(poemContent, poemAuthor, isCentered, poemNotes, poemQuotes);
 }
 function splitToWords(line) {
+    const wordSections = getWordSections(line);
+    const firstWord = wordSections.filter(word => !word.match(/^[0-9]+$/))[0];
+    return wordSections.map((word) => {
+        const isfirstWord = firstWord === word;
+        return makeElementForWord(word, isfirstWord);
+    }).join('');
+}
+function getWordSections(line) {
     // Split at space of fake space
     const words = line.split(/ /);
     // Accumulator for reduce needs to start as '' so first word gets split as well.
@@ -109,12 +118,7 @@ function splitToWords(line) {
         const wordSections = word.split('|+|');
         return acc + ' ' + wordSections.join(' ');
     });
-    const wordSections = wordSectionsString.split(' ');
-    const firstWord = wordSections.filter(word => !word.match(/^[0-9]+$/))[0];
-    return wordSections.map((word) => {
-        const isfirstWord = firstWord === word;
-        return makeElementForWord(word, isfirstWord);
-    }).join('');
+    return wordSectionsString.split(' ');
 }
 function makeElementForWord(word, isfirstWord) {
     if (word.match(/^[0-9]+$/)) {
@@ -127,6 +131,27 @@ function makeElementForWord(word, isfirstWord) {
         }
         return prefix + `<span id="${word}">${removeNumbers(word)}</span>`;
     }
+}
+function addEventListenerToWords(line) {
+    const wordSections = getWordSections(line);
+    const validWords = wordSections
+        .filter(word => !word.match(/^[0-9]+$/))
+        .filter(word => word !== '');
+    validWords.forEach(word => {
+        const wordElement = document.getElementById(word);
+        wordElement.onclick = () => {
+            if (wordElement.style.color === 'purple') {
+                unHighlightText([word]);
+                const index = highlightedText.indexOf(word);
+                highlightedText.splice(index, 1);
+            }
+            else {
+                highlightText([word], 'purple');
+                highlightedText.push(word);
+            }
+        };
+        wordElement.style.cursor = 'pointer';
+    });
 }
 function renderPoemAuthor(author) {
     const poemAuthorElement = document.getElementById(POEM_AUTHOR_DISPLAY_ID);

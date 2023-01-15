@@ -1,9 +1,9 @@
 import { currentPoemName, serverAddress } from "./modifyNotesAndKeyQuotes.js";
 import { removeNumbers } from "./utilities.js";
-let highlightedText = [];
-export function initialiseEventHandlers(checkboxes, textsToHighlight, color, allNotes) {
+export let highlightedText = [];
+export function initialiseEventHandlers(checkboxes, textsToHighlight, color) {
     checkboxes.forEach((checkbox, index) => {
-        checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes, allNotes);
+        checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes);
     });
 }
 export function addNotes(elmentToInsertInto, arrNotes, checkboxes, poemName) {
@@ -61,32 +61,37 @@ function getToggleSwitchFromParagraphElement(paragraphElement) {
     const toggleSwitchBackground = toggleSwitchInputCheckbox.nextSibling;
     return { toggleSwitchInputCheckbox, toggleSwitchBackground, };
 }
-function highlightNote(event, textToHighlight, color, checkboxes, allNotes) {
+function highlightNote(event, textToHighlight, color, checkboxes) {
     const target = event.target;
     const targetBackground = target.nextSibling;
+    const highlightedTextCopy = [...highlightedText];
     if (target.checked) {
-        unHighlightText();
+        unHighlightText(highlightedText);
+        highlightedText = [];
         highlightText(textToHighlight, color);
-        uncheckOtherCheckboxes(target, checkboxes, allNotes);
+        highlightedText = textToHighlight;
+        uncheckOtherCheckboxes(target, checkboxes, highlightedTextCopy);
         targetBackground.style.backgroundColor = 'green';
     }
     else {
-        unHighlightText();
+        unHighlightText(highlightedText);
+        highlightedText = [];
         targetBackground.style.backgroundColor = '#ccc';
-        updateNoteOrQuote(target, allNotes);
+        updateNoteOrQuote(target, highlightedTextCopy);
     }
 }
-function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes, allNotes) {
+function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes, associatedText) {
     checkboxes.forEach(input => {
         const background = input.nextSibling;
         background.style.backgroundColor = '#ccc';
         if (input.id !== checkboxToKeepChecked.id && input.checked) {
             input.checked = false;
-            updateNoteOrQuote(input, allNotes);
+            updateNoteOrQuote(input, associatedText);
         }
     });
 }
-function updateNoteOrQuote(unchecked, allNotes) {
+function updateNoteOrQuote(unchecked, associatedText) {
+    console.log(associatedText);
     const currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
     const noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
     if (noteTextElement.nodeName === 'INPUT') {
@@ -94,7 +99,7 @@ function updateNoteOrQuote(unchecked, allNotes) {
         const newNoteText = noteElement.value;
         const newVersion = {
             key: newNoteText,
-            value: allNotes[currentNoteOrQuote]
+            value: associatedText
         };
         const body = {
             poemName: currentPoemName,
@@ -108,19 +113,17 @@ function updateNoteOrQuote(unchecked, allNotes) {
         }).then(res => console.log('Request Complete! response: ', res));
     }
 }
-function highlightText(textToHighlight, color) {
+export function highlightText(textToHighlight, color) {
     textToHighlight.forEach((word) => {
         const wordSpan = document.getElementById(word);
         wordSpan.style.color = color;
     });
-    highlightedText = textToHighlight;
 }
-function unHighlightText() {
-    highlightedText.forEach((word) => {
+export function unHighlightText(textToUnhighlight) {
+    textToUnhighlight.forEach((word) => {
         const wordSpan = document.getElementById(word);
         wordSpan.style.color = 'black';
     });
-    highlightedText = [];
 }
 function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuote, poemName) {
     const deleteButtonElementContainer = paragraphElement.nextSibling;

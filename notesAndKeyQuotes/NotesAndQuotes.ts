@@ -1,13 +1,13 @@
 import { currentPoemName, main, serverAddress } from "./modifyNotesAndKeyQuotes.js";
-import { Notes, Quotes, removeNumbers } from "./utilities.js";
+import { Quotes, removeNumbers } from "./utilities.js";
 
 type NoteType = "Note" | "Quote";
 
-let highlightedText: Array<string> = [];
+export let highlightedText: Array<string> = [];
 
-export function initialiseEventHandlers(checkboxes: Array<HTMLInputElement>, textsToHighlight: Array<Array<string>>, color: string, allNotes: Notes): void {
+export function initialiseEventHandlers(checkboxes: Array<HTMLInputElement>, textsToHighlight: Array<Array<string>>, color: string): void {
     checkboxes.forEach((checkbox, index) => {
-        checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes, allNotes);
+        checkbox.onclick = (event) => highlightNote(event, textsToHighlight[index], color, checkboxes);
     })
 }
 
@@ -72,34 +72,39 @@ function getToggleSwitchFromParagraphElement(paragraphElement: HTMLParagraphElem
 }
 
 
-function highlightNote(event: Event, textToHighlight: Array<string>, color: string, checkboxes: Array<HTMLInputElement>, allNotes: Notes) {
+function highlightNote(event: Event, textToHighlight: Array<string>, color: string, checkboxes: Array<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
     const targetBackground = target.nextSibling as HTMLSpanElement;
+    const highlightedTextCopy = [...highlightedText]
     if (target.checked) {
-        unHighlightText()
+        unHighlightText(highlightedText);
+        highlightedText = [];
         highlightText(textToHighlight, color);
-        uncheckOtherCheckboxes(target, checkboxes, allNotes);
+        highlightedText = textToHighlight;
+        uncheckOtherCheckboxes(target, checkboxes, highlightedTextCopy);
         targetBackground.style.backgroundColor = 'green';
     } else {
-        unHighlightText();
+        unHighlightText(highlightedText);
+        highlightedText = []
         targetBackground.style.backgroundColor = '#ccc';
-        updateNoteOrQuote(target, allNotes);
+        updateNoteOrQuote(target, highlightedTextCopy);
     }
 
 }
 
-function uncheckOtherCheckboxes(checkboxToKeepChecked: HTMLInputElement, checkboxes: Array<HTMLInputElement>, allNotes: Notes): void {
+function uncheckOtherCheckboxes(checkboxToKeepChecked: HTMLInputElement, checkboxes: Array<HTMLInputElement>, associatedText: Array<string>): void {
     checkboxes.forEach(input => {
         const background = input.nextSibling as HTMLSpanElement;
         background.style.backgroundColor = '#ccc';
         if (input.id !== checkboxToKeepChecked.id && input.checked) {
             input.checked = false;
-            updateNoteOrQuote(input, allNotes);
+            updateNoteOrQuote(input, associatedText);
         }
     });
 }
 
-function updateNoteOrQuote(unchecked: HTMLInputElement, allNotes: Notes) {
+function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<string>) {
+    console.log(associatedText);
     const currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
     const noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`) as HTMLParagraphElement | HTMLInputElement;
     if (noteTextElement.nodeName === 'INPUT') {
@@ -107,7 +112,7 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, allNotes: Notes) {
         const newNoteText: string = noteElement.value;
         const newVersion: {key: string, value: string[]} = {
             key: newNoteText,
-            value: allNotes[currentNoteOrQuote]
+            value: associatedText
         };
         const body = {
             poemName: currentPoemName,
@@ -122,20 +127,18 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, allNotes: Notes) {
     }
 }
 
-function highlightText(textToHighlight: Array<string>, color: string) {
+export function highlightText(textToHighlight: Array<string>, color: string) {
     textToHighlight.forEach((word: string) => {
         const wordSpan = document.getElementById(word) as HTMLSpanElement;
         wordSpan.style.color = color;
     });
-    highlightedText = textToHighlight;
 }
 
-function unHighlightText() {
-    highlightedText.forEach((word: string) => {
+export function unHighlightText(textToUnhighlight: Array<string>) {
+    textToUnhighlight.forEach((word: string) => {
         const wordSpan = document.getElementById(word) as HTMLSpanElement;
         wordSpan.style.color = 'black';
     });
-    highlightedText = [];
 }
 
 function initialiseDeleteButton(paragraphElement: HTMLParagraphElement, jsonRepresentation: string, noteOrQuote: NoteType, poemName: string) {

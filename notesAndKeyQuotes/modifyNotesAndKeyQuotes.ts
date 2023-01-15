@@ -1,4 +1,4 @@
-import { addNotes, addQuotes, initialiseEventHandlers } from './NotesAndQuotes.js';
+import { addNotes, addQuotes, highlightedText, highlightText, initialiseEventHandlers, unHighlightText } from './NotesAndQuotes.js';
 import { ConvertedPoems, Notes, Quotes, removeNumbers } from './utilities.js';
 
 // Constants for ids
@@ -45,6 +45,9 @@ function renderPoem(poemContent: string, author: string, centered: boolean, note
     
     const poemElement = getPoemElementFromDOM();
     poemElement.innerHTML = toRender;
+
+    poemLines.forEach(line => addEventListenerToWords(line));
+
     renderPoemAuthor(author);
     
     centerThePoem(centered);
@@ -105,7 +108,7 @@ function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
         renderNotes(newNotes, quotesForPoem)
     }
     
-    initialiseEventHandlers(checkboxes, textsToHighlight, color, notesForPoem);
+    initialiseEventHandlers(checkboxes, textsToHighlight, color);
 }
 
 
@@ -122,6 +125,16 @@ function changePoem(event: Event, poemData: ConvertedPoems): void {
 }
 
 function splitToWords(line: string): string {
+    const wordSections = getWordSections(line);
+    const firstWord = wordSections.filter(word => !word.match(/^[0-9]+$/))[0];
+    return wordSections.map((word: string) => {
+        const isfirstWord = firstWord === word
+        return makeElementForWord(word, isfirstWord);
+    }).join('');
+    
+}
+
+function getWordSections(line: string): Array<string> {
     // Split at space of fake space
     const words: Array<string> = line.split(/ /);
     // Accumulator for reduce needs to start as '' so first word gets split as well.
@@ -130,13 +143,7 @@ function splitToWords(line: string): string {
         const wordSections: Array<string> = word.split('|+|');
         return acc + ' ' + wordSections.join(' ')
     })
-    const wordSections = wordSectionsString.split(' ');
-    const firstWord = wordSections.filter(word => !word.match(/^[0-9]+$/))[0];
-    return wordSections.map((word: string) => {
-        const isfirstWord = firstWord === word
-        return makeElementForWord(word, isfirstWord);
-    }).join('');
-    
+    return wordSectionsString.split(' ');
 }
 
 function makeElementForWord(word: string, isfirstWord: boolean): string {
@@ -149,6 +156,27 @@ function makeElementForWord(word: string, isfirstWord: boolean): string {
         }
         return prefix + `<span id="${word}">${removeNumbers(word)}</span>`
     }
+}
+
+function addEventListenerToWords(line: string): void {
+    const wordSections = getWordSections(line);
+    const validWords = wordSections
+                            .filter(word => !word.match(/^[0-9]+$/))
+                            .filter(word => word !== '');
+    validWords.forEach(word => {
+        const wordElement = document.getElementById(word) as HTMLSpanElement;
+        wordElement.onclick = () => {
+            if (wordElement.style.color === 'purple') {
+                unHighlightText([word]);
+                const index = highlightedText.indexOf(word);
+                highlightedText.splice(index, 1);
+            } else {
+                highlightText([word], 'purple');
+                highlightedText.push(word);
+            }
+        }
+        wordElement.style.cursor = 'pointer';
+    })
 }
 
 
