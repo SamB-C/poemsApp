@@ -136,7 +136,6 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
             return existingQuote.join(' ') !== oldIdentifier
         });
         remainingQuotes.push(newVersion);
-        console.log(remainingQuotes)
         convertedPoems[poemName].quotes = remainingQuotes;
     }
     // Write the converted poems object back to file

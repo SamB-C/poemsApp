@@ -24,6 +24,11 @@ export function addQuotes(elmentToInsertInto, arrQuotes, checkboxes, poemName) {
         const newQuoteElement = insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), "Quote");
         initialiseToggleSwitch(newQuoteElement, checkboxes);
         initialiseDeleteButton(newQuoteElement, reducedQuote, "Quote", poemName);
+        newQuoteElement.onclick = () => {
+            const toggleSwitch = getToggleSwitchFromParagraphElement(newQuoteElement).toggleSwitchInputCheckbox;
+            toggleSwitch.click();
+        };
+        newQuoteElement.style.cursor = 'pointer';
     });
 }
 function insertNoteOrQuote(elmentToInsertInto, idText, displayText, noteType) {
@@ -39,9 +44,12 @@ function insertNoteOrQuote(elmentToInsertInto, idText, displayText, noteType) {
 }
 function getElementAsStr(toggleSwitch, textId, displayText, deleteButton, modal, noteType) {
     if (noteType === "Note") {
-        return `<div class="inline_container">${toggleSwitch}<input id="${textId}" class="note_or_quote_text note_input_box", value="${displayText}"></input>${deleteButton}${modal}</div>`;
+        return `<div class="inline_container">${toggleSwitch}<input id="${textId}" placeholder="Add a note here" class="note_or_quote_text note_input_box", value="${displayText}"></input>${deleteButton}${modal}</div>`;
     }
     else {
+        if (displayText === '') {
+            displayText = '<i>New Quote</i>';
+        }
         return `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p>${deleteButton}${modal}</div>`;
     }
 }
@@ -63,6 +71,7 @@ function getToggleSwitchFromParagraphElement(paragraphElement) {
     return { toggleSwitchInputCheckbox, toggleSwitchBackground, };
 }
 function highlightNote(event, textToHighlight, color, checkboxes) {
+    console.log('hi');
     const target = event.target;
     const targetBackground = target.nextSibling;
     const highlightedTextCopy = [...highlightedText];
@@ -103,10 +112,16 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes, associatedTex
     });
 }
 function updateNoteOrQuote(unchecked, associatedText) {
-    // Get the content of the 
-    const currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
-    const noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
-    console.log(noteTextElement);
+    // Get the content of the quote when it was rendered
+    let currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
+    let noteTextElement;
+    if (unchecked.id === '___checkbox__') {
+        currentNoteOrQuote = '__NEW__';
+        noteTextElement = document.getElementById('____');
+    }
+    else {
+        noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
+    }
     if (noteTextElement.nodeName === 'INPUT') {
         const noteElement = noteTextElement;
         const newNoteText = noteElement.value;

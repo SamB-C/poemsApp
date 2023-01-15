@@ -69,45 +69,60 @@ function renderPoemSelect(poemNames: Array<string>, currentPoemName: string, poe
 }
 
 function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
+    // Get the notes and quotes elements from the DOM
     const notesElement = document.getElementById(POEM_NOTES_DISPLAY_ID) as HTMLDivElement;
     const quotesElement = document.getElementById(POEM_QUOTES_DISPLAY_ID) as HTMLDivElement;
+    // Initialise some variables
     const checkboxes: Array<HTMLInputElement> = [];
     let textsToHighlight: Array<Array<string>> = [];
 
+    // Render Quotes
     quotesElement.innerHTML = '<h1>Quotes:</h1>';
     if (quotesForPoem) {
+        // There are some quotes to render, so render those quotes and add their associated text to textsToHighlight
         addQuotes(quotesElement, quotesForPoem, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(quotesForPoem)
     } else {
+        // Case for no quotes to render
         quotesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>');
     }
+    // Add the add new quote button
     quotesElement.insertAdjacentHTML('beforeend', `<button id="${ADD_NEW_QUOTE_DISPLAY_ID}">&plus;</button>`);
     const addNewQuoteButton = document.getElementById(ADD_NEW_QUOTE_DISPLAY_ID) as HTMLButtonElement;
     addNewQuoteButton.onclick = () => {
         const newQuotes: Quotes = [...quotesForPoem, []];
         renderNotes(notesForPoem, newQuotes);
+        const checkbox = document.getElementById('___checkbox__') as HTMLInputElement;
+        checkbox.click();
     }
 
-    
+    // Render Notes
     notesElement.innerHTML = '<h1>Notes:</h1>';
     if (notesForPoem) {
+        // There are some notes to render, so render those notes and add their associated text to textsToHighlight
         const notesKeys = Object.keys(notesForPoem);
         const notesValues = notesKeys.map(key => notesForPoem[key]);
         addNotes(notesElement, notesKeys, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(notesValues)
     } else {
+        // Case for no quotes to render
         notesElement.insertAdjacentHTML('beforeend', '<p><i>None</i></p>')
     }
+    // Add the add new note button
     notesElement.insertAdjacentHTML('beforeend', `<button id="${ADD_NEW_NOTE_DISPLAY_ID}">&plus;</button>`);
     const addNewNoteButton = document.getElementById(ADD_NEW_NOTE_DISPLAY_ID) as HTMLButtonElement;
     addNewNoteButton.onclick = () => {
         const newNotes: Notes = {
             ...notesForPoem,
-            '<i>New Note</i>': []
+            '': []
         }
-        renderNotes(newNotes, quotesForPoem)
+        renderNotes(newNotes, quotesForPoem);
+        const emptyNote = document.getElementById('____') as HTMLInputElement;
+        emptyNote.click();
+        emptyNote.focus();
     }
     
+    // Initialise the event handlers for the checkboxes, so they highlight the correct text
     initialiseEventHandlers(checkboxes, textsToHighlight, color);
 }
 

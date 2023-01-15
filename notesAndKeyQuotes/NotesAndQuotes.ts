@@ -30,6 +30,11 @@ export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes,
         const newQuoteElement: HTMLParagraphElement = insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), "Quote");
         initialiseToggleSwitch(newQuoteElement, checkboxes);
         initialiseDeleteButton(newQuoteElement, reducedQuote, "Quote", poemName);
+        newQuoteElement.onclick = () => {
+            const toggleSwitch = getToggleSwitchFromParagraphElement(newQuoteElement).toggleSwitchInputCheckbox as HTMLInputElement;
+            toggleSwitch.click();
+        }
+        newQuoteElement.style.cursor = 'pointer';
     });
 }
 
@@ -47,8 +52,11 @@ function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, d
 
 function getElementAsStr(toggleSwitch: string, textId: string, displayText: string, deleteButton: string, modal: string, noteType: NoteType): string {
     if (noteType === "Note") {
-        return `<div class="inline_container">${toggleSwitch}<input id="${textId}" class="note_or_quote_text note_input_box", value="${displayText}"></input>${deleteButton}${modal}</div>`;
+        return `<div class="inline_container">${toggleSwitch}<input id="${textId}" placeholder="Add a note here" class="note_or_quote_text note_input_box", value="${displayText}"></input>${deleteButton}${modal}</div>`;
     } else {
+        if (displayText === '') {
+            displayText = '<i>New Quote</i>';
+        }
         return `<div class="inline_container">${toggleSwitch}<p id="${textId}" class="note_or_quote_text">${displayText}</p>${deleteButton}${modal}</div>`;
     }
 }
@@ -74,6 +82,7 @@ function getToggleSwitchFromParagraphElement(paragraphElement: HTMLParagraphElem
 
 
 function highlightNote(event: Event, textToHighlight: Array<string>, color: string, checkboxes: Array<HTMLInputElement>) {
+    console.log('hi')
     const target = event.target as HTMLInputElement;
     const targetBackground = target.nextSibling as HTMLSpanElement;
     const highlightedTextCopy = [...highlightedText]
@@ -116,10 +125,17 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked: HTMLInputElement, checkbo
 }
 
 function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<string>) {
-    // Get the content of the 
-    const currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
-    const noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`) as HTMLParagraphElement | HTMLInputElement;
-    console.log(noteTextElement);
+    // Get the content of the quote when it was rendered
+    let currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
+    let noteTextElement: HTMLParagraphElement | HTMLInputElement;
+
+    if (unchecked.id === '___checkbox__') {
+        currentNoteOrQuote = '__NEW__';
+        noteTextElement = document.getElementById('____') as HTMLParagraphElement | HTMLInputElement;
+    } else {
+        noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`) as HTMLParagraphElement | HTMLInputElement;
+    }
+
     if (noteTextElement.nodeName === 'INPUT') {
         const noteElement = noteTextElement as HTMLInputElement;
         const newNoteText: string = noteElement.value;
@@ -129,7 +145,7 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<st
         };
         const body = {
             poemName: currentPoemName,
-            noteType: 'Note', 
+            noteType: 'Note',
             oldIdentifier: currentNoteOrQuote, 
             newVersion,
         }
