@@ -118,24 +118,38 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
         // Setup
         const existingNotes = convertedPoems[poemName].notes;
         const remainingNotes = {}
-
+        
         // Keep all notes that are not the note in question
         Object.keys(existingNotes).forEach(noteText => {
             if (noteText !== oldIdentifier) {
                 remainingNotes[noteText] = existingNotes[noteText];
+            } else {
+                // Add the changed note in its new form
+                remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
             }
         });
 
-        // Add the changed note in its new form
-        remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
+        if (oldIdentifier === '__NEW__') {
+            remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
+        }
+
+        // Alter converted poems
         convertedPoems[poemName].notes = remainingNotes;
 
     } else if (noteType === 'Quote') {
         const existingQuotes = convertedPoems[poemName].quotes;
-        const remainingQuotes = existingQuotes.filter(existingQuote => {
-            return existingQuote.join(' ') !== oldIdentifier
+        const remainingQuotes = existingQuotes.map(existingQuote => {
+            if (existingQuote.join(' ') !== oldIdentifier) {
+                return existingQuote;
+            } else {
+                return newVersion;
+            }
         });
-        remainingQuotes.push(newVersion);
+
+        if (oldIdentifier === '__NEW__') {
+            remainingQuotes.push(newVersion);
+        }
+
         convertedPoems[poemName].quotes = remainingQuotes;
     }
     // Write the converted poems object back to file
