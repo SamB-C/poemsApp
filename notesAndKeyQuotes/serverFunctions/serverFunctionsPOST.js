@@ -16,53 +16,67 @@ function insertionSortIntoOrderInPoem(poem, words) {
     return words;
 }
 
+function isNew(oldIdentifier) {
+    return oldIdentifier === '__NEW__';
+}
+
+function editNote(existingNotes, oldIdentifier, newVersion, convertedPoem) {
+    // Setup
+    const alteredNotes = {}
+    
+    if (existingNotes) {
+        // Keep all notes that are not the note in question
+        Object.keys(existingNotes).forEach(identifier => {
+            if (identifier !== oldIdentifier) {
+                alteredNotes[identifier] = existingNotes[identifier];
+            } else {
+                // Add the changed note in its new form
+                alteredNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoem, newVersion.value);
+            }
+        });
+    }
+
+    if (isNew(oldIdentifier)) {
+        alteredNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoem, newVersion.value);
+    }
+
+    return alteredNotes;
+}
+
+function editQuote(existingQuotes, oldIdentifier, newVersion) {
+    if (existingQuotes) {
+        const alteredQuotes = existingQuotes.map(existingQuote => {
+            const identifier = existingQuote.join(' ');
+            if (identifier === oldIdentifier) {
+                return newVersion;
+            }
+            return existingQuote;
+        });
+
+        if (isNew(oldIdentifier)) {
+            alteredQuotes.push(newVersion);
+        }
+
+        return alteredQuotes;
+    }
+    return [newVersion]
+}
+
 function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
     // Gets the converted Poems object from file
     const convertedPoemsJSON = fs.readFileSync('./convertedPoems.json', {encoding: 'utf-8'});
     const convertedPoems = JSON.parse(convertedPoemsJSON);
 
-    // Only if the type is a note
+    // Edit notes or quotes accordingly
     if (noteType === 'Note') {
-        // Setup
         const existingNotes = convertedPoems[poemName].notes;
-        const remainingNotes = {}
-        
-        if (existingNotes) {
-            // Keep all notes that are not the note in question
-            Object.keys(existingNotes).forEach(noteText => {
-                if (noteText !== oldIdentifier) {
-                    remainingNotes[noteText] = existingNotes[noteText];
-                } else {
-                    // Add the changed note in its new form
-                    remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
-                }
-            });
-        }
-
-        if (oldIdentifier === '__NEW__') {
-            remainingNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoems[poemName].convertedPoem, newVersion.value);
-        }
-
-        // Alter converted poems
-        convertedPoems[poemName].notes = remainingNotes;
-
-    } else if (noteType === 'Quote' && convertedPoems[poemName].quotes) {
-        const existingQuotes = convertedPoems[poemName].quotes;
-        const remainingQuotes = existingQuotes.map(existingQuote => {
-            if (existingQuote.join(' ') !== oldIdentifier) {
-                return existingQuote;
-            } else {
-                return newVersion;
-            }
-        });
-
-        if (oldIdentifier === '__NEW__') {
-            remainingQuotes.push(newVersion);
-        }
-
-        convertedPoems[poemName].quotes = remainingQuotes;
+        const poemContent = convertedPoems[poemName].convertedPoem
+        const alteredNotes = editNote(existingNotes, oldIdentifier, newVersion, poemContent);
+        convertedPoems[poemName].notes = alteredNotes
     } else if (noteType === 'Quote') {
-        convertedPoems[poemName].quotes = [newVersion]
+        const existingQuotes = convertedPoems[poemName].quotes;
+        const alteredQuotes = editQuote(existingQuotes, oldIdentifier, newVersion);
+        convertedPoems[poemName].quotes = alteredQuotes;
     }
 
     // Write the converted poems object back to file
