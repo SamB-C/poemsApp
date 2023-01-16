@@ -161,6 +161,9 @@ function getWordSections(line: string): Array<string> {
     words.unshift('')
     const wordSectionsString: string = words.reduce((acc: string, word: string) => {
         const wordSections: Array<string> = word.split('|+|');
+        if (acc === '') {
+            return wordSections.join(' ');
+        }
         return acc + ' ' + wordSections.join(' ')
     })
     return wordSectionsString.split(' ');
@@ -197,9 +200,7 @@ function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array
 
 function addEventListenerToWords(poem: string, line: string): void {
     const wordSections = getWordSections(line);
-    const validWords = wordSections
-                            .filter(word => !word.match(/^[0-9]+$/))
-                            .filter(word => word !== '');
+    const validWords = wordSections.filter(word => !word.match(/^[0-9]+$/))
     validWords.forEach(word => {
         const wordElement = document.getElementById(word) as HTMLSpanElement;
         wordElement.onclick = () => wordEventListener(wordElement, word, poem)

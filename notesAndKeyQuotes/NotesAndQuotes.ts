@@ -82,7 +82,6 @@ function getToggleSwitchFromParagraphElement(paragraphElement: HTMLParagraphElem
 
 
 function highlightNote(event: Event, textToHighlight: Array<string>, color: string, checkboxes: Array<HTMLInputElement>) {
-    console.log('hi')
     const target = event.target as HTMLInputElement;
     const targetBackground = target.nextSibling as HTMLSpanElement;
     const highlightedTextCopy = [...highlightedText]
