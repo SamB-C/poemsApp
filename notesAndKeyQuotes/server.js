@@ -1,5 +1,6 @@
 // IMPORTANT
-// The server must be run from inside the notesAndKeyQuotes directory as doesn't use full filepath.
+// The server can be run using the command 'npm run server'
+// Or 'notesAndKeyQuotes/server.js' from the root directory of the project
 
 const http = require('http');
 const handleGet = require('./serverFunctions/serverFunctionsGET');
