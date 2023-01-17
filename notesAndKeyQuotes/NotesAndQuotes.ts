@@ -101,14 +101,17 @@ function highlightNote(event: Event, textToHighlight: Array<string>, color: stri
     const targetBackground = target.nextSibling as HTMLSpanElement;
     const highlightedTextCopy = [...highlightedText]
     if (target.checked) {
+
+        // Deal with highlighting text
         unHighlightText(highlightedText);
         highlightedText = [];
         highlightText(textToHighlight, color);
         highlightedText = textToHighlight;
+
         uncheckOtherCheckboxes(target, checkboxes, highlightedTextCopy);
         targetBackground.style.backgroundColor = 'green';
 
-        // Make the currentQuote be the selected quote 
+        // Make the currentQuote be the selected quote
         const labelElement = target.parentElement as HTMLLabelElement;
         const switchContainer = labelElement.parentElement as HTMLDivElement;
         const textSection = switchContainer.nextSibling as HTMLInputElement | HTMLParagraphElement;
@@ -133,12 +136,16 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked: HTMLInputElement, checkbo
         background.style.backgroundColor = '#ccc';
         if (input.id !== checkboxToKeepChecked.id && input.checked) {
             input.checked = false;
-            updateNoteOrQuote(input, associatedText);
+            setTimeout(async () => {
+                await updateNoteOrQuote(input, associatedText);
+                const checkboxToKeepCheckedElement = document.getElementById(checkboxToKeepChecked.id) as HTMLInputElement;
+                checkboxToKeepCheckedElement.click();
+            }, 400)
         }
     });
 }
 
-function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<string>) {
+async function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<string>) {
     // Get the content of the quote when it was rendered
     let currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
     let noteTextElement: HTMLParagraphElement | HTMLInputElement;
@@ -163,7 +170,7 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<st
             oldIdentifier: currentNoteOrQuote, 
             newVersion,
         }
-        fetch(`${serverAddress}/note`, {
+        await fetch(`${serverAddress}/note`, {
             method: 'POST',
             body: JSON.stringify(body)
         }).then(res => console.log('Request Complete! response: ', res))
@@ -174,7 +181,7 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<st
             oldIdentifier: currentNoteOrQuote,
             newVersion: associatedText
         }
-        fetch(`${serverAddress}/quote`, {
+        await fetch(`${serverAddress}/quote`, {
             method: 'POST',
             body: JSON.stringify(body)
         })
@@ -195,9 +202,11 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<st
             });
     }
 
-    fetch(`${serverAddress}convertedPoems.json`)
+    await fetch(`${serverAddress}convertedPoems.json`)
             .then(response => response.json())
-            .then((data: ConvertedPoems) => renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes));
+            .then((data: ConvertedPoems) => {
+                renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes);
+            })
 }
 
 export function highlightText(textToHighlight: Array<string>, color: string) {

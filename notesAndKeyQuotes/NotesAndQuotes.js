@@ -86,13 +86,14 @@ function highlightNote(event, textToHighlight, color, checkboxes) {
     const targetBackground = target.nextSibling;
     const highlightedTextCopy = [...highlightedText];
     if (target.checked) {
+        // Deal with highlighting text
         unHighlightText(highlightedText);
         highlightedText = [];
         highlightText(textToHighlight, color);
         highlightedText = textToHighlight;
         uncheckOtherCheckboxes(target, checkboxes, highlightedTextCopy);
         targetBackground.style.backgroundColor = 'green';
-        // Make the currentQuote be the selected quote 
+        // Make the currentQuote be the selected quote
         const labelElement = target.parentElement;
         const switchContainer = labelElement.parentElement;
         const textSection = switchContainer.nextSibling;
@@ -117,70 +118,78 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked, checkboxes, associatedTex
         background.style.backgroundColor = '#ccc';
         if (input.id !== checkboxToKeepChecked.id && input.checked) {
             input.checked = false;
-            updateNoteOrQuote(input, associatedText);
+            setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+                yield updateNoteOrQuote(input, associatedText);
+                const checkboxToKeepCheckedElement = document.getElementById(checkboxToKeepChecked.id);
+                checkboxToKeepCheckedElement.click();
+            }), 400);
         }
     });
 }
 function updateNoteOrQuote(unchecked, associatedText) {
-    // Get the content of the quote when it was rendered
-    let currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
-    let noteTextElement;
-    if (unchecked.id === '___checkbox__') {
-        currentNoteOrQuote = '__NEW__';
-        noteTextElement = document.getElementById('____');
-    }
-    else {
-        noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
-    }
-    if (noteTextElement.nodeName === 'INPUT') {
-        const noteElement = noteTextElement;
-        const newNoteText = noteElement.value;
-        const newVersion = {
-            key: newNoteText,
-            value: associatedText
-        };
-        const body = {
-            poemName: currentPoemName,
-            noteType: 'Note',
-            oldIdentifier: currentNoteOrQuote,
-            newVersion,
-        };
-        fetch(`${serverAddress}/note`, {
-            method: 'POST',
-            body: JSON.stringify(body)
-        }).then(res => console.log('Request Complete! response: ', res));
-    }
-    else {
-        const body = {
-            poemName: currentPoemName,
-            noteType: 'Quote',
-            oldIdentifier: currentNoteOrQuote,
-            newVersion: associatedText
-        };
-        fetch(`${serverAddress}/quote`, {
-            method: 'POST',
-            body: JSON.stringify(body)
-        })
-            .then((res) => __awaiter(this, void 0, void 0, function* () {
-            const err = yield res.json();
-            if (err.errorType !== 'No error') {
-                const erroneousQuote = body.newVersion.map(word => removeNumbers(word)).join(' ');
-                let errorMessage = '';
-                if (err.errorType === 'Quote overlap') {
-                    errorMessage = `Quote: '${erroneousQuote}' is invalid because word '${err.errorType}' overlaps with another quote.`;
+    return __awaiter(this, void 0, void 0, function* () {
+        // Get the content of the quote when it was rendered
+        let currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
+        let noteTextElement;
+        if (unchecked.id === '___checkbox__') {
+            currentNoteOrQuote = '__NEW__';
+            noteTextElement = document.getElementById('____');
+        }
+        else {
+            noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
+        }
+        if (noteTextElement.nodeName === 'INPUT') {
+            const noteElement = noteTextElement;
+            const newNoteText = noteElement.value;
+            const newVersion = {
+                key: newNoteText,
+                value: associatedText
+            };
+            const body = {
+                poemName: currentPoemName,
+                noteType: 'Note',
+                oldIdentifier: currentNoteOrQuote,
+                newVersion,
+            };
+            yield fetch(`${serverAddress}/note`, {
+                method: 'POST',
+                body: JSON.stringify(body)
+            }).then(res => console.log('Request Complete! response: ', res));
+        }
+        else {
+            const body = {
+                poemName: currentPoemName,
+                noteType: 'Quote',
+                oldIdentifier: currentNoteOrQuote,
+                newVersion: associatedText
+            };
+            yield fetch(`${serverAddress}/quote`, {
+                method: 'POST',
+                body: JSON.stringify(body)
+            })
+                .then((res) => __awaiter(this, void 0, void 0, function* () {
+                const err = yield res.json();
+                if (err.errorType !== 'No error') {
+                    const erroneousQuote = body.newVersion.map(word => removeNumbers(word)).join(' ');
+                    let errorMessage = '';
+                    if (err.errorType === 'Quote overlap') {
+                        errorMessage = `Quote: '${erroneousQuote}' is invalid because word '${err.errorType}' overlaps with another quote.`;
+                    }
+                    else if (err.errorType === 'Words not consecutive') {
+                        const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
+                        const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
+                        errorMessage = `Quote: '${erroneousQuote}' is invalid because words '${incorrectSequence.join(' ')}' are not consecutive. Word '${correctSequence[0]}' should be followed by '${correctSequence[1]}'`;
+                    }
+                    alert(errorMessage);
                 }
-                else if (err.errorType === 'Words not consecutive') {
-                    const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
-                    const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
-                    errorMessage = `Quote: '${erroneousQuote}' is invalid because words '${incorrectSequence.join(' ')}' are not consecutive. Word '${correctSequence[0]}' should be followed by '${correctSequence[1]}'`;
-                }
-                alert(errorMessage);
-            }
-        }));
-    }
-    fetch(`${serverAddress}convertedPoems.json`)
-        .then(response => response.json())
-        .then((data) => renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes));
+            }));
+        }
+        yield fetch(`${serverAddress}convertedPoems.json`)
+            .then(response => response.json())
+            .then((data) => {
+            renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes);
+        });
+    });
 }
 export function highlightText(textToHighlight, color) {
     textToHighlight.forEach((word) => {
