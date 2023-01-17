@@ -116,7 +116,21 @@ function checkQuoteIsValid(quoteToCheck, poemContent, allQuotes) {
     return undefined
 }
 
-function editQuote(existingQuotes, oldIdentifier, newVersion) {
+function orderQuotes(quotes, poemContent) {
+    const firstWords = quotes.map(quote => quote[0]);
+    const orderedFirstWords = insertionSortIntoOrderInPoem(poemContent, firstWords);
+    const orderedQuotes = [];
+    orderedFirstWords.forEach(firstWord => {
+        quotes.forEach(quote => {
+            if (quote[0] === firstWord) {
+                orderedQuotes.push(quote);
+            }
+        })
+    });
+    return orderedQuotes;
+}
+
+function editQuote(existingQuotes, oldIdentifier, newVersion, poemContent) {
     if (existingQuotes) {
         const alteredQuotes = existingQuotes.map(existingQuote => {
             const identifier = existingQuote.join(' ');
@@ -130,7 +144,9 @@ function editQuote(existingQuotes, oldIdentifier, newVersion) {
             alteredQuotes.push(newVersion);
         }
 
-        return alteredQuotes;
+        const orderedAlteredQuotes = orderQuotes(alteredQuotes, poemContent)
+
+        return orderedAlteredQuotes;
     }
     return [newVersion]
 }
@@ -167,7 +183,7 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
             logQuoteErrorMessage(quoteNotValidErrorMessage, newVersion)
             return quoteNotValidErrorMessage
         } else {
-            const alteredQuotes = editQuote(existingQuotes, oldIdentifier, newVersion);
+            const alteredQuotes = editQuote(existingQuotes, oldIdentifier, newVersion, poemContent);
             convertedPoems[poemName].quotes = alteredQuotes;
         }
     }
