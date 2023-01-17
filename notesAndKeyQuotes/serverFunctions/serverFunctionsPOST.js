@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const FAKE_SPACE = '|+|'
+
 function insertionSortIntoOrderInPoem(poem, words) {
     for (let i = 1; i < words.length; i++) {
         let currentWordIndex = i;
@@ -43,6 +45,77 @@ function editNote(existingNotes, oldIdentifier, newVersion, convertedPoem) {
     return alteredNotes;
 }
 
+function getAllWordsInPoem(poemContent) {
+    const lines = poemContent.split('\n');
+    const words = [];
+    lines.forEach(line => {
+        const wordsInLine = line.split(' ');
+        const wordSections = [];
+        wordsInLine.forEach(word => {
+            const wordSectionsOfSingleWord = word.split(FAKE_SPACE);
+            wordSections.push(...wordSectionsOfSingleWord);
+        });
+        words.push(...wordSections);
+    })
+    return words
+}
+
+function removeNumbers(word) {
+    return word.split('').filter(letter => !letter.match(/[0-9]/)).join('')
+}
+
+function checkAllWordsConsecutive(words, quoteToCheck) {
+    const wordsNoSpaces = words.filter(word => removeNumbers(word) !== '')
+    const indexOfFirstWord = wordsNoSpaces.indexOf(quoteToCheck[0]);
+    const errors = quoteToCheck.map((word, index) => {
+        const nextWordInPoem = wordsNoSpaces[indexOfFirstWord + index];
+        if (word !== nextWordInPoem) {
+            const incorrectSequence = [quoteToCheck[index - 1], word];
+            const correctSequence = [quoteToCheck[index - 1] ,nextWordInPoem];
+            return {
+                incorrectSequence,
+                correctSequence,
+            }
+        }
+    });
+    return errors.filter(err => err !== undefined)[0];
+}
+
+function checkNoOverlaps(allQuotes, quoteToCheck) {
+    let overlap = undefined
+    allQuotes.forEach(quote => {
+        const quoteIdentifier = quote.join(' ');
+        const quoteToCheckIdentifier = quoteToCheck.join(' ');
+        if (quoteIdentifier !== quoteToCheckIdentifier) {
+            quote.forEach(word => {
+                if (quoteToCheck.includes(word)) {
+                    overlap = word
+                }
+            })
+        }
+    })
+    return overlap;
+}
+
+function checkQuoteIsValid(quoteToCheck, poemContent, allQuotes) {
+    const words = getAllWordsInPoem(poemContent);
+    const errNotConsecutive = checkAllWordsConsecutive(words, quoteToCheck);
+    if (errNotConsecutive) {
+        return {
+            errorType: 'Words not consecutive',
+            error: errNotConsecutive
+        }
+    }
+    const errOverlap = checkNoOverlaps(allQuotes, quoteToCheck);
+    if (errOverlap !== undefined) {
+        return {
+            errorType: 'Quote overlap',
+            error: errOverlap
+        }
+    }
+    return undefined
+}
+
 function editQuote(existingQuotes, oldIdentifier, newVersion) {
     if (existingQuotes) {
         const alteredQuotes = existingQuotes.map(existingQuote => {
@@ -62,25 +135,46 @@ function editQuote(existingQuotes, oldIdentifier, newVersion) {
     return [newVersion]
 }
 
+function logQuoteErrorMessage(err, newVersion) {
+    console.log(`'${newVersion.join(' ')}' is not a valid quote - ${err.errorType}:`);
+    if (err.errorType === 'Words not consecutive') {
+        const { incorrectSequence, correctSequence } = err.error;
+        console.log(`Incorrect sequence = ${incorrectSequence}`);
+        console.log(`Correct sequence = ${correctSequence}\n`)
+    } else {
+        const overlap = err.error;
+        console.log(`Word '${overlap}' in multiple quotes.\n`)
+    }
+    console.log('Update not complete\n')
+}
+
 function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
     // Gets the converted Poems object from file
     const convertedPoemsJSON = fs.readFileSync('./convertedPoems.json', {encoding: 'utf-8'});
     const convertedPoems = JSON.parse(convertedPoemsJSON);
 
+    const poemContent = convertedPoems[poemName].convertedPoem
+
     // Edit notes or quotes accordingly
     if (noteType === 'Note') {
         const existingNotes = convertedPoems[poemName].notes;
-        const poemContent = convertedPoems[poemName].convertedPoem
         const alteredNotes = editNote(existingNotes, oldIdentifier, newVersion, poemContent);
         convertedPoems[poemName].notes = alteredNotes
     } else if (noteType === 'Quote') {
         const existingQuotes = convertedPoems[poemName].quotes;
-        const alteredQuotes = editQuote(existingQuotes, oldIdentifier, newVersion);
-        convertedPoems[poemName].quotes = alteredQuotes;
+        const quoteNotValidErrorMessage = checkQuoteIsValid(newVersion, poemContent, existingQuotes);
+        if (quoteNotValidErrorMessage !==  undefined) {
+            logQuoteErrorMessage(quoteNotValidErrorMessage, newVersion)
+            return quoteNotValidErrorMessage
+        } else {
+            const alteredQuotes = editQuote(existingQuotes, oldIdentifier, newVersion);
+            convertedPoems[poemName].quotes = alteredQuotes;
+        }
     }
 
     // Write the converted poems object back to file
-    fs.writeFile('./convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}})
+    fs.writeFile('./convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}});
+    return {errorType: 'No error', error: null}
 }
 
 function handlePost(req, res) {
@@ -93,9 +187,10 @@ function handlePost(req, res) {
     req.on('end', () => {
         body = JSON.parse(body);
         console.log('Body ->', body);
-        editNoteOrQuote(body.noteType, body.oldIdentifier, body.newVersion, body.poemName)
+        const err = editNoteOrQuote(body.noteType, body.oldIdentifier, body.newVersion, body.poemName)
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end('post recivied');
+        res.write(JSON.stringify(err));
+        res.end();
     });
 }
 

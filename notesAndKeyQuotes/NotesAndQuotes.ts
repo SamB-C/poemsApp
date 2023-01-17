@@ -2,6 +2,19 @@ import { currentPoemName, main, renderNotes, serverAddress } from "./modifyNotes
 import { ConvertedPoems, Quotes, removeNumbers } from "./utilities.js";
 
 type NoteType = "Note" | "Quote";
+type WordsNotConsecutiveError = {
+    errorType: 'Words not consecutive',
+    error: {incorrectSequence: Array<string>, correctSequence: Array<string>}
+}
+type QuoteOverlapError = {
+    errorType: 'Quote overlap',
+    error: string
+}
+type NoError = {
+    errorType: 'No error',
+    error: null
+}
+type PostErrorResponse = WordsNotConsecutiveError | QuoteOverlapError | NoError
 
 export let highlightedText: Array<string> = [];
 export let currentQuote: HTMLParagraphElement | undefined = undefined;
@@ -162,7 +175,22 @@ function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<st
         fetch(`${serverAddress}/quote`, {
             method: 'POST',
             body: JSON.stringify(body)
-        }).then(res => console.log('Request Complete! response: ', res))
+        })
+            .then(async (res) => {
+                const err = await res.json() as PostErrorResponse;
+                if (err.errorType !== 'No error') {
+                    const erroneousQuote = body.newVersion.map(word => removeNumbers(word)).join(' ');
+                    let errorMessage: string = '';
+                    if (err.errorType === 'Quote overlap') {
+                        errorMessage = `Quote: '${erroneousQuote}' is invalid because word '${err.errorType}' overlaps with another quote.`
+                    } else if (err.errorType === 'Words not consecutive') {
+                        const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word))
+                        const correctSequence = err.error.correctSequence.map(word => removeNumbers(word))
+                        errorMessage = `Quote: '${erroneousQuote}' is invalid because words '${incorrectSequence.join(' ')}' are not consecutive. Word '${correctSequence[0]}' should be followed by '${correctSequence[1]}'`;
+                    }
+                    alert(errorMessage);
+                }
+            });
     }
 
     fetch(`${serverAddress}convertedPoems.json`)

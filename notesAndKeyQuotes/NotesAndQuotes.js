@@ -1,3 +1,12 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { currentPoemName, main, renderNotes, serverAddress } from "./modifyNotesAndKeyQuotes.js";
 import { removeNumbers } from "./utilities.js";
 export let highlightedText = [];
@@ -71,7 +80,6 @@ function getToggleSwitchFromParagraphElement(paragraphElement) {
     return { toggleSwitchInputCheckbox, toggleSwitchBackground, };
 }
 function highlightNote(event, textToHighlight, color, checkboxes) {
-    console.log('hi');
     const target = event.target;
     const targetBackground = target.nextSibling;
     const highlightedTextCopy = [...highlightedText];
@@ -150,7 +158,23 @@ function updateNoteOrQuote(unchecked, associatedText) {
         fetch(`${serverAddress}/quote`, {
             method: 'POST',
             body: JSON.stringify(body)
-        }).then(res => console.log('Request Complete! response: ', res));
+        })
+            .then((res) => __awaiter(this, void 0, void 0, function* () {
+            const err = yield res.json();
+            if (err.errorType !== 'No error') {
+                const erroneousQuote = body.newVersion.map(word => removeNumbers(word)).join(' ');
+                let errorMessage = '';
+                if (err.errorType === 'Quote overlap') {
+                    errorMessage = `Quote: '${erroneousQuote}' is invalid because word '${err.errorType}' overlaps with another quote.`;
+                }
+                else if (err.errorType === 'Words not consecutive') {
+                    const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
+                    const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
+                    errorMessage = `Quote: '${erroneousQuote}' is invalid because words '${incorrectSequence.join(' ')}' are not consecutive. Word '${correctSequence[0]}' should be followed by '${correctSequence[1]}'`;
+                }
+                alert(errorMessage);
+            }
+        }));
     }
     fetch(`${serverAddress}convertedPoems.json`)
         .then(response => response.json())
