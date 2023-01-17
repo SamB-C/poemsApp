@@ -32,7 +32,9 @@ export function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<str
         initialiseDeleteButton(newNoteElement, noteText, 'Note', poemName);
         newNoteElement.onclick = () => {
             const toggleSwitch = getToggleSwitchFromParagraphElement(newNoteElement).toggleSwitchInputCheckbox as HTMLInputElement;
-            toggleSwitch.click();
+            if (toggleSwitch.checked === false) {
+                toggleSwitch.click();
+            }
         }
     });
 }

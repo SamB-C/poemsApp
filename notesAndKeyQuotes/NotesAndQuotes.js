@@ -23,7 +23,9 @@ export function addNotes(elmentToInsertInto, arrNotes, checkboxes, poemName) {
         initialiseDeleteButton(newNoteElement, noteText, 'Note', poemName);
         newNoteElement.onclick = () => {
             const toggleSwitch = getToggleSwitchFromParagraphElement(newNoteElement).toggleSwitchInputCheckbox;
-            toggleSwitch.click();
+            if (toggleSwitch.checked === false) {
+                toggleSwitch.click();
+            }
         };
     });
 }
