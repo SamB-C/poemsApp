@@ -78,7 +78,7 @@ export function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
 
     // Render Quotes
     quotesElement.innerHTML = '<h1>Quotes:</h1>';
-    if (quotesForPoem) {
+    if (quotesForPoem.length !== 0) {
         // There are some quotes to render, so render those quotes and add their associated text to textsToHighlight
         addQuotes(quotesElement, quotesForPoem, checkboxes, currentPoemName);
         textsToHighlight = textsToHighlight.concat(quotesForPoem)
@@ -103,7 +103,7 @@ export function renderNotes(notesForPoem: Notes, quotesForPoem: Quotes) {
 
     // Render Notes
     notesElement.innerHTML = '<h1>Notes:</h1>';
-    if (notesForPoem) {
+    if (Object.keys(notesForPoem).length !== 0) {
         // There are some notes to render, so render those notes and add their associated text to textsToHighlight
         const notesKeys = Object.keys(notesForPoem);
         const notesValues = notesKeys.map(key => notesForPoem[key]);
