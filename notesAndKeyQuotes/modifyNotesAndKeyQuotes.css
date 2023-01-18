@@ -103,3 +103,13 @@ select:hover {
     border-radius: 2px;
     width: 100%;
 }
+
+#__error_message__exit__ {
+    width: 10vh;
+    float: none;
+    margin: 0 auto;
+}
+
+#__error_message_modal_content__ {
+    margin: 5% auto
+}

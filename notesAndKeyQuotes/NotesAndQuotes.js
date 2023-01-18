@@ -169,29 +169,43 @@ function updateNoteOrQuote(unchecked, associatedText) {
             yield fetch(`${serverAddress}/quote`, {
                 method: 'POST',
                 body: JSON.stringify(body)
-            })
-                .then((res) => __awaiter(this, void 0, void 0, function* () {
-                const err = yield res.json();
-                if (err.errorType !== 'No error') {
-                    const erroneousQuote = body.newVersion.map(word => removeNumbers(word)).join(' ');
-                    let errorMessage = '';
-                    if (err.errorType === 'Quote overlap') {
-                        errorMessage = `Quote: '${erroneousQuote}' is invalid because word '${err.errorType}' overlaps with another quote.`;
-                    }
-                    else if (err.errorType === 'Words not consecutive') {
-                        const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
-                        const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
-                        errorMessage = `Quote: '${erroneousQuote}' is invalid because words '${incorrectSequence.join(' ')}' are not consecutive. Word '${correctSequence[0]}' should be followed by '${correctSequence[1]}'`;
-                    }
-                    alert(errorMessage);
-                }
-            }));
+            }).then((res) => displayResposnseError(res, body.newVersion));
         }
         yield fetch(`${serverAddress}convertedPoems.json`)
             .then(response => response.json())
             .then((data) => {
             renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes);
         });
+    });
+}
+function displayResposnseError(res, badQuote) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const err = yield res.json();
+        if (err.errorType !== 'No error') {
+            const erroneousQuote = badQuote.map(word => removeNumbers(word)).join(' ');
+            let errorMessage = '';
+            if (err.errorType === 'Quote overlap') {
+                const incorrectWord = removeNumbers(err.error);
+                errorMessage = `Quote: "${erroneousQuote}" is invalid because word "${incorrectWord}" overlaps with another quote.`;
+            }
+            else if (err.errorType === 'Words not consecutive') {
+                const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
+                const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
+                errorMessage = `Quote: "${erroneousQuote}" is invalid because words "${incorrectSequence.join(' ')}" are not consecutive.</br>Word "${correctSequence[0]}" should be followed by "${correctSequence[1]}".`;
+            }
+            // Alert the user
+            const errorMessageModal = document.getElementById('__error_message_modal__');
+            const close = document.getElementById('__error_message__exit__');
+            const errorMessageText = document.getElementById('__error_message__');
+            close.onclick = () => errorMessageModal.style.display = 'none';
+            window.onclick = (event) => {
+                if (event.target == errorMessageModal) {
+                    errorMessageModal.style.display = 'none';
+                }
+            };
+            errorMessageText.innerHTML = errorMessage;
+            errorMessageModal.style.display = 'block';
+        }
     });
 }
 function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuote, poemName) {
