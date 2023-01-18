@@ -25,7 +25,7 @@ input, select {
 }
 
 select {
-    font-size: xx-large;
+    font-size: 4vh;
     font-weight: bold;
     width: 100%;
     border: 1px solid transparent;
@@ -54,7 +54,7 @@ select:hover {
 
 
 #__notations_container__ h1 {
-    width: 130px;
+    width: 20vh;
     margin-bottom: 0;
 }
 
