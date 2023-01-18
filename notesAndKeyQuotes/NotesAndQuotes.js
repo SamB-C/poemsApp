@@ -221,10 +221,8 @@ function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuot
         var _a, _b;
         modal.style.display = 'block';
         const modalQuote = (_b = (_a = modalContent.firstChild) === null || _a === void 0 ? void 0 : _a.nextSibling) === null || _b === void 0 ? void 0 : _b.nextSibling;
-        console.log(modalQuote);
         if (paragraphElement.nodeName === 'INPUT') {
             const displayTextElement = paragraphElement;
-            console.log(displayTextElement.value);
             modalQuote.innerText = `"${displayTextElement.value}"`;
         }
         else {

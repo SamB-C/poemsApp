@@ -241,10 +241,8 @@ function initialiseDeleteButton(paragraphElement: HTMLParagraphElement | HTMLInp
     deleteButtonElement.onclick = () => {
         modal.style.display = 'block';
         const modalQuote = modalContent.firstChild?.nextSibling?.nextSibling as HTMLParagraphElement;
-        console.log(modalQuote);
         if (paragraphElement.nodeName === 'INPUT') {
             const displayTextElement = paragraphElement as HTMLInputElement
-            console.log(displayTextElement.value)
             modalQuote.innerText = `"${displayTextElement.value}"`;
         } else {
             modalQuote.innerText = `"${paragraphElement.innerHTML.trim()}"`

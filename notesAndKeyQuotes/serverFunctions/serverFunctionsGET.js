@@ -5,6 +5,8 @@ function getFilename(req) {
     const query = url.parse(req.url, true);
     if (query.pathname === '/convertedPoems.json') {
         return './convertedPoems.json';
+    } else if (query.pathname === '/favicon.ico') {
+        return null
     } else {
         return './notesAndKeyQuotes' + query.pathname;
     }
@@ -35,6 +37,10 @@ function getContentTypeAndData(fileType, data) {
 
 function handleGet(req, res) {
     const filename = getFilename(req);
+    if (filename === null) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        return res.end();
+    }
     console.log('Request for resource: ', filename);
     fs.readFile(filename, (err, data) => {
         if (err) {
