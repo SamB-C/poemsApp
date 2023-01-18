@@ -16,6 +16,13 @@ type NoError = {
 }
 type PostErrorResponse = WordsNotConsecutiveError | QuoteOverlapError | NoError
 
+type NoteNodeType = HTMLSpanElement
+type QuoteNodeType = HTMLParagraphElement
+type NotationNodeType = NoteNodeType | QuoteNodeType
+
+const NOTE_NODE_TYPE = 'SPAN';
+const QUOTE_NODE_TYPE = 'P';
+
 export let highlightedText: Array<string> = [];
 export let currentQuote: HTMLParagraphElement | undefined = undefined;
 
@@ -27,7 +34,7 @@ export function initialiseEventHandlers(checkboxes: Array<HTMLInputElement>, tex
 
 export function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<string>, checkboxes: Array<HTMLInputElement>, poemName: string): void {
     arrNotes.forEach((noteText) => {
-        const newNoteElement = insertNoteOrQuote(elmentToInsertInto, noteText, noteText, "Note") as HTMLInputElement;
+        const newNoteElement = insertNoteOrQuote(elmentToInsertInto, noteText, noteText, "Note") as NoteNodeType;
         initialiseToggleSwitch(newNoteElement, checkboxes);
         initialiseDeleteButton(newNoteElement, noteText, 'Note', poemName);
         newNoteElement.onclick = () => {
@@ -42,7 +49,7 @@ export function addNotes(elmentToInsertInto: HTMLDivElement, arrNotes: Array<str
 export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes, checkboxes: Array<HTMLInputElement>, poemName: string) {
     arrQuotes.forEach((quote: Array<string>) => {
         const reducedQuote: string = quote.join(' ');
-        const newQuoteElement: HTMLParagraphElement = insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), "Quote");
+        const newQuoteElement = insertNoteOrQuote(elmentToInsertInto, reducedQuote, removeNumbers(quote.join(' ')), "Quote") as QuoteNodeType;
         initialiseToggleSwitch(newQuoteElement, checkboxes);
         initialiseDeleteButton(newQuoteElement, reducedQuote, "Quote", poemName);
         newQuoteElement.onclick = () => {
@@ -53,7 +60,7 @@ export function addQuotes(elmentToInsertInto: HTMLDivElement, arrQuotes: Quotes,
     });
 }
 
-function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, displayText: string, noteType: NoteType): HTMLParagraphElement | HTMLInputElement {
+function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, displayText: string, noteType: NoteType): NotationNodeType {
     const toggleSwitch = `<div class="switch_container" id="__${idText}_container__"><label class="switch"><input id="__${idText}_checkbox__" class="slider_checkbox" type="checkbox"><span class="slider round"></span></label></div>`;
     const deleteButton = `<div class="vertical_center delete_button_container"><span class="cross_button">&times;</span></div>`;
     const modal_options = '<div class="inline_container"><div class="modal_options"><button>Yes</button><button>No</button></div></div>'
@@ -61,13 +68,13 @@ function insertNoteOrQuote(elmentToInsertInto: HTMLDivElement, idText: string, d
     const textId = `__${idText}__`
     const elementAsStr = getElementAsStr(toggleSwitch, textId, displayText, deleteButton, modal, noteType);
     elmentToInsertInto.insertAdjacentHTML('beforeend', elementAsStr);
-    const elementAsElement = document.getElementById(textId) as HTMLParagraphElement;
+    const elementAsElement = document.getElementById(textId) as NotationNodeType;
     return elementAsElement
 }
 
 function getElementAsStr(toggleSwitch: string, textId: string, displayText: string, deleteButton: string, modal: string, noteType: NoteType): string {
     if (noteType === "Note") {
-        return `<div class="inline_container">${toggleSwitch}<input id="${textId}" placeholder="Add a note here" class="note_or_quote_text note_input_box", value="${displayText}"></input>${deleteButton}${modal}</div>`;
+        return `<div class="inline_container">${toggleSwitch}<span role="textbox" contenteditable id="${textId}" placeholder="Add a note here" class="note_or_quote_text note_input_box">${displayText}</span>${deleteButton}${modal}</div>`;
     } else {
         if (displayText === '') {
             displayText = '<i>New Quote</i>';
@@ -76,7 +83,7 @@ function getElementAsStr(toggleSwitch: string, textId: string, displayText: stri
     }
 }
 
-function initialiseToggleSwitch(paragraphElement: HTMLParagraphElement, checkboxes: Array<HTMLInputElement>): void {
+function initialiseToggleSwitch(paragraphElement: NotationNodeType, checkboxes: Array<HTMLInputElement>): void {
     const { toggleSwitchInputCheckbox } = getToggleSwitchFromParagraphElement(paragraphElement);
     toggleSwitchInputCheckbox.style.opacity = '0';
     toggleSwitchInputCheckbox.style.width = '0';
@@ -86,7 +93,7 @@ function initialiseToggleSwitch(paragraphElement: HTMLParagraphElement, checkbox
     checkboxes.push(toggleSwitchInputCheckbox);
 }
 
-function getToggleSwitchFromParagraphElement(paragraphElement: HTMLParagraphElement): {toggleSwitchInputCheckbox: HTMLInputElement, toggleSwitchBackground: HTMLSpanElement} {
+function getToggleSwitchFromParagraphElement(paragraphElement: NoteNodeType): {toggleSwitchInputCheckbox: HTMLInputElement, toggleSwitchBackground: HTMLSpanElement} {
     const paragraphElementContainer = paragraphElement.parentElement as HTMLDivElement;
     const toggleSwitchContainer = paragraphElementContainer.firstChild as HTMLDivElement;
     const toggleSwitchLabel = toggleSwitchContainer.firstChild as HTMLLabelElement;
@@ -114,11 +121,12 @@ function highlightNote(event: Event, textToHighlight: Array<string>, color: stri
         // Make the currentQuote be the selected quote
         const labelElement = target.parentElement as HTMLLabelElement;
         const switchContainer = labelElement.parentElement as HTMLDivElement;
-        const textSection = switchContainer.nextSibling as HTMLInputElement | HTMLParagraphElement;
-        if (textSection.nodeName === 'P') {
-            currentQuote = textSection
+        const notationSection = switchContainer.nextSibling as NotationNodeType;
+        if (notationSection.nodeName === QUOTE_NODE_TYPE) {
+            const textSection = notationSection as HTMLParagraphElement
+            currentQuote = textSection;
         } else {
-            currentQuote = undefined
+            currentQuote = undefined;
         }
     } else {
         unHighlightText(highlightedText);
@@ -148,18 +156,18 @@ function uncheckOtherCheckboxes(checkboxToKeepChecked: HTMLInputElement, checkbo
 async function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Array<string>) {
     // Get the content of the quote when it was rendered
     let currentNoteOrQuote = unchecked.id.split('_').filter(el => el !== '')[0];
-    let noteTextElement: HTMLParagraphElement | HTMLInputElement;
+    let noteTextElement: NotationNodeType;
 
     if (unchecked.id === '___checkbox__') {
         currentNoteOrQuote = '__NEW__';
-        noteTextElement = document.getElementById('____') as HTMLParagraphElement | HTMLInputElement;
+        noteTextElement = document.getElementById('____') as NotationNodeType;
     } else {
-        noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`) as HTMLParagraphElement | HTMLInputElement;
+        noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`) as NotationNodeType;
     }
 
-    if (noteTextElement.nodeName === 'INPUT') {
-        const noteElement = noteTextElement as HTMLInputElement;
-        const newNoteText: string = noteElement.value;
+    if (noteTextElement.nodeName === NOTE_NODE_TYPE) {
+        const noteElement = noteTextElement as NoteNodeType;
+        const newNoteText: string = noteElement.innerText;
         const newVersion: {key: string, value: string[]} = {
             key: newNoteText,
             value: associatedText
@@ -223,7 +231,7 @@ export function unHighlightText(textToUnhighlight: Array<string>) {
     });
 }
 
-function initialiseDeleteButton(paragraphElement: HTMLParagraphElement | HTMLInputElement, jsonRepresentation: string, noteOrQuote: NoteType, poemName: string) {
+function initialiseDeleteButton(paragraphElement: NotationNodeType, jsonRepresentation: string, noteOrQuote: NoteType, poemName: string) {
     const deleteButtonElementContainer = paragraphElement.nextSibling as HTMLDivElement;
     const deleteButtonElement = deleteButtonElementContainer.firstChild as HTMLSpanElement;
     const modal = deleteButtonElementContainer.nextSibling as HTMLDivElement;

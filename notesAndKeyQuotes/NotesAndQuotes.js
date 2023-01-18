@@ -9,6 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { currentPoemName, main, renderNotes, serverAddress } from "./modifyNotesAndKeyQuotes.js";
 import { removeNumbers } from "./utilities.js";
+const NOTE_NODE_TYPE = 'SPAN';
+const QUOTE_NODE_TYPE = 'P';
 export let highlightedText = [];
 export let currentQuote = undefined;
 export function initialiseEventHandlers(checkboxes, textsToHighlight, color) {
@@ -55,7 +57,7 @@ function insertNoteOrQuote(elmentToInsertInto, idText, displayText, noteType) {
 }
 function getElementAsStr(toggleSwitch, textId, displayText, deleteButton, modal, noteType) {
     if (noteType === "Note") {
-        return `<div class="inline_container">${toggleSwitch}<input id="${textId}" placeholder="Add a note here" class="note_or_quote_text note_input_box", value="${displayText}"></input>${deleteButton}${modal}</div>`;
+        return `<div class="inline_container">${toggleSwitch}<span role="textbox" contenteditable id="${textId}" placeholder="Add a note here" class="note_or_quote_text note_input_box">${displayText}</span>${deleteButton}${modal}</div>`;
     }
     else {
         if (displayText === '') {
@@ -96,8 +98,9 @@ function highlightNote(event, textToHighlight, color, checkboxes) {
         // Make the currentQuote be the selected quote
         const labelElement = target.parentElement;
         const switchContainer = labelElement.parentElement;
-        const textSection = switchContainer.nextSibling;
-        if (textSection.nodeName === 'P') {
+        const notationSection = switchContainer.nextSibling;
+        if (notationSection.nodeName === QUOTE_NODE_TYPE) {
+            const textSection = notationSection;
             currentQuote = textSection;
         }
         else {
@@ -138,9 +141,9 @@ function updateNoteOrQuote(unchecked, associatedText) {
         else {
             noteTextElement = document.getElementById(`__${currentNoteOrQuote}__`);
         }
-        if (noteTextElement.nodeName === 'INPUT') {
+        if (noteTextElement.nodeName === NOTE_NODE_TYPE) {
             const noteElement = noteTextElement;
-            const newNoteText = noteElement.value;
+            const newNoteText = noteElement.innerText;
             const newVersion = {
                 key: newNoteText,
                 value: associatedText

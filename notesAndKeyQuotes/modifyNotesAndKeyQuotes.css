@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-p, input::-webkit-input-placeholder, h1 {
+p, input::-webkit-input-placeholder, h1, .note_input_box {
     font-size: 3.1vh;
     font-family: 'Poppins', sans-serif;
 }
@@ -99,7 +99,7 @@ select:hover {
 
 .note_input_box {
     outline: 1px solid black;
-    padding: 4px;
+    padding: 4px, 6px;
     border-radius: 2px;
     width: 100%;
 }
