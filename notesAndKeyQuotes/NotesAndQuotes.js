@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { currentPoemName, main, renderNotes, serverAddress } from "./modifyNotesAndKeyQuotes.js";
-import { removeNumbers } from "./utilities.js";
+import { highlightText, removeNumbers, unHighlightText } from "./utilities.js";
 const NOTE_NODE_TYPE = 'SPAN';
 const QUOTE_NODE_TYPE = 'P';
 export let highlightedText = [];
@@ -192,18 +192,6 @@ function updateNoteOrQuote(unchecked, associatedText) {
             .then((data) => {
             renderNotes(data[currentPoemName].notes, data[currentPoemName].quotes);
         });
-    });
-}
-export function highlightText(textToHighlight, color) {
-    textToHighlight.forEach((word) => {
-        const wordSpan = document.getElementById(word);
-        wordSpan.style.color = color;
-    });
-}
-export function unHighlightText(textToUnhighlight) {
-    textToUnhighlight.forEach((word) => {
-        const wordSpan = document.getElementById(word);
-        wordSpan.style.color = 'black';
     });
 }
 function initialiseDeleteButton(paragraphElement, jsonRepresentation, noteOrQuote, poemName) {

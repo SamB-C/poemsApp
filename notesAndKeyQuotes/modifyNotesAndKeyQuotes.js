@@ -1,5 +1,5 @@
-import { addNotes, addQuotes, currentQuote, highlightedText, highlightText, initialiseEventHandlers, unHighlightText } from './NotesAndQuotes.js';
-import { removeNumbers } from './utilities.js';
+import { addNotes, addQuotes, currentQuote, highlightedText, initialiseEventHandlers } from './NotesAndQuotes.js';
+import { highlightText, removeNumbers, unHighlightText } from './utilities.js';
 // Constants for ids
 const POEM_DISPLAY_ID = '__poem_id__';
 const POEM_AUTHOR_DISPLAY_ID = '__poem_author__';

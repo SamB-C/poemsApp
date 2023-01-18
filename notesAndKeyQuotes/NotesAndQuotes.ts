@@ -1,5 +1,5 @@
 import { currentPoemName, main, renderNotes, serverAddress } from "./modifyNotesAndKeyQuotes.js";
-import { ConvertedPoems, Quotes, removeNumbers } from "./utilities.js";
+import { ConvertedPoems, highlightText, Quotes, removeNumbers, unHighlightText } from "./utilities.js";
 
 type NoteType = "Note" | "Quote";
 type WordsNotConsecutiveError = {
@@ -217,19 +217,7 @@ async function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Ar
             })
 }
 
-export function highlightText(textToHighlight: Array<string>, color: string) {
-    textToHighlight.forEach((word: string) => {
-        const wordSpan = document.getElementById(word) as HTMLSpanElement;
-        wordSpan.style.color = color;
-    });
-}
 
-export function unHighlightText(textToUnhighlight: Array<string>) {
-    textToUnhighlight.forEach((word: string) => {
-        const wordSpan = document.getElementById(word) as HTMLSpanElement;
-        wordSpan.style.color = 'black';
-    });
-}
 
 function initialiseDeleteButton(paragraphElement: NotationNodeType, jsonRepresentation: string, noteOrQuote: NoteType, poemName: string) {
     const deleteButtonElementContainer = paragraphElement.nextSibling as HTMLDivElement;
