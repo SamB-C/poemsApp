@@ -61,6 +61,9 @@ export function renderNotes(notesForPoem, quotesForPoem) {
     const checkboxes = [];
     let textsToHighlight = [];
     // Render Quotes
+    if (!quotesForPoem) {
+        quotesForPoem = [];
+    }
     quotesElement.innerHTML = '<h1>Quotes:</h1>';
     if (quotesForPoem.length !== 0) {
         // There are some quotes to render, so render those quotes and add their associated text to textsToHighlight
@@ -87,6 +90,9 @@ export function renderNotes(notesForPoem, quotesForPoem) {
         checkbox.click();
     };
     // Render Notes
+    if (!notesForPoem) {
+        notesForPoem = {};
+    }
     notesElement.innerHTML = '<h1>Notes:</h1>';
     if (Object.keys(notesForPoem).length !== 0) {
         // There are some notes to render, so render those notes and add their associated text to textsToHighlight
