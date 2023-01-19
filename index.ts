@@ -510,38 +510,6 @@ function makeSpanForWord(word: string): string {
 }
 
 
-// --------------------------- Convert poem to remove duplicates ---------------------------
-function addInstanceNumbersToWords(poem: string): string {
-    const wordsAlreadyInPoem: {[word: string]: number} = {};
-    const convertedPoem: string = poem.split(/\n/).map((line: string): string => {
-        return line.split(' ').map((word): string => {
-            if (word.match(SPECIAL_CHARACTER_REGEX)) {
-                const newWord: string = word.split('').map((letter: string) => {
-                    if (letter.match(SPECIAL_CHARACTER_REGEX)) {
-                        return FAKE_SPACE + letter
-                    } else {
-                        return letter
-                    }
-                }).join('');
-                return newWord.split(FAKE_SPACE).map((sectionOfWord: string): string => {
-                    return giveWordInstanceNumber(sectionOfWord, wordsAlreadyInPoem);
-                }).join(FAKE_SPACE)
-            } else {
-                return giveWordInstanceNumber(word, wordsAlreadyInPoem);
-            }
-        }).join(' ');
-    }).join('\n');
-    return convertedPoem
-}
-
-function giveWordInstanceNumber(word: string, instances: {[word: string]: number}) {
-    if (word in instances) {
-        instances[word] = instances[word] + 1;
-    } else {
-        instances[word] = 1
-    }
-    return instances[word] + word + instances[word];
-}
 
 
 // Utilities for feature
@@ -562,7 +530,6 @@ function initialise(poem: string, numberOfWordsToRemove: number) {
     poemElement.innerHTML = splitPoemToNewLines(poem);
     centerPoem(poemElement);
     const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
-    // console.log(wordsThatHaveBeenReplaced);
     const firstWord: string = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     wordsNotCompleted = wordsThatHaveBeenReplaced;
