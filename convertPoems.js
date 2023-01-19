@@ -5,16 +5,25 @@ const FAKE_SPACE = '|+|';
 
 fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
     if (err) throw err;
+
+    const prevConvertedPoemsJSON = fs.readFileSync('./convertedPoems.json', {encoding: 'utf-8'});
+    const prevConvertedPoems = JSON.parse(prevConvertedPoemsJSON);
+
     const result = {};
     const poems = JSON.parse(data);
     const poemSettings = getPoemSettings();
     Object.entries(poems).map((keyValuePair) => {
         const poemName = keyValuePair[0];
         const poemFileContent = keyValuePair[1];
+
         const { poemContent, poemAuthor } = getPoemNameContentAuthor(poemFileContent);
+
         const poemInfo = addInstanceNumbersToWords(poemName, poemContent);
+
         result[poemName] = poemInfo;
         result[poemName]["author"] = poemAuthor;
+        result[poemName]["quotes"] = prevConvertedPoems[poemName]["quotes"];
+        result[poemName]["notes"] = prevConvertedPoems[poemName]["notes"];
         addSettings(poemSettings, poemName, result)
         console.log(poemName, `by ${poemAuthor}` , poemInfo['wordCount']);
     })
