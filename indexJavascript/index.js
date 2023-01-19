@@ -1,18 +1,6 @@
-"use strict";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID } from "./constantsAndTypes.js";
+import { replaceWords } from "./replaceRandomWords.js";
 let number_of_words_to_replace = 3;
-const POEM_ID = '__poem_id__';
-const RANGEBAR_ID = '__range_bar__';
-const RANGEBAR_RESULT_ID = '__range_bar_result__';
-const POEM_SELECT_ID = '__poem_selection__';
-const TRY_AGAIN_LINK_ID = '__try_again__';
-const POEM_AUTHOR_ID = "__poem_author__";
-const NUMBER_ONLY_REGEX = /^[0-9]+$/;
-const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
-const FAKE_SPACE = '|+|';
-const FAKE_SPACE_HTML_ELEMENT = `<p class="fakeSpace">${FAKE_SPACE}</p>`;
-const ANIMATION_SPEED = 20;
-const COVER_OVER_COMPLETED_WORDS = false;
-const INPUT_OPTIONS = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
 let numberOfWordsInPoem = 0;
 let wordsNotCompleted = [];
 let wordsNotCompletedCopy = [...wordsNotCompleted];
@@ -292,27 +280,9 @@ function addPoemAuthor() {
     const poemAuthorElement = document.getElementById(POEM_AUTHOR_ID);
     poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
-// --------------------------- Replace words in the poem ---------------------------
-// Removes a certain number of words from the poem, and returns the words that were removed
-// in order of appearance
-function replaceWords(poem, numberOfWords) {
-    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords);
-    const wordsReplaced = [];
-    while (wordsReplaced.length < numberOfWords) {
-        const potentialWord = selectRandomWordFromPoem(poem);
-        if (!wordsReplaced.includes(potentialWord)) {
-            wordsReplaced.push(potentialWord);
-        }
-    }
-    insertionSortIntoOrderInPoem(poem, wordsReplaced);
-    const wordSectionsReplaced = wordsReplaced.map((word) => replaceWord(word, poem));
-    return wordSectionsReplaced.reduce((accumulator, wordSections) => {
-        return accumulator.concat(wordSections);
-    });
-}
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
-function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
+export function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
     numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
@@ -321,36 +291,8 @@ function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
         return numberOfWordsToReplace;
     }
 }
-// Selects a word at random from the poem
-function selectRandomWordFromPoem(poem) {
-    // Select random line
-    const lines = poem.split(/\n/);
-    const nonEmptyLines = lines.filter((line) => !line.match(NUMBER_ONLY_REGEX));
-    const randomLine = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
-    // Select random word
-    const words = randomLine.split(/ /);
-    const nonEmptyWords = words.filter((word) => !word.match(NUMBER_ONLY_REGEX));
-    const randomWord = nonEmptyWords[Math.floor(Math.random() * nonEmptyWords.length)];
-    return randomWord;
-}
-// Sorts the missing word in the poem into the order of appearance so they can be focused in order
-function insertionSortIntoOrderInPoem(poem, words) {
-    for (let i = 1; i < words.length; i++) {
-        let currentWordIndex = i;
-        let comparingWordIndex = i - 1;
-        while (poem.indexOf(words[currentWordIndex]) < poem.indexOf(words[comparingWordIndex])) {
-            [words[comparingWordIndex], words[currentWordIndex]] = [words[currentWordIndex], words[comparingWordIndex]];
-            currentWordIndex--;
-            comparingWordIndex--;
-            if (currentWordIndex === 0) {
-                break;
-            }
-        }
-    }
-    return words;
-}
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-function replaceWord(word, poem) {
+export function replaceWord(word, poem) {
     // Turn each word into letter inputs
     const wordSectionsToHide = getWordSectionsFromWord(word);
     const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));

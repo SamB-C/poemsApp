@@ -1,32 +1,12 @@
-let number_of_words_to_replace = 3;
-const POEM_ID = '__poem_id__';
-const RANGEBAR_ID = '__range_bar__';
-const RANGEBAR_RESULT_ID = '__range_bar_result__';
-const POEM_SELECT_ID = '__poem_selection__'
-const TRY_AGAIN_LINK_ID = '__try_again__'
-const POEM_AUTHOR_ID = "__poem_author__";
-const NUMBER_ONLY_REGEX = /^[0-9]+$/
-const SPECIAL_CHARACTER_REGEX = /[.,:;]/
-const FAKE_SPACE: string = '|+|';
-const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
-const ANIMATION_SPEED: number = 20
-const COVER_OVER_COMPLETED_WORDS = false;
-const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"'
+import { ANIMATION_SPEED, convertedPoemsJSON, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID } from "./constantsAndTypes.js";
+import { replaceWords } from "./replaceRandomWords.js";
 
+let number_of_words_to_replace = 3;
 let numberOfWordsInPoem = 0;
 let wordsNotCompleted: Array<string> = [];
 let wordsNotCompletedCopy: Array<string> = [...wordsNotCompleted];
 let focusedWord = wordsNotCompleted[0];
 let currentPoem: string;
-
-type convertedPoemsJSON = {
-    [nameOfPoem: string]: {
-        convertedPoem: string,
-        wordCount: number,
-        author: string,
-        centered: boolean
-    }
-}
 
 let poems: convertedPoemsJSON = {}
 fetch("convertedPoems.json")
@@ -354,30 +334,9 @@ function addPoemAuthor() {
 
 
 
-// --------------------------- Replace words in the poem ---------------------------
-
-// Removes a certain number of words from the poem, and returns the words that were removed
-// in order of appearance
-function replaceWords(poem: string, numberOfWords: number): Array<string> {
-    numberOfWords = rangeValidationForNumberOfWordsToReplace(numberOfWords);
-    const wordsReplaced: Array<string> = [];
-    while (wordsReplaced.length < numberOfWords) {
-        const potentialWord: string = selectRandomWordFromPoem(poem);
-        if (!wordsReplaced.includes(potentialWord)) {
-            wordsReplaced.push(potentialWord);
-        }
-    }
-    insertionSortIntoOrderInPoem(poem, wordsReplaced);
-    const wordSectionsReplaced: Array<Array<string>> = wordsReplaced.map((word: string): Array<string> => replaceWord(word, poem));
-    return wordSectionsReplaced.reduce((accumulator: Array<string>, wordSections) => {
-        return accumulator.concat(wordSections);
-    });
-}
-
-
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
-function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number): number {
+export function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number): number {
     numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
@@ -386,40 +345,9 @@ function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number
     }
 }
 
-// Selects a word at random from the poem
-function selectRandomWordFromPoem(poem: string):string {
-    // Select random line
-    const lines: Array<string> = poem.split(/\n/);
-    const nonEmptyLines: Array<string> = lines.filter((line:string) => !line.match(NUMBER_ONLY_REGEX));
-    const randomLine: string = nonEmptyLines[Math.floor(Math.random() * nonEmptyLines.length)];
-    // Select random word
-    const words: Array<string> = randomLine.split(/ /);
-    const nonEmptyWords: Array<string> = words.filter((word:string) => !word.match(NUMBER_ONLY_REGEX));
-    const randomWord: string = nonEmptyWords[Math.floor(Math.random() * nonEmptyWords.length)];
-    return randomWord;
-}
-
-
-// Sorts the missing word in the poem into the order of appearance so they can be focused in order
-function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array<string> {
-    for (let i: number = 1; i < words.length; i++) {
-        let currentWordIndex: number = i
-        let comparingWordIndex: number = i - 1;
-        while (poem.indexOf(words[currentWordIndex]) < poem.indexOf(words[comparingWordIndex])) {
-            [words[comparingWordIndex], words[currentWordIndex]] = [words[currentWordIndex], words[comparingWordIndex]];
-            currentWordIndex--;
-            comparingWordIndex--;
-            if (currentWordIndex === 0) {
-                break
-            }
-        }
-    }
-    return words
-}
-
 
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-function replaceWord(word: string, poem: string): Array<string> {
+export function replaceWord(word: string, poem: string): Array<string> {
     // Turn each word into letter inputs
     const wordSectionsToHide = getWordSectionsFromWord(word);
     const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
