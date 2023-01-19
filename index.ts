@@ -592,7 +592,8 @@ function getElementOfWord(word: string): HTMLSpanElement {
 
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word: string) {
-    const inputToFocusId: string = `${getIdForLetter(word, word[1])}`;
+    const firstLetter = removeNumberFromWord(word)[0];
+    const inputToFocusId: string = `${getIdForLetter(word, firstLetter)}`;
     const firstInputElement: HTMLElement = document.getElementById(inputToFocusId)!;
     firstInputElement.focus();
 }
