@@ -353,7 +353,8 @@ function insertionSortIntoOrderInPoem(poem, words) {
 function replaceWord(word, poem) {
     // Turn each word into letter inputs
     const wordSectionsToHide = getWordSectionsFromWord(word);
-    wordSectionsToHide.forEach((wordSection) => {
+    const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
+    nonEmptySectionsToHide.forEach((wordSection) => {
         const wordToHide = getElementOfWord(wordSection);
         const wordInUnderScores = wordSection.split('').map((letter) => {
             if (!isIlleagalLetter(letter)) {
@@ -372,7 +373,7 @@ function replaceWord(word, poem) {
             input.oninput = ensureMaxLengthNotExceeded;
         });
     });
-    return wordSectionsToHide;
+    return nonEmptySectionsToHide;
 }
 function ensureMaxLengthNotExceeded(event) {
     const targetInput = event.target;
@@ -502,7 +503,8 @@ function getElementOfWord(word) {
 }
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word) {
-    const inputToFocusId = `${getIdForLetter(word, word[1])}`;
+    const firstLetter = removeNumberFromWord(word)[0];
+    const inputToFocusId = `${getIdForLetter(word, firstLetter)}`;
     const firstInputElement = document.getElementById(inputToFocusId);
     firstInputElement.focus();
 }
