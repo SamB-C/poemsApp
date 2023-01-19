@@ -422,7 +422,8 @@ function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array
 function replaceWord(word: string, poem: string): Array<string> {
     // Turn each word into letter inputs
     const wordSectionsToHide = getWordSectionsFromWord(word);
-    wordSectionsToHide.forEach((wordSection) => {
+    const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
+    nonEmptySectionsToHide.forEach((wordSection) => {
         const wordToHide: HTMLSpanElement = getElementOfWord(wordSection);
         const wordInUnderScores: string = wordSection.split('').map((letter) => {
             if (!isIlleagalLetter(letter)) {
@@ -441,7 +442,7 @@ function replaceWord(word: string, poem: string): Array<string> {
             input.oninput = ensureMaxLengthNotExceeded;
         })
     });
-    return wordSectionsToHide;
+    return nonEmptySectionsToHide;
 }
 
 function ensureMaxLengthNotExceeded(event: Event) {
