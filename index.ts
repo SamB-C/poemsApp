@@ -367,7 +367,7 @@ function replaceWords(poem: string, numberOfWords: number): Array<string> {
             wordsReplaced.push(potentialWord);
         }
     }
-    insertionSortIntoOrderInPoem(poem, wordsReplaced)
+    insertionSortIntoOrderInPoem(poem, wordsReplaced);
     const wordSectionsReplaced: Array<Array<string>> = wordsReplaced.map((word: string): Array<string> => replaceWord(word, poem));
     return wordSectionsReplaced.reduce((accumulator: Array<string>, wordSections) => {
         return accumulator.concat(wordSections);
