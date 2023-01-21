@@ -14,13 +14,19 @@
     <title>Poem App</title>
 </head>
 <body>
-    <!-- Id's have to be surrounded by 1s in case the word is in the poem -->
-    <div id="__range_slider_container__">
+    <!-- Id's have to be surrounded by double underscores in case the word is in the poem -->
+    <div id="__words_or_quotes_radio__" class="inline_container">
+        <input type="radio" id="__words__" value="words" name="words_or_quotes">
+        <label for="__words__"><p>Words</p></label>
+        <input type="radio" id="__quotes__" value="quotes" name="words_or_quotes">
+        <label for="__quotes__"><p>Quotes</p></label>
+    </div>
+    <div id="__range_slider_container__" class="inline_container">
         <input type="range" id="__range_bar__" value="1" min="1" max="10">
         <p id="__range_bar_result__"></p>
     </div>
     
-    <div id="__main_content__">
+    <div id="__main_content__" class="inline_container">
         <div id="__poem_content_container__">
             <select name="poem_selection" id="__poem_selection__">
                 <!-- Options inserted in index.js -->
