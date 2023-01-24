@@ -1,5 +1,5 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID } from "./constantsAndTypes.js";
-import { replaceWords } from "./replaceWordsOrQuotes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
+import { initialiseWordsOrQuotesRadioButtons, replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
 export let state;
 let poems = {};
 fetch("convertedPoems.json")
@@ -7,6 +7,7 @@ fetch("convertedPoems.json")
     .then(data => {
     poems = data;
     initialiseState(poems);
+    initialiseWordsOrQuotesRadioButtons();
     initialisePoemOptions();
     initialise();
     initialiseRangebar();
@@ -16,7 +17,7 @@ function initialiseState(poems) {
         currentPoemName: 'The Manhunt',
         poemData: poems,
         numWordsToRemove: 3,
-        removalType: QUOTES,
+        removalType: WORDS,
         focusedWord: '',
         wordsNotCompleted: [],
         wordsNotCompletedPreserved: []
@@ -377,11 +378,16 @@ function isIlleagalLetter(letter) {
 // Initialises the poem, by rendering it in
 export function initialise() {
     const poemElement = getPoemElement();
-    const currentPoemName = state.currentPoemName;
-    const currentPoemContent = state.poemData[currentPoemName].convertedPoem;
+    const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);
     centerPoem(poemElement);
-    const wordsThatHaveBeenReplaced = replaceWords(currentPoemContent);
+    let wordsThatHaveBeenReplaced = [];
+    if (state.removalType === WORDS) {
+        wordsThatHaveBeenReplaced = replaceWords(currentPoemContent);
+    }
+    else if (state.removalType === QUOTES) {
+        wordsThatHaveBeenReplaced = replaceQuotes(state.poemData[state.currentPoemName].quotes);
+    }
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;

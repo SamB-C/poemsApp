@@ -3,6 +3,33 @@ import { NUMBER_ONLY_REGEX, QUOTES, REPLACE_QUOTES_RADIO_BUTTON_ID, REPLACE_WORD
 import { initialise, replaceWord, state } from "./index.js";
 
 
+// Initialise the radio buttons so that their value is represented in the state
+export function initialiseWordsOrQuotesRadioButtons() {
+    const wordsButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID) as HTMLInputElement;
+    const quotesButton = document.getElementById(REPLACE_QUOTES_RADIO_BUTTON_ID) as HTMLInputElement;
+    wordsButton.checked = true;
+    wordsButton.oninput = () => radioButtonOnInput(WORDS);
+    quotesButton.oninput = () => radioButtonOnInput(QUOTES);
+}
+
+function radioButtonOnInput(removalType: WordsOrQuotesType) {
+    state.removalType = removalType;
+    initialise();
+}
+
+
+// --------------------------- Replace quotes in the poem ---------------------------
+
+export function replaceQuotes(quotes: Quotes): Array<string> {
+    let allWordsInQuotes: Array<string> = [];
+    quotes.forEach(quote => quote.forEach(word => allWordsInQuotes.push(word)))
+    const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
+    // The words should already be in order but used as a precaution
+    insertionSortIntoOrderInPoem(currentPoemContent, allWordsInQuotes)
+    allWordsInQuotes.forEach(word => replaceWord(word, currentPoemContent));
+    return allWordsInQuotes;
+}
+
 
 // --------------------------- Replace words in the poem ---------------------------
 
