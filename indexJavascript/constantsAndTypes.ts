@@ -1,3 +1,5 @@
+import { Notes, Quotes } from "../notesAndKeyQuotes/utilities";
+
 export const POEM_ID = '__poem_id__';
 export const RANGEBAR_ID = '__range_bar__';
 export const RANGEBAR_RESULT_ID = '__range_bar_result__';
@@ -11,12 +13,33 @@ export const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPAC
 export const ANIMATION_SPEED: number = 20
 export const COVER_OVER_COMPLETED_WORDS = false;
 export const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"'
+export const REPLACE_WORDS_RADIO_BUTTON_ID = '__words__';
+export const REPLACE_QUOTES_RADIO_BUTTON_ID = '__quotes__';
+export const WORDS: WORDS_TYPE = 'words';
+export const QUOTES: QUOTES_TYPE = 'quotes';
 
+export type WORDS_TYPE = 'words';
+export type QUOTES_TYPE = 'quotes';
+export type WordsOrQuotesType = WORDS_TYPE | QUOTES_TYPE;
+
+type PoemData = {
+    convertedPoem: string,
+    wordCount: number,
+    author: string,
+    centered: boolean,
+    quotes: Quotes,
+    notes: Notes
+}
 export type convertedPoemsJSON = {
-    [nameOfPoem: string]: {
-        convertedPoem: string,
-        wordCount: number,
-        author: string,
-        centered: boolean
-    }
+    [nameOfPoem: string]: PoemData
+}
+
+export type State = {
+    currentPoemName: string,
+    poemData: convertedPoemsJSON,
+    numWordsToRemove: number,
+    removalType: WordsOrQuotesType,
+    focusedWord: string,
+    wordsNotCompleted: Array<string>,
+    wordsNotCompletedPreserved: Array<string>
 }

@@ -11,3 +11,7 @@ export const FAKE_SPACE_HTML_ELEMENT = `<p class="fakeSpace">${FAKE_SPACE}</p>`;
 export const ANIMATION_SPEED = 20;
 export const COVER_OVER_COMPLETED_WORDS = false;
 export const INPUT_OPTIONS = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
+export const REPLACE_WORDS_RADIO_BUTTON_ID = '__words__';
+export const REPLACE_QUOTES_RADIO_BUTTON_ID = '__quotes__';
+export const WORDS = 'words';
+export const QUOTES = 'quotes';

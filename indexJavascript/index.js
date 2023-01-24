@@ -1,65 +1,58 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID } from "./constantsAndTypes.js";
-import { replaceWords } from "./replaceRandomWords.js";
-let number_of_words_to_replace = 3;
-let numberOfWordsInPoem = 0;
-let wordsNotCompleted = [];
-let wordsNotCompletedCopy = [...wordsNotCompleted];
-let focusedWord = wordsNotCompleted[0];
-let currentPoem;
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID } from "./constantsAndTypes.js";
+import { replaceWords } from "./replaceWordsOrQuotes.js";
+export let state;
 let poems = {};
 fetch("convertedPoems.json")
     .then(response => response.json())
     .then(data => {
     poems = data;
-    currentPoem = poems['The Manhunt']['convertedPoem'];
-    initialisePoemOptions(poems);
-    initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar(poems);
+    initialiseState(poems);
+    initialisePoemOptions();
+    initialise();
+    initialiseRangebar();
 });
+function initialiseState(poems) {
+    state = {
+        currentPoemName: 'The Manhunt',
+        poemData: poems,
+        numWordsToRemove: 3,
+        removalType: QUOTES,
+        focusedWord: '',
+        wordsNotCompleted: [],
+        wordsNotCompletedPreserved: []
+    };
+}
 // =========================== Intitalise poem select bar ===========================
-function initialisePoemOptions(poems) {
+function initialisePoemOptions() {
     const poemSelect = document.getElementById(POEM_SELECT_ID);
-    for (let pomeName in poems) {
-        let newOption = `<option value="${pomeName}">${pomeName}</option>`;
-        if (poems[pomeName].convertedPoem === currentPoem) {
-            newOption = `<option value="${pomeName}" selected="seleted">${pomeName}</option>`;
+    for (let poemName in state.poemData) {
+        let newOption = `<option value="${poemName}">${poemName}</option>`;
+        if (poemName === state.currentPoemName) {
+            newOption = `<option value="${poemName}" selected="seleted">${poemName}</option>`;
         }
         poemSelect.innerHTML = poemSelect.innerHTML + newOption;
     }
-    poemSelect.oninput = () => onPoemSelectInput(poems, poemSelect);
+    poemSelect.oninput = () => onPoemSelectInput(poemSelect);
 }
-function onPoemSelectInput(poems, poemSelect) {
+function onPoemSelectInput(poemSelect) {
     const poemSelected = poemSelect.value;
-    currentPoem = poems[poemSelected].convertedPoem;
-    initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar(poems);
+    state.currentPoemName = poemSelected;
+    initialise();
+    initialiseRangebar();
 }
 // =========================== Intitalise range bar ===========================
 // Initisalisation for the rangebar slider
-function initialiseRangebar(poems) {
+function initialiseRangebar() {
     const rangeBar = document.getElementById(RANGEBAR_ID);
     // Sets min/max values for rangebar
-    rangeBar.value = `${number_of_words_to_replace}`;
+    rangeBar.value = `${state.numWordsToRemove}`;
     rangeBar.min = "1";
-    numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
+    const numberOfWordsInPoem = state.poemData[state.currentPoemName].wordCount;
     rangeBar.max = `${numberOfWordsInPoem}`;
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID);
     rangeBarResult.innerHTML = rangeBar.value;
     addRangebarEvents(rangeBar, rangeBarResult);
-}
-function getNumberOfWordsInCurrentPoem(poems) {
-    const currentPoemName = getCurrentPoemName(poems);
-    return poems[currentPoemName].wordCount;
-}
-function getCurrentPoemName(poems) {
-    for (let poemName in poems) {
-        if (poems[poemName].convertedPoem === currentPoem) {
-            return poemName;
-        }
-    }
-    console.error('Name of currentPoem can not be found in poems');
-    return '';
 }
 function addRangebarEvents(rangeBar, rangeBarResult) {
     // Don't re-render poem every time bar is dragged
@@ -74,10 +67,10 @@ function addRangebarEvents(rangeBar, rangeBarResult) {
 function onRangebarInput(rangeBar) {
     // Get new value from range
     const newValue = parseInt(rangeBar.value);
+    // Changes the state accordingly
+    state.numWordsToRemove = newValue;
     // Restart the poem with a new number of words
-    initialise(currentPoem, newValue);
-    // Changes the global variable pertaining to the number of missing words
-    number_of_words_to_replace = newValue;
+    initialise();
 }
 // ============================================================================
 // ================= Event handler (Assigned in replaceWord) =================
@@ -165,14 +158,14 @@ function checkAllLettersFull(singleLetter) {
 // When a word is completed, check if it is correct, if so, move onto next word
 function completeWord(poem) {
     // Get the input values and combine into guessed word
-    const focusedWordElement = getElementOfWord(focusedWord);
+    const focusedWordElement = getElementOfWord(state.focusedWord);
     const arrayOfChildren = getArrayOfChildrenThatAreInputs(focusedWordElement);
     let userInput = '';
     for (let i = 0; i < arrayOfChildren.length; i++) {
         userInput = userInput + arrayOfChildren[i].value;
     }
     // Marks as complete
-    revertToTextAsComplete(focusedWord);
+    revertToTextAsComplete(state.focusedWord);
     moveToNextWord(poem);
 }
 // Marks a word as complete by converting back to text and cahnging colour to green
@@ -183,10 +176,10 @@ function revertToTextAsComplete(wordToRevert) {
 }
 // Moves to the next word, if none left, marks poem as complete
 function moveToNextWord(poem) {
-    wordsNotCompleted.splice(wordsNotCompleted.indexOf(focusedWord), 1);
-    if (wordsNotCompleted.length > 0) {
-        focusedWord = wordsNotCompleted[0];
-        focusFirstLetterOfWord(focusedWord);
+    state.wordsNotCompleted.splice(state.wordsNotCompleted.indexOf(state.focusedWord), 1);
+    if (state.wordsNotCompleted.length > 0) {
+        state.focusedWord = state.wordsNotCompleted[0];
+        focusFirstLetterOfWord(state.focusedWord);
     }
     else {
         completePoem(poem);
@@ -202,7 +195,7 @@ function completePoem(poem) {
     const rangeBarIntitialValue = rangeBar.value;
     disableInputs(rangeBar, poemSelectInput);
     // Do animation
-    changeAllWordsToColor(allWordsInPoem, wordsNotCompletedCopy, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, rangeBarIntitialValue));
+    changeAllWordsToColor(allWordsInPoem, state.wordsNotCompletedPreserved, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, rangeBarIntitialValue));
 }
 // Splits the poem into a list of words
 function getAllWordSectionsInPoem(poem) {
@@ -261,8 +254,8 @@ function changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, range
 }
 // Event handler for try again link
 function onTryAgainClick() {
-    initialise(currentPoem, number_of_words_to_replace);
-    initialiseRangebar(poems);
+    initialise();
+    initialiseRangebar();
 }
 // Updates range bar in case it has been changed
 function updateRangeBar(rangeBar, initialValue) {
@@ -275,15 +268,15 @@ function updateRangeBar(rangeBar, initialValue) {
 // ============================================================================
 // --------------------------- Render the poem author ---------------------------
 function addPoemAuthor() {
-    const poemName = getCurrentPoemName(poems);
-    const poemAuthor = poems[poemName]['author'];
+    const poemName = state.currentPoemName;
+    const poemAuthor = state.poemData[poemName].author;
     const poemAuthorElement = document.getElementById(POEM_AUTHOR_ID);
     poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
 // Checks if number of words is greater than number of words in poem
 // If yes, return number of words in poem, else return original number
 export function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace) {
-    numberOfWordsInPoem = getNumberOfWordsInCurrentPoem(poems);
+    const numberOfWordsInPoem = state.poemData[state.currentPoemName].wordCount;
     if (numberOfWordsToReplace > numberOfWordsInPoem) {
         return numberOfWordsInPoem;
     }
@@ -308,7 +301,7 @@ export function replaceWord(word, poem) {
         // Adds the event handlers for the input
         wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem);
         wordToHide.onclick = () => {
-            focusedWord = wordSection;
+            state.focusedWord = wordSection;
         };
         const childrenToAddOnInputTo = getArrayOfChildrenThatAreInputs(wordToHide);
         childrenToAddOnInputTo.forEach((input) => {
@@ -324,7 +317,7 @@ function ensureMaxLengthNotExceeded(event) {
 }
 // Align the text of poems either to side or center
 function centerPoem(poemElement) {
-    const currentPoemName = getCurrentPoemName(poems);
+    const currentPoemName = state.currentPoemName;
     const poemSelect = document.getElementById(POEM_SELECT_ID);
     const poemAuthor = document.getElementById(POEM_AUTHOR_ID);
     if (poems[currentPoemName]['centered']) {
@@ -382,16 +375,18 @@ function isIlleagalLetter(letter) {
 }
 // =========================== Intitalise poem ===========================
 // Initialises the poem, by rendering it in
-function initialise(poem, numberOfWordsToRemove) {
+export function initialise() {
     const poemElement = getPoemElement();
-    poemElement.innerHTML = splitPoemToNewLines(poem);
+    const currentPoemName = state.currentPoemName;
+    const currentPoemContent = state.poemData[currentPoemName].convertedPoem;
+    poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);
     centerPoem(poemElement);
-    const wordsThatHaveBeenReplaced = replaceWords(poem, numberOfWordsToRemove);
+    const wordsThatHaveBeenReplaced = replaceWords(currentPoemContent);
     const firstWord = wordsThatHaveBeenReplaced[0];
     focusFirstLetterOfWord(firstWord);
-    wordsNotCompleted = wordsThatHaveBeenReplaced;
-    wordsNotCompletedCopy = [...wordsNotCompleted];
-    focusedWord = wordsNotCompleted[0];
+    state.wordsNotCompleted = wordsThatHaveBeenReplaced;
+    state.wordsNotCompletedPreserved = [...wordsThatHaveBeenReplaced];
+    state.focusedWord = wordsThatHaveBeenReplaced[0];
     addPoemAuthor();
 }
 // HELPER FUNCTIONS
