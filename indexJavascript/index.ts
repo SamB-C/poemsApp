@@ -13,6 +13,7 @@ fetch("convertedPoems.json")
         initialiseWordsOrQuotesRadioButtons()
         initialisePoemOptions();
         initialise();
+        addPoemAuthor();
         initialiseRangebar();
     });
 
@@ -48,7 +49,11 @@ function initialisePoemOptions(): void {
 function onPoemSelectInput(poemSelect: HTMLSelectElement): void {
     const poemSelected: string = poemSelect.value;
     state.currentPoemName = poemSelected;
+    if (state.poemData[state.currentPoemName].wordCount < state.numWordsToRemove) {
+        state.numWordsToRemove = state.poemData[state.currentPoemName].wordCount;
+    }
     initialise();
+    addPoemAuthor();
     initialiseRangebar();
 }
 
@@ -327,17 +332,6 @@ function addPoemAuthor() {
 
 
 
-// Checks if number of words is greater than number of words in poem
-// If yes, return number of words in poem, else return original number
-export function rangeValidationForNumberOfWordsToReplace(numberOfWordsToReplace: number): number {
-    const numberOfWordsInPoem = state.poemData[state.currentPoemName].wordCount;
-    if (numberOfWordsToReplace > numberOfWordsInPoem) {
-        return numberOfWordsInPoem;
-    } else {
-        return numberOfWordsToReplace
-    }
-}
-
 
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 export function replaceWord(word: string, poem: string): Array<string> {
@@ -462,7 +456,6 @@ export function initialise() {
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;
     state.wordsNotCompletedPreserved = [...wordsThatHaveBeenReplaced];
     state.focusedWord = wordsThatHaveBeenReplaced[0];
-    addPoemAuthor();
 }
 
 // HELPER FUNCTIONS
