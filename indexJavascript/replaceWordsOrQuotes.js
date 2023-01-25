@@ -1,18 +1,7 @@
-import { INPUT_OPTIONS, NUMBER_ONLY_REGEX, QUOTES, REPLACE_QUOTES_RADIO_BUTTON_ID, REPLACE_WORDS_RADIO_BUTTON_ID, WORDS } from "./constantsAndTypes.js";
-import { initialise, onInputEventHandler, state } from "./index.js";
+import { INPUT_OPTIONS, NUMBER_ONLY_REGEX } from "./constantsAndTypes.js";
+import { onInputEventHandler, state } from "./index.js";
 import { getArrayOfChildrenThatAreInputs, GET_ELEMENT, GET_ID, isIlleagalLetter, WORD_FUNCS } from "./utilities.js";
-// Initialise the radio buttons so that their value is represented in the state
-export function initialiseWordsOrQuotesRadioButtons() {
-    const wordsButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID);
-    const quotesButton = document.getElementById(REPLACE_QUOTES_RADIO_BUTTON_ID);
-    wordsButton.checked = true;
-    wordsButton.oninput = () => radioButtonOnInput(WORDS);
-    quotesButton.oninput = () => radioButtonOnInput(QUOTES);
-}
-function radioButtonOnInput(removalType) {
-    state.removalType = removalType;
-    initialise();
-}
+// =========================== Choose words to replace ===========================
 // --------------------------- Replace quotes in the poem ---------------------------
 export function replaceQuotes(quotes) {
     let allWordsInQuotes = [];
@@ -68,6 +57,7 @@ function insertionSortIntoOrderInPoem(poem, words) {
     }
     return words;
 }
+// =========================== Replacing words ===========================
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 export function replaceWord(word, poem) {
     // Turn each word into letter inputs
