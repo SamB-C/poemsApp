@@ -1,5 +1,6 @@
-import { NUMBER_ONLY_REGEX, QUOTES, REPLACE_QUOTES_RADIO_BUTTON_ID, REPLACE_WORDS_RADIO_BUTTON_ID, WORDS } from "./constantsAndTypes.js";
-import { initialise, replaceWord, state } from "./index.js";
+import { INPUT_OPTIONS, NUMBER_ONLY_REGEX, QUOTES, REPLACE_QUOTES_RADIO_BUTTON_ID, REPLACE_WORDS_RADIO_BUTTON_ID, WORDS } from "./constantsAndTypes.js";
+import { initialise, onInputEventHandler, state } from "./index.js";
+import { getArrayOfChildrenThatAreInputs, getElementOfWord, getIdForLetter, getWordSectionsFromWord, isIlleagalLetter } from "./utilities.js";
 // Initialise the radio buttons so that their value is represented in the state
 export function initialiseWordsOrQuotesRadioButtons() {
     const wordsButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID);
@@ -66,4 +67,35 @@ function insertionSortIntoOrderInPoem(poem, words) {
         }
     }
     return words;
+}
+// Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
+export function replaceWord(word, poem) {
+    // Turn each word into letter inputs
+    const wordSectionsToHide = getWordSectionsFromWord(word);
+    const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
+    nonEmptySectionsToHide.forEach((wordSection) => {
+        const wordToHide = getElementOfWord(wordSection);
+        const wordInUnderScores = wordSection.split('').map((letter) => {
+            if (!isIlleagalLetter(letter)) {
+                const htmlForLetter = `<input ${INPUT_OPTIONS} id="${getIdForLetter(wordSection, letter)}"></input>`;
+                return htmlForLetter;
+            }
+        }).join('');
+        wordToHide.innerHTML = wordInUnderScores;
+        // Adds the event handlers for the input
+        wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem);
+        wordToHide.onclick = () => {
+            state.focusedWord = wordSection;
+        };
+        const childrenToAddOnInputTo = getArrayOfChildrenThatAreInputs(wordToHide);
+        childrenToAddOnInputTo.forEach((input) => {
+            input.oninput = ensureMaxLengthNotExceeded;
+        });
+    });
+    return nonEmptySectionsToHide;
+}
+function ensureMaxLengthNotExceeded(event) {
+    const targetInput = event.target;
+    const firstLetter = targetInput.value.charAt(0);
+    targetInput.value = firstLetter;
 }

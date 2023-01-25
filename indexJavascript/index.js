@@ -1,5 +1,6 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE_HTML_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
 import { initialiseWordsOrQuotesRadioButtons, replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
+import { getArrayOfChildrenThatAreInputs, getElementOfWord, getIdForLetter, getIdForWord, getWordSectionsFromWord, isIlleagalLetter } from "./utilities.js";
 export let state;
 let poems = {};
 fetch("convertedPoems.json")
@@ -83,7 +84,7 @@ function onRangebarInput(rangeBar) {
 // ============================================================================
 // =========================== Letter input onchange event handler ===========================
 // Event handler for each individual letter input
-function onInputEventHandler(word, event, poem) {
+export function onInputEventHandler(word, event, poem) {
     // Check if letter is incorrect
     const targetInput = event.target;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
@@ -279,37 +280,6 @@ function addPoemAuthor() {
     const poemAuthorElement = document.getElementById(POEM_AUTHOR_ID);
     poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
-// Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-export function replaceWord(word, poem) {
-    // Turn each word into letter inputs
-    const wordSectionsToHide = getWordSectionsFromWord(word);
-    const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
-    nonEmptySectionsToHide.forEach((wordSection) => {
-        const wordToHide = getElementOfWord(wordSection);
-        const wordInUnderScores = wordSection.split('').map((letter) => {
-            if (!isIlleagalLetter(letter)) {
-                const htmlForLetter = `<input ${INPUT_OPTIONS} id="${getIdForLetter(wordSection, letter)}"></input>`;
-                return htmlForLetter;
-            }
-        }).join('');
-        wordToHide.innerHTML = wordInUnderScores;
-        // Adds the event handlers for the input
-        wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem);
-        wordToHide.onclick = () => {
-            state.focusedWord = wordSection;
-        };
-        const childrenToAddOnInputTo = getArrayOfChildrenThatAreInputs(wordToHide);
-        childrenToAddOnInputTo.forEach((input) => {
-            input.oninput = ensureMaxLengthNotExceeded;
-        });
-    });
-    return nonEmptySectionsToHide;
-}
-function ensureMaxLengthNotExceeded(event) {
-    const targetInput = event.target;
-    const firstLetter = targetInput.value.charAt(0);
-    targetInput.value = firstLetter;
-}
 // Align the text of poems either to side or center
 function centerPoem(poemElement) {
     const currentPoemName = state.currentPoemName;
@@ -365,9 +335,6 @@ function makeSpanForWord(word) {
 function removeNumberFromWord(word) {
     return word.split('').filter(letter => !isIlleagalLetter(letter)).join('');
 }
-function isIlleagalLetter(letter) {
-    return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(letter);
-}
 // =========================== Intitalise poem ===========================
 // Initialises the poem, by rendering it in
 export function initialise() {
@@ -389,18 +356,9 @@ export function initialise() {
     state.focusedWord = wordsThatHaveBeenReplaced[0];
 }
 // HELPER FUNCTIONS
-function getArrayOfChildrenThatAreInputs(element) {
-    const arrayOfChildren = Array.from(element.children);
-    return arrayOfChildren;
-}
 // Gets the poem element
 function getPoemElement() {
     return document.getElementById(POEM_ID);
-}
-// Gets the HTML element of a specific word
-function getElementOfWord(word) {
-    const wordElement = document.getElementById(getIdForWord(word));
-    return wordElement;
 }
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word) {
@@ -408,27 +366,4 @@ function focusFirstLetterOfWord(word) {
     const inputToFocusId = `${getIdForLetter(word, firstLetter)}`;
     const firstInputElement = document.getElementById(inputToFocusId);
     firstInputElement.focus();
-}
-// Sorting IDs
-// Get a letter in the form of its binary code
-function getBinaryFromLetter(letter) {
-    return letter.charCodeAt(0).toString(2);
-}
-// Abstraction for getting the id for a specific letter
-function getIdForLetter(word, letter) {
-    return `${getIdForWord(word)}_${getBinaryFromLetter(letter)}`;
-}
-// Abstraction for getting the id of a specific word
-function getIdForWord(word) {
-    if (word.includes('"')) {
-        return word.replace(/"/, "'");
-    }
-    else {
-        return word;
-    }
-}
-function getWordSectionsFromWord(word) {
-    return word.split(FAKE_SPACE).filter((wordSection) => {
-        return wordSection !== '';
-    });
 }

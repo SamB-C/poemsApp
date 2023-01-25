@@ -1,5 +1,6 @@
-import { ANIMATION_SPEED, convertedPoemsJSON, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE, FAKE_SPACE_HTML_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, State, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, convertedPoemsJSON, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE_HTML_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, State, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
 import { initialiseWordsOrQuotesRadioButtons, replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
+import { getArrayOfChildrenThatAreInputs, getElementOfWord, getIdForLetter, getIdForWord, getWordSectionsFromWord, isIlleagalLetter } from "./utilities.js";
 
 export let state: State;
 
@@ -105,7 +106,7 @@ function onRangebarInput(rangeBar: HTMLInputElement) {
 
 
 // Event handler for each individual letter input
-function onInputEventHandler(word: string, event: Event, poem: string) {
+export function onInputEventHandler(word: string, event: Event, poem: string) {
     // Check if letter is incorrect
     const targetInput = event.target as HTMLInputElement;
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
@@ -330,43 +331,6 @@ function addPoemAuthor() {
     poemAuthorElement.innerHTML = poemAuthor.toUpperCase();
 }
 
-
-
-
-// Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
-export function replaceWord(word: string, poem: string): Array<string> {
-    // Turn each word into letter inputs
-    const wordSectionsToHide = getWordSectionsFromWord(word);
-    const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
-    nonEmptySectionsToHide.forEach((wordSection) => {
-        const wordToHide: HTMLSpanElement = getElementOfWord(wordSection);
-        const wordInUnderScores: string = wordSection.split('').map((letter) => {
-            if (!isIlleagalLetter(letter)) {
-                const htmlForLetter: string = `<input ${INPUT_OPTIONS} id="${getIdForLetter(wordSection, letter)}"></input>`
-                return htmlForLetter;
-            }
-        }).join('');
-        wordToHide.innerHTML = wordInUnderScores;
-        // Adds the event handlers for the input
-        wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem)
-        wordToHide.onclick = () => {
-            state.focusedWord = wordSection
-        }
-        const childrenToAddOnInputTo: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(wordToHide);
-        childrenToAddOnInputTo.forEach((input: HTMLInputElement) => {
-            input.oninput = ensureMaxLengthNotExceeded;
-        })
-    });
-    return nonEmptySectionsToHide;
-}
-
-function ensureMaxLengthNotExceeded(event: Event) {
-    const targetInput = event.target as HTMLInputElement;
-    const firstLetter = targetInput.value.charAt(0);
-    targetInput.value = firstLetter;
-}
-
-
 // Align the text of poems either to side or center
 function centerPoem(poemElement: HTMLElement) {
     const currentPoemName = state.currentPoemName;
@@ -381,7 +345,6 @@ function centerPoem(poemElement: HTMLElement) {
         poemSelect.style.textAlign = 'left';
         poemAuthor.style.textAlign = 'left';
     }
-    
 }
 
 
@@ -433,9 +396,7 @@ function removeNumberFromWord(word: string): string {
     return word.split('').filter(letter => !isIlleagalLetter(letter)).join('');
 }
 
-function isIlleagalLetter(letter: string): boolean {
-    return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(letter);
-}
+
 
 // =========================== Intitalise poem ===========================
 
@@ -460,22 +421,10 @@ export function initialise() {
 
 // HELPER FUNCTIONS
 
-function getArrayOfChildrenThatAreInputs(element: HTMLSpanElement): Array<HTMLInputElement> {
-    const arrayOfChildren = Array.from(element.children) as Array<HTMLInputElement>;
-    return arrayOfChildren;
-}
-
 // Gets the poem element
 function getPoemElement():HTMLElement {
     return document.getElementById(POEM_ID)!;
 }
-
-// Gets the HTML element of a specific word
-function getElementOfWord(word: string): HTMLSpanElement {
-    const wordElement: HTMLSpanElement = document.getElementById(getIdForWord(word))!;
-    return wordElement;
-}
-
 
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word: string) {
@@ -484,34 +433,4 @@ function focusFirstLetterOfWord(word: string) {
     const firstInputElement: HTMLElement = document.getElementById(inputToFocusId)!;
     firstInputElement.focus();
 }
-
-
-
-// Sorting IDs
-
-// Get a letter in the form of its binary code
-function getBinaryFromLetter(letter:string): string {
-    return letter.charCodeAt(0).toString(2);
-}
-
-// Abstraction for getting the id for a specific letter
-function getIdForLetter(word: string, letter: string): string {
-    return `${getIdForWord(word)}_${getBinaryFromLetter(letter)}`
-}
-
-// Abstraction for getting the id of a specific word
-function getIdForWord(word: string): string {
-    if (word.includes('"')) {
-        return word.replace(/"/, "'");
-    } else {
-        return word
-    }
-}
-
-function getWordSectionsFromWord(word: string): Array<string> {
-    return word.split(FAKE_SPACE).filter((wordSection: string) => {
-        return wordSection !== '';
-    })
-}
-
 
