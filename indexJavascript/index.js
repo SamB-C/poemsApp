@@ -34,6 +34,9 @@ function initialiseState(poems) {
 export function onInputEventHandler(word, event, poem) {
     // Check if letter is incorrect
     const targetInput = event.target;
+    if (targetInput.value.length === 0) {
+        return;
+    }
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         const parent = targetInput.parentElement;
