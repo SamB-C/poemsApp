@@ -233,12 +233,11 @@ function completePoem(poem: string): void {
     const completionColor: string = '#00FF00';
     const allWordsInPoem: Array<string> = getAllWordSectionsInPoem(poem);
     // Disable the inputs that re-render the poem
-    const rangeBar = document.getElementById(RANGEBAR_ID) as HTMLInputElement;
-    const poemSelectInput = document.getElementById(POEM_SELECT_ID) as HTMLSelectElement;
-    const rangeBarIntitialValue = rangeBar.value
-    disableInputs(rangeBar, poemSelectInput);
+    const rangeBar = GET_ELEMENT.getRangeBar();
+    const rangeBarIntitialValue = rangeBar.value;
+    disableInputs();
     // Do animation
-    changeAllWordsToColor(allWordsInPoem, state.wordsNotCompletedPreserved, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, poemSelectInput, rangeBarIntitialValue));
+    changeAllWordsToColor(allWordsInPoem, state.wordsNotCompletedPreserved, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, rangeBarIntitialValue));
 }
 
 // Splits the poem into a list of words
@@ -258,17 +257,30 @@ function getAllWordSectionsInPoem(poem: string): Array<string> {
 }
 
 // Disables inputs that re-render the poem, so it is not re-rendered mid-animation (opposite to resetInputs)
-function disableInputs(rangeBar: HTMLInputElement, poemSelectInput: HTMLSelectElement) {
+function disableInputs() {
+    const rangeBar = GET_ELEMENT.getRangeBar();
     rangeBar.onpointerup = () => {};
+
+    const poemSelectInput = GET_ELEMENT.getPoemSelect();
     poemSelectInput.disabled = true;
+
+    const { wordsRadioButton, quotesRadioButton } = GET_ELEMENT.getRadioButtons();
+    wordsRadioButton.disabled = true;
+    quotesRadioButton.disabled = true;
 }
 
 // Resets event handler once the animation is complete (opposite to disableInputs)
-function resetInputs(rangeBar: HTMLInputElement, poemSelectInput: HTMLSelectElement) {
-        // Reset the inputs' event handlers
-        const rangeBarResult = document.getElementById(RANGEBAR_RESULT_ID) as HTMLParagraphElement;
-        addRangebarEvents(rangeBar, rangeBarResult);
-        poemSelectInput.disabled = false;
+function resetInputs() {
+    const rangeBar = GET_ELEMENT.getRangeBar();
+    const rangeBarResult = GET_ELEMENT.getRangeBarResult();
+    addRangebarEvents(rangeBar, rangeBarResult);
+
+    const poemSelectInput = GET_ELEMENT.getPoemSelect();
+    poemSelectInput.disabled = false;
+
+    const { wordsRadioButton, quotesRadioButton } = GET_ELEMENT.getRadioButtons();
+    wordsRadioButton.disabled = false;
+    quotesRadioButton.disabled = false;
 }
 
 // Animation to change all the words in the poem to a different color - A recursive function
@@ -289,7 +301,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
 }
 
 // Cleanup function for after animation
-function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, poemSelectInput: HTMLSelectElement, rangeBarIntitialValue: string) {
+function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, rangeBarIntitialValue: string) {
     // Tells the user they completed the poem
     const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
     poemElement.innerHTML = poemElement.innerHTML + `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`
@@ -297,7 +309,7 @@ function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, poem
     const try_again: HTMLElement = document.getElementById(TRY_AGAIN_LINK_ID)!;
     try_again.onclick = onTryAgainClick
     // Resets the disabled inputs
-    resetInputs(rangeBar, poemSelectInput);
+    resetInputs();
     setTimeout(() => updateRangeBar(rangeBar, rangeBarIntitialValue), 500)
 }
 

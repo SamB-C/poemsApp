@@ -1,4 +1,4 @@
-import { FAKE_SPACE, POEM_ID, POEM_ID_TYPE } from "./constantsAndTypes.js";
+import { FAKE_SPACE, POEM_CONTAINER_DOM_TYPE, POEM_ID, POEM_SELECT_ID, POEM_SELECT_TYPE, RADIO_BUTTONS_TYPE, RANGEBAR_ID, RANGEBAR_RESULT_ID, RANGEBAR_RESULT_TYPE, RANGEBAR_TYPE, REPLACE_QUOTES_RADIO_BUTTON_ID, REPLACE_WORDS_RADIO_BUTTON_ID } from "./constantsAndTypes.js";
 
 
 export const WORD_FUNCS = {
@@ -33,8 +33,22 @@ export const GET_ELEMENT = {
         const wordElement: HTMLSpanElement = document.getElementById(GET_ID.getIdForWord(word))!;
         return wordElement;
     },
-    getPoemElement(): POEM_ID_TYPE {
-        return document.getElementById(POEM_ID)! as POEM_ID_TYPE;
+    getPoemElement(): POEM_CONTAINER_DOM_TYPE {
+        return document.getElementById(POEM_ID) as POEM_CONTAINER_DOM_TYPE;
+    },
+    getRangeBar(): RANGEBAR_TYPE {
+        return document.getElementById(RANGEBAR_ID) as RANGEBAR_TYPE;
+    },
+    getPoemSelect(): POEM_SELECT_TYPE {
+        return document.getElementById(POEM_SELECT_ID) as POEM_SELECT_TYPE;
+    },
+    getRangeBarResult(): RANGEBAR_RESULT_TYPE {
+        return document.getElementById(RANGEBAR_RESULT_ID) as RANGEBAR_RESULT_TYPE;
+    },
+    getRadioButtons(): {wordsRadioButton: RADIO_BUTTONS_TYPE, quotesRadioButton: RADIO_BUTTONS_TYPE} {
+        const wordsRadioButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID) as RADIO_BUTTONS_TYPE;
+        const quotesRadioButton = document.getElementById(REPLACE_QUOTES_RADIO_BUTTON_ID) as RADIO_BUTTONS_TYPE;
+        return {wordsRadioButton, quotesRadioButton};
     }
 }
 
