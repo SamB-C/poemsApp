@@ -1,6 +1,5 @@
-import { QUOTES, WORDS } from "./constantsAndTypes.js";
+import { GET_ELEMENT, QUOTES, WORDS } from "./constantsAndTypes.js";
 import { addPoemAuthor, initialise, state } from "./index.js";
-import { GET_ELEMENT } from "./utilities.js";
 // =========================== Intitalise range bar ===========================
 // Initisalisation for the rangebar slider
 export function initialiseRangebar() {

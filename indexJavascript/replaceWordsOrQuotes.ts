@@ -1,7 +1,7 @@
 import { Quotes } from "../notesAndKeyQuotes/utilities.js";
-import { INPUT_OPTIONS, NUMBER_ONLY_REGEX } from "./constantsAndTypes.js";
+import { GET_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX } from "./constantsAndTypes.js";
 import { onInputEventHandler, state } from "./index.js";
-import { getArrayOfChildrenThatAreInputs, GET_ELEMENT, GET_ID, isIlleagalLetter, WORD_FUNCS } from "./utilities.js";
+import { getArrayOfChildrenThatAreInputs, GET_ID, isIlleagalLetter, WORD_FUNCS } from "./utilities.js";
 
 
 // =========================== Choose words to replace ===========================

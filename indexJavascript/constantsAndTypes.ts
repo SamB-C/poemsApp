@@ -1,4 +1,5 @@
 import { Notes, Quotes } from "../notesAndKeyQuotes/utilities";
+import { FAKE_SPACE, GET_ID } from "./utilities.js";
 
 export const POEM_ID = '__poem_id__';
 export type POEM_CONTAINER_DOM_TYPE = HTMLParagraphElement;
@@ -15,7 +16,6 @@ export const TRY_AGAIN_LINK_ID = '__try_again__'
 export const POEM_AUTHOR_ID = "__poem_author__";
 export const NUMBER_ONLY_REGEX = /^[0-9]+$/
 export const SPECIAL_CHARACTER_REGEX = /[.,:;]/
-export const FAKE_SPACE: string = '|+|';
 export const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
 export const ANIMATION_SPEED: number = 20
 export const COVER_OVER_COMPLETED_WORDS = false;
@@ -51,4 +51,29 @@ export type State = {
     focusedWord: string,
     wordsNotCompleted: Array<string>,
     wordsNotCompletedPreserved: Array<string>
+}
+
+
+export const GET_ELEMENT = {
+    getElementOfWord(word: string): HTMLSpanElement {
+        const wordElement: HTMLSpanElement = document.getElementById(GET_ID.getIdForWord(word))!;
+        return wordElement;
+    },
+    getPoemElement(): POEM_CONTAINER_DOM_TYPE {
+        return document.getElementById(POEM_ID) as POEM_CONTAINER_DOM_TYPE;
+    },
+    getRangeBar(): RANGEBAR_TYPE {
+        return document.getElementById(RANGEBAR_ID) as RANGEBAR_TYPE;
+    },
+    getPoemSelect(): POEM_SELECT_TYPE {
+        return document.getElementById(POEM_SELECT_ID) as POEM_SELECT_TYPE;
+    },
+    getRangeBarResult(): RANGEBAR_RESULT_TYPE {
+        return document.getElementById(RANGEBAR_RESULT_ID) as RANGEBAR_RESULT_TYPE;
+    },
+    getRadioButtons(): {wordsRadioButton: RADIO_BUTTONS_TYPE, quotesRadioButton: RADIO_BUTTONS_TYPE} {
+        const wordsRadioButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID) as RADIO_BUTTONS_TYPE;
+        const quotesRadioButton = document.getElementById(REPLACE_QUOTES_RADIO_BUTTON_ID) as RADIO_BUTTONS_TYPE;
+        return {wordsRadioButton, quotesRadioButton};
+    }
 }

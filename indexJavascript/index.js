@@ -1,7 +1,7 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE_HTML_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
 import { disableInputs, initialisePoemOptions, initialiseRangebar, initialiseWordsOrQuotesRadioButtons, resetInputs, updateRangeBar } from "./inputs.js";
 import { replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
-import { getArrayOfChildrenThatAreInputs, GET_ELEMENT, GET_ID, WORD_FUNCS } from "./utilities.js";
+import { getArrayOfChildrenThatAreInputs, GET_ID, WORD_FUNCS } from "./utilities.js";
 export let state;
 let poems = {};
 fetch("convertedPoems.json")
