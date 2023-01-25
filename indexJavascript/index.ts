@@ -56,6 +56,7 @@ export function onInputEventHandler(word: string, event: Event, poem: string) {
             targetInput.style.color = 'black';
         }, 1000)
     } else {
+        targetInput.style.textAlign = 'center';
         focusNextLetter(targetInput, poem);
     }
 }
@@ -82,6 +83,7 @@ function revertWordToEmpty(word: string):void {
     // Resets word
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
         arrayOfChildren[i].value = '';
+        arrayOfChildren[i].style.textAlign = 'start';
         focusFirstLetterOfWord(word);
     }
 }

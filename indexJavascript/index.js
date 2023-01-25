@@ -46,6 +46,7 @@ export function onInputEventHandler(word, event, poem) {
         }, 1000);
     }
     else {
+        targetInput.style.textAlign = 'center';
         focusNextLetter(targetInput, poem);
     }
 }
@@ -67,6 +68,7 @@ function revertWordToEmpty(word) {
     // Resets word
     for (let i = 0; i < arrayOfChildren.length; i++) {
         arrayOfChildren[i].value = '';
+        arrayOfChildren[i].style.textAlign = 'start';
         focusFirstLetterOfWord(word);
     }
 }
