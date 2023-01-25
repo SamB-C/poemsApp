@@ -1,6 +1,7 @@
 import { Notes, Quotes } from "../notesAndKeyQuotes/utilities";
 
 export const POEM_ID = '__poem_id__';
+export type POEM_ID_TYPE = HTMLParagraphElement;
 export const RANGEBAR_ID = '__range_bar__';
 export const RANGEBAR_RESULT_ID = '__range_bar_result__';
 export const POEM_SELECT_ID = '__poem_selection__'

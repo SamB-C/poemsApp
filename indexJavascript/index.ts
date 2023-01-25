@@ -1,6 +1,6 @@
-import { ANIMATION_SPEED, convertedPoemsJSON, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE_HTML_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, State, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, convertedPoemsJSON, COVER_OVER_COMPLETED_WORDS, FAKE_SPACE_HTML_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, RANGEBAR_ID, RANGEBAR_RESULT_ID, State, TRY_AGAIN_LINK_ID, WORDS } from "./constantsAndTypes.js";
 import { initialiseWordsOrQuotesRadioButtons, replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
-import { getArrayOfChildrenThatAreInputs, getElementOfWord, getIdForLetter, getIdForWord, getWordSectionsFromWord, isIlleagalLetter } from "./utilities.js";
+import { getArrayOfChildrenThatAreInputs, GET_ELEMENT, GET_ID, WORD_FUNCS } from "./utilities.js";
 
 export let state: State;
 
@@ -142,7 +142,7 @@ function compareInputToLetterId(input: string, id: string): boolean {
 // Reverts a word back to underscores after incorrect input
 function revertWordToEmpty(word: string):void {
     // Retrive all inputs
-    const wordElement: HTMLSpanElement = getElementOfWord(word);
+    const wordElement: HTMLSpanElement = GET_ELEMENT.getElementOfWord(word);
     const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(wordElement);
     // Resets word
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
@@ -199,7 +199,7 @@ function checkAllLettersFull(singleLetter: HTMLInputElement): HTMLInputElement |
 // When a word is completed, check if it is correct, if so, move onto next word
 function completeWord(poem: string):void {
     // Get the input values and combine into guessed word
-    const focusedWordElement: HTMLSpanElement = getElementOfWord(state.focusedWord);
+    const focusedWordElement: HTMLSpanElement = GET_ELEMENT.getElementOfWord(state.focusedWord);
     const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(focusedWordElement)
     let userInput: string = '';
     for (let i: number = 0; i < arrayOfChildren.length; i++) {
@@ -212,8 +212,8 @@ function completeWord(poem: string):void {
 
 // Marks a word as complete by converting back to text and cahnging colour to green
 function revertToTextAsComplete(wordToRevert: string): void {
-    const wordToRevertElement: HTMLSpanElement = getElementOfWord(wordToRevert);
-    wordToRevertElement.innerHTML = removeNumberFromWord(wordToRevert);
+    const wordToRevertElement: HTMLSpanElement = GET_ELEMENT.getElementOfWord(wordToRevert);
+    wordToRevertElement.innerHTML = WORD_FUNCS.removeNumberFromWord(wordToRevert);
     wordToRevertElement.style.color = 'green';
 }
 
@@ -250,7 +250,7 @@ function getAllWordSectionsInPoem(poem: string): Array<string> {
         return accumulator.concat(current);
     })
     const allWordSectionsInPoem: Array<string> = allWordsInPoem.map((word: string) => {
-        return getWordSectionsFromWord(word);
+        return WORD_FUNCS.getWordSectionsFromWord(word);
     }).reduce((accumulator: Array<string>, wordSections: Array<string>) => {
         return accumulator.concat(wordSections);
     })
@@ -281,7 +281,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
     }
     // Only change color if it was not on of the words completed by the user and is a actual word not a number (can be overridden)
     if ((!wordsNotToChange.includes(wordToChange) || COVER_OVER_COMPLETED_WORDS) && !wordToChange.match(NUMBER_ONLY_REGEX)) {
-        const wordElement = getElementOfWord(wordToChange);
+        const wordElement = GET_ELEMENT.getElementOfWord(wordToChange);
         wordElement.style.color = color;
     }
     // Recursive call with setTimeout so words don't all change colour at once
@@ -291,7 +291,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
 // Cleanup function for after animation
 function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, poemSelectInput: HTMLSelectElement, rangeBarIntitialValue: string) {
     // Tells the user they completed the poem
-    const poemElement: HTMLElement = getPoemElement();
+    const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
     poemElement.innerHTML = poemElement.innerHTML + `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`
     // Add try again selection
     const try_again: HTMLElement = document.getElementById(TRY_AGAIN_LINK_ID)!;
@@ -365,7 +365,7 @@ function splitPoemToNewLines(poem: string):string {
 function splitLineToWords(line: string):string {
     const split_line: Array<string> = line.split(/ /)
     return split_line.map((word: string):string | undefined => {
-        const sectionsToMakeSpanFor = getWordSectionsFromWord(word);
+        const sectionsToMakeSpanFor = WORD_FUNCS.getWordSectionsFromWord(word);
         if (sectionsToMakeSpanFor.length === 1) {
             return makeSpanForWord(word);
         } else {
@@ -379,30 +379,19 @@ function splitLineToWords(line: string):string {
 
 function makeSpanForWord(word: string): string {
     if (!word.match(NUMBER_ONLY_REGEX)) {
-        const wordId = getIdForWord(word);
-        return `<span id="${wordId}">` + removeNumberFromWord(word) + "</span>";
+        const wordId = GET_ID.getIdForWord(word);
+        return `<span id="${wordId}">` + WORD_FUNCS.removeNumberFromWord(word) + "</span>";
     } else {
         // Code for a space
         return '&nbsp'
     }
 }
 
-
-
-
-// Utilities for feature
-
-function removeNumberFromWord(word: string): string {
-    return word.split('').filter(letter => !isIlleagalLetter(letter)).join('');
-}
-
-
-
 // =========================== Intitalise poem ===========================
 
 // Initialises the poem, by rendering it in
 export function initialise() {
-    const poemElement: HTMLElement = getPoemElement();
+    const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);
     centerPoem(poemElement);
@@ -421,15 +410,10 @@ export function initialise() {
 
 // HELPER FUNCTIONS
 
-// Gets the poem element
-function getPoemElement():HTMLElement {
-    return document.getElementById(POEM_ID)!;
-}
-
 // Finds the element for the first letter of a missing word
 function focusFirstLetterOfWord(word: string) {
-    const firstLetter = removeNumberFromWord(word)[0];
-    const inputToFocusId: string = `${getIdForLetter(word, firstLetter)}`;
+    const firstLetter = WORD_FUNCS.removeNumberFromWord(word)[0];
+    const inputToFocusId: string = `${GET_ID.getIdForLetter(word, firstLetter)}`;
     const firstInputElement: HTMLElement = document.getElementById(inputToFocusId)!;
     firstInputElement.focus();
 }

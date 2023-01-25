@@ -1,7 +1,7 @@
 import { Quotes } from "../notesAndKeyQuotes/utilities.js";
 import { INPUT_OPTIONS, NUMBER_ONLY_REGEX, QUOTES, REPLACE_QUOTES_RADIO_BUTTON_ID, REPLACE_WORDS_RADIO_BUTTON_ID, WORDS, WordsOrQuotesType } from "./constantsAndTypes.js";
 import { initialise, onInputEventHandler, state } from "./index.js";
-import { getArrayOfChildrenThatAreInputs, getElementOfWord, getIdForLetter, getWordSectionsFromWord, isIlleagalLetter } from "./utilities.js";
+import { getArrayOfChildrenThatAreInputs, GET_ELEMENT, GET_ID, isIlleagalLetter, WORD_FUNCS } from "./utilities.js";
 
 
 // Initialise the radio buttons so that their value is represented in the state
@@ -86,13 +86,13 @@ function insertionSortIntoOrderInPoem(poem: string, words: Array<string>): Array
 // Replaces a word from the poem in the HTML with underscores with equal length to the length of the word
 export function replaceWord(word: string, poem: string): Array<string> {
     // Turn each word into letter inputs
-    const wordSectionsToHide = getWordSectionsFromWord(word);
+    const wordSectionsToHide = WORD_FUNCS.getWordSectionsFromWord(word);
     const nonEmptySectionsToHide = wordSectionsToHide.filter(word => !word.match(NUMBER_ONLY_REGEX));
     nonEmptySectionsToHide.forEach((wordSection) => {
-        const wordToHide: HTMLSpanElement = getElementOfWord(wordSection);
+        const wordToHide: HTMLSpanElement = GET_ELEMENT.getElementOfWord(wordSection);
         const wordInUnderScores: string = wordSection.split('').map((letter) => {
             if (!isIlleagalLetter(letter)) {
-                const htmlForLetter: string = `<input ${INPUT_OPTIONS} id="${getIdForLetter(wordSection, letter)}"></input>`
+                const htmlForLetter: string = `<input ${INPUT_OPTIONS} id="${GET_ID.getIdForLetter(wordSection, letter)}"></input>`
                 return htmlForLetter;
             }
         }).join('');

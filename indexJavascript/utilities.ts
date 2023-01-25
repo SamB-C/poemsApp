@@ -1,39 +1,45 @@
-import { FAKE_SPACE } from "./constantsAndTypes.js";
+import { FAKE_SPACE, POEM_ID, POEM_ID_TYPE } from "./constantsAndTypes.js";
 
-export function getWordSectionsFromWord(word: string): Array<string> {
-    return word.split(FAKE_SPACE).filter((wordSection: string) => {
-        return wordSection !== '';
-    })
-}
 
-// Abstraction for getting the id of a specific word
-export function getIdForWord(word: string): string {
-    if (word.includes('"')) {
-        return word.replace(/"/, "'");
-    } else {
-        return word
+export const WORD_FUNCS = {
+    getWordSectionsFromWord(word: string): Array<string> {
+        return word.split(FAKE_SPACE).filter((wordSection: string) => {
+            return wordSection !== '';
+        })
+    },
+    removeNumberFromWord(word: string): string {
+        return word.split('').filter(letter => !isIlleagalLetter(letter)).join('');
     }
 }
 
-// Gets the HTML element of a specific word
-export function getElementOfWord(word: string): HTMLSpanElement {
-    const wordElement: HTMLSpanElement = document.getElementById(getIdForWord(word))!;
-    return wordElement;
+export const GET_ID = {
+    getBinaryFromLetter(letter:string): string {
+        return letter.charCodeAt(0).toString(2);
+    },
+    getIdForWord(word: string): string {
+        if (word.includes('"')) {
+            return word.replace(/"/, "'");
+        } else {
+            return word
+        }
+    },
+    getIdForLetter(word: string, letter: string): string {
+        return `${this.getIdForWord(word)}_${this.getBinaryFromLetter(letter)}`
+    },
+}
+
+export const GET_ELEMENT = {
+    getElementOfWord(word: string): HTMLSpanElement {
+        const wordElement: HTMLSpanElement = document.getElementById(GET_ID.getIdForWord(word))!;
+        return wordElement;
+    },
+    getPoemElement(): POEM_ID_TYPE {
+        return document.getElementById(POEM_ID)! as POEM_ID_TYPE;
+    }
 }
 
 export function isIlleagalLetter(letter: string): boolean {
     return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(letter);
-}
-
-
-// Get a letter in the form of its binary code
-function getBinaryFromLetter(letter:string): string {
-    return letter.charCodeAt(0).toString(2);
-}
-
-// Abstraction for getting the id for a specific letter
-export function getIdForLetter(word: string, letter: string): string {
-    return `${getIdForWord(word)}_${getBinaryFromLetter(letter)}`
 }
 
 export function getArrayOfChildrenThatAreInputs(element: HTMLSpanElement): Array<HTMLInputElement> {
