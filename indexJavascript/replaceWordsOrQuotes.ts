@@ -83,7 +83,7 @@ export function replaceWord(word: string, poem: string): Array<string> {
         const wordToHide: HTMLSpanElement = GET_ELEMENT.getElementOfWord(wordSection);
         const wordInUnderScores: string = wordSection.split('').map((letter) => {
             if (!isIlleagalLetter(letter)) {
-                const htmlForLetter: string = `<input ${INPUT_OPTIONS} id="${GET_ID.getIdForLetter(wordSection, letter)}" autocomplete="off"></input>`
+                const htmlForLetter: string = `<input ${INPUT_OPTIONS} id="${GET_ID.getIdForLetter(wordSection, letter)}"></input>`
                 return htmlForLetter;
             }
         }).join('');
