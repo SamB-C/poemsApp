@@ -28,6 +28,15 @@ export const GET_ID = {
 export function isIlleagalLetter(letter) {
     return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(letter);
 }
+export const FOCUS = {
+    // Finds the element for the first letter of a missing word
+    focusFirstLetterOfWord(word) {
+        const firstLetter = WORD_FUNCS.removeNumberFromWord(word)[0];
+        const inputToFocusId = `${GET_ID.getIdForLetter(word, firstLetter)}`;
+        const firstInputElement = document.getElementById(inputToFocusId);
+        firstInputElement.focus();
+    }
+};
 export function getArrayOfChildrenThatAreInputs(element) {
     const arrayOfChildren = Array.from(element.children);
     return arrayOfChildren;

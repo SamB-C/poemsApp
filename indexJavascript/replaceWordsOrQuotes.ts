@@ -1,6 +1,7 @@
 import { Quotes } from "../notesAndKeyQuotes/utilities.js";
 import { GET_ELEMENT, INPUT_OPTIONS, NUMBER_ONLY_REGEX } from "./constantsAndTypes.js";
-import { onInputEventHandler, state } from "./index.js";
+import { state } from "./index.js";
+import { onInputEventHandler } from "./letterInputEventHandler.js";
 import { getArrayOfChildrenThatAreInputs, GET_ID, isIlleagalLetter, WORD_FUNCS } from "./utilities.js";
 
 

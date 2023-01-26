@@ -13,6 +13,8 @@ export const POEM_SELECT_ID = '__poem_selection__';
 export type POEM_SELECT_TYPE = HTMLSelectElement;
 
 export const TRY_AGAIN_LINK_ID = '__try_again__'
+export type TRY_AGAIN_LINK_TYPE = HTMLElement;
+
 export const POEM_AUTHOR_ID = "__poem_author__";
 export const NUMBER_ONLY_REGEX = /^[0-9]+$/
 export const SPECIAL_CHARACTER_REGEX = /[.,:;]/
@@ -75,5 +77,8 @@ export const GET_ELEMENT = {
         const wordsRadioButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID) as RADIO_BUTTONS_TYPE;
         const quotesRadioButton = document.getElementById(REPLACE_QUOTES_RADIO_BUTTON_ID) as RADIO_BUTTONS_TYPE;
         return {wordsRadioButton, quotesRadioButton};
+    },
+    getTryAgainLink(): TRY_AGAIN_LINK_TYPE {
+        return document.getElementById(TRY_AGAIN_LINK_ID) as HTMLElement;
     }
 }

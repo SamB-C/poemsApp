@@ -36,5 +36,8 @@ export const GET_ELEMENT = {
         const wordsRadioButton = document.getElementById(REPLACE_WORDS_RADIO_BUTTON_ID);
         const quotesRadioButton = document.getElementById(REPLACE_QUOTES_RADIO_BUTTON_ID);
         return { wordsRadioButton, quotesRadioButton };
+    },
+    getTryAgainLink() {
+        return document.getElementById(TRY_AGAIN_LINK_ID);
     }
 };
