@@ -1,4 +1,4 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, NUMBER_ONLY_REGEX, TRY_AGAIN_LINK_ID } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, NUMBER_ONLY_REGEX, TRY_AGAIN_LINK_ELEMENT_AS_STR } from "./constantsAndTypes.js";
 import { initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
 import { FOCUS, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
@@ -181,7 +181,7 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
 function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, rangeBarIntitialValue: string) {
     // Tells the user they completed the poem
     const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
-    poemElement.innerHTML = poemElement.innerHTML + `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`
+    poemElement.innerHTML = poemElement.innerHTML + TRY_AGAIN_LINK_ELEMENT_AS_STR;
     // Add try again selection
     const try_again = GET_ELEMENT.getTryAgainLink();
     try_again.onclick = initialise

@@ -59,3 +59,13 @@ select:hover {
     border-radius: 10px;
     margin-left: 30px;
 }
+
+#__try_again__ {
+    color: #209CEE;
+    cursor: pointer;
+}
+
+#__try_again__:hover {
+    text-decoration: underline;
+    text-decoration-color: #209CEE;
+}

@@ -13,7 +13,8 @@ export const POEM_SELECT_ID = '__poem_selection__';
 export type POEM_SELECT_TYPE = HTMLSelectElement;
 
 export const TRY_AGAIN_LINK_ID = '__try_again__'
-export type TRY_AGAIN_LINK_TYPE = HTMLElement;
+export type TRY_AGAIN_LINK_TYPE = HTMLLinkElement;
+export const TRY_AGAIN_LINK_ELEMENT_AS_STR = `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`
 
 export const POEM_AUTHOR_ID = "__poem_author__";
 export const NUMBER_ONLY_REGEX = /^[0-9]+$/
@@ -79,6 +80,6 @@ export const GET_ELEMENT = {
         return {wordsRadioButton, quotesRadioButton};
     },
     getTryAgainLink(): TRY_AGAIN_LINK_TYPE {
-        return document.getElementById(TRY_AGAIN_LINK_ID) as HTMLElement;
+        return document.getElementById(TRY_AGAIN_LINK_ID) as TRY_AGAIN_LINK_TYPE;
     }
 }

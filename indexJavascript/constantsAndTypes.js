@@ -4,6 +4,7 @@ export const RANGEBAR_ID = '__range_bar__';
 export const RANGEBAR_RESULT_ID = '__range_bar_result__';
 export const POEM_SELECT_ID = '__poem_selection__';
 export const TRY_AGAIN_LINK_ID = '__try_again__';
+export const TRY_AGAIN_LINK_ELEMENT_AS_STR = `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`;
 export const POEM_AUTHOR_ID = "__poem_author__";
 export const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 export const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
