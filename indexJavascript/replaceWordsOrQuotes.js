@@ -68,7 +68,7 @@ export function replaceWord(word, poem) {
         const wordToHide = GET_ELEMENT.getElementOfWord(wordSection);
         const wordInUnderScores = wordSection.split('').map((letter) => {
             if (!isIlleagalLetter(letter)) {
-                const htmlForLetter = `<input ${INPUT_OPTIONS} id="${GET_ID.getIdForLetter(wordSection, letter)}"></input>`;
+                const htmlForLetter = `<input ${INPUT_OPTIONS} id="${GET_ID.getIdForLetter(wordSection, letter)}" autocomplete="off"></input>`;
                 return htmlForLetter;
             }
         }).join('');
