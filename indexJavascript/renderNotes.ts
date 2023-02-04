@@ -43,14 +43,15 @@ function underlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElemen
             }
         })
         const notesElement = GET_ELEMENT.getNotes();
-        notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color}">${noteText}</p>`);
+        notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
     })
 }
 
 function addUnderlineClass(className: string, wordElement: WORD_SECTION_TYPE) {
     const firstElement = wordElement.firstChild as HTMLElement
     if (firstElement.nodeName !== "INPUT") {
-        wordElement.classList.add(className)
+        wordElement.classList.add(className);
+        wordElement.classList.add('opacity');
     }
 }
 
@@ -62,6 +63,7 @@ function getNewUnderlineClass(className: string, colorNumberToAdd: number): stri
     return `underline${newColorNumber}`;
 }
 
+const removalNumber: Array<number> = [0];
 function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElement: WORD_SECTION_TYPE) {
     const firstElement = wordSectionElement.firstChild as HTMLElement
     if (firstElement.nodeName === "INPUT") {
@@ -72,12 +74,22 @@ function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElem
             const wordElement = GET_ELEMENT.getElementOfWord(word);
             wordElement.classList.forEach((className: string) => {
                 if (className.match(/underline/)) {
+                    wordElement.classList.remove('opacity');
                     wordElement.classList.remove(className);
                 }
             })
         });
+        removalNumber[0]++;
         const noteTextElement = document.getElementById(noteText) as NOTE_TYPE;
-        noteTextElement.remove();
+        noteTextElement.id = removalNumber.toString();
+        const numberCopy = [...removalNumber];
+        noteTextElement.classList.remove('noteTextIn')
+        noteTextElement.classList.add('noteTextOut');
+        setTimeout(() => {
+            const elementToRemove = document.getElementById(numberCopy.toString()) as NOTE_TYPE;
+            console.log(window.getComputedStyle(elementToRemove).padding);
+            elementToRemove.remove();
+        }, 500)
     });
 }
 

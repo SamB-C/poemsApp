@@ -40,13 +40,14 @@ function underlineNotes(notesToUnderline, wordSectionElement) {
             }
         });
         const notesElement = GET_ELEMENT.getNotes();
-        notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color}">${noteText}</p>`);
+        notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
     });
 }
 function addUnderlineClass(className, wordElement) {
     const firstElement = wordElement.firstChild;
     if (firstElement.nodeName !== "INPUT") {
         wordElement.classList.add(className);
+        wordElement.classList.add('opacity');
     }
 }
 function getNewUnderlineClass(className, colorNumberToAdd) {
@@ -56,6 +57,7 @@ function getNewUnderlineClass(className, colorNumberToAdd) {
     const newColorNumber = originalColorNumber + colorNumberToAdd + 1;
     return `underline${newColorNumber}`;
 }
+const removalNumber = [0];
 function unUnderlineNotes(notesToUnderline, wordSectionElement) {
     const firstElement = wordSectionElement.firstChild;
     if (firstElement.nodeName === "INPUT") {
@@ -66,16 +68,30 @@ function unUnderlineNotes(notesToUnderline, wordSectionElement) {
             const wordElement = GET_ELEMENT.getElementOfWord(word);
             wordElement.classList.forEach((className) => {
                 if (className.match(/underline/)) {
+                    wordElement.classList.remove('opacity');
                     wordElement.classList.remove(className);
                 }
             });
         });
+        removalNumber[0]++;
         const noteTextElement = document.getElementById(noteText);
-        noteTextElement.remove();
+        noteTextElement.id = removalNumber.toString();
+        const numberCopy = [...removalNumber];
+        noteTextElement.classList.remove('noteTextIn');
+        noteTextElement.classList.add('noteTextOut');
+        setTimeout(() => {
+            const elementToRemove = document.getElementById(numberCopy.toString());
+            console.log(window.getComputedStyle(elementToRemove).padding);
+            elementToRemove.remove();
+        }, 500);
     });
 }
 function getAssociatedNotes(wordSection) {
-    const currentPoemNotes = state.poemData[state.currentPoemName].notes;
+    const currentPoemNotes = {
+        '1': ['1After1', '1the1'],
+        '2': ['1the1', '1first1'],
+        '3': ['1the1', '1first1', '1phase1']
+    };
     const associatedNotes = {};
     let numberOfAssociatedNotes = 0;
     Object.keys(currentPoemNotes).forEach((noteText) => {

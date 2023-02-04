@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+* {
+    box-sizing: border-box;
+    /*outline: 1px solid red !important;*/
+}
+
 p, input::-webkit-input-placeholder {
     font-size: 3.1vh;
     font-family: 'Poppins', sans-serif;
@@ -60,6 +65,7 @@ select:hover {
     margin-left: 30px;
     position: sticky;
     top: 20vh;
+    transition: border 1s ease;
 }
 
 #__try_again__ {
@@ -80,16 +86,23 @@ select:hover {
     content: "";
     position: absolute;
     top: 100%;
-    width: 110%;
+    width: 120%;
     left: -5%;
     height: 5px;
     border-radius: 2px;
+    opacity: 0;
+    transition: opacity 1s;
+    transition-timing-function: ease;
+    transition: background 1s;
+}
+
+.opacity::after {
+    opacity: 1;
 }
 
 .underline1::after {
     background: red;
 }
-
 .underline2::after {
     background: blue;
 }
@@ -117,4 +130,52 @@ select:hover {
 }
 .green {
     color: green;
+}
+
+
+#__notes__ {
+    transition: height 0.5s linear;
+}
+
+.noteText {
+    margin: 0;
+    height: 0;
+}
+
+.noteTextIn {
+    animation: slidein 0.5s forwards;
+}
+
+.noteTextOut {
+    animation: slideout 0.5s forwards;
+}
+
+@keyframes slidein {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+        margin: 0;
+        hieght: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+        margin: 0;
+        height: 37px;
+    }
+}
+
+
+@keyframes slideout {
+    from {
+        transform: scaleY(1);
+        opacity: 1;
+        height: 37px;
+    }
+    to {
+        transform: scaleY(0);
+        margin: 0;
+        height: 0;
+        opacity: 0;
+    }
 }
