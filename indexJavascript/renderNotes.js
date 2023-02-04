@@ -87,11 +87,7 @@ function unUnderlineNotes(notesToUnderline, wordSectionElement) {
     });
 }
 function getAssociatedNotes(wordSection) {
-    const currentPoemNotes = {
-        '1': ['1After1', '1the1'],
-        '2': ['1the1', '1first1'],
-        '3': ['1the1', '1first1', '1phase1']
-    };
+    const currentPoemNotes = state.poemData[state.currentPoemName].notes;
     const associatedNotes = {};
     let numberOfAssociatedNotes = 0;
     Object.keys(currentPoemNotes).forEach((noteText) => {

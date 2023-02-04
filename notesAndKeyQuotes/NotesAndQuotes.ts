@@ -10,11 +10,15 @@ type QuoteOverlapError = {
     errorType: 'Quote overlap',
     error: string
 }
+type NoteOverlapFourTimes = {
+    errorType: 'Note overlap four times',
+    error: string
+}
 type NoError = {
     errorType: 'No error',
     error: null
 }
-type PostErrorResponse = WordsNotConsecutiveError | QuoteOverlapError | NoError
+type PostErrorResponse = WordsNotConsecutiveError | QuoteOverlapError | NoteOverlapFourTimes | NoError
 
 type NoteNodeType = HTMLSpanElement
 type QuoteNodeType = HTMLParagraphElement
@@ -181,7 +185,7 @@ async function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Ar
         await fetch(`${serverAddress}/note`, {
             method: 'POST',
             body: JSON.stringify(body)
-        }).then(res => console.log('Request Complete! response: ', res))
+        }).then((res: Response) => displayResposnseError(res, "Note", body.newVersion))
     } else {
         const body = {
             poemName: currentPoemName,
@@ -192,7 +196,7 @@ async function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Ar
         await fetch(`${serverAddress}/quote`, {
             method: 'POST',
             body: JSON.stringify(body)
-        }).then((res: Response) => displayResposnseError(res, body.newVersion));
+        }).then((res: Response) => displayResposnseError(res, "Quote", body.newVersion));
     }
 
     await fetch(`${serverAddress}convertedPoems.json`)
@@ -203,18 +207,30 @@ async function updateNoteOrQuote(unchecked: HTMLInputElement, associatedText: Ar
 }
 
 
-async function displayResposnseError(res: Response, badQuote: Array<string>) {
+async function displayResposnseError(res: Response, NotationType: NoteType, badQuoteOrNote: Array<string> | {key: string, value: Array<string>}) {
     const err = await res.json() as PostErrorResponse;
+    console.log(err);
     if (err.errorType !== 'No error') {
-        const erroneousQuote = badQuote.map(word => removeNumbers(word)).join(' ');
         let errorMessage: string = '';
-        if (err.errorType === 'Quote overlap') {
-            const incorrectWord = removeNumbers(err.error);
-            errorMessage = `Quote: "${erroneousQuote}" is invalid because word "${incorrectWord}" overlaps with another quote.`
-        } else if (err.errorType === 'Words not consecutive') {
-            const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word))
-            const correctSequence = err.error.correctSequence.map(word => removeNumbers(word))
-            errorMessage = `Quote: "${erroneousQuote}" is invalid because words "${incorrectSequence.join(' ')}" are not consecutive.</br>Word "${correctSequence[0]}" should be followed by "${correctSequence[1]}".`;
+        if (NotationType === "Quote") {
+            const badQuote = badQuoteOrNote as Array<string>;
+            const erroneousQuote = badQuote.map(word => removeNumbers(word)).join(' ');
+            if (err.errorType === 'Quote overlap') {
+                const incorrectWord = removeNumbers(err.error);
+                errorMessage = `Quote: "${erroneousQuote}" is invalid because word "${incorrectWord}" overlaps with another quote.`
+            } else if (err.errorType === 'Words not consecutive') {
+                const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word))
+                const correctSequence = err.error.correctSequence.map(word => removeNumbers(word))
+                errorMessage = `Quote: "${erroneousQuote}" is invalid because words "${incorrectSequence.join(' ')}" are not consecutive.</br>Word "${correctSequence[0]}" should be followed by "${correctSequence[1]}".`;
+            }
+        } else {
+            if (err.errorType === 'Note overlap four times') {
+                const badNote = badQuoteOrNote as {key: string, value: Array<string>};
+                const erroneousNoteText = badNote.key;
+                const erroneousNoteValue = badNote.value.map(word => removeNumbers(word)).join(' ');
+                const badWord = removeNumbers(err.error);
+                errorMessage = `Note: "${erroneousNoteText}" with words "${erroneousNoteValue}" is invalid becauseword "${badWord}" overlaps with three other notes.`
+            }
         }
 
         // Alert the user

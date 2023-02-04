@@ -102,6 +102,36 @@ function checkQuoteIsValid(quoteToCheck, poemContent, allQuotes) {
     return undefined
 }
 
+function checkOverlaps(allNotes, noteToCheck) {
+    let tooManyOverlaps = undefined;
+    noteToCheck.value.forEach(wordSection => {
+        let numberOfQuotesWordSectionIsIn = 1;
+        Object.keys(allNotes).forEach(noteText => {
+            const noteContent = allNotes[noteText];
+            if (noteText !== noteToCheck.key) {
+                if (noteContent.includes(wordSection)) {
+                    numberOfQuotesWordSectionIsIn++;
+                }
+            }
+        });
+        if (numberOfQuotesWordSectionIsIn > 3) {
+            tooManyOverlaps = wordSection;
+        }
+    });
+    return tooManyOverlaps;
+}
+
+function checkNoteIsValid(noteToCheck, allNotes) {
+    const errMoreThanThreeOverlap = checkOverlaps(allNotes, noteToCheck)
+    if (errMoreThanThreeOverlap !== undefined) {
+        return {
+            errorType: 'Note overlap four times',
+            error: errMoreThanThreeOverlap
+        }
+    }
+    return undefined
+}
+
 function orderQuotes(quotes, poemContent) {
     const firstWords = quotes.map(quote => quote[0]);
     const orderedFirstWords = insertionSortIntoOrderInPoem(poemContent, firstWords);
@@ -137,15 +167,20 @@ function editQuote(existingQuotes, oldIdentifier, newVersion, poemContent) {
     return [newVersion]
 }
 
-function logQuoteErrorMessage(err, newVersion) {
-    console.log(`'${newVersion.join(' ')}' is not a valid quote - ${err.errorType}:`);
+function logErrorMessage(err, newVersion) {
     if (err.errorType === 'Words not consecutive') {
+        console.log(`'${newVersion.join(' ')}' is not a valid quote - ${err.errorType}:`);
         const { incorrectSequence, correctSequence } = err.error;
         console.log(`Incorrect sequence = ${incorrectSequence}`);
         console.log(`Correct sequence = ${correctSequence}\n`)
-    } else {
+    } else if (err.errorType === 'Quote overlap') {
+        console.log(`'${newVersion.join(' ')}' is not a valid quote - ${err.errorType}:`);
         const overlap = err.error;
         console.log(`Word '${overlap}' in multiple quotes.\n`)
+    } else {
+        console.log(`'${newVersion.key}: ${newVersion.value.join(' ')}' is not a valid note - ${err.errorType}:`);
+        const overlap = err.error;
+        console.log(`Word ${overlap} appears in more than three notes\n`)
     }
     console.log('Update not complete\n')
 }
@@ -160,13 +195,19 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
     // Edit notes or quotes accordingly
     if (noteType === 'Note') {
         const existingNotes = convertedPoems[poemName].notes;
-        const alteredNotes = editNote(existingNotes, oldIdentifier, newVersion, poemContent);
-        convertedPoems[poemName].notes = alteredNotes
+        const noteNoteValidErrorMessage = checkNoteIsValid(newVersion, existingNotes);
+        if (noteNoteValidErrorMessage !== undefined) {
+            logErrorMessage(noteNoteValidErrorMessage, newVersion);
+            return noteNoteValidErrorMessage;
+        } else {
+            const alteredNotes = editNote(existingNotes, oldIdentifier, newVersion, poemContent);
+            convertedPoems[poemName].notes = alteredNotes
+        }
     } else if (noteType === 'Quote') {
         const existingQuotes = convertedPoems[poemName].quotes;
         const quoteNotValidErrorMessage = checkQuoteIsValid(newVersion, poemContent, existingQuotes);
         if (quoteNotValidErrorMessage !==  undefined) {
-            logQuoteErrorMessage(quoteNotValidErrorMessage, newVersion)
+            logErrorMessage(quoteNotValidErrorMessage, newVersion)
             return quoteNotValidErrorMessage
         } else {
             const alteredQuotes = editQuote(existingQuotes, oldIdentifier, newVersion, poemContent);
@@ -175,7 +216,7 @@ function editNoteOrQuote(noteType, oldIdentifier, newVersion, poemName) {
     }
 
     // Write the converted poems object back to file
-    fs.writeFile('./convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}});
+    fs.writeFile('./convertedPoems.json', JSON.stringify(convertedPoems, null, 4), (err) => {if (err) {throw err;} else {console.log('\nUpdate complete')}});
     return {errorType: 'No error', error: null}
 }
 

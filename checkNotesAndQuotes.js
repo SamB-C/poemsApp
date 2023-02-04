@@ -9,8 +9,8 @@ function checkNotesAndQuotes(prevNotes, prevQuotes, newContent) {
     Object.keys(notesResult["invalid"]["word-no-longer-exists"]).forEach(invalidNote => {
         invalidNotesAndQuotes["notes"]["word-no-longer-exists"][invalidNote] = notesResult["invalid"]["word-no-longer-exists"][invalidNote];
     });
-    Object.keys(notesResult["invalid"]["three-overlap"]).forEach(invalidNote => {
-        invalidNotesAndQuotes["notes"]["three-overlap"][invalidNote] = notesResult["invalid"]["three-overlap"][invalidNote];
+    Object.keys(notesResult["invalid"]["four-overlaps"]).forEach(invalidNote => {
+        invalidNotesAndQuotes["notes"]["four-overlaps"][invalidNote] = notesResult["invalid"]["four-overlaps"][invalidNote];
     });
     invalidNotesAndQuotes["quotes"]["word-no-longer-exists"] = [
         ...invalidNotesAndQuotes["quotes"]["word-no-longer-exists"],
@@ -47,12 +47,13 @@ function checkNotes(prevNotes, newContent) {
             }
         })
     }
+    const { overlappingNotes, nonOverlappingNotes } = checkOverlaps(validNotes)
     return {
         "invalid": {
             "word-no-longer-exists": invalidNotes,
-            "three-overlap": {}
+            "four-overlaps": overlappingNotes
         },
-        "valid": validNotes
+        "valid": nonOverlappingNotes
     }
 }
 
@@ -82,6 +83,36 @@ function checkQuotes(prevQuotes, newContent) {
         },
         "valid": nonOverlappingQuotes
     };
+}
+
+function checkOverlaps(prevNotes) {
+    const returnValue = {
+        overlappingNotes: {},
+        nonOverlappingNotes: {},
+    };
+    Object.keys(prevNotes).forEach(noteText => {
+        valid = true;
+        prevNotes[noteText].forEach(wordSection => {
+            let numberOfQuotesWordSectionIsIn = 1;
+            Object.keys(prevNotes).forEach(noteTextForNoteToCheckAgainst => {
+                const noteToCheckAgainstContent = prevNotes[noteTextForNoteToCheckAgainst];
+                if (noteText !== noteTextForNoteToCheckAgainst) {
+                    if (noteToCheckAgainstContent.includes(wordSection)) {
+                        numberOfQuotesWordSectionIsIn++;
+                    }
+                }
+            });
+            if (numberOfQuotesWordSectionIsIn > 3) {
+                valid = false;
+            }
+        });
+        if (valid) {
+            returnValue.nonOverlappingNotes[noteText] = prevNotes[noteText];
+        } else {
+            returnValue.overlappingNotes[noteText] = prevNotes[noteText];
+        }
+    });
+    return returnValue;
 }
 
 function checkQuoteOverlaps(quotes) {

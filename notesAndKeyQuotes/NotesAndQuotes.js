@@ -157,7 +157,7 @@ function updateNoteOrQuote(unchecked, associatedText) {
             yield fetch(`${serverAddress}/note`, {
                 method: 'POST',
                 body: JSON.stringify(body)
-            }).then(res => console.log('Request Complete! response: ', res));
+            }).then((res) => displayResposnseError(res, "Note", body.newVersion));
         }
         else {
             const body = {
@@ -169,7 +169,7 @@ function updateNoteOrQuote(unchecked, associatedText) {
             yield fetch(`${serverAddress}/quote`, {
                 method: 'POST',
                 body: JSON.stringify(body)
-            }).then((res) => displayResposnseError(res, body.newVersion));
+            }).then((res) => displayResposnseError(res, "Quote", body.newVersion));
         }
         yield fetch(`${serverAddress}convertedPoems.json`)
             .then(response => response.json())
@@ -178,20 +178,33 @@ function updateNoteOrQuote(unchecked, associatedText) {
         });
     });
 }
-function displayResposnseError(res, badQuote) {
+function displayResposnseError(res, NotationType, badQuoteOrNote) {
     return __awaiter(this, void 0, void 0, function* () {
         const err = yield res.json();
+        console.log(err);
         if (err.errorType !== 'No error') {
-            const erroneousQuote = badQuote.map(word => removeNumbers(word)).join(' ');
             let errorMessage = '';
-            if (err.errorType === 'Quote overlap') {
-                const incorrectWord = removeNumbers(err.error);
-                errorMessage = `Quote: "${erroneousQuote}" is invalid because word "${incorrectWord}" overlaps with another quote.`;
+            if (NotationType === "Quote") {
+                const badQuote = badQuoteOrNote;
+                const erroneousQuote = badQuote.map(word => removeNumbers(word)).join(' ');
+                if (err.errorType === 'Quote overlap') {
+                    const incorrectWord = removeNumbers(err.error);
+                    errorMessage = `Quote: "${erroneousQuote}" is invalid because word "${incorrectWord}" overlaps with another quote.`;
+                }
+                else if (err.errorType === 'Words not consecutive') {
+                    const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
+                    const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
+                    errorMessage = `Quote: "${erroneousQuote}" is invalid because words "${incorrectSequence.join(' ')}" are not consecutive.</br>Word "${correctSequence[0]}" should be followed by "${correctSequence[1]}".`;
+                }
             }
-            else if (err.errorType === 'Words not consecutive') {
-                const incorrectSequence = err.error.incorrectSequence.map(word => removeNumbers(word));
-                const correctSequence = err.error.correctSequence.map(word => removeNumbers(word));
-                errorMessage = `Quote: "${erroneousQuote}" is invalid because words "${incorrectSequence.join(' ')}" are not consecutive.</br>Word "${correctSequence[0]}" should be followed by "${correctSequence[1]}".`;
+            else {
+                if (err.errorType === 'Note overlap four times') {
+                    const badNote = badQuoteOrNote;
+                    const erroneousNoteText = badNote.key;
+                    const erroneousNoteValue = badNote.value.map(word => removeNumbers(word)).join(' ');
+                    const badWord = removeNumbers(err.error);
+                    errorMessage = `Note: "${erroneousNoteText}" with words "${erroneousNoteValue}" is invalid becauseword "${badWord}" overlaps with three other notes.`;
+                }
             }
             // Alert the user
             const errorMessageModal = document.getElementById('__error_message_modal__');
