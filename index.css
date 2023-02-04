@@ -135,6 +135,7 @@ select:hover {
 
 #__notes__ {
     transition: height 0.5s linear;
+    padding-bottom: 1.5vh;
 }
 
 .noteText {
