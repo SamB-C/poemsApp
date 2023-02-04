@@ -3,6 +3,8 @@ export const POEM_ID = '__poem_id__';
 export const RANGEBAR_ID = '__range_bar__';
 export const RANGEBAR_RESULT_ID = '__range_bar_result__';
 export const POEM_SELECT_ID = '__poem_selection__';
+export const NOTES_ID = '__notes__';
+export const UNDERLINE_COLORS = ['red', 'blue', 'green'];
 export const TRY_AGAIN_LINK_ID = '__try_again__';
 export const TRY_AGAIN_LINK_ELEMENT_AS_STR = `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`;
 export const POEM_AUTHOR_ID = "__poem_author__";
@@ -18,8 +20,7 @@ export const WORDS = 'words';
 export const QUOTES = 'quotes';
 export const GET_ELEMENT = {
     getElementOfWord(word) {
-        const wordElement = document.getElementById(GET_ID.getIdForWord(word));
-        return wordElement;
+        return document.getElementById(GET_ID.getIdForWord(word));
     },
     getPoemElement() {
         return document.getElementById(POEM_ID);
@@ -40,5 +41,8 @@ export const GET_ELEMENT = {
     },
     getTryAgainLink() {
         return document.getElementById(TRY_AGAIN_LINK_ID);
+    },
+    getNotes() {
+        return document.getElementById(NOTES_ID);
     }
 };

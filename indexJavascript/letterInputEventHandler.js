@@ -1,7 +1,7 @@
 import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, NUMBER_ONLY_REGEX, TRY_AGAIN_LINK_ELEMENT_AS_STR } from "./constantsAndTypes.js";
 import { initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
-import { FOCUS, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
+import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
 // =========================== Letter input onchange event handler ===========================
 // Event handler for each individual letter input
 export function onInputEventHandler(word, event, poem) {
@@ -127,21 +127,6 @@ function completePoem(poem) {
     disableInputs();
     // Do animation
     changeAllWordsToColor(allWordsInPoem, state.wordsNotCompletedPreserved, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, rangeBarIntitialValue));
-}
-// Splits the poem into a list of words
-function getAllWordSectionsInPoem(poem) {
-    const allLinesInPoem = poem.split(/\n/);
-    const allWordsInPoem = allLinesInPoem.map((line) => {
-        return line.split(' ');
-    }).reduce((accumulator, current) => {
-        return accumulator.concat(current);
-    });
-    const allWordSectionsInPoem = allWordsInPoem.map((word) => {
-        return WORD_FUNCS.getWordSectionsFromWord(word);
-    }).reduce((accumulator, wordSections) => {
-        return accumulator.concat(wordSections);
-    });
-    return allWordSectionsInPoem;
 }
 // Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption) {

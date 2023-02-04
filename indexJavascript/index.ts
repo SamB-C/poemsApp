@@ -1,5 +1,6 @@
 import { convertedPoemsJSON, FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, State, WORDS } from "./constantsAndTypes.js";
 import { initialisePoemOptions, initialiseRangebar, initialiseWordsOrQuotesRadioButtons } from "./inputs.js";
+import { initialiseNotesForPoem } from "./renderNotes.js";
 import { replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
 import { FOCUS, GET_ID, WORD_FUNCS } from "./utilities.js";
 
@@ -94,7 +95,7 @@ function splitLineToWords(line: string):string {
 function makeSpanForWord(word: string): string {
     if (!word.match(NUMBER_ONLY_REGEX)) {
         const wordId = GET_ID.getIdForWord(word);
-        return `<span id="${wordId}">` + WORD_FUNCS.removeNumberFromWord(word) + "</span>";
+        return `<span id="${wordId}" class="wordSection">` + WORD_FUNCS.removeNumberFromWord(word) + "</span>";
     } else {
         // Code for a space
         return '&nbsp'
@@ -115,6 +116,7 @@ export function initialise() {
     } else if (state.removalType === QUOTES) {
         wordsThatHaveBeenReplaced = replaceQuotes(state.poemData[state.currentPoemName].quotes);
     }
+    initialiseNotesForPoem();
     const firstWord: string = wordsThatHaveBeenReplaced[0];
     FOCUS.focusFirstLetterOfWord(firstWord);
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;

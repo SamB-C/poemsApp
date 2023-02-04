@@ -12,6 +12,23 @@ export type RANGEBAR_RESULT_TYPE = HTMLParagraphElement;
 export const POEM_SELECT_ID = '__poem_selection__';
 export type POEM_SELECT_TYPE = HTMLSelectElement;
 
+export const NOTES_ID = '__notes__';
+export type NOTES_TYPE = HTMLDivElement;
+
+export type NOTE_TYPE = HTMLParagraphElement;
+
+export type UnderlineColorType = 'red' | 'blue' | 'green'
+export const UNDERLINE_COLORS: Array<UnderlineColorType> = ['red', 'blue', 'green'];
+
+export type AssociatedNotesType = {
+    [key: string]: {
+        noteValue: Array<string>,
+        color: UnderlineColorType
+    }
+}
+
+export type WORD_SECTION_TYPE = HTMLSpanElement;
+
 export const TRY_AGAIN_LINK_ID = '__try_again__'
 export type TRY_AGAIN_LINK_TYPE = HTMLLinkElement;
 export const TRY_AGAIN_LINK_ELEMENT_AS_STR = `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`
@@ -58,9 +75,8 @@ export type State = {
 
 
 export const GET_ELEMENT = {
-    getElementOfWord(word: string): HTMLSpanElement {
-        const wordElement: HTMLSpanElement = document.getElementById(GET_ID.getIdForWord(word))!;
-        return wordElement;
+    getElementOfWord(word: string): WORD_SECTION_TYPE {
+        return document.getElementById(GET_ID.getIdForWord(word)) as WORD_SECTION_TYPE;
     },
     getPoemElement(): POEM_CONTAINER_DOM_TYPE {
         return document.getElementById(POEM_ID) as POEM_CONTAINER_DOM_TYPE;
@@ -81,5 +97,8 @@ export const GET_ELEMENT = {
     },
     getTryAgainLink(): TRY_AGAIN_LINK_TYPE {
         return document.getElementById(TRY_AGAIN_LINK_ID) as TRY_AGAIN_LINK_TYPE;
+    },
+    getNotes(): NOTES_TYPE {
+        return document.getElementById(NOTES_ID) as NOTES_TYPE;
     }
 }

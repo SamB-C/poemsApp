@@ -41,3 +41,21 @@ export function getArrayOfChildrenThatAreInputs(element) {
     const arrayOfChildren = Array.from(element.children);
     return arrayOfChildren;
 }
+// Splits the poem into a list of words
+export function getAllWordSectionsInPoem(poem) {
+    const allLinesInPoem = poem.split(/\n/);
+    const allWordsInPoem = allLinesInPoem.map((line) => {
+        return line.split(' ');
+    }).reduce((accumulator, current) => {
+        return accumulator.concat(current);
+    });
+    const allWordSectionsInPoem = allWordsInPoem.map((word) => {
+        return WORD_FUNCS.getWordSectionsFromWord(word);
+    }).reduce((accumulator, wordSections) => {
+        return accumulator.concat(wordSections);
+    });
+    return allWordSectionsInPoem.filter(wordSection => removeNumbers(wordSection) !== '');
+}
+export function removeNumbers(word) {
+    return word.split('').filter(letter => !letter.match(/[0-9]/)).join('');
+}

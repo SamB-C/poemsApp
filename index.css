@@ -53,11 +53,13 @@ select:hover {
     margin: 0 3.5vh 0 1.2vh;
 }
 
-#__update_info_container__ {
+#__extra_info_container__{
     border: 1px solid black;
     padding: 0 8px 0 8px;
     border-radius: 10px;
     margin-left: 30px;
+    position: sticky;
+    top: 20vh;
 }
 
 #__try_again__ {
@@ -68,4 +70,51 @@ select:hover {
 #__try_again__:hover {
     text-decoration: underline;
     text-decoration-color: #209CEE;
+}
+
+.wordSection {
+    position: relative;
+}
+
+.wordSection::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 110%;
+    left: -5%;
+    height: 5px;
+    border-radius: 2px;
+}
+
+.underline1::after {
+    background: red;
+}
+
+.underline2::after {
+    background: blue;
+}
+.underline3::after {
+    background: green;
+}
+.underline4::after {
+    background: linear-gradient(to right, red 50%, blue 50%);
+}
+.underline5::after {
+    background: linear-gradient(to right, red 50%, green 50%);
+}
+.underline6::after {
+    background: linear-gradient(to right, blue 50%, green 50%);
+}
+.underline8::after {
+    background: linear-gradient(to right, red 34%, blue 34% 67%, green 67%);
+}
+
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.green {
+    color: green;
 }

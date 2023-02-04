@@ -13,6 +13,7 @@
     <script src="indexJavascript/constantsAndTypes.js" type="module" defer></script>
     <script src="indexJavascript/replaceWordsOrQuotes.js" type="module" defer></script>
     <script src="indexJavascript/letterInputEventHandler.js" type="module" defer></script>
+    <script src="indexJavascript/renderNotes.js" type="module" defer></script>
     <script src="indexJavascript/index.js" type="module" defer></script>
     <link rel="stylesheet" href="index.css">
     <title>Poem App</title>
@@ -30,7 +31,7 @@
         <p id="__range_bar_result__"></p>
     </div>
     
-    <div id="__main_content__" class="inline_container">
+    <div id="__main_content__" class="inline_container center_vertically">
         <div id="__poem_content_container__">
             <select name="poem_selection" id="__poem_selection__">
                 <!-- Options inserted in index.js -->
@@ -38,9 +39,9 @@
             <p id="__poem_id__"></p>
             <p id="__poem_author__"></p>
         </div>
-        <div id="__update_info__">
-            <div id="__update_info_container__">
-            <p>Future updates:</p>
+        <div id="__extra_info__">
+            <div id="__extra_info_container__">
+                <p>Future updates:</p>
                 <ul>
                     <li>
                         <p>Key phrase word fill</p>
@@ -52,6 +53,7 @@
                         <p>A design overhaul</p>
                     </li>
                 </ul>
+                <div id="__notes__"></div>
             </div>
             <script type="text/javascript">
                 function checkForMobile(a) {
@@ -62,7 +64,7 @@
                     }
                 };
                 if (checkForMobile(navigator.userAgent||navigator.vendor||window.opera)) {
-                    document.getElementById('__update_info_container__').remove();
+                    document.getElementById('__extra_info_container__').remove();
                 }
                 
             </script>
