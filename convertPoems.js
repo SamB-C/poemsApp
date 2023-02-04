@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { checkNotesAndQuotes } = require('./checkNotesAndQuotes');
 
 const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
 const FAKE_SPACE = '|+|';
@@ -22,12 +23,16 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
 
         result[poemName] = poemInfo;
         result[poemName]["author"] = poemAuthor;
-        result[poemName]["quotes"] = prevConvertedPoems[poemName]["quotes"];
-        result[poemName]["notes"] = prevConvertedPoems[poemName]["notes"];
+        const prevQuotes = prevConvertedPoems[poemName]["quotes"];
+        const prevNotes = prevConvertedPoems[poemName]["notes"];
+        const newPoemContent = result[poemName]['convertedPoem'];
+        const {validNotes, validQuotes} = checkNotesAndQuotes(prevNotes, prevQuotes, newPoemContent);
+        result[poemName]['quotes'] = validQuotes
+        result[poemName]['notes'] = validNotes;
         addSettings(poemSettings, poemName, result)
         console.log(poemName, `by ${poemAuthor}` , poemInfo['wordCount']);
     })
-    fs.writeFile('./convertedPoems.json', JSON.stringify(result), (err) => {if (err) {throw err;} else {console.log('\nAll poems complete!')}});
+    fs.writeFile('./convertedPoems.json', JSON.stringify(result, null, 4), (err) => {if (err) {throw err;} else {console.log('\nAll poems complete!')}});
 });
 
 function getPoemNameContentAuthor(poemFileContent) {

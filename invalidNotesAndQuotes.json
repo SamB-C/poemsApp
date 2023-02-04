@@ -1,0 +1,11 @@
+{
+    "notes": {
+        "word-no-longer-exists": {},
+        "three-overlaps": {}
+    },
+    "quotes": {
+        "word-no-longer-exists": [],
+        "non-consecutive": [],
+        "overlapping": []
+    }
+}

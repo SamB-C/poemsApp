@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { getAllWordsInPoem } = require('../../checkNotesAndQuotes')
 
 const FAKE_SPACE = '|+|'
 
@@ -43,21 +44,6 @@ function editNote(existingNotes, oldIdentifier, newVersion, convertedPoem) {
     }
 
     return alteredNotes;
-}
-
-function getAllWordsInPoem(poemContent) {
-    const lines = poemContent.split('\n');
-    const words = [];
-    lines.forEach(line => {
-        const wordsInLine = line.split(' ');
-        const wordSections = [];
-        wordsInLine.forEach(word => {
-            const wordSectionsOfSingleWord = word.split(FAKE_SPACE);
-            wordSections.push(...wordSectionsOfSingleWord);
-        });
-        words.push(...wordSections);
-    })
-    return words
 }
 
 function removeNumbers(word) {
