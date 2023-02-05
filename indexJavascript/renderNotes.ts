@@ -1,4 +1,4 @@
-import { AssociatedNotesType, GET_ELEMENT, NOTE_TYPE, UNDERLINE_COLORS, WORD_SECTION_TYPE } from "./constantsAndTypes.js";
+import { AssociatedNotesType, GET_ELEMENT, NOTE_REMOVAL_DELAY, NOTE_TYPE, UNDERLINE_COLORS, WORD_SECTION_TYPE } from "./constantsAndTypes.js";
 import { state } from "./index.js";
 import { getAllWordSectionsInPoem } from "./utilities.js";
 
@@ -17,7 +17,7 @@ function addWordSectionEventListener(wordSection: string) {
     // Underline note
     wordAsElement.onpointerover = () => underlineNotes(associatedNotes, wordAsElement);
     // Remove underline
-    wordAsElement.onpointerout = () => unUnderlineNotes(associatedNotes, wordAsElement);
+    wordAsElement.onpointerout = () => unUnderlineNotes(associatedNotes, wordAsElement, false, undefined);
 }
 
 function underlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElement: WORD_SECTION_TYPE) {
@@ -42,9 +42,17 @@ function underlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElemen
                 addUnderlineClass(`underline${colorNumber}`, wordElement)
             }
         })
-        const notesElement = GET_ELEMENT.getNotes();
-        notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
     })
+    const timout = window.setTimeout(() => {
+        Object.keys(notesToUnderline).forEach((noteText) => {
+            const color = notesToUnderline[noteText].color;
+            const colorNumber = UNDERLINE_COLORS.indexOf(color) + 1;
+            const notesElement = GET_ELEMENT.getNotes();
+            notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
+        })
+        wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, true, undefined)
+    }, 500)
+    wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, false, timout);
 }
 
 function addUnderlineClass(className: string, wordElement: WORD_SECTION_TYPE) {
@@ -64,7 +72,7 @@ function getNewUnderlineClass(className: string, colorNumberToAdd: number): stri
 }
 
 const removalNumber: Array<number> = [0];
-function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElement: WORD_SECTION_TYPE) {
+function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElement: WORD_SECTION_TYPE, removeNotes: boolean, timeoutToCear: undefined | number) {
     const firstElement = wordSectionElement.firstChild as HTMLElement
     if (firstElement.nodeName === "INPUT") {
         return
@@ -79,17 +87,22 @@ function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElem
                 }
             })
         });
-        removalNumber[0]++;
-        const noteTextElement = document.getElementById(noteText) as NOTE_TYPE;
-        noteTextElement.id = removalNumber.toString();
-        const numberCopy = [...removalNumber];
-        noteTextElement.classList.remove('noteTextIn')
-        noteTextElement.classList.add('noteTextOut');
-        setTimeout(() => {
-            const elementToRemove = document.getElementById(numberCopy.toString()) as NOTE_TYPE;
-            console.log(window.getComputedStyle(elementToRemove).padding);
-            elementToRemove.remove();
-        }, 500)
+        if (removeNotes) {
+            removalNumber[0]++;
+            const noteTextElement = document.getElementById(noteText) as NOTE_TYPE;
+            noteTextElement.id = removalNumber.toString();
+            const numberCopy = [...removalNumber];
+            noteTextElement.classList.remove('noteTextIn')
+            noteTextElement.classList.add('noteTextOut');
+            setTimeout(() => {
+                const elementToRemove = document.getElementById(numberCopy.toString()) as NOTE_TYPE;
+                console.log(window.getComputedStyle(elementToRemove).padding);
+                elementToRemove.remove();
+            }, NOTE_REMOVAL_DELAY);
+            wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, false, undefined);
+        } else if (timeoutToCear) {
+            clearTimeout(timeoutToCear);
+        }
     });
 }
 

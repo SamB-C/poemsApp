@@ -58,6 +58,11 @@ select:hover {
     margin: 0 3.5vh 0 1.2vh;
 }
 
+.inline_grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+}
+
 #__extra_info_container__{
     border: 1px solid black;
     padding: 0 8px 0 8px;
@@ -140,29 +145,28 @@ select:hover {
 
 .noteText {
     margin: 0;
-    height: 0;
 }
 
 .noteTextIn {
-    animation: slidein 0.5s forwards;
+    animation: slidein 1s forwards;
 }
 
 .noteTextOut {
-    animation: slideout 0.5s forwards;
+    animation: slideout 1s forwards;
 }
 
 @keyframes slidein {
     from {
         transform: scaleY(0);
         opacity: 0;
-        margin: 0;
-        hieght: 0;
+        max-height: 0;
+        padding: 0;
     }
     to {
         transform: scaleY(1);
         opacity: 1;
-        margin: 0;
-        height: 37px;
+        max-height: 12.4vh;
+        padding: 0.5vh;
     }
 }
 
@@ -171,12 +175,13 @@ select:hover {
     from {
         transform: scaleY(1);
         opacity: 1;
-        height: 37px;
+        max-height: 12.4vh;
+        padding: 0.5vh;
     }
     to {
         transform: scaleY(0);
-        margin: 0;
-        height: 0;
         opacity: 0;
+        max-height: 0;
+        padding: 0;
     }
 }

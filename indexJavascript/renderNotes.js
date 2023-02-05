@@ -1,4 +1,4 @@
-import { GET_ELEMENT, UNDERLINE_COLORS } from "./constantsAndTypes.js";
+import { GET_ELEMENT, NOTE_REMOVAL_DELAY, UNDERLINE_COLORS } from "./constantsAndTypes.js";
 import { state } from "./index.js";
 import { getAllWordSectionsInPoem } from "./utilities.js";
 export function initialiseNotesForPoem() {
@@ -15,7 +15,7 @@ function addWordSectionEventListener(wordSection) {
     // Underline note
     wordAsElement.onpointerover = () => underlineNotes(associatedNotes, wordAsElement);
     // Remove underline
-    wordAsElement.onpointerout = () => unUnderlineNotes(associatedNotes, wordAsElement);
+    wordAsElement.onpointerout = () => unUnderlineNotes(associatedNotes, wordAsElement, false, undefined);
 }
 function underlineNotes(notesToUnderline, wordSectionElement) {
     const firstElement = wordSectionElement.firstChild;
@@ -39,9 +39,17 @@ function underlineNotes(notesToUnderline, wordSectionElement) {
                 addUnderlineClass(`underline${colorNumber}`, wordElement);
             }
         });
-        const notesElement = GET_ELEMENT.getNotes();
-        notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
     });
+    const timout = window.setTimeout(() => {
+        Object.keys(notesToUnderline).forEach((noteText) => {
+            const color = notesToUnderline[noteText].color;
+            const colorNumber = UNDERLINE_COLORS.indexOf(color) + 1;
+            const notesElement = GET_ELEMENT.getNotes();
+            notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
+        });
+        wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, true, undefined);
+    }, 500);
+    wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, false, timout);
 }
 function addUnderlineClass(className, wordElement) {
     const firstElement = wordElement.firstChild;
@@ -58,7 +66,7 @@ function getNewUnderlineClass(className, colorNumberToAdd) {
     return `underline${newColorNumber}`;
 }
 const removalNumber = [0];
-function unUnderlineNotes(notesToUnderline, wordSectionElement) {
+function unUnderlineNotes(notesToUnderline, wordSectionElement, removeNotes, timeoutToCear) {
     const firstElement = wordSectionElement.firstChild;
     if (firstElement.nodeName === "INPUT") {
         return;
@@ -73,17 +81,23 @@ function unUnderlineNotes(notesToUnderline, wordSectionElement) {
                 }
             });
         });
-        removalNumber[0]++;
-        const noteTextElement = document.getElementById(noteText);
-        noteTextElement.id = removalNumber.toString();
-        const numberCopy = [...removalNumber];
-        noteTextElement.classList.remove('noteTextIn');
-        noteTextElement.classList.add('noteTextOut');
-        setTimeout(() => {
-            const elementToRemove = document.getElementById(numberCopy.toString());
-            console.log(window.getComputedStyle(elementToRemove).padding);
-            elementToRemove.remove();
-        }, 500);
+        if (removeNotes) {
+            removalNumber[0]++;
+            const noteTextElement = document.getElementById(noteText);
+            noteTextElement.id = removalNumber.toString();
+            const numberCopy = [...removalNumber];
+            noteTextElement.classList.remove('noteTextIn');
+            noteTextElement.classList.add('noteTextOut');
+            setTimeout(() => {
+                const elementToRemove = document.getElementById(numberCopy.toString());
+                console.log(window.getComputedStyle(elementToRemove).padding);
+                elementToRemove.remove();
+            }, NOTE_REMOVAL_DELAY);
+            wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, false, undefined);
+        }
+        else if (timeoutToCear) {
+            clearTimeout(timeoutToCear);
+        }
     });
 }
 function getAssociatedNotes(wordSection) {
