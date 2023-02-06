@@ -26,7 +26,7 @@ input, select {
 }
 
 select {
-    font-size: xx-large;
+    font-size: 4vh;
     font-weight: bold;
     width: 100%;
     border: 1px solid transparent;
@@ -157,15 +157,15 @@ select:hover {
 
 @keyframes slidein {
     from {
-        transform: scaleY(0);
+        transform: scale(0);
         opacity: 0;
         max-height: 0;
         padding: 0;
     }
     to {
-        transform: scaleY(1);
+        transform: scale(1);
         opacity: 1;
-        max-height: 12.4vh;
+        max-height: 21.7vh;
         padding: 0.5vh;
     }
 }
@@ -173,13 +173,13 @@ select:hover {
 
 @keyframes slideout {
     from {
-        transform: scaleY(1);
+        transform: scale(1);
         opacity: 1;
-        max-height: 12.4vh;
+        max-height: 21.7vh;
         padding: 0.5vh;
     }
     to {
-        transform: scaleY(0);
+        transform: scale(0);
         opacity: 0;
         max-height: 0;
         padding: 0;
