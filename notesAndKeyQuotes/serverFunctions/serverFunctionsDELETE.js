@@ -21,7 +21,7 @@ function deleteNoteOrQuote(poemName, noteOrQuote, identifier) {
         });
         convertedPoems[poemName].quotes = remainingQuotes;
     }
-    fs.writeFile('./convertedPoems.json', JSON.stringify(convertedPoems), (err) => {if (err) {throw err;} else {console.log('\nDeletion complete')}});
+    fs.writeFile('./convertedPoems.json', JSON.stringify(convertedPoems, null, 4), (err) => {if (err) {throw err;} else {console.log('\nDeletion complete')}});
 }
 
 function handleDelete(req, res) {

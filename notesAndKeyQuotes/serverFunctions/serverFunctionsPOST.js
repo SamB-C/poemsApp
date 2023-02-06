@@ -23,6 +23,25 @@ function isNew(oldIdentifier) {
     return oldIdentifier === '__NEW__';
 }
 
+function orderNotes(notes, poemContent) {
+    const firstWords = Object.keys(notes).map(noteText => notes[noteText][0]);
+    const orderedFirstWords = insertionSortIntoOrderInPoem(poemContent, firstWords);
+    const orderedNotes = {};
+    orderedFirstWords.forEach(firstWord => {
+        Object.keys(notes).forEach(noteText => {
+            const wordsInNote = notes[noteText];
+            const orderedNotesTexts = Object.keys(orderedNotes);
+            const wordsInNotesJoined = wordsInNote.join(' ');
+            const orderedNotesWordsJoined = orderedNotesTexts.map(orderedNoteText => orderedNotes[orderedNoteText].join(' '));
+            const noteNotInOrderedNotes = (!orderedNotesTexts.includes(noteText) || !orderedNotesWordsJoined.includes(wordsInNotesJoined))
+            if (wordsInNote[0] === firstWord && noteNotInOrderedNotes) {
+                orderedNotes[noteText] = wordsInNote;
+            }
+        })
+    });
+    return orderedNotes;
+}
+
 function editNote(existingNotes, oldIdentifier, newVersion, convertedPoem) {
     // Setup
     const alteredNotes = {}
@@ -43,7 +62,9 @@ function editNote(existingNotes, oldIdentifier, newVersion, convertedPoem) {
         alteredNotes[newVersion.key] = insertionSortIntoOrderInPoem(convertedPoem, newVersion.value);
     }
 
-    return alteredNotes;
+    const orderedNotes = orderNotes(alteredNotes, convertedPoem);
+
+    return orderedNotes;
 }
 
 function removeNumbers(word) {

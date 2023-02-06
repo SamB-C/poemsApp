@@ -85,6 +85,14 @@
                 "1first1",
                 "1phase1"
             ],
+            "First three stanzas are rhyming couplets, showing the original progression they made and rhythm they got into": [
+                "1phase1",
+                "1days1",
+                "1trace1",
+                "1face1",
+                "1explore1",
+                "1jaw1"
+            ],
             "The joys of being reunited": [
                 "1passionate1",
                 "1nights1",
@@ -132,68 +140,6 @@
             "Imagery of being destroyed and fragmented, like their relationship is": [
                 "1blown1"
             ],
-            "A metaphor showing fragility, bones are not made from porcelain": [
-                "1damaged1",
-                "5,5",
-                "1porcelain1",
-                "1collar-bone1"
-            ],
-            "Has no direction, is adrift, and she has to guide him": [
-                "1fractured1",
-                "1rudder1"
-            ],
-            "A metaphor picturing his tissue surrounding his chest to be valuable silk, which has been ripped": [
-                "1parachute1",
-                "1silk1",
-                "3of3",
-                "3his3",
-                "1punctured1",
-                "1lung1"
-            ],
-            "Shows the passage of time - it takes time to heal": [
-                "1Only1",
-                "3then3"
-            ],
-            "Not destroyed like other parts of his body, but represents the damage done to his ability to love": [
-                "1grazed1",
-                "1heart1"
-            ],
-            "Near where a foetus normally would be, but a stark contrast to an innocent baby": [],
-            "Emphasises how many things the bullet damaged before it stopped moving": [
-                "1finally1",
-                "1come1",
-                "1to1",
-                "1rest1"
-            ],
-            "Meaning mental scarring": [
-                "1scarring1"
-            ],
-            "Connotations of anxiety and stress": [
-                "1sweating1"
-            ],
-            "Not very easy to find as it is embedded in his very being - it is part of him which he doesn't want to talk about": [
-                "1buried1",
-                "1deep1",
-                "1in1",
-                "7his7",
-                "2mind2"
-            ],
-            "The caesura and repetition shows reluctance and gradual progression": [
-                "2Then2",
-                "14,14",
-                "11and11",
-                "4only4",
-                "5then5",
-                "15,15"
-            ],
-            "First three stanzas are rhyming couplets, showing the original progression they made and rhythm they got into": [
-                "1phase1",
-                "1days1",
-                "1trace1",
-                "1face1",
-                "1explore1",
-                "1jaw1"
-            ],
             "Alliteration, emphasising the caring words, showing how she is trying to care for him": [
                 "1handle1",
                 "3and3",
@@ -204,10 +150,20 @@
                 "3and3",
                 "1hold1"
             ],
+            "A metaphor showing fragility, bones are not made from porcelain": [
+                "1damaged1",
+                "5,5",
+                "1porcelain1",
+                "1collar-bone1"
+            ],
             "She has to think for him, he is like a baby": [
                 "1mind1",
                 "5and5",
                 "1attend1"
+            ],
+            "Has no direction, is adrift, and she has to guide him": [
+                "1fractured1",
+                "1rudder1"
             ],
             "A metaphor showing the damage war did to him": [
                 "1fractured1",
@@ -216,6 +172,14 @@
                 "1a1",
                 "1shoulder-blade1"
             ],
+            "A metaphor picturing his tissue surrounding his chest to be valuable silk, which has been ripped": [
+                "1parachute1",
+                "1silk1",
+                "3of3",
+                "3his3",
+                "1punctured1",
+                "1lung1"
+            ],
             "The parachute is now useless, like him": [
                 "1parachute1",
                 "1silk1",
@@ -223,6 +187,10 @@
                 "3his3",
                 "1punctured1",
                 "1lung1"
+            ],
+            "Shows the passage of time - it takes time to heal": [
+                "1Only1",
+                "3then3"
             ],
             "She has to fix him": [
                 "1bind1",
@@ -243,6 +211,10 @@
                 "9the9",
                 "1hurt1"
             ],
+            "Not destroyed like other parts of his body, but represents the damage done to his ability to love": [
+                "1grazed1",
+                "1heart1"
+            ],
             "Not many full stops, this shows the significance and sincerity of his heart being grazed.": [
                 "2.2"
             ],
@@ -259,15 +231,35 @@
                 "10the10",
                 "1scan1"
             ],
+            "Near where a foetus normally would be, but a stark contrast to an innocent baby": [
+                "1foetus1",
+                "6of6",
+                "1metal1",
+                "1beneath1",
+                "6his6",
+                "1chest1"
+            ],
             "The bullet is feeding off him, draining him, just as a baby uses the resources of the mother": [
                 "1foetus1",
                 "6of6",
                 "1metal1"
             ],
+            "Emphasises how many things the bullet damaged before it stopped moving": [
+                "1finally1",
+                "1come1",
+                "1to1",
+                "1rest1"
+            ],
             "She has lost the trail, and needs to look elsewhere to find the problem": [
                 "1widened1",
                 "13the13",
                 "1search1"
+            ],
+            "Meaning mental scarring": [
+                "1scarring1"
+            ],
+            "Connotations of anxiety and stress": [
+                "1sweating1"
             ],
             "Could explode upon any trigger and bring back unpleasant memories, a metaphor for his PTSD (post traumatic stress disorder)": [
                 "1unexploded1",
@@ -277,10 +269,25 @@
                 "1unexploded1",
                 "1mine1"
             ],
+            "Not very easy to find as it is embedded in his very being - it is part of him which he doesn't want to talk about": [
+                "1buried1",
+                "1deep1",
+                "1in1",
+                "7his7",
+                "2mind2"
+            ],
             "Makes him tense, he is refusing to relax and open up": [
                 "1tightened1",
                 "10and10",
                 "1closed1"
+            ],
+            "The caesura and repetition shows reluctance and gradual progression": [
+                "2Then2",
+                "14,14",
+                "11and11",
+                "4only4",
+                "5then5",
+                "15,15"
             ],
             "She has never been to war, so can never fully understand the extent of the damage. She can only sympathise, never empathise": [
                 "1did1",
