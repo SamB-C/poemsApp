@@ -23,12 +23,17 @@ fs.readFile('./rawPoems.json', 'utf8', (err, data) => {
 
         result[poemName] = poemInfo;
         result[poemName]["author"] = poemAuthor;
-        const prevQuotes = prevConvertedPoems[poemName]["quotes"];
-        const prevNotes = prevConvertedPoems[poemName]["notes"];
-        const newPoemContent = result[poemName]['convertedPoem'];
-        const {validNotes, validQuotes} = checkNotesAndQuotes(prevNotes, prevQuotes, newPoemContent);
-        result[poemName]['quotes'] = validQuotes
-        result[poemName]['notes'] = validNotes;
+        if (prevConvertedPoems[poemName] !== undefined) {
+            const prevQuotes = prevConvertedPoems[poemName]["quotes"];
+            const prevNotes = prevConvertedPoems[poemName]["notes"];
+            const newPoemContent = result[poemName]['convertedPoem'];
+            const {validNotes, validQuotes} = checkNotesAndQuotes(prevNotes, prevQuotes, newPoemContent);
+            result[poemName]['quotes'] = validQuotes
+            result[poemName]['notes'] = validNotes;
+        } else {
+            result[poemName]['quotes'] = [];
+            result[poemName]['notes'] = {};
+        }
         addSettings(poemSettings, poemName, result)
         console.log(poemName, `by ${poemAuthor}` , poemInfo['wordCount']);
     })
