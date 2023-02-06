@@ -118,6 +118,7 @@ select:hover {
     padding: 4px, 6px;
     border-radius: 2px;
     width: 100%;
+    padding: 0.2vh;
 }
 
 #__error_message__exit__ {
