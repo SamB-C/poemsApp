@@ -393,14 +393,6 @@
                 "1the1",
                 "1ways1"
             ],
-            "Enjambment between the words in this triplet show her love is ongoing and continuous": [
-                "2the2",
-                "1depth1",
-                "1and1",
-                "1breadth1",
-                "2and2",
-                "1height1"
-            ],
             "Loves him both physically (describing the dimensions of her love), and spiritually": [
                 "1depth1",
                 "1breadth1",
@@ -411,6 +403,13 @@
                 "1reach1"
             ],
             "She is trying to quantify her love for him, describing its dimensions to show its size": [
+                "1depth1",
+                "1and1",
+                "1breadth1",
+                "2and2",
+                "1height1"
+            ],
+            "Enjambment after this triplet shows her love is ongoing and continuous": [
                 "1depth1",
                 "1and1",
                 "1breadth1",
@@ -526,8 +525,190 @@
         "convertedPoem": "1I1 1wander1 1thro'1 1each1 1charter'd1 1street1|+|1,1\n1Near1 1where1 1the1 2charter'd2 1Thames1 1does1 1flow1|+|2,2\n1And1 1mark1 1in1 1every1 1face1 2I2 1meet1\n1Marks1 1of1 1weakness1|+|3,3 1marks1 2of2 1woe1|+|1.1\n11\n1In1 2every2 1cry1 3of3 3every3 1Man1|+|4,4\n2In2 4every4 1Infant's1 2cry2 4of4 1fear1|+|5,5\n3In3 5every5 1voice1|+|6,6 2in2 6every6 1ban1|+|7,7\n1The1 1mind-forg'd1 1manacles1 3I3 1hear1|+|2.2\n22\n1How1 2the2 1Chimney-sweeper's1 3cry3\n1Every1 1blackening1 1Church1 1appalls1|+|1;1\n2And2 3the3 1hapless1 1Soldier's1 1sigh1\n1Runs1 3in3 1blood1 1down1 1palace1 1walls1|+|3.3\n33\n1But1 1most1 2thro'2 1midnight1 1streets1 4I4 2hear2\n2How2 4the4 1youthful1 1Harlot's1 1curse1\n1Blasts1 5the5 1newborn1 2Infant's2 1tear1|+|8,8\n3And3 1blights1 1with1 1plagues1 6the6 1Marrige1 1hearse1|+|4.4",
         "wordCount": 92,
         "author": "William Blake",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1charter'd1",
+                "1street1"
+            ],
+            [
+                "1Marks1",
+                "1of1",
+                "1weakness1"
+            ],
+            [
+                "1marks1",
+                "2of2",
+                "1woe1"
+            ],
+            [
+                "4every4",
+                "1Infant's1",
+                "2cry2",
+                "4of4",
+                "1fear1"
+            ],
+            [
+                "1mind-forg'd1",
+                "1manacles1",
+                "3I3",
+                "1hear1"
+            ],
+            [
+                "1Every1",
+                "1blackening1",
+                "1Church1",
+                "1appalls1"
+            ],
+            [
+                "1hapless1",
+                "1Soldier's1",
+                "1sigh1",
+                "1Runs1",
+                "3in3",
+                "1blood1",
+                "1down1",
+                "1palace1",
+                "1walls1"
+            ],
+            [
+                "1youthful1",
+                "1Harlot's1",
+                "1curse1"
+            ],
+            [
+                "1blights1",
+                "1with1",
+                "1plagues1",
+                "6the6",
+                "1Marrige1",
+                "1hearse1"
+            ]
+        ],
+        "notes": {
+            "First person pronoun shows the poem is a firsthand account of the problems in England, presumably Blake's account": [
+                "1I1",
+                "2I2",
+                "3I3",
+                "4I4"
+            ],
+            "Everything is mapped and organised, like society is becoming, giving the government more control": [
+                "1charter'd1",
+                "1street1",
+                "2charter'd2"
+            ],
+            "Even a natural, free-flowing body of water is being controlled by the government": [
+                "2charter'd2",
+                "1Thames1"
+            ],
+            "Shows a universal suffering that excludes no-one": [
+                "1in1",
+                "1every1",
+                "1face1"
+            ],
+            "A mark could be a wound/scar, which shows the effect of London on its inhabitants": [
+                "1Marks1",
+                "1marks1"
+            ],
+            "The people of London are sad": [
+                "1weakness1",
+                "1woe1"
+            ],
+            "Repetition shows the size of the problem, and how all are suffering": [
+                "1In1",
+                "2every2",
+                "2In2",
+                "4every4",
+                "3In3",
+                "5every5",
+                "2in2",
+                "6every6"
+            ],
+            "Ban can mean a curse, showing how every voice is expressing their discontent": [
+                "3In3",
+                "5every5",
+                "1voice1",
+                "6,6",
+                "2in2",
+                "6every6",
+                "1ban1"
+            ],
+            "Ban can mean a prohibition, the government may be banning lots of things, people are losing their freedom": [
+                "6every6",
+                "1ban1"
+            ],
+            "The people are being controlled by the government, they have lost the freedom to think and say certain things": [
+                "1mind-forg'd1",
+                "1manacles1"
+            ],
+            "Shows the depression all people believe they are in, they all believe there is no hope": [
+                "1mind-forg'd1",
+                "1manacles1"
+            ],
+            "Children are being exploited and being forced to work - there was no sense of childhood": [
+                "1Chimney-sweeper's1"
+            ],
+            "Enjambment shows their cries are endless and ongoing": [
+                "1Chimney-sweeper's1",
+                "3cry3"
+            ],
+            "This eludes to poverty, since children are having to work to help support their families": [
+                "1Chimney-sweeper's1"
+            ],
+            "The soot from the industrial revolution is blackening the Church, representative of how the Church is neglecting its duties of looking after orphans, who they send to work as chimney-sweeps": [
+                "1blackening1",
+                "1Church1",
+                "1appalls1"
+            ],
+            "Suggests that the soldiers are fed up and no longer want to fight - they are miserable and unsatisfied with their situation": [
+                "1hapless1",
+                "1Soldier's1",
+                "1sigh1"
+            ],
+            "Blake is clear to point the blame for the spilling of these soldier's blood to the monarchy, whose wars many considered pointless": [
+                "1Runs1",
+                "3in3",
+                "1blood1",
+                "1down1",
+                "1palace1",
+                "1walls1",
+                "3.3"
+            ],
+            "The word but shows a turning point": [
+                "1But1"
+            ],
+            "The noise is so great he is up at midnight": [
+                "1midnight1",
+                "1streets1"
+            ],
+            "There is little hope for this young prostitute, who is having to do it to make ends meet, hence the anger and frustration": [
+                "1youthful1",
+                "1Harlot's1",
+                "1curse1"
+            ],
+            "Harlot = prostitute": [
+                "1Harlot's1"
+            ],
+            "There was no contraception in 1794, so this prostitute likely didn't want the baby so is shouting at it": [
+                "1Blasts1",
+                "5the5",
+                "1newborn1",
+                "2Infant's2",
+                "1tear1"
+            ],
+            "The infant is crying, adding to the noise from the curses": [
+                "2Infant's2",
+                "1tear1"
+            ],
+            "Shows the prevalence of illness and disease": [
+                "1blights1",
+                "1with1",
+                "1plagues1"
+            ],
+            "This is an oxymoron, since marriage is supposed to be the happiest point in life, and death the saddest, and yet they are next to each other": [
+                "1Marrige1",
+                "1hearse1"
+            ]
+        },
         "centered": false
     },
     "The Soldier": {
