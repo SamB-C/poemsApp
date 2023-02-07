@@ -605,15 +605,9 @@
                 "1every1",
                 "1face1"
             ],
-            "A mark could be a wound/scar, which shows the effect of London on its inhabitants": [
-                "1Marks1",
-                "1marks1"
-            ],
-            "The people of London are sad": [
-                "1weakness1",
-                "1woe1"
-            ],
             "Repetition shows the size of the problem, and how all are suffering": [
+                "1in1",
+                "1every1",
                 "1In1",
                 "2every2",
                 "2In2",
@@ -622,6 +616,14 @@
                 "5every5",
                 "2in2",
                 "6every6"
+            ],
+            "A mark could be a wound/scar, which shows the effect of London on its inhabitants": [
+                "1Marks1",
+                "1marks1"
+            ],
+            "The people of London are sad": [
+                "1weakness1",
+                "1woe1"
             ],
             "Ban can mean a curse, showing how every voice is expressing their discontent": [
                 "3In3",
