@@ -957,8 +957,216 @@
         "convertedPoem": "1She1 1walks1 1in1 1beauty1|+|1,1 1like1 1the1 1night1\n11 22 33 44 1Of1 1cloudless1 1climes1 1and1 1starry1 1skies1|+|1;1\n1And1 1all1 1that's1 1best1 1of1 1dark1 2and2 1bright1\n55 66 77 88 1Meet1 2in2 1her1 1aspect1 3and3 2her2 1eyes1|+|1:1\n1Thus1 1mellowed1 1to1 1that1 1tender1 1light1\n99 1010 1111 1212 1Which1 1Heaven1 2to2 1gaudy1 1day1 1denies1|+|1.1\n1313\n1One1 1shade1 2the2 1more1|+|2,2 1one1 1ray1 3the3 1less1|+|3,3\n1414 1515 1616 1717 1Had1 1half1 1impaired1 4the4 1nameless1 1grace1\n2Which2 1waves1 3in3 1every1 1raven1 1tress1|+|4,4\n1818 1919 2020 2121 1Or1 1softly1 1lightens1 1o'er1 3her3 1face1|+|2;2\n1Where1 1thoughts1 1serenely1 1sweet1 1express1|+|5,5\n2222 2323 2424 2525 1How1 1pure1|+|6,6 1how1 1dear1 1their1 1dwelling-place1|+|2.2\n2626\n2And2 1on1 2that2 1cheek1|+|7,7 4and4 2o'er2 3that3 1brow1|+|8,8\n2727 2828 2929 3030 1So1 1soft1|+|9,9 1so1 1calm1|+|10,10 1yet1 1eloquent1|+|11,11\n1The1 1smiles1 4that4 1win1|+|12,12 5the5 1tints1 5that5 1glow1|+|13,13\n3131 3232 3333 3434 1But1 1tell1 2of2 1days1 4in4 1goodness1 1spent1|+|14,14\n1A1 1mind1 1at1 1peace1 1with1 2all2 1below1|+|15,15\n3535 3636 3737 3838 2A2 1heart1 1whose1 1love1 1is1 1innocent1",
         "wordCount": 119,
         "author": "Lord Byron",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1all1",
+                "1that's1",
+                "1best1",
+                "1of1",
+                "1dark1",
+                "2and2",
+                "1bright1"
+            ],
+            [
+                "1Heaven1",
+                "2to2",
+                "1gaudy1",
+                "1day1",
+                "1denies1"
+            ],
+            [
+                "1nameless1",
+                "1grace1"
+            ],
+            [
+                "1serenely1",
+                "1sweet1",
+                "1express1"
+            ],
+            [
+                "1pure1"
+            ],
+            [
+                "1dear1"
+            ],
+            [
+                "1So1",
+                "1soft1",
+                "9,9",
+                "1so1",
+                "1calm1",
+                "10,10",
+                "1yet1",
+                "1eloquent1",
+                "11,11"
+            ],
+            [
+                "1mind1",
+                "1at1",
+                "1peace1"
+            ],
+            [
+                "2A2",
+                "1heart1",
+                "1whose1",
+                "1love1",
+                "1is1",
+                "1innocent1"
+            ]
+        ],
+        "notes": {
+            "Everything she does, including something as basic as walking, is beautiful": [
+                "1walks1",
+                "1in1",
+                "1beauty1"
+            ],
+            "She is mysterious and unknown": [
+                "1like1",
+                "1the1",
+                "1night1"
+            ],
+            "Could signify a black dress, suggesting the woman is in mourning": [
+                "1night1"
+            ],
+            "ABABAB rhyme scheme": [
+                "1night1",
+                "1skies1",
+                "1bright1",
+                "1eyes1",
+                "1light1",
+                "1denies1",
+                "1less1",
+                "1grace1",
+                "1tress1",
+                "1face1",
+                "1express1",
+                "1dwelling-place1",
+                "1brow1",
+                "1eloquent1",
+                "1glow1",
+                "1spent1",
+                "1below1",
+                "1innocent1"
+            ],
+            "Her beauty is natural": [
+                "1cloudless1",
+                "1climes1",
+                "1starry1",
+                "1skies1"
+            ],
+            "Dark and bright are antithesis, showing she is the best of everything, even things that are opposites": [
+                "1all1",
+                "1that's1",
+                "1best1",
+                "1of1",
+                "1dark1",
+                "2and2",
+                "1bright1"
+            ],
+            "Eyes are windows to the soul": [
+                "2her2",
+                "1eyes1"
+            ],
+            "No part of her face is harsh": [
+                "1mellowed1",
+                "1to1",
+                "1that1",
+                "1tender1",
+                "1light1"
+            ],
+            "Her beauty is soft and effortless": [
+                "1mellowed1",
+                "1to1",
+                "1that1",
+                "1tender1",
+                "1light1"
+            ],
+            "She is angelic, perfect - she belongs in heaven": [
+                "1Heaven1"
+            ],
+            "Her beauty is not a trick of the light": [
+                "1One1",
+                "1shade1",
+                "2the2",
+                "1more1",
+                "2,2",
+                "1one1",
+                "1ray1",
+                "3the3",
+                "1less1"
+            ],
+            "She has an element of mystery": [
+                "1nameless1",
+                "1grace1"
+            ],
+            "Her name is irrelevant, only her beauty matters": [
+                "1nameless1",
+                "1grace1"
+            ],
+            "Every path over face is beautiful": [
+                "1waves1",
+                "3in3",
+                "1every1",
+                "1raven1",
+                "1tress1"
+            ],
+            "Her thoughts are beautiful, she is beautiful both inside and out": [
+                "1thoughts1",
+                "1serenely1",
+                "1sweet1",
+                "1express1"
+            ],
+            "Perfect thoughts on a perfect face": [
+                "1How1",
+                "1pure1",
+                "6,6",
+                "1how1",
+                "1dear1",
+                "1their1",
+                "1dwelling-place1",
+                "2.2"
+            ],
+            "Simple, yet sophisticated": [
+                "1So1",
+                "1soft1",
+                "9,9",
+                "1so1",
+                "1calm1",
+                "10,10",
+                "1yet1",
+                "1eloquent1"
+            ],
+            "She has the best smile, it wins over people": [
+                "1The1",
+                "1smiles1",
+                "4that4",
+                "1win1"
+            ],
+            "Her dark features glow": [
+                "5the5",
+                "1tints1",
+                "5that5",
+                "1glow1"
+            ],
+            "At one with her body - doesn't think of her beauty, suggesting she may be quite modest": [
+                "1A1",
+                "1mind1",
+                "1at1",
+                "1peace1",
+                "1with1",
+                "2all2",
+                "1below1"
+            ],
+            "Her love is pure": [
+                "1whose1",
+                "1love1",
+                "1is1",
+                "1innocent1"
+            ],
+            "The first mention of love - this poem is not a love poem, but shows the process of falling in love": [
+                "1love1"
+            ]
+        },
         "centered": false
     },
     "Living Space": {
