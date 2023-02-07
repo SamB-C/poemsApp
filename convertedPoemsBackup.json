@@ -605,15 +605,9 @@
                 "1every1",
                 "1face1"
             ],
-            "A mark could be a wound/scar, which shows the effect of London on its inhabitants": [
-                "1Marks1",
-                "1marks1"
-            ],
-            "The people of London are sad": [
-                "1weakness1",
-                "1woe1"
-            ],
             "Repetition shows the size of the problem, and how all are suffering": [
+                "1in1",
+                "1every1",
                 "1In1",
                 "2every2",
                 "2In2",
@@ -622,6 +616,14 @@
                 "5every5",
                 "2in2",
                 "6every6"
+            ],
+            "A mark could be a wound/scar, which shows the effect of London on its inhabitants": [
+                "1Marks1",
+                "1marks1"
+            ],
+            "The people of London are sad": [
+                "1weakness1",
+                "1woe1"
             ],
             "Ban can mean a curse, showing how every voice is expressing their discontent": [
                 "3In3",
@@ -715,24 +717,666 @@
         "convertedPoem": "1If1 1I1 1should1 1die1|+|1,1 1think1 1only1 1this1 1of1 1me1|+|1:1\n11 22 1That1 1there's1 1some1 1corner1 2of2 1a1 1foreign1 1field1\n2That2 1is1 1for1 1ever1 1England1|+|1.1 1There1 1shall1 1be1\n33 44 1In1 1that1 1rich1 1earth1 2a2 1richer1 1dust1 1concealed1|+|1;1\n1A1 2dust2 1whom1 2England2 1bore1|+|2,2 1shaped1|+|3,3 1made1 1aware1|+|4,4\n55 66 1Gave1|+|5,5 1once1|+|6,6 1her1 1flowers1 1to1 1love1|+|7,7 2her2 1ways1 2to2 1roam1|+|8,8\n2A2 1body1 3of3 1England's1|+|9,9 1breathing1 1English1 1air1|+|10,10\n77 88 1Washed1 1by1 1the1 1rivers1|+|11,11 1blest1 2by2 1suns1 4of4 1home1|+|2.2\n99\n1And1 2think2|+|12,12 2this2 1heart1|+|13,13 1all1 1evil1 1shed1 1away1|+|14,14\n1010 1111 3A3 1pulse1 1in1 2the2 1eternal1 1mind1|+|15,15 1no1 1less1\n1212 1313 1414 1515 1Gives1 1somewhere1 1back1 3the3 1thoughts1 3by3 3England3 1given1|+|2;2\n1Her1 1sights1 1and1 1sounds1|+|3;3 1dreams1 1happy1 1as1 3her3 1day1|+|4;4\n1616 1717 2And2 1laughter1|+|16,16 1learnt1 5of5 1friends1|+|5;5 2and2 1gentleness1|+|17,17\n1818 1919 2020 2121 2In2 1hearts1 1at1 1peace1|+|18,18 1under1 1an1 2English2 1heaven1|+|3.3",
         "wordCount": 115,
         "author": "Rupert Brooke",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1there's1",
+                "1some1",
+                "1corner1",
+                "2of2",
+                "1a1",
+                "1foreign1",
+                "1field1",
+                "2That2",
+                "1is1",
+                "1for1",
+                "1ever1",
+                "1England1"
+            ],
+            [
+                "1In1",
+                "1that1",
+                "1rich1",
+                "1earth1",
+                "2a2",
+                "1richer1",
+                "1dust1",
+                "1concealed1"
+            ],
+            [
+                "2England2",
+                "1bore1",
+                "2,2",
+                "1shaped1",
+                "3,3",
+                "1made1",
+                "1aware1"
+            ],
+            [
+                "2A2",
+                "1body1",
+                "3of3",
+                "1England's1"
+            ],
+            [
+                "1all1",
+                "1evil1",
+                "1shed1",
+                "1away1"
+            ],
+            [
+                "3A3",
+                "1pulse1",
+                "1in1",
+                "2the2",
+                "1eternal1",
+                "1mind1"
+            ],
+            [
+                "1Gives1",
+                "1somewhere1",
+                "1back1",
+                "3the3",
+                "1thoughts1",
+                "3by3",
+                "3England3",
+                "1given1"
+            ],
+            [
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            [
+                "1an1",
+                "2English2",
+                "1heaven1"
+            ]
+        ],
+        "notes": {
+            "Optimism, he doesn't think his death is certain": [
+                "1If1",
+                "1I1"
+            ],
+            "Acceptance of death": [
+                "1If1",
+                "1I1",
+                "1should1",
+                "1die1"
+            ],
+            "Personal pronouns, is an account of Brooke's thoughts on dying in war": [
+                "1I1",
+                "1me1",
+                "2this2"
+            ],
+            "Brooke clearly doesn't want people to be sad about his death, he clearly states in his poem that his death in battle will be a worthwhile sacrifice": [
+                "1think1",
+                "1only1",
+                "1this1",
+                "1of1",
+                "1me1",
+                "1:1"
+            ],
+            "Fighting abroad - WW1 never entered English soil": [
+                "1foreign1",
+                "1field1"
+            ],
+            "The idea of spreading England to other countries - colonialism": [
+                "1for1",
+                "1ever1",
+                "1England1"
+            ],
+            "A battlefield, rich with the blood of dead soldiers": [
+                "1In1",
+                "1that1",
+                "1rich1",
+                "1earth1"
+            ],
+            "richer is a comparative word, showing that out of all the dead bodies in the field, his English body shall be better than all the others": [
+                "1richer1",
+                "1dust1",
+                "1concealed1"
+            ],
+            "The richer dust is his body": [
+                "1richer1",
+                "1dust1"
+            ],
+            "England personified": [
+                "1whom1",
+                "2England2",
+                "1bore1"
+            ],
+            "England bore you, so England is your family, and you have to fight for your family, emphasised by the use of a triplet": [
+                "2England2",
+                "1bore1",
+                "2,2",
+                "1shaped1",
+                "3,3",
+                "1made1",
+                "1aware1"
+            ],
+            "England gave to you, so deserves for you to give back": [
+                "1Gave1"
+            ],
+            "England gave the possibility of freedom": [
+                "2her2",
+                "1ways1",
+                "2to2",
+                "1roam1"
+            ],
+            "Not just any body, an English body - Brooke's patriotism lead him to believe the English were the best": [
+                "1body1",
+                "3of3",
+                "1England's1",
+                "9,9",
+                "1breathing1",
+                "1English1",
+                "1air1"
+            ],
+            "May mean to imply that England is holy": [
+                "1blest1"
+            ],
+            "No longer part of an evil war": [
+                "1all1",
+                "1evil1",
+                "1shed1",
+                "1away1"
+            ],
+            "Sacrificed themselves, like Jesus, to remove their sin": [
+                "1all1",
+                "1evil1",
+                "1shed1",
+                "1away1"
+            ],
+            "His sacrifice will ensure England's longevity": [
+                "3A3",
+                "1pulse1",
+                "1in1",
+                "2the2",
+                "1eternal1",
+                "1mind1"
+            ],
+            "By winning the war, they can gift their happy memories to the future English generations": [
+                "1Gives1",
+                "1somewhere1",
+                "1back1",
+                "1Her1",
+                "1sights1",
+                "1and1",
+                "1sounds1"
+            ],
+            "Giving back to England, who gave them the thoughts of life": [
+                "1Gives1",
+                "1somewhere1",
+                "1back1",
+                "3the3",
+                "1thoughts1",
+                "3by3",
+                "3England3",
+                "1given1"
+            ],
+            "The positives that stem from England and that can continue because of his sacrifice": [
+                "1laughter1",
+                "16,16",
+                "1learnt1",
+                "5of5",
+                "1friends1",
+                "5;5",
+                "2and2",
+                "1gentleness1"
+            ],
+            "A dead heart has stopped beating for the first time in death, it finally achieves peace": [
+                "2In2",
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            "The soldier's that have sacrificed themselves can feel at peace, knowing they did the right thing": [
+                "2In2",
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            "Others can live without worries because of their actions": [
+                "2In2",
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            "England is heaven on Earth to Brooke": [
+                "2English2",
+                "1heaven1"
+            ],
+            "English soldiers will be rewarded with heaven": [
+                "2English2",
+                "1heaven1"
+            ]
+        },
         "centered": false
     },
     "She Walks in Beauty": {
         "convertedPoem": "1She1 1walks1 1in1 1beauty1|+|1,1 1like1 1the1 1night1\n11 22 33 44 1Of1 1cloudless1 1climes1 1and1 1starry1 1skies1|+|1;1\n1And1 1all1 1that's1 1best1 1of1 1dark1 2and2 1bright1\n55 66 77 88 1Meet1 2in2 1her1 1aspect1 3and3 2her2 1eyes1|+|1:1\n1Thus1 1mellowed1 1to1 1that1 1tender1 1light1\n99 1010 1111 1212 1Which1 1Heaven1 2to2 1gaudy1 1day1 1denies1|+|1.1\n1313\n1One1 1shade1 2the2 1more1|+|2,2 1one1 1ray1 3the3 1less1|+|3,3\n1414 1515 1616 1717 1Had1 1half1 1impaired1 4the4 1nameless1 1grace1\n2Which2 1waves1 3in3 1every1 1raven1 1tress1|+|4,4\n1818 1919 2020 2121 1Or1 1softly1 1lightens1 1o'er1 3her3 1face1|+|2;2\n1Where1 1thoughts1 1serenely1 1sweet1 1express1|+|5,5\n2222 2323 2424 2525 1How1 1pure1|+|6,6 1how1 1dear1 1their1 1dwelling-place1|+|2.2\n2626\n2And2 1on1 2that2 1cheek1|+|7,7 4and4 2o'er2 3that3 1brow1|+|8,8\n2727 2828 2929 3030 1So1 1soft1|+|9,9 1so1 1calm1|+|10,10 1yet1 1eloquent1|+|11,11\n1The1 1smiles1 4that4 1win1|+|12,12 5the5 1tints1 5that5 1glow1|+|13,13\n3131 3232 3333 3434 1But1 1tell1 2of2 1days1 4in4 1goodness1 1spent1|+|14,14\n1A1 1mind1 1at1 1peace1 1with1 2all2 1below1|+|15,15\n3535 3636 3737 3838 2A2 1heart1 1whose1 1love1 1is1 1innocent1",
         "wordCount": 119,
         "author": "Lord Byron",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1all1",
+                "1that's1",
+                "1best1",
+                "1of1",
+                "1dark1",
+                "2and2",
+                "1bright1"
+            ],
+            [
+                "1Heaven1",
+                "2to2",
+                "1gaudy1",
+                "1day1",
+                "1denies1"
+            ],
+            [
+                "1nameless1",
+                "1grace1"
+            ],
+            [
+                "1serenely1",
+                "1sweet1",
+                "1express1"
+            ],
+            [
+                "1pure1"
+            ],
+            [
+                "1dear1"
+            ],
+            [
+                "1So1",
+                "1soft1",
+                "9,9",
+                "1so1",
+                "1calm1",
+                "10,10",
+                "1yet1",
+                "1eloquent1",
+                "11,11"
+            ],
+            [
+                "1mind1",
+                "1at1",
+                "1peace1"
+            ],
+            [
+                "2A2",
+                "1heart1",
+                "1whose1",
+                "1love1",
+                "1is1",
+                "1innocent1"
+            ]
+        ],
+        "notes": {
+            "Everything she does, including something as basic as walking, is beautiful": [
+                "1walks1",
+                "1in1",
+                "1beauty1"
+            ],
+            "She is mysterious and unknown": [
+                "1like1",
+                "1the1",
+                "1night1"
+            ],
+            "Could signify a black dress, suggesting the woman is in mourning": [
+                "1night1"
+            ],
+            "ABABAB rhyme scheme": [
+                "1night1",
+                "1skies1",
+                "1bright1",
+                "1eyes1",
+                "1light1",
+                "1denies1",
+                "1less1",
+                "1grace1",
+                "1tress1",
+                "1face1",
+                "1express1",
+                "1dwelling-place1",
+                "1brow1",
+                "1eloquent1",
+                "1glow1",
+                "1spent1",
+                "1below1",
+                "1innocent1"
+            ],
+            "Her beauty is natural": [
+                "1cloudless1",
+                "1climes1",
+                "1starry1",
+                "1skies1"
+            ],
+            "Dark and bright are antithesis, showing she is the best of everything, even things that are opposites": [
+                "1all1",
+                "1that's1",
+                "1best1",
+                "1of1",
+                "1dark1",
+                "2and2",
+                "1bright1"
+            ],
+            "Eyes are windows to the soul": [
+                "2her2",
+                "1eyes1"
+            ],
+            "No part of her face is harsh": [
+                "1mellowed1",
+                "1to1",
+                "1that1",
+                "1tender1",
+                "1light1"
+            ],
+            "Her beauty is soft and effortless": [
+                "1mellowed1",
+                "1to1",
+                "1that1",
+                "1tender1",
+                "1light1"
+            ],
+            "She is angelic, perfect - she belongs in heaven": [
+                "1Heaven1"
+            ],
+            "Her beauty is not a trick of the light": [
+                "1One1",
+                "1shade1",
+                "2the2",
+                "1more1",
+                "2,2",
+                "1one1",
+                "1ray1",
+                "3the3",
+                "1less1"
+            ],
+            "She has an element of mystery": [
+                "1nameless1",
+                "1grace1"
+            ],
+            "Her name is irrelevant, only her beauty matters": [
+                "1nameless1",
+                "1grace1"
+            ],
+            "Every path over face is beautiful": [
+                "1waves1",
+                "3in3",
+                "1every1",
+                "1raven1",
+                "1tress1"
+            ],
+            "Her thoughts are beautiful, she is beautiful both inside and out": [
+                "1thoughts1",
+                "1serenely1",
+                "1sweet1",
+                "1express1"
+            ],
+            "Perfect thoughts on a perfect face": [
+                "1How1",
+                "1pure1",
+                "6,6",
+                "1how1",
+                "1dear1",
+                "1their1",
+                "1dwelling-place1",
+                "2.2"
+            ],
+            "Simple, yet sophisticated": [
+                "1So1",
+                "1soft1",
+                "9,9",
+                "1so1",
+                "1calm1",
+                "10,10",
+                "1yet1",
+                "1eloquent1"
+            ],
+            "She has the best smile, it wins over people": [
+                "1The1",
+                "1smiles1",
+                "4that4",
+                "1win1"
+            ],
+            "Her dark features glow": [
+                "5the5",
+                "1tints1",
+                "5that5",
+                "1glow1"
+            ],
+            "At one with her body - doesn't think of her beauty, suggesting she may be quite modest": [
+                "1A1",
+                "1mind1",
+                "1at1",
+                "1peace1",
+                "1with1",
+                "2all2",
+                "1below1"
+            ],
+            "Her love is pure": [
+                "1whose1",
+                "1love1",
+                "1is1",
+                "1innocent1"
+            ],
+            "The first mention of love - this poem is not a love poem, but shows the process of falling in love": [
+                "1love1"
+            ]
+        },
         "centered": false
     },
     "Living Space": {
         "convertedPoem": "1There1 1are1 1just1 1not1 1enough1\n1straight1 1lines1|+|1.1 1That1\n1is1 1the1 1problem1|+|2.2\n1Nothing1 2is2 1flat1\n1of1 1parallel1|+|3.3 1Beams1\n1balance1 1crookedly1 1on1 1supports1\n1thrust1 1off1 2the2 1vertical1|+|4.4\n1Nails1 1clutch1 1at1 1open1 1seams1|+|5.5\n1The1 1whole1 1structure1 1leans1 1dangerously1\n1towards1 3the3 1miraculous1|+|6.6\n11\n1Into1 1this1 1rough1 1frame1|+|1,1\n1someone1 1has1 1squeezed1\n1a1 1living1 1space1\n22\n1and1 1even1 1dared1 1to1 1place1\n1these1 1eggs1 1in1 2a2 1wire1 1basket1|+|2,2\n1fragile1 1curves1 2of2 1white1\n1hung1 1out1 1over1 4the4 1dark1 1edge1\n3of3 3a3 1slanted1 1universe1|+|3,3\n1gathering1 5the5 1light1\n1into1 1themseleves1|+|4,4\n1as1 1if1 1they1 1were1\n6the6 1bright1|+|5,5 1thin1 1walls1 4of4 1faith1|+|7.7",
         "wordCount": 88,
         "author": "Imtiaz Dharker",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1not1",
+                "1enough1",
+                "1straight1",
+                "1lines1"
+            ],
+            [
+                "1Nothing1",
+                "2is2",
+                "1flat1",
+                "1of1",
+                "1parallel1"
+            ],
+            [
+                "1Nails1",
+                "1clutch1",
+                "1at1",
+                "1open1",
+                "1seams1"
+            ],
+            [
+                "1leans1",
+                "1dangerously1",
+                "1towards1",
+                "3the3",
+                "1miraculous1"
+            ],
+            [
+                "1someone1",
+                "1has1",
+                "1squeezed1",
+                "1a1",
+                "1living1",
+                "1space1"
+            ],
+            [
+                "1fragile1",
+                "1curves1",
+                "2of2",
+                "1white1"
+            ],
+            [
+                "1dark1",
+                "1edge1",
+                "3of3",
+                "3a3",
+                "1slanted1",
+                "1universe1"
+            ],
+            [
+                "6the6",
+                "1bright1",
+                "5,5",
+                "1thin1",
+                "1walls1",
+                "4of4",
+                "1faith1"
+            ]
+        ],
+        "notes": {
+            "The houses are made of any material that can be found, and were poorly constructed, meaning no edges are straight, making the houses seem dangerous to live in": [
+                "1not1",
+                "1enough1",
+                "1straight1",
+                "1lines1"
+            ],
+            "The divide between the rich and the poor means that the people here can't afford a properly constructed house": [
+                "1That1",
+                "1is1",
+                "1the1",
+                "1problem1",
+                "2.2"
+            ],
+            "Everything is on a wonk": [
+                "1Nothing1",
+                "2is2",
+                "1flat1",
+                "1of1",
+                "1parallel1"
+            ],
+            "Houses are not secure": [
+                "1Beams1",
+                "1balance1"
+            ],
+            "Balancing suggests there is no structural integrity, making it dangerous living conditions, showing the conditions of those living here": [
+                "1Beams1",
+                "1balance1",
+                "1crookedly1"
+            ],
+            "The beams are leaning so much that it is a miracle they can support anything": [
+                "1thrust1",
+                "1off1",
+                "2the2",
+                "1vertical1"
+            ],
+            "The buildings are hanging on for dear life, a metaphor for how their inhabitants are holding on to hope that their situation will improve": [
+                "1Nails1",
+                "1clutch1",
+                "1at1",
+                "1open1",
+                "1seams1"
+            ],
+            "Looks like it is about to collapse": [
+                "1whole1",
+                "1structure1",
+                "1leans1",
+                "1dangerously1"
+            ],
+            "The building should not still be standing, it is a miracle it hasn't fallen": [
+                "1leans1",
+                "1dangerously1",
+                "1towards1",
+                "3the3",
+                "1miraculous1"
+            ],
+            "Leans towards the better, showing hope": [
+                "1towards1",
+                "3the3",
+                "1miraculous1"
+            ],
+            "This stanza is squeezed in between the others, representing the living space that is being squeezed into the slum": [
+                "1Into1",
+                "1this1",
+                "1rough1",
+                "1frame1",
+                "1,1",
+                "1someone1",
+                "1has1",
+                "1squeezed1",
+                "1a1",
+                "1living1",
+                "1space1"
+            ],
+            "Shows the hardships of life in the slums, it is rough to live in": [
+                "1rough1"
+            ],
+            "This living space shouldn't fit, this whole place is a miracle": [
+                "1someone1",
+                "1has1",
+                "1squeezed1",
+                "1a1",
+                "1living1",
+                "1space1"
+            ],
+            "Everything they do is a risk and dangerous, no less bringing new life into a slanted universe": [
+                "1dared1"
+            ],
+            "Only a thin wire basket stops them from falling into the darkness, suggesting some do": [
+                "1these1",
+                "1eggs1",
+                "1in1",
+                "2a2",
+                "1wire1",
+                "1basket1"
+            ],
+            "Something fragile and representing new life can somehow survive under these dire circumstances": [
+                "1eggs1",
+                "1fragile1"
+            ],
+            "Represents faith in a new generation, they will bring goodness (white) to an evil place (dark)": [
+                "1eggs1",
+                "1white1",
+                "1dark1"
+            ],
+            "Represents how hope is being maintained in a very dark and hopeless place": [
+                "1hung1",
+                "1out1",
+                "1over1",
+                "4the4",
+                "1dark1",
+                "1edge1"
+            ],
+            "A reference to the unfair gap in wealth between the rich and poor in Mumbai, but also in the World as a whole": [
+                "1slanted1",
+                "1universe1"
+            ],
+            "The roof the eggs are sitting on is slanted, it is not parallel": [
+                "1slanted1",
+                "1universe1"
+            ],
+            "Gathering hope": [
+                "1gathering1",
+                "5the5",
+                "1light1"
+            ],
+            "The slums are held together by faith and community, rather than structural support and engineering": [
+                "6the6",
+                "1bright1",
+                "5,5",
+                "1thin1",
+                "1walls1",
+                "4of4",
+                "1faith1",
+                "7.7"
+            ],
+            "The light prevails, and since light has connotations of goodness, it shows that under the most unlikely circumstances, goodness prevails": [
+                "1bright1"
+            ],
+            "There is only a thin wall separating life and death, which is fragile and vulnerable, yet holding": [
+                "1thin1",
+                "1walls1"
+            ]
+        },
         "centered": false
     },
     "As Imperceptibly as Grief": {
