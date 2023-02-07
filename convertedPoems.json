@@ -1173,8 +1173,210 @@
         "convertedPoem": "1There1 1are1 1just1 1not1 1enough1\n1straight1 1lines1|+|1.1 1That1\n1is1 1the1 1problem1|+|2.2\n1Nothing1 2is2 1flat1\n1of1 1parallel1|+|3.3 1Beams1\n1balance1 1crookedly1 1on1 1supports1\n1thrust1 1off1 2the2 1vertical1|+|4.4\n1Nails1 1clutch1 1at1 1open1 1seams1|+|5.5\n1The1 1whole1 1structure1 1leans1 1dangerously1\n1towards1 3the3 1miraculous1|+|6.6\n11\n1Into1 1this1 1rough1 1frame1|+|1,1\n1someone1 1has1 1squeezed1\n1a1 1living1 1space1\n22\n1and1 1even1 1dared1 1to1 1place1\n1these1 1eggs1 1in1 2a2 1wire1 1basket1|+|2,2\n1fragile1 1curves1 2of2 1white1\n1hung1 1out1 1over1 4the4 1dark1 1edge1\n3of3 3a3 1slanted1 1universe1|+|3,3\n1gathering1 5the5 1light1\n1into1 1themseleves1|+|4,4\n1as1 1if1 1they1 1were1\n6the6 1bright1|+|5,5 1thin1 1walls1 4of4 1faith1|+|7.7",
         "wordCount": 88,
         "author": "Imtiaz Dharker",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1not1",
+                "1enough1",
+                "1straight1",
+                "1lines1"
+            ],
+            [
+                "1Nothing1",
+                "2is2",
+                "1flat1",
+                "1of1",
+                "1parallel1"
+            ],
+            [
+                "1Nails1",
+                "1clutch1",
+                "1at1",
+                "1open1",
+                "1seams1"
+            ],
+            [
+                "1leans1",
+                "1dangerously1",
+                "1towards1",
+                "3the3",
+                "1miraculous1"
+            ],
+            [
+                "1someone1",
+                "1has1",
+                "1squeezed1",
+                "1a1",
+                "1living1",
+                "1space1"
+            ],
+            [
+                "1fragile1",
+                "1curves1",
+                "2of2",
+                "1white1"
+            ],
+            [
+                "1dark1",
+                "1edge1",
+                "3of3",
+                "3a3",
+                "1slanted1",
+                "1universe1"
+            ],
+            [
+                "6the6",
+                "1bright1",
+                "5,5",
+                "1thin1",
+                "1walls1",
+                "4of4",
+                "1faith1"
+            ]
+        ],
+        "notes": {
+            "The houses are made of any material that can be found, and were poorly constructed, meaning no edges are straight, making the houses seem dangerous to live in": [
+                "1not1",
+                "1enough1",
+                "1straight1",
+                "1lines1"
+            ],
+            "The divide between the rich and the poor means that the people here can't afford a properly constructed house": [
+                "1That1",
+                "1is1",
+                "1the1",
+                "1problem1",
+                "2.2"
+            ],
+            "Everything is on a wonk": [
+                "1Nothing1",
+                "2is2",
+                "1flat1",
+                "1of1",
+                "1parallel1"
+            ],
+            "Houses are not secure": [
+                "1Beams1",
+                "1balance1"
+            ],
+            "Balancing suggests there is no structural integrity, making it dangerous living conditions, showing the conditions of those living here": [
+                "1Beams1",
+                "1balance1",
+                "1crookedly1"
+            ],
+            "The beams are leaning so much that it is a miracle they can support anything": [
+                "1thrust1",
+                "1off1",
+                "2the2",
+                "1vertical1"
+            ],
+            "The buildings are hanging on for dear life, a metaphor for how their inhabitants are holding on to hope that their situation will improve": [
+                "1Nails1",
+                "1clutch1",
+                "1at1",
+                "1open1",
+                "1seams1"
+            ],
+            "Looks like it is about to collapse": [
+                "1whole1",
+                "1structure1",
+                "1leans1",
+                "1dangerously1"
+            ],
+            "The building should not still be standing, it is a miracle it hasn't fallen": [
+                "1leans1",
+                "1dangerously1",
+                "1towards1",
+                "3the3",
+                "1miraculous1"
+            ],
+            "Leans towards the better, showing hope": [
+                "1towards1",
+                "3the3",
+                "1miraculous1"
+            ],
+            "This stanza is squeezed in between the others, representing the living space that is being squeezed into the slum": [
+                "1Into1",
+                "1this1",
+                "1rough1",
+                "1frame1",
+                "1,1",
+                "1someone1",
+                "1has1",
+                "1squeezed1",
+                "1a1",
+                "1living1",
+                "1space1"
+            ],
+            "Shows the hardships of life in the slums, it is rough to live in": [
+                "1rough1"
+            ],
+            "This living space shouldn't fit, this whole place is a miracle": [
+                "1someone1",
+                "1has1",
+                "1squeezed1",
+                "1a1",
+                "1living1",
+                "1space1"
+            ],
+            "Everything they do is a risk and dangerous, no less bringing new life into a slanted universe": [
+                "1dared1"
+            ],
+            "Only a thin wire basket stops them from falling into the darkness, suggesting some do": [
+                "1these1",
+                "1eggs1",
+                "1in1",
+                "2a2",
+                "1wire1",
+                "1basket1"
+            ],
+            "Something fragile and representing new life can somehow survive under these dire circumstances": [
+                "1eggs1",
+                "1fragile1"
+            ],
+            "Represents faith in a new generation, they will bring goodness (white) to an evil place (dark)": [
+                "1eggs1",
+                "1white1",
+                "1dark1"
+            ],
+            "Represents how hope is being maintained in a very dark and hopeless place": [
+                "1hung1",
+                "1out1",
+                "1over1",
+                "4the4",
+                "1dark1",
+                "1edge1"
+            ],
+            "A reference to the unfair gap in wealth between the rich and poor in Mumbai, but also in the World as a whole": [
+                "1slanted1",
+                "1universe1"
+            ],
+            "The roof the eggs are sitting on is slanted, it is not parallel": [
+                "1slanted1",
+                "1universe1"
+            ],
+            "Gathering hope": [
+                "1gathering1",
+                "5the5",
+                "1light1"
+            ],
+            "The slums are held together by faith and community, rather than structural support and engineering": [
+                "6the6",
+                "1bright1",
+                "5,5",
+                "1thin1",
+                "1walls1",
+                "4of4",
+                "1faith1",
+                "7.7"
+            ],
+            "The light prevails, and since light has connotations of goodness, it shows that under the most unlikely circumstances, goodness prevails": [
+                "1bright1"
+            ],
+            "There is only a thin wall separating life and death, which is fragile and vulnerable, yet holding": [
+                "1thin1",
+                "1walls1"
+            ]
+        },
         "centered": false
     },
     "As Imperceptibly as Grief": {
