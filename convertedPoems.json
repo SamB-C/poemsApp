@@ -717,8 +717,240 @@
         "convertedPoem": "1If1 1I1 1should1 1die1|+|1,1 1think1 1only1 1this1 1of1 1me1|+|1:1\n11 22 1That1 1there's1 1some1 1corner1 2of2 1a1 1foreign1 1field1\n2That2 1is1 1for1 1ever1 1England1|+|1.1 1There1 1shall1 1be1\n33 44 1In1 1that1 1rich1 1earth1 2a2 1richer1 1dust1 1concealed1|+|1;1\n1A1 2dust2 1whom1 2England2 1bore1|+|2,2 1shaped1|+|3,3 1made1 1aware1|+|4,4\n55 66 1Gave1|+|5,5 1once1|+|6,6 1her1 1flowers1 1to1 1love1|+|7,7 2her2 1ways1 2to2 1roam1|+|8,8\n2A2 1body1 3of3 1England's1|+|9,9 1breathing1 1English1 1air1|+|10,10\n77 88 1Washed1 1by1 1the1 1rivers1|+|11,11 1blest1 2by2 1suns1 4of4 1home1|+|2.2\n99\n1And1 2think2|+|12,12 2this2 1heart1|+|13,13 1all1 1evil1 1shed1 1away1|+|14,14\n1010 1111 3A3 1pulse1 1in1 2the2 1eternal1 1mind1|+|15,15 1no1 1less1\n1212 1313 1414 1515 1Gives1 1somewhere1 1back1 3the3 1thoughts1 3by3 3England3 1given1|+|2;2\n1Her1 1sights1 1and1 1sounds1|+|3;3 1dreams1 1happy1 1as1 3her3 1day1|+|4;4\n1616 1717 2And2 1laughter1|+|16,16 1learnt1 5of5 1friends1|+|5;5 2and2 1gentleness1|+|17,17\n1818 1919 2020 2121 2In2 1hearts1 1at1 1peace1|+|18,18 1under1 1an1 2English2 1heaven1|+|3.3",
         "wordCount": 115,
         "author": "Rupert Brooke",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1there's1",
+                "1some1",
+                "1corner1",
+                "2of2",
+                "1a1",
+                "1foreign1",
+                "1field1",
+                "2That2",
+                "1is1",
+                "1for1",
+                "1ever1",
+                "1England1"
+            ],
+            [
+                "1In1",
+                "1that1",
+                "1rich1",
+                "1earth1",
+                "2a2",
+                "1richer1",
+                "1dust1",
+                "1concealed1"
+            ],
+            [
+                "2England2",
+                "1bore1",
+                "2,2",
+                "1shaped1",
+                "3,3",
+                "1made1",
+                "1aware1"
+            ],
+            [
+                "2A2",
+                "1body1",
+                "3of3",
+                "1England's1"
+            ],
+            [
+                "1all1",
+                "1evil1",
+                "1shed1",
+                "1away1"
+            ],
+            [
+                "3A3",
+                "1pulse1",
+                "1in1",
+                "2the2",
+                "1eternal1",
+                "1mind1"
+            ],
+            [
+                "1Gives1",
+                "1somewhere1",
+                "1back1",
+                "3the3",
+                "1thoughts1",
+                "3by3",
+                "3England3",
+                "1given1"
+            ],
+            [
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            [
+                "1an1",
+                "2English2",
+                "1heaven1"
+            ]
+        ],
+        "notes": {
+            "Optimism, he doesn't think his death is certain": [
+                "1If1",
+                "1I1"
+            ],
+            "Acceptance of death": [
+                "1If1",
+                "1I1",
+                "1should1",
+                "1die1"
+            ],
+            "Personal pronouns, is an account of Brooke's thoughts on dying in war": [
+                "1I1",
+                "1me1",
+                "2this2"
+            ],
+            "Brooke clearly doesn't want people to be sad about his death, he clearly states in his poem that his death in battle will be a worthwhile sacrifice": [
+                "1think1",
+                "1only1",
+                "1this1",
+                "1of1",
+                "1me1",
+                "1:1"
+            ],
+            "Fighting abroad - WW1 never entered English soil": [
+                "1foreign1",
+                "1field1"
+            ],
+            "The idea of spreading England to other countries - colonialism": [
+                "1for1",
+                "1ever1",
+                "1England1"
+            ],
+            "A battlefield, rich with the blood of dead soldiers": [
+                "1In1",
+                "1that1",
+                "1rich1",
+                "1earth1"
+            ],
+            "richer is a comparative word, showing that out of all the dead bodies in the field, his English body shall be better than all the others": [
+                "1richer1",
+                "1dust1",
+                "1concealed1"
+            ],
+            "The richer dust is his body": [
+                "1richer1",
+                "1dust1"
+            ],
+            "England personified": [
+                "1whom1",
+                "2England2",
+                "1bore1"
+            ],
+            "England bore you, so England is your family, and you have to fight for your family, emphasised by the use of a triplet": [
+                "2England2",
+                "1bore1",
+                "2,2",
+                "1shaped1",
+                "3,3",
+                "1made1",
+                "1aware1"
+            ],
+            "England gave to you, so deserves for you to give back": [
+                "1Gave1"
+            ],
+            "England gave the possibility of freedom": [
+                "2her2",
+                "1ways1",
+                "2to2",
+                "1roam1"
+            ],
+            "Not just any body, an English body - Rupert's patriotism lead him to believe the English were the best": [
+                "1body1",
+                "3of3",
+                "1England's1",
+                "9,9",
+                "1breathing1",
+                "1English1",
+                "1air1"
+            ],
+            "May mean to imply that England is holy": [
+                "1blest1"
+            ],
+            "No longer part of an evil war": [
+                "1all1",
+                "1evil1",
+                "1shed1",
+                "1away1"
+            ],
+            "Sacrificed themselves, like Jesus, to remove their sin": [
+                "1all1",
+                "1evil1",
+                "1shed1",
+                "1away1"
+            ],
+            "His sacrifice will ensure England's longevity": [
+                "3A3",
+                "1pulse1",
+                "1in1",
+                "2the2",
+                "1eternal1",
+                "1mind1"
+            ],
+            "By winning the war, they can gift their happy memories to the future English generations": [
+                "1Gives1",
+                "1somewhere1",
+                "1back1",
+                "1Her1",
+                "1sights1",
+                "1and1",
+                "1sounds1"
+            ],
+            "Giving back to England, who gave them the thoughts of life": [
+                "1Gives1",
+                "1somewhere1",
+                "1back1",
+                "3the3",
+                "1thoughts1",
+                "3by3",
+                "3England3",
+                "1given1"
+            ],
+            "The positives that stem from England and that can continue because of his sacrifice": [
+                "1laughter1",
+                "16,16",
+                "1learnt1",
+                "5of5",
+                "1friends1",
+                "5;5",
+                "2and2",
+                "1gentleness1"
+            ],
+            "A dead heart has stopped beating for the first time in death, it finally achieves peace": [
+                "2In2",
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            "The soldier's that have sacrificed themselves can feel at peace, knowing they did the right thing": [
+                "2In2",
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            "Others can live without worries because of their actions": [
+                "2In2",
+                "1hearts1",
+                "1at1",
+                "1peace1"
+            ],
+            "England is heaven on Earth to Brooke": [
+                "2English2",
+                "1heaven1"
+            ],
+            "English soldiers will be rewarded with heaven": [
+                "2English2",
+                "1heaven1"
+            ]
+        },
         "centered": false
     },
     "She Walks in Beauty": {
