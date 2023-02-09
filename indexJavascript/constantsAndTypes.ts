@@ -41,7 +41,8 @@ export const SPECIAL_CHARACTER_REGEX = /[.,:;]/
 export const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPACE}</p>`
 export const ANIMATION_SPEED: number = 20
 export const COVER_OVER_COMPLETED_WORDS = false;
-export const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"'
+export const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
+export const LETTER_INPUT_DEFAULT_COLOR = 'orange';
 
 export const REPLACE_WORDS_RADIO_BUTTON_ID = '__words__';
 export const REPLACE_QUOTES_RADIO_BUTTON_ID = '__quotes__';

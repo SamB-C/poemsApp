@@ -1,4 +1,4 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, NUMBER_ONLY_REGEX, TRY_AGAIN_LINK_ELEMENT_AS_STR } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX, TRY_AGAIN_LINK_ELEMENT_AS_STR } from "./constantsAndTypes.js";
 import { initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
 import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
@@ -22,7 +22,7 @@ export function onInputEventHandler(word: string, event: Event, poem: string) {
         setTimeout(() => {
             revertWordToEmpty(word);
             parent.oninput = (event) => onInputEventHandler(word, event, poem);
-            targetInput.style.color = 'black';
+            targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
         }, 1000)
     } else {
         targetInput.style.textAlign = 'center';

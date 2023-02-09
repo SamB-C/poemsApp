@@ -20,6 +20,10 @@ input, select {
     margin: 0;
 }
 
+input {
+    color: orange;
+}
+
 .letter_input {
     width: 2.5vh;
     font-size: 3.1vh;
