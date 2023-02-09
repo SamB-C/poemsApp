@@ -109,9 +109,10 @@ function revertToTextAsComplete(wordToRevert) {
 }
 // Moves to the next word, if none left, marks poem as complete
 function moveToNextWord(poem) {
-    state.wordsNotCompleted.splice(state.wordsNotCompleted.indexOf(state.focusedWord), 1);
+    const indexOfCompleteWord = state.wordsNotCompleted.indexOf(state.focusedWord);
+    state.wordsNotCompleted.splice(indexOfCompleteWord, 1);
     if (state.wordsNotCompleted.length > 0) {
-        state.focusedWord = state.wordsNotCompleted[0];
+        state.focusedWord = state.wordsNotCompleted[indexOfCompleteWord];
         FOCUS.focusFirstLetterOfWord(state.focusedWord);
     }
     else {
