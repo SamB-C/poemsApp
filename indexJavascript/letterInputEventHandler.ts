@@ -13,6 +13,7 @@ export function onInputEventHandler(word: string, event: Event, poem: string) {
     if (targetInput.value.length === 0) {
         return;
     }
+    targetInput.style.textAlign = 'center';
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         const parent = targetInput.parentElement as HTMLSpanElement;
@@ -23,9 +24,9 @@ export function onInputEventHandler(word: string, event: Event, poem: string) {
             revertWordToEmpty(word);
             parent.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
+            targetInput.style.textAlign = 'start';
         }, 1000)
     } else {
-        targetInput.style.textAlign = 'center';
         focusNextLetter(targetInput, poem);
     }
 }
