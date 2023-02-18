@@ -1381,11 +1381,189 @@
         "centered": false
     },
     "As Imperceptibly as Grief": {
-        "convertedPoem": "1As1 1imperceptibly1 1as1 1Grief1\n1The1 1Summer1 1lapsed1 1away1 1-1\n1Too1 1imperceptible1 1at1 1last1\n1To1 1seem1 1like1 1Perfidy1 2-2\n1A1 1Quietness1 1distilled1\n2As2 1Twilight1 1long1 1begun1|+|1,1\n1Or1 1Nature1 1spending1 1with1 1herself1\n1Sequestered1 1Afternoon1 3-3\n2The2 1Dusk1 1drew1 1earlier1 1in1 4-4\n3The3 1Morning1 1foreign1 1shone1 5-5\n2A2 1courteous1|+|2,2 1yeet1 1harrowing1 1Grace1|+|3,3\n1And1 1thus1|+|4,4 1without1 1a1 1Wing1\n2Or2 1service1 1of1 2a2 1Keel1\n1Our1 2Summer2 1made1 1her1 1light1 1escape1\n1Into1 1the1 1Beautiful1",
-        "wordCount": 68,
+        "convertedPoem": "1As1 1imperceptibly1 1as1 1Grief1\n1The1 1Summer1 1lapsed1 1away1 1-1\n1Too1 1imperceptible1 1at1 1last1\n1To1 1seem1 1like1 1Perfidy1 2-2\n1A1 1Quietness1 1distilled1\n2As2 1Twilight1 1long1 1begun1|+|1,1\n1Or1 1Nature1 1spending1 1with1 1herself1\n1Sequestered1 1Afternoon1 3-3\n2The2 1Dusk1 1drew1 1earlier1 1in1 4-4\n3The3 1Morning1 1foreign1 1shone1 5-5\n2A2 1courteous1|+|2,2 1yet1 1harrowing1 1Grace1|+|3,3\n3As3 1Guest1|+|4,4 1that1 1would1 1be1 1gone1 6-6\n1And1 1thus1|+|5,5 1without1 1a1 1Wing1\n2Or2 1service1 1of1 2a2 1Keel1\n1Our1 2Summer2 1made1 1her1 1light1 1escape1\n1Into1 1the1 1Beautiful1|+|1.1",
+        "wordCount": 75,
         "author": "Emily Dickinson",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1Too1",
+                "1imperceptible1",
+                "1at1",
+                "1last1",
+                "1To1",
+                "1seem1",
+                "1like1",
+                "1Perfidy1"
+            ],
+            [
+                "1Nature1",
+                "1spending1",
+                "1with1",
+                "1herself1",
+                "1Sequestered1",
+                "1Afternoon1"
+            ],
+            [
+                "1courteous1",
+                "2,2",
+                "1yet1",
+                "1harrowing1",
+                "1Grace1"
+            ],
+            [
+                "1without1",
+                "1a1",
+                "1Wing1"
+            ],
+            [
+                "1service1",
+                "1of1",
+                "2a2",
+                "1Keel1"
+            ],
+            [
+                "1Our1",
+                "2Summer2",
+                "1made1",
+                "1her1",
+                "1light1",
+                "1escape1",
+                "1Into1",
+                "1the1",
+                "1Beautiful1"
+            ]
+        ],
+        "notes": {
+            "Repeat the title for emphasis": [
+                "1As1",
+                "1imperceptibly1",
+                "1as1",
+                "1Grief1"
+            ],
+            "Enjambment shows the flow and continuity of her grief": [
+                "1Grief1",
+                "1The1"
+            ],
+            "The big S represents summer is personified": [
+                "1Summer1"
+            ],
+            "Summer represents joy, happiness and life": [
+                "1Summer1"
+            ],
+            "Meaning not valid, expired, out of date": [
+                "1lapsed1"
+            ],
+            "Repeated caesura represents reluctance to let time pass, which ends at the end of the poem, as Dickinson reaches acceptance": [
+                "1-1",
+                "2-2",
+                "3-3",
+                "4-4",
+                "5-5"
+            ],
+            "Summer is fading and lapsing away so subtly, it doesn't seem like it is being stolen from her": [
+                "1Too1",
+                "1imperceptible1",
+                "1To1",
+                "1seem1",
+                "1like1",
+                "1Perfidy1"
+            ],
+            "Shows her mistrust of the passing of time, it seems almost deceitful": [
+                "1Too1",
+                "1imperceptible1",
+                "1at1",
+                "1last1",
+                "1Perfidy1"
+            ],
+            "Meaning slight, subtle, hardly noticable": [
+                "1imperceptible1"
+            ],
+            "Meaning being deceitful and untrustworthy": [
+                "1Perfidy1"
+            ],
+            "Dickinson feels Quietness is being formed from the extraction of Summer": [
+                "1Quietness1",
+                "1distilled1"
+            ],
+            "The process of heating to extract something": [
+                "1distilled1"
+            ],
+            "Well into twilight, stuck between dark (sadness, death) and life (happiness, life)": [
+                "1Twilight1",
+                "1long1",
+                "1begun1"
+            ],
+            "Nature is hiding away, ready to move on from her and her life. Dickinson may feel betrayed by nature": [
+                "1Nature1",
+                "1spending1",
+                "1with1",
+                "1herself1",
+                "1Sequestered1",
+                "1Afternoon1"
+            ],
+            "Meaning isolated, hidden away": [
+                "1Sequestered1"
+            ],
+            "Comparable to Dickinson's own choice to stay in recluse": [
+                "1Sequestered1",
+                "1Afternoon1"
+            ],
+            "Darkness and death is closing in": [
+                "1Dusk1",
+                "1drew1",
+                "1earlier1",
+                "1in1"
+            ],
+            "The light of morning seems foreign, Dickinson associates more with the end of the day, and of life, than the beginning of it": [
+                "1Morning1",
+                "1foreign1",
+                "1shone1"
+            ],
+            "Meaning polite and respectful": [
+                "1courteous1"
+            ],
+            "Beginning of acceptance": [
+                "1courteous1"
+            ],
+            "The change she experienced was subtle enough to be kind, but harrowing since she doesn't want it to happen": [
+                "1courteous1",
+                "2,2",
+                "1yet1",
+                "1harrowing1",
+                "1Grace1"
+            ],
+            "Meaning really distressing": [
+                "1harrowing1"
+            ],
+            "There is nothing she can do to stop Summer escape, and Dickinson has come to accept this": [
+                "1without1",
+                "1a1",
+                "1Wing1",
+                "2Or2",
+                "1service1",
+                "1of1",
+                "2a2",
+                "1Keel1"
+            ],
+            "The bottom of a boat": [
+                "1Keel1"
+            ],
+            "Shows that everyone will experience these feelings, as eventually the happiness in all our lives will fade": [
+                "1Our1"
+            ],
+            "Link back to the subtle nature of Summer's disappearance": [
+                "1light1",
+                "1escape1"
+            ],
+            "Acceptance of Summer leaving, and the inevitability of the event, creating an acceptance of death": [
+                "1Into1",
+                "1the1",
+                "1Beautiful1"
+            ],
+            "The only full-stop in the poem, it shows that Dickinson believes that grief only ends in death, and that death is final": [
+                "1.1"
+            ]
+        },
         "centered": false
     },
     "Cozy Apologia": {
