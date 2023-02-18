@@ -5,10 +5,11 @@ html {
     --secondary-background: #212121;
     --primary-color: white;
     --secondary-color: #c6c5c5;
-    --variable-font-size: 3.1vh;
     --first-highlight-color: lightsalmon;
     --second-highlight-color: tan;
     --third-highlight-color: darkkhaki;
+    --variable-font-size: 3.1vh;
+    --font-family: 'Poppins', sans-serif;
 }
 
 
@@ -19,6 +20,7 @@ html {
 
 body {
     background-color: var(--primary-background);
+    margin: 0;
 }
 
 li::marker {
@@ -27,8 +29,14 @@ li::marker {
 
 p, input::-webkit-input-placeholder {
     font-size: var(--variable-font-size);
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family);
     color: var(--secondary-color)
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: calc(var(--variable-font-size) * 1.2);
+    font-family: var(--font-family);
 }
 
 input, select {
@@ -49,6 +57,14 @@ input {
 .letter_input {
     width: 2.5vh;
     font-size: var(--variable-font-size);
+}
+
+#__range_slider_container__ {
+    width: 95%;
+    display: grid;
+    grid-template-columns: 80% 11%;
+    place-content: center;
+    column-gap: 5%;
 }
 
 select {
@@ -84,21 +100,32 @@ select:hover {
     margin: 0 3.5vh 0 1.2vh;
 }
 
-.inline_grid {
+#__computer__ {
     display: grid;
-    grid-template-columns: max-content auto;
+    grid-template-columns: 40% auto;
 }
 
-#__extra_info_container__{
-    border: 1px solid var(--secondary-background);
-    background: var(--secondary-background);
+.center-text {
+    text-align: center;
+}
+
+#__extra_info__{
     padding: 0 8px 0 8px;
-    border-radius: 10px;
     margin-left: 30px;
     position: sticky;
-    top: 20vh;
+    top: 0;
     transition: border 1s ease;
     margin-right: 10px;
+    height: 100vh;
+}
+
+#__extra_info_container__, #__options__ {
+    margin-top: 3vh;
+}
+
+.center-content {
+    display: grid;
+    place-items: center;
 }
 
 #__try_again__ {
@@ -110,6 +137,29 @@ select:hover {
     text-decoration: underline;
     text-decoration-color: #209CEE;
 }
+
+#__main_content__ {
+    margin-top: 3vh;
+}
+
+#__main_content_container__ {
+    padding: 3vh;
+}
+
+.card {
+    border: 1px solid var(--secondary-background);
+    background: var(--secondary-background);
+    border-radius: 10px;
+    padding: 1vh;
+}
+
+
+
+
+
+
+
+/* ------------------- CSS for underlines ------------------- */
 
 .wordSection {
     position: relative;
@@ -193,7 +243,7 @@ select:hover {
     to {
         transform: scale(1);
         opacity: 1;
-        max-height: calc(var(--variable-font-size) * 7);
+        max-height: calc(var(--variable-font-size) * 10);
         padding: 0.5vh;
     }
 }
