@@ -1,13 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+html {
+    --primary-background: #181818;
+    --secondary-background: #212121;
+    --primary-color: white;
+    --secondary-color: #c6c5c5;
+    --variable-font-size: 3.1vh;
+    --first-highlight-color: lightsalmon;
+    --second-highlight-color: tan;
+    --third-highlight-color: darkkhaki;
+}
+
+
 * {
     box-sizing: border-box;
     /*outline: 1px solid red !important;*/
 }
 
+body {
+    background-color: var(--primary-background);
+}
+
+li::marker {
+    color: var(--secondary-color);
+}
+
 p, input::-webkit-input-placeholder {
-    font-size: 3.1vh;
+    font-size: var(--variable-font-size);
     font-family: 'Poppins', sans-serif;
+    color: var(--secondary-color)
 }
 
 input, select {
@@ -15,9 +36,10 @@ input, select {
     background-color: transparent;
     resize: none;
     outline: none;
-    font-size: 3.1vh;
+    font-size: var(--variable-font-size);
     padding: 0;
     margin: 0;
+    color: var(--primary-color)
 }
 
 input {
@@ -26,7 +48,7 @@ input {
 
 .letter_input {
     width: 2.5vh;
-    font-size: 3.1vh;
+    font-size: var(--variable-font-size);
 }
 
 select {
@@ -38,7 +60,7 @@ select {
 }
 
 select:hover {
-    border: 1px solid black;
+    border: 1px solid var(--primary-color);
 }
 
 .fakeSpace {
@@ -68,13 +90,15 @@ select:hover {
 }
 
 #__extra_info_container__{
-    border: 1px solid black;
+    border: 1px solid var(--secondary-background);
+    background: var(--secondary-background);
     padding: 0 8px 0 8px;
     border-radius: 10px;
     margin-left: 30px;
     position: sticky;
     top: 20vh;
     transition: border 1s ease;
+    margin-right: 10px;
 }
 
 #__try_again__ {
@@ -110,35 +134,35 @@ select:hover {
 }
 
 .underline1::after {
-    background: red;
+    background: var(--first-highlight-color);
 }
 .underline2::after {
-    background: blue;
+    background: var(--second-highlight-color);
 }
 .underline3::after {
-    background: green;
+    background: var(--third-highlight-color);
 }
 .underline4::after {
-    background: linear-gradient(to right, red 50%, blue 50%);
+    background: linear-gradient(to right, var(--first-highlight-color) 50%, var(--second-highlight-color) 50%);
 }
 .underline5::after {
-    background: linear-gradient(to right, red 50%, green 50%);
+    background: linear-gradient(to right, var(--first-highlight-color) 50%, var(--third-highlight-color) 50%);
 }
 .underline6::after {
-    background: linear-gradient(to right, blue 50%, green 50%);
+    background: linear-gradient(to right, var(--second-highlight-color) 50%, var(--third-highlight-color) 50%);
 }
 .underline8::after {
-    background: linear-gradient(to right, red 34%, blue 34% 67%, green 67%);
+    background: linear-gradient(to right, var(--first-highlight-color) 34%, var(--second-highlight-color) 34% 67%, var(--third-highlight-color) 67%);
 }
 
 .red {
-    color: red;
+    color: var(--first-highlight-color);
 }
 .blue {
-    color: blue;
+    color: var(--second-highlight-color);
 }
 .green {
-    color: green;
+    color: var(--third-highlight-color);
 }
 
 
@@ -169,7 +193,7 @@ select:hover {
     to {
         transform: scale(1);
         opacity: 1;
-        max-height: 21.7vh;
+        max-height: calc(var(--variable-font-size) * 7);
         padding: 0.5vh;
     }
 }
