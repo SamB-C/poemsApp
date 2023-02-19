@@ -144,6 +144,7 @@ select:hover {
 
 #__main_content_container__ {
     padding: 3vh;
+    background: rgb(256, 256, 256, .1);
 }
 
 .card {
