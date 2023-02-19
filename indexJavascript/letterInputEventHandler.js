@@ -135,11 +135,11 @@ function completePoem(poem) {
 }
 function addGreenCompletionBorder() {
     const poemContainer = GET_ELEMENT.getPoemContainer();
-    poemContainer.style.outline = '1vh solid green';
+    poemContainer.style.border = '1vh solid green';
 }
 export function removeGreenCompletionBorder() {
     const poemContainer = GET_ELEMENT.getPoemContainer();
-    poemContainer.style.outline = 'none';
+    poemContainer.style.border = 'none';
 }
 // Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption) {
