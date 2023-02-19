@@ -96,7 +96,6 @@ function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElem
             noteTextElement.classList.add('noteTextOut');
             setTimeout(() => {
                 const elementToRemove = document.getElementById(numberCopy.toString()) as NOTE_TYPE;
-                console.log(window.getComputedStyle(elementToRemove).padding);
                 elementToRemove.remove();
             }, NOTE_REMOVAL_DELAY);
             wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, false, undefined);
