@@ -68,11 +68,12 @@ input {
 }
 
 select {
-    font-size: 4vh;
-    font-weight: bold;
+    font-size: calc(var(--variable-font-size) * 1.4);
+    font-weight: bolder;
     width: 100%;
     border: 1px solid transparent;
     border-radius: 5px;
+    font-family: var(--font-family);
 }
 
 select:hover {
