@@ -10,8 +10,22 @@ import { getArrayOfChildrenThatAreInputs, GET_ID, isIlleagalLetter, WORD_FUNCS }
 // --------------------------- Replace quotes in the poem ---------------------------
 
 export function replaceQuotes(quotes: Quotes): Array<string> {
+    const quotesToReplace: Array<Array<string>> = [];
+    const numberOfQuotesToReplace = Math.ceil((state.percentageWordsToRemove / 100) * quotes.length);
+    while (quotesToReplace.length < numberOfQuotesToReplace) {
+        const potentialQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        let wordAlreadySelected = false;
+        quotesToReplace.forEach(quote => {
+            if (quote.join(' ') === potentialQuote.join(' ')) {
+                wordAlreadySelected = true;
+            }
+        });
+        if (!wordAlreadySelected) {
+            quotesToReplace.push(potentialQuote);
+        }
+    }
     let allWordsInQuotes: Array<string> = [];
-    quotes.forEach(quote => quote.forEach(word => allWordsInQuotes.push(word)))
+    quotesToReplace.forEach(quote => quote.forEach(word => allWordsInQuotes.push(word)))
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     // The words should already be in order but used as a precaution
     insertionSortIntoOrderInPoem(currentPoemContent, allWordsInQuotes)
