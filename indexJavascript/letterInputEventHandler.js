@@ -121,6 +121,7 @@ function moveToNextWord(poem) {
 }
 // Uses an animation to turn all text green and add message below poem
 function completePoem(poem) {
+    addGreenCompletionBorder();
     const completionColor = '#00FF00';
     const allWordsInPoem = getAllWordSectionsInPoem(poem);
     // Disable the inputs that re-render the poem
@@ -129,6 +130,14 @@ function completePoem(poem) {
     disableInputs();
     // Do animation
     changeAllWordsToColor(allWordsInPoem, state.wordsNotCompletedPreserved, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, rangeBarIntitialValue));
+}
+function addGreenCompletionBorder() {
+    const poemContainer = GET_ELEMENT.getPoemContainer();
+    poemContainer.style.outline = '1vh solid green';
+}
+export function removeGreenCompletionBorder() {
+    const poemContainer = GET_ELEMENT.getPoemContainer();
+    poemContainer.style.outline = 'none';
 }
 // Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange, wordsNotToChange, color, timeBetweenConversion, callbackOption) {

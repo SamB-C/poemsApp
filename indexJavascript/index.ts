@@ -1,5 +1,6 @@
 import { convertedPoemsJSON, FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, State, WORDS } from "./constantsAndTypes.js";
 import { initialisePoemOptions, initialiseRangebar, initialiseWordsOrQuotesRadioButtons } from "./inputs.js";
+import { removeGreenCompletionBorder } from "./letterInputEventHandler.js";
 import { initialiseNotesForPoem } from "./renderNotes.js";
 import { replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
 import { FOCUS, GET_ID, WORD_FUNCS } from "./utilities.js";
@@ -106,6 +107,7 @@ function makeSpanForWord(word: string): string {
 
 // Initialises the poem, by rendering it in
 export function initialise() {
+    removeGreenCompletionBorder();
     const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);

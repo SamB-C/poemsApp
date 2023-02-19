@@ -134,6 +134,8 @@ function moveToNextWord(poem: string): void {
 
 // Uses an animation to turn all text green and add message below poem
 function completePoem(poem: string): void {
+    addGreenCompletionBorder();
+
     const completionColor: string = '#00FF00';
     const allWordsInPoem: Array<string> = getAllWordSectionsInPoem(poem);
     // Disable the inputs that re-render the poem
@@ -144,6 +146,16 @@ function completePoem(poem: string): void {
     changeAllWordsToColor(allWordsInPoem, state.wordsNotCompletedPreserved, completionColor, ANIMATION_SPEED, () => changeAllWordsToColourAnimationCleanup(rangeBar, rangeBarIntitialValue));
 }
 
+
+function addGreenCompletionBorder() {
+    const poemContainer = GET_ELEMENT.getPoemContainer();
+    poemContainer.style.outline = '1vh solid green';
+}
+
+export function removeGreenCompletionBorder() {
+    const poemContainer = GET_ELEMENT.getPoemContainer();
+    poemContainer.style.outline = 'none';
+}
 
 // Animation to change all the words in the poem to a different color - A recursive function
 function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: Array<string>, color: string, timeBetweenConversion: number, callbackOption: Function) {

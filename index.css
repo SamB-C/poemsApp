@@ -140,12 +140,13 @@ select:hover {
 }
 
 #__main_content__ {
-    margin-top: 3vh;
+    padding-top: 3vh;
 }
 
 #__main_content_container__ {
-    padding: 3vh;
+    padding: 6vh;
     background: rgb(256, 256, 256, .1);
+    margin-bottom: 2vh;
 }
 
 .card {

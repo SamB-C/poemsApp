@@ -1,5 +1,6 @@
 import { FAKE_SPACE, GET_ID } from "./utilities.js";
 export const POEM_ID = '__poem_id__';
+export const POEM_CONTAINER = '__main_content_container__';
 export const RANGEBAR_ID = '__range_bar__';
 export const RANGEBAR_RESULT_ID = '__range_bar_result__';
 export const POEM_SELECT_ID = '__poem_selection__';
@@ -13,7 +14,7 @@ export const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 export const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
 export const FAKE_SPACE_HTML_ELEMENT = `<p class="fakeSpace">${FAKE_SPACE}</p>`;
 export const ANIMATION_SPEED = 20;
-export const COVER_OVER_COMPLETED_WORDS = false;
+export const COVER_OVER_COMPLETED_WORDS = true;
 export const INPUT_OPTIONS = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
 export const LETTER_INPUT_DEFAULT_COLOR = 'orange';
 export const REPLACE_WORDS_RADIO_BUTTON_ID = '__words__';
@@ -46,5 +47,8 @@ export const GET_ELEMENT = {
     },
     getNotes() {
         return document.getElementById(NOTES_ID);
+    },
+    getPoemContainer() {
+        return document.getElementById(POEM_CONTAINER);
     }
 };
