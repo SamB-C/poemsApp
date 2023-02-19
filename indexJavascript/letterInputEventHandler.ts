@@ -1,4 +1,4 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX, SPECIAL_CHARACTER_REGEX } from "./constantsAndTypes.js";
 import { initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
 import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
@@ -13,7 +13,9 @@ export function onInputEventHandler(word: string, event: Event, poem: string) {
     if (targetInput.value.length === 0) {
         return;
     }
-    targetInput.style.textAlign = 'center';
+    if (!targetInput.value.match(SPECIAL_CHARACTER_REGEX)) {
+        targetInput.style.textAlign = 'center';
+    }
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
         targetInput.style.color = 'red';
         const parent = targetInput.parentElement as HTMLSpanElement;
