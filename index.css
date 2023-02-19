@@ -139,6 +139,10 @@ select:hover {
     text-decoration-color: #209CEE;
 }
 
+#__completion_text__ {
+    display: none;
+}
+
 #__main_content__ {
     padding-top: 3vh;
 }

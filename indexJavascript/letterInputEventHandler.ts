@@ -1,4 +1,4 @@
-import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX, TRY_AGAIN_LINK_ELEMENT_AS_STR } from "./constantsAndTypes.js";
+import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX } from "./constantsAndTypes.js";
 import { initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
 import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
@@ -176,13 +176,30 @@ function changeAllWordsToColor(wordsToChange: Array<string>, wordsNotToChange: A
 
 // Cleanup function for after animation
 function changeAllWordsToColourAnimationCleanup(rangeBar: HTMLInputElement, rangeBarIntitialValue: string) {
-    // Tells the user they completed the poem
-    const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
-    poemElement.innerHTML = poemElement.innerHTML + TRY_AGAIN_LINK_ELEMENT_AS_STR;
-    // Add try again selection
-    const try_again = GET_ELEMENT.getTryAgainLink();
-    try_again.onclick = initialise
+    showTryAgainButton();
     // Resets the disabled inputs
     resetInputs();
     setTimeout(() => updateRangeBar(rangeBar, rangeBarIntitialValue), 500)
+}
+
+export function initialiseTryAgainLink() {
+    const tryAgainLink = GET_ELEMENT.getTryAgainLink();
+    tryAgainLink.onclick = initialise;
+}
+
+function showTryAgainButton() {
+    // Tells the user they completed the poem
+    // Add try again selection
+    const completionTextContainer = GET_ELEMENT.getCompletionText();
+    completionTextContainer.style.display = 'block';
+    if (state.poemData[state.currentPoemName].centered) {
+        completionTextContainer.style.textAlign = 'center';
+    }
+}
+
+export function hideTryAgainButton() {
+    const completionTextContainer = GET_ELEMENT.getCompletionText();
+    completionTextContainer.style.display = 'none';
+    completionTextContainer.style.textAlign = 'left';
+
 }

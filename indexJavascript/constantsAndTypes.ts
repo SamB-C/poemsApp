@@ -34,8 +34,10 @@ export type AssociatedNotesType = {
 export type WORD_SECTION_TYPE = HTMLSpanElement;
 
 export const TRY_AGAIN_LINK_ID = '__try_again__'
-export type TRY_AGAIN_LINK_TYPE = HTMLLinkElement;
-export const TRY_AGAIN_LINK_ELEMENT_AS_STR = `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`
+export type TRY_AGAIN_LINK_TYPE = HTMLSpanElement;
+
+export const COMPLETION_TEXT_ID = '__completion_text__';
+export type COMPLETION_TEXT_TYPE = HTMLDivElement;
 
 export const POEM_AUTHOR_ID = "__poem_author__";
 export const NUMBER_ONLY_REGEX = /^[0-9]+$/
@@ -108,5 +110,8 @@ export const GET_ELEMENT = {
     },
     getPoemContainer(): POEM_CONTAINER_TYPE {
         return document.getElementById(POEM_CONTAINER) as POEM_CONTAINER_TYPE;
+    },
+    getCompletionText(): COMPLETION_TEXT_TYPE {
+        return document.getElementById(COMPLETION_TEXT_ID) as COMPLETION_TEXT_TYPE;
     }
 }

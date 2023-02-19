@@ -8,7 +8,7 @@ export const NOTES_ID = '__notes__';
 export const NOTE_REMOVAL_DELAY = 10000;
 export const UNDERLINE_COLORS = ['red', 'blue', 'green'];
 export const TRY_AGAIN_LINK_ID = '__try_again__';
-export const TRY_AGAIN_LINK_ELEMENT_AS_STR = `</br>Complete! <span id="${TRY_AGAIN_LINK_ID}">Try again</span>`;
+export const COMPLETION_TEXT_ID = '__completion_text__';
 export const POEM_AUTHOR_ID = "__poem_author__";
 export const NUMBER_ONLY_REGEX = /^[0-9]+$/;
 export const SPECIAL_CHARACTER_REGEX = /[.,:;]/;
@@ -50,5 +50,8 @@ export const GET_ELEMENT = {
     },
     getPoemContainer() {
         return document.getElementById(POEM_CONTAINER);
+    },
+    getCompletionText() {
+        return document.getElementById(COMPLETION_TEXT_ID);
     }
 };
