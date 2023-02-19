@@ -73,7 +73,7 @@ export type convertedPoemsJSON = {
 export type State = {
     currentPoemName: string,
     poemData: convertedPoemsJSON,
-    numWordsToRemove: number,
+    percentageWordsToRemove: number,
     removalType: WordsOrQuotesType,
     focusedWord: string,
     wordsNotCompleted: Array<string>,

@@ -18,7 +18,8 @@ export function replaceQuotes(quotes) {
 // in order of appearance
 export function replaceWords(currentPoem) {
     const wordsReplaced = [];
-    while (wordsReplaced.length < state.numWordsToRemove) {
+    const numberOfWordsToReplace = Math.ceil((state.percentageWordsToRemove / 100) * state.poemData[state.currentPoemName].wordCount);
+    while (wordsReplaced.length < numberOfWordsToReplace) {
         const potentialWord = selectRandomWordFromPoem(currentPoem);
         if (!wordsReplaced.includes(potentialWord)) {
             wordsReplaced.push(potentialWord);

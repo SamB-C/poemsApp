@@ -22,7 +22,7 @@ function initialiseState(poems) {
     state = {
         currentPoemName: 'The Manhunt',
         poemData: poems,
-        numWordsToRemove: 3,
+        percentageWordsToRemove: 5,
         removalType: WORDS,
         focusedWord: '',
         wordsNotCompleted: [],
