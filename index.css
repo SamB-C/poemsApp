@@ -103,7 +103,7 @@ select:hover {
 
 #__computer__ {
     display: grid;
-    grid-template-columns: 40% auto;
+    grid-template-columns: 40% auto 20px;
 }
 
 .center-text {
