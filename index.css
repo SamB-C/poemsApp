@@ -63,9 +63,13 @@ input {
 #__range_slider_container__ {
     width: 95%;
     display: grid;
-    grid-template-columns: 65% 20%;
+    grid-template-columns: 65% 17%;
     place-content: center;
-    column-gap: 5%;
+    column-gap: 1%;
+}
+
+#__range_bar_result__ {
+    text-align: center;
 }
 
 select {
