@@ -1,5 +1,5 @@
 import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX, SPECIAL_CHARACTER_REGEX } from "./constantsAndTypes.js";
-import { initialise, state } from "./index.js";
+import { clearups, initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
 import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
 // =========================== Letter input onchange event handler ===========================
@@ -170,8 +170,9 @@ function completePoem(poem) {
 function addGreenCompletionBorder() {
     const poemContainer = GET_ELEMENT.getPoemContainer();
     poemContainer.style.border = '1vh solid green';
+    clearups.push(removeGreenCompletionBorder);
 }
-export function removeGreenCompletionBorder() {
+function removeGreenCompletionBorder() {
     const poemContainer = GET_ELEMENT.getPoemContainer();
     poemContainer.style.border = 'none';
 }
@@ -210,8 +211,9 @@ function showTryAgainButton() {
     if (state.poemData[state.currentPoemName].centered) {
         completionTextContainer.style.textAlign = 'center';
     }
+    clearups.push(hideTryAgainButton);
 }
-export function hideTryAgainButton() {
+function hideTryAgainButton() {
     const completionTextContainer = GET_ELEMENT.getCompletionText();
     completionTextContainer.style.display = 'none';
     completionTextContainer.style.textAlign = 'left';

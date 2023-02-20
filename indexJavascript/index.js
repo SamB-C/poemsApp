@@ -1,6 +1,6 @@
 import { FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, WORDS } from "./constantsAndTypes.js";
 import { initialisePoemOptions, initialiseRangebar, initialiseWordsOrQuotesRadioButtons } from "./inputs.js";
-import { hideTryAgainButton, initialiseTryAgainLink, removeGreenCompletionBorder } from "./letterInputEventHandler.js";
+import { initialiseTryAgainLink } from "./letterInputEventHandler.js";
 import { initialiseNotesForPoem } from "./renderNotes.js";
 import { replaceQuotes, replaceWords } from "./replaceWordsOrQuotes.js";
 import { FOCUS, GET_ID, WORD_FUNCS } from "./utilities.js";
@@ -18,6 +18,7 @@ fetch("convertedPoems.json")
     initialiseTryAgainLink();
     initialiseRangebar();
 });
+export const clearups = [];
 function initialiseState(poems) {
     state = {
         currentPoemName: 'The Manhunt',
@@ -98,7 +99,7 @@ function makeSpanForWord(word) {
 // =========================== Intitalise poem ===========================
 // Initialises the poem, by rendering it in
 export function initialise() {
-    clear();
+    reset();
     const poemElement = GET_ELEMENT.getPoemElement();
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);
@@ -118,10 +119,8 @@ export function initialise() {
     state.focusedWord = wordsThatHaveBeenReplaced[0];
     fixWidth();
 }
-function clear() {
-    removeGreenCompletionBorder();
-    hideTryAgainButton();
-    unfixWidth();
+function reset() {
+    clearups.forEach(clearup => clearup());
 }
 function unfixWidth() {
     const html = GET_ELEMENT.getHtmlElement();
@@ -133,4 +132,5 @@ function fixWidth() {
     const fixedWidth = poemContainer.clientWidth;
     const fixedWidthInPixels = fixedWidth.toString() + 'px';
     html.style.setProperty('--main-content-container-width', fixedWidthInPixels);
+    clearups.push(unfixWidth);
 }
