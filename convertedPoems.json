@@ -1567,11 +1567,440 @@
         "centered": false
     },
     "Cozy Apologia": {
-        "convertedPoem": "11 22 33 44 55 66 77 88 99 1010 1111 1212 1313 1414 1515 1616 1717 1818 1-for1 1Fred1\n1919\n1I1 1could1 1pick1 1anything1 1and1 1think1 1of1 1you-1\n1This1 1lamp1|+|1,1 1the1 1wind-still1 1rain1|+|2,2 2the2 1glossy1 1blue1\n1My1 1pen1 1exudes1|+|3,3 1drying1 1matte1|+|4,4 1upon1 3the3 1page1|+|1.1\n2I2 2could2 1choose1 1any1 1hero1|+|5,5 2any2 1cause1 1or1 1age1\n1And1|+|6,6 1sure1 1as1 1shooting1 1arrows1 1to1 4the4 1heart1|+|7,7\n1Astride1 1a1 1dappled1 1mare1|+|8,8 1legs1 1braced1 2as2 1far1 1apart1\n1As1 1standing1 1in1 1silver1 1stirrups1 1will1 1allow-1\n1There1 1you'll1 1be1|+|9,9 1with1 1furrowed1 1brow1\n2And2 1chain1 1mail1 1glinting1|+|10,10 2to2 1set1 1me1 1free1|+|1:1\n1One1 1eye1 1smiling1|+|11,11 5the5 1other1 1firm1 2upon2 6the6 1enemy1|+|12,12\n2020\n2This2 1post-post-modern1 2age2 1is1 1all1 1business1|+|2:2 1compact1 1disks1\n3And3 1faxes1|+|13,13 2a2 1do-it-now-and-take-no-risks1\n1Event1|+|2.2 1Today1 3a3 1hurricane1 2is2 1nudging1 1up1 7the7 1coast1|+|14,14\n1Oddly1 1male1|+|3:3 1Big1 1Bad1 1Floyd1|+|15,15 1who1 1bring1 4a4 1host1 2of2\n1Of1 1daydreams1|+|4:4 1awkward1 1reminiscences1\n2Of2 1teenage1 1crushes1 1on1 1worthless1 1boys1\n1Whose1 1only1 1talent1 1was1 3to3 1kiss1 1you1 1senseless1|+|3.3\n1They1 2all2 1had1 1sissy1 1names-Marcel1|+|16,16 1Percy1|+|17,17 1Dewey1|+|1;1\n1Were1 1thin1 5a5 1licorice1 2and2 3as3 1chewy1|+|18,18\n1Sweet1 2with2 6a6 1dark1 3and3 1hollow1 1center1|+|4.4 1Floyd's1\n2121\n1Cussing1 2up2 7a7 1storm1|+|5.5 1You're1 1bunkered1 2in2 1your1\n1Aerie1|+|19,19 1I'm1 1perched1 3in3 1mine1\n1(Twin1 1desks1|+|20,20 1computers1|+|21,21 1hardwood1 1floors)1|+|5:5\n1We're1 1content1|+|22,22 1but1 1fall1 1short1 3of3 8the8 1Divine1|+|6.6\n1Still1|+|23,23 1it's1 1embarrassing1|+|24,24 1this1 1happiness-1\n1Who's1 1satisfied1 3with3 1what's1 1good1 1for1 1us1|+|25,25\n1When1 1has1 9the9 1ordinary1 1ever1 1been1 1news?1\n4And4 1yet1|+|26,26 1because1 1nothing1 1else1 2will2 1do1\n1To1 1keep1 2me2 1from1 1melancholy1 1(call1 1it1 1blues)1|+|27,27\n3I3 1fill1 2this2 1stolen1 1time1 4with4 2you2|+|7.7",
+        "convertedPoem": "11 22 33 44 55 66 77 88 99 1010 1111 1212 1313 1414 1515 1616 1717 1818 1-for1 1Fred1\n1919\n1I1 1could1 1pick1 1anything1 1and1 1think1 1of1 1you-1\n1This1 1lamp1|+|1,1 1the1 1wind-still1 1rain1|+|2,2 2the2 1glossy1 1blue1\n1My1 1pen1 1exudes1|+|3,3 1drying1 1matte1|+|4,4 1upon1 3the3 1page1|+|1.1\n2I2 2could2 1choose1 1any1 1hero1|+|5,5 2any2 1cause1 1or1 1age1\n1And1|+|6,6 1sure1 1as1 1shooting1 1arrows1 1to1 4the4 1heart1|+|7,7\n1Astride1 1a1 1dappled1 1mare1|+|8,8 1legs1 1braced1 2as2 1far1 1apart1\n1As1 1standing1 1in1 1silver1 1stirrups1 1will1 1allow-1\n1There1 1you'll1 1be1|+|9,9 1with1 1furrowed1 1brow1\n2And2 1chain1 1mail1 1glinting1|+|10,10 2to2 1set1 1me1 1free1|+|1:1\n1One1 1eye1 1smiling1|+|11,11 5the5 1other1 1firm1 2upon2 6the6 1enemy1|+|12,12\n2020\n2This2 1post-post-modern1 2age2 1is1 1all1 1business1|+|2:2 1compact1 1disks1\n3And3 1faxes1|+|13,13 2a2 1do-it-now-and-take-no-risks1\n1Event1|+|2.2 1Today1 3a3 1hurricane1 2is2 1nudging1 1up1 7the7 1coast1|+|14,14\n1Oddly1 1male1|+|3:3 1Big1 1Bad1 1Floyd1|+|15,15 1who1 1brings1 4a4 1host1\n1Of1 1daydreams1|+|4:4 1awkward1 1reminiscences1\n2Of2 1teenage1 1crushes1 1on1 1worthless1 1boys1\n1Whose1 1only1 1talent1 1was1 3to3 1kiss1 1you1 1senseless1|+|3.3\n1They1 2all2 1had1 1sissy1 1names-Marcel1|+|16,16 1Percy1|+|17,17 1Dewey1|+|1;1\n1Were1 1thin1 3as3 1licorice1 2and2 4as4 1chewy1|+|18,18\n1Sweet1 2with2 5a5 1dark1 3and3 1hollow1 1center1|+|4.4 1Floyd's1\n2121\n1Cussing1 2up2 6a6 1storm1|+|5.5 1You're1 1bunkered1 2in2 1your1\n1Aerie1|+|19,19 1I'm1 1perched1 3in3 1mine1\n1(Twin1 1desks1|+|20,20 1computers1|+|21,21 1hardwood1 1floors)1|+|5:5\n1We're1 1content1|+|22,22 1but1 1fall1 1short1 2of2 8the8 1Divine1|+|6.6\n1Still1|+|23,23 1it's1 1embarrassing1|+|24,24 1this1 1happiness-1\n1Who's1 1satisfied1 1simply1 3with3 1what's1 1good1 1for1 1us1|+|25,25\n1When1 1has1 9the9 1ordinary1 1ever1 1been1 1news?1\n4And4 1yet1|+|26,26 1because1 1nothing1 1else1 2will2 1do1\n1To1 1keep1 2me2 1from1 1melancholy1 1(call1 1it1 1blues)1|+|27,27\n3I3 1fill1 2this2 1stolen1 1time1 4with4 2you2|+|7.7",
         "wordCount": 220,
         "author": "Rita Dove",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1I1",
+                "1could1",
+                "1pick1",
+                "1anything1",
+                "1and1",
+                "1think1",
+                "1of1",
+                "1you-1"
+            ],
+            [
+                "2the2",
+                "1glossy1",
+                "1blue1",
+                "1My1",
+                "1pen1",
+                "1exudes1"
+            ],
+            [
+                "2I2",
+                "2could2",
+                "1choose1",
+                "1any1",
+                "1hero1"
+            ],
+            [
+                "1There1",
+                "1you'll1",
+                "1be1"
+            ],
+            [
+                "1One1",
+                "1eye1",
+                "1smiling1",
+                "11,11",
+                "5the5",
+                "1other1",
+                "1firm1",
+                "2upon2",
+                "6the6",
+                "1enemy1",
+                "12,12"
+            ],
+            [
+                "1post-post-modern1",
+                "2age2",
+                "1is1",
+                "1all1",
+                "1business1"
+            ],
+            [
+                "3a3",
+                "1hurricane1",
+                "2is2",
+                "1nudging1",
+                "1up1",
+                "7the7",
+                "1coast1"
+            ],
+            [
+                "1Big1",
+                "1Bad1",
+                "1Floyd1"
+            ],
+            [
+                "1awkward1",
+                "1reminiscences1"
+            ],
+            [
+                "1teenage1",
+                "1crushes1"
+            ],
+            [
+                "1worthless1",
+                "1boys1"
+            ],
+            [
+                "1thin1",
+                "3as3",
+                "1licorice1",
+                "2and2",
+                "4as4",
+                "1chewy1"
+            ],
+            [
+                "1Sweet1",
+                "2with2",
+                "5a5",
+                "1dark1",
+                "3and3",
+                "1hollow1",
+                "1center1"
+            ],
+            [
+                "1You're1",
+                "1bunkered1",
+                "2in2",
+                "1your1",
+                "1Aerie1",
+                "19,19",
+                "1I'm1",
+                "1perched1",
+                "3in3",
+                "1mine1"
+            ],
+            [
+                "1(Twin1",
+                "1desks1",
+                "20,20",
+                "1computers1",
+                "21,21",
+                "1hardwood1",
+                "1floors)1"
+            ],
+            [
+                "1content1",
+                "22,22",
+                "1but1",
+                "1fall1",
+                "1short1",
+                "2of2",
+                "8the8",
+                "1Divine1"
+            ],
+            [
+                "1When1",
+                "1has1",
+                "9the9",
+                "1ordinary1",
+                "1ever1",
+                "1been1",
+                "1news?1"
+            ],
+            [
+                "1To1",
+                "1keep1",
+                "2me2",
+                "1from1",
+                "1melancholy1",
+                "1(call1",
+                "1it1",
+                "1blues)1",
+                "27,27",
+                "3I3",
+                "1fill1",
+                "2this2",
+                "1stolen1",
+                "1time1",
+                "4with4",
+                "2you2"
+            ]
+        ],
+        "notes": {
+            "Fred is Rita Dove's husband": [
+                "1-for1",
+                "1Fred1"
+            ],
+            "First person pronoun shows the poem is autobiographical": [
+                "1I1",
+                "1My1",
+                "2I2",
+                "1me1",
+                "1I'm1",
+                "1We're1",
+                "1us1",
+                "2me2",
+                "3I3"
+            ],
+            "Shows her deep love for him and only him": [
+                "1pick1",
+                "1anything1",
+                "1and1",
+                "1think1",
+                "1of1",
+                "1you-1"
+            ],
+            "The first and last line end with you, showing that Fred fills her thoughts completely": [
+                "1you-1",
+                "2you2"
+            ],
+            "Ordinary, concrete objects that remind her of her husband": [
+                "1This1",
+                "1lamp1",
+                "1,1",
+                "1the1",
+                "1wind-still1",
+                "1rain1",
+                "2,2",
+                "2the2",
+                "1glossy1",
+                "1blue1",
+                "1My1",
+                "1pen1",
+                "1exudes1"
+            ],
+            "The light of her lamp reminds her of his goodness": [
+                "1lamp1"
+            ],
+            "She feels he can stop the rain to protect her": [
+                "1wind-still1",
+                "1rain1"
+            ],
+            "Here, Dove is admitting that the heroes in her writing are inspired by him": [
+                "2the2",
+                "1glossy1",
+                "1blue1",
+                "1drying1",
+                "1matte1",
+                "4,4",
+                "1upon1",
+                "3the3",
+                "1page1"
+            ],
+            "She loves writing, just like she loves Fred": [
+                "1glossy1",
+                "1blue1",
+                "1My1",
+                "1pen1",
+                "1exudes1"
+            ],
+            "Anyone could be the hero, but he always fits the mould": [
+                "1choose1",
+                "1any1",
+                "1hero1",
+                "5,5",
+                "2any2",
+                "1cause1",
+                "1or1",
+                "1age1"
+            ],
+            "Imagery of Cupid": [
+                "1shooting1",
+                "1arrows1",
+                "1to1",
+                "4the4",
+                "1heart1"
+            ],
+            "Imagery of a stereotypical knight racing as fast as possible to rescue her": [
+                "1Astride1",
+                "1a1",
+                "1dappled1",
+                "1mare1",
+                "8,8",
+                "1legs1",
+                "1braced1",
+                "2as2",
+                "1far1",
+                "1apart1",
+                "1As1",
+                "1standing1",
+                "1in1",
+                "1silver1",
+                "1stirrups1",
+                "1will1",
+                "1allow-1"
+            ],
+            "A good looking and decked out horse": [
+                "1dappled1",
+                "1mare1"
+            ],
+            "The husband is the knight": [
+                "1There1",
+                "1you'll1",
+                "1be1"
+            ],
+            "He is worried about her, and his only focus is to protect her": [
+                "1furrowed1",
+                "1brow1"
+            ],
+            "Shows Fred's chivalry, he is determined to rescue her": [
+                "2to2",
+                "1set1",
+                "1me1",
+                "1free1"
+            ],
+            "He is able to both comfort her whilst also focusing on defeating the enemy": [
+                "1One1",
+                "1eye1",
+                "1smiling1",
+                "11,11",
+                "5the5",
+                "1other1",
+                "1firm1",
+                "2upon2",
+                "6the6",
+                "1enemy1"
+            ],
+            "Coming back to reality after her daydream": [
+                "1is1",
+                "1all1",
+                "1business1"
+            ],
+            "Modern technology at the time": [
+                "1compact1",
+                "1disks1",
+                "1faxes1"
+            ],
+            "Describes a boring life, compared to the one she envisioned in the previous stanza": [
+                "1do-it-now-and-take-no-risks1"
+            ],
+            "Shows the hurricane is moving slowly, this gives her time to daydream": [
+                "1nudging1"
+            ],
+            "Hurricanes are typically given female names": [
+                "1Oddly1",
+                "1male1"
+            ],
+            "Shows the magnitude of the threat that Fred is supposedly saving Dove from": [
+                "1Big1",
+                "1Bad1",
+                "1Floyd1"
+            ],
+            "The hurricane gives her lots of time to think": [
+                "1Of1",
+                "1daydreams1",
+                "1stolen1",
+                "1time1"
+            ],
+            "Shows a feeling of regret": [
+                "1awkward1",
+                "1reminiscences1",
+                "1worthless1",
+                "1boys1"
+            ],
+            "Dove believes they were all worthless as they couldn't compare to Fred's maturity": [
+                "1worthless1",
+                "1boys1"
+            ],
+            "They didn't know how to love her properly, whilst Fred does": [
+                "1only1",
+                "1talent1",
+                "1was1",
+                "3to3",
+                "1kiss1",
+                "1you1",
+                "1senseless1"
+            ],
+            "Event their names don't compare to Fred's, reinforced by the use of a triplet": [
+                "1sissy1",
+                "1names-Marcel1",
+                "16,16",
+                "1Percy1",
+                "17,17",
+                "1Dewey1"
+            ],
+            "Licorice is something everyone either loves or hates, and Dove feels like she has wasted time on something she doesn't like": [
+                "1thin1",
+                "3as3",
+                "1licorice1",
+                "2and2",
+                "4as4",
+                "1chewy1"
+            ],
+            "The boys had good looks, but have no substance to their love": [
+                "1Sweet1",
+                "2with2",
+                "5a5",
+                "1dark1",
+                "3and3",
+                "1hollow1",
+                "1center1"
+            ],
+            "Has an informal tone": [
+                "1Cussing1",
+                "2up2",
+                "6a6",
+                "1storm1"
+            ],
+            "Reminds the reader that the storm is still ongoing": [
+                "1Cussing1",
+                "2up2",
+                "6a6",
+                "1storm1"
+            ],
+            "Shows he is safe and hiding away": [
+                "1bunkered1"
+            ],
+            "An aerie is a nest of a large bird of prey, may show their success together": [
+                "1Aerie1"
+            ],
+            "Shows the symmetry between their lives": [
+                "1(Twin1",
+                "1desks1",
+                "20,20",
+                "1computers1",
+                "21,21",
+                "1hardwood1",
+                "1floors)1"
+            ],
+            "Dove explicitly mentions how happy they are": [
+                "1We're1",
+                "1content1"
+            ],
+            "Their relationship is not special or heavenly, yet it is enough to make them happy": [
+                "1short1",
+                "2of2",
+                "8the8",
+                "1Divine1"
+            ],
+            "Dove is embarrassed that they are still so happy after so much ordinary time together": [
+                "1it's1",
+                "1embarrassing1",
+                "24,24",
+                "1this1",
+                "1happiness-1"
+            ],
+            "Dove believes their love is important, even if it is ordinary": [
+                "1When1",
+                "1has1",
+                "9the9",
+                "1ordinary1",
+                "1ever1",
+                "1been1",
+                "1news?1"
+            ],
+            "This shows how Dove is sad when she can't be with him": [
+                "1To1",
+                "1keep1",
+                "2me2",
+                "1from1",
+                "1melancholy1",
+                "1(call1",
+                "1it1",
+                "1blues)1"
+            ],
+            "This stolen time is stolen from the busy modern age": [
+                "1stolen1",
+                "1time1"
+            ]
+        },
         "centered": false
     },
     "Valentine": {
