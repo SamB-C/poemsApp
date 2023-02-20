@@ -108,6 +108,7 @@ function revertToTextAsComplete(wordToRevert) {
     const wordToRevertElement = GET_ELEMENT.getElementOfWord(wordToRevert);
     wordToRevertElement.innerHTML = WORD_FUNCS.removeNumberFromWord(wordToRevert);
     wordToRevertElement.style.color = 'green';
+    wordToRevertElement.classList.remove('extraSpace');
 }
 // Moves to the next word, if none left, marks poem as complete
 function moveToNextWord(poem) {

@@ -88,6 +88,7 @@ export function replaceWord(word, poem) {
             }
         }).join('');
         wordToHide.innerHTML = wordInUnderScores;
+        wordToHide.classList.add('extraSpace');
         // Adds the event handlers for the input
         wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem);
         wordToHide.onclick = () => {

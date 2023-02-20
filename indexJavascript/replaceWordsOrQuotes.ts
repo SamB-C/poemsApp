@@ -103,6 +103,7 @@ export function replaceWord(word: string, poem: string): Array<string> {
             }
         }).join('');
         wordToHide.innerHTML = wordInUnderScores;
+        wordToHide.classList.add('extraSpace');
         // Adds the event handlers for the input
         wordToHide.oninput = (event) => onInputEventHandler(wordSection, event, poem)
         wordToHide.onclick = () => {
