@@ -1,4 +1,4 @@
-import { FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, WORDS } from "./constantsAndTypes.js";
+import { FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, WORDS } from "./constantsAndTypes.js";
 import { initialisePoemOptions, initialiseRangebar, initialiseWordsOrQuotesRadioButtons } from "./inputs.js";
 import { initialiseTryAgainLink } from "./letterInputEventHandler.js";
 import { initialiseNotesForPoem } from "./renderNotes.js";
@@ -100,24 +100,34 @@ function makeSpanForWord(word) {
 // Initialises the poem, by rendering it in
 export function initialise() {
     reset();
+    // Render the correct poem
     const poemElement = GET_ELEMENT.getPoemElement();
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);
     centerPoem(poemElement);
-    let wordsThatHaveBeenReplaced = [];
-    if (state.removalType === WORDS) {
-        wordsThatHaveBeenReplaced = replaceWords(currentPoemContent);
-    }
-    else if (state.removalType === QUOTES) {
-        wordsThatHaveBeenReplaced = replaceQuotes(state.poemData[state.currentPoemName].quotes);
-    }
+    // Replace words
+    let wordsThatHaveBeenReplaced = getWordsThatHaveBeenReplaced(currentPoemContent);
     initialiseNotesForPoem();
+    focusFirstWord(wordsThatHaveBeenReplaced);
+    updateStateINITIALISE(wordsThatHaveBeenReplaced);
+    fixWidth();
+}
+function getWordsThatHaveBeenReplaced(currentPoemContent) {
+    if (state.removalType === WORDS) {
+        return replaceWords(currentPoemContent);
+    }
+    else {
+        return replaceQuotes(state.poemData[state.currentPoemName].quotes);
+    }
+}
+function focusFirstWord(wordsThatHaveBeenReplaced) {
     const firstWord = wordsThatHaveBeenReplaced[0];
     FOCUS.focusFirstLetterOfWord(firstWord);
+}
+function updateStateINITIALISE(wordsThatHaveBeenReplaced) {
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;
     state.wordsNotCompletedPreserved = [...wordsThatHaveBeenReplaced];
     state.focusedWord = wordsThatHaveBeenReplaced[0];
-    fixWidth();
 }
 function reset() {
     clearups.forEach(clearup => clearup());

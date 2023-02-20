@@ -1,4 +1,4 @@
-import { convertedPoemsJSON, FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, QUOTES, State, WORDS } from "./constantsAndTypes.js";
+import { convertedPoemsJSON, FAKE_SPACE_HTML_ELEMENT, GET_ELEMENT, NUMBER_ONLY_REGEX, POEM_AUTHOR_ID, POEM_SELECT_ID, State, WORDS } from "./constantsAndTypes.js";
 import { initialisePoemOptions, initialiseRangebar, initialiseWordsOrQuotesRadioButtons } from "./inputs.js";
 import { initialiseTryAgainLink } from "./letterInputEventHandler.js";
 import { initialiseNotesForPoem } from "./renderNotes.js";
@@ -116,23 +116,38 @@ function makeSpanForWord(word: string): string {
 // Initialises the poem, by rendering it in
 export function initialise() {
     reset();
+    // Render the correct poem
     const poemElement: HTMLElement = GET_ELEMENT.getPoemElement();
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     poemElement.innerHTML = splitPoemToNewLines(currentPoemContent);
     centerPoem(poemElement);
-    let wordsThatHaveBeenReplaced: Array<string> = [];
-    if (state.removalType === WORDS) {
-        wordsThatHaveBeenReplaced = replaceWords(currentPoemContent);
-    } else if (state.removalType === QUOTES) {
-        wordsThatHaveBeenReplaced = replaceQuotes(state.poemData[state.currentPoemName].quotes);
-    }
+    // Replace words
+    let wordsThatHaveBeenReplaced: Array<string> = getWordsThatHaveBeenReplaced(currentPoemContent);
     initialiseNotesForPoem();
+    
+    focusFirstWord(wordsThatHaveBeenReplaced);
+    updateStateINITIALISE(wordsThatHaveBeenReplaced);
+    fixWidth();
+}
+
+
+function getWordsThatHaveBeenReplaced(currentPoemContent: string): Array<string> {
+    if (state.removalType === WORDS) {
+        return replaceWords(currentPoemContent);
+    } else  {
+        return replaceQuotes(state.poemData[state.currentPoemName].quotes);
+    }
+}
+
+function focusFirstWord(wordsThatHaveBeenReplaced: Array<string>) {
     const firstWord: string = wordsThatHaveBeenReplaced[0];
     FOCUS.focusFirstLetterOfWord(firstWord);
+}
+
+function updateStateINITIALISE(wordsThatHaveBeenReplaced: Array<string>) {
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;
     state.wordsNotCompletedPreserved = [...wordsThatHaveBeenReplaced];
     state.focusedWord = wordsThatHaveBeenReplaced[0];
-    fixWidth();
 }
 
 function reset() {
