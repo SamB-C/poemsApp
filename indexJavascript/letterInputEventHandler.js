@@ -14,16 +14,7 @@ export function onInputEventHandler(word, event, poem) {
         targetInput.style.textAlign = 'center';
     }
     if (!compareInputToLetterId(targetInput.value, targetInput.id)) {
-        targetInput.style.color = 'red';
-        const parent = targetInput.parentElement;
-        // Destroy handler and replace after 1s
-        parent.oninput = () => { };
-        setTimeout(() => {
-            revertWordToEmpty(word);
-            parent.oninput = (event) => onInputEventHandler(word, event, poem);
-            targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
-            targetInput.style.textAlign = 'start';
-        }, 1000);
+        handleIncorrectLetter(targetInput, word, poem);
     }
     else {
         focusNextLetter(targetInput, poem);
@@ -32,13 +23,52 @@ export function onInputEventHandler(word, event, poem) {
 // --------------------------- Compare letter ---------------------------
 // Compares the input to the correct answer
 function compareInputToLetterId(input, id) {
-    // Splits the id into a list [word, letterInBinary]
-    const wordAndLetterList = id.split('_');
-    const letterInBinary = wordAndLetterList[wordAndLetterList.length - 1];
-    const letter = String.fromCharCode(parseInt(letterInBinary, 2));
+    const letter = getLetterFromId(id);
     return input === letter || (letter === '—' && input === '-');
 }
+function getLetterFromId(id) {
+    // Splits the id into a list [word, letterInBinary]
+    const wordAndLetterList = id.split('_');
+    // Get the letterInBinary element from the array
+    const letterInBinary = wordAndLetterList[wordAndLetterList.length - 1];
+    // Convert the letter from binary to character
+    const letter = String.fromCharCode(parseInt(letterInBinary, 2));
+    return letter;
+}
 // --------------------------- Letter Wrong ---------------------------
+function handleIncorrectLetter(targetInput, word, poem) {
+    targetInput.style.color = 'red';
+    updateUserAid();
+    // Destroy handler and replace after 1s
+    const parent = targetInput.parentElement;
+    parent.oninput = () => { };
+    if (state.userAid.numberOfIncorrectAttempts === 3) {
+        setTimeout(() => {
+            targetInput.value = getLetterFromId(targetInput.id);
+            parent.oninput = (event) => onInputEventHandler(word, event, poem);
+            focusNextLetter(targetInput, poem);
+            targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
+        }, 1000);
+    }
+    else {
+        setTimeout(() => {
+            resetLetterIndex();
+            revertWordToEmpty(word);
+            parent.oninput = (event) => onInputEventHandler(word, event, poem);
+            targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
+            targetInput.style.textAlign = 'start';
+        }, 1000);
+    }
+}
+function updateUserAid() {
+    if (state.userAid.letterIndex === state.userAid.letterIndexOfLatestIncorrectLetter) {
+        state.userAid.numberOfIncorrectAttempts++;
+    }
+    else {
+        state.userAid.letterIndexOfLatestIncorrectLetter = state.userAid.letterIndex;
+        state.userAid.numberOfIncorrectAttempts = 1;
+    }
+}
 // Reverts a word back to underscores after incorrect input
 function revertWordToEmpty(word) {
     // Retrive all inputs
@@ -62,6 +92,7 @@ function focusNextLetter(currentLetter, poem) {
             focusMissingLetter(currentLetter, poem);
         }
         else {
+            incrementLetterIndex();
             nextLetter.focus();
         }
     }
@@ -73,6 +104,7 @@ function focusMissingLetter(letterToCheckUsing, poem) {
         completeWord(poem);
     }
     else {
+        incrementLetterIndex();
         missingLetter.focus();
     }
 }
@@ -100,6 +132,7 @@ function completeWord(poem) {
         userInput = userInput + arrayOfChildren[i].value;
     }
     // Marks as complete
+    resetUserAid();
     revertToTextAsComplete(state.focusedWord);
     moveToNextWord(poem);
 }
@@ -182,4 +215,14 @@ export function hideTryAgainButton() {
     const completionTextContainer = GET_ELEMENT.getCompletionText();
     completionTextContainer.style.display = 'none';
     completionTextContainer.style.textAlign = 'left';
+}
+function resetUserAid() {
+    state.userAid.letterIndex = 0;
+    state.userAid.numberOfIncorrectAttempts = 0;
+}
+function resetLetterIndex() {
+    state.userAid.letterIndex = 0;
+}
+function incrementLetterIndex() {
+    state.userAid.letterIndex++;
 }

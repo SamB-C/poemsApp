@@ -31,7 +31,12 @@ function initialiseState(poems: convertedPoemsJSON) {
         removalType: WORDS,
         focusedWord: '',
         wordsNotCompleted: [],
-        wordsNotCompletedPreserved: []
+        wordsNotCompletedPreserved: [],
+        userAid: {
+            letterIndexOfLatestIncorrectLetter: 0,
+            letterIndex: 0,
+            numberOfIncorrectAttempts: 0
+        }
     }
 }
 
