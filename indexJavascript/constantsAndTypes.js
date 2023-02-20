@@ -5,6 +5,7 @@ export const RANGEBAR_ID = '__range_bar__';
 export const RANGEBAR_RESULT_ID = '__range_bar_result__';
 export const POEM_SELECT_ID = '__poem_selection__';
 export const NOTES_ID = '__notes__';
+export const NOTES_INFO_ID = '__notes_info__';
 export const NOTE_REMOVAL_DELAY = 10000;
 export const UNDERLINE_COLORS = ['red', 'blue', 'green'];
 export const TRY_AGAIN_LINK_ID = '__try_again__';
@@ -53,5 +54,8 @@ export const GET_ELEMENT = {
     },
     getCompletionText() {
         return document.getElementById(COMPLETION_TEXT_ID);
+    },
+    getNotesInfo() {
+        return document.getElementById(NOTES_INFO_ID);
     }
 };

@@ -17,6 +17,9 @@ export type POEM_SELECT_TYPE = HTMLSelectElement;
 export const NOTES_ID = '__notes__';
 export type NOTES_TYPE = HTMLDivElement;
 
+export const NOTES_INFO_ID = '__notes_info__';
+export type NOTES_INFO_TYPE = HTMLParagraphElement;
+
 export type NOTE_TYPE = HTMLParagraphElement;
 
 export const NOTE_REMOVAL_DELAY = 10000;
@@ -113,5 +116,8 @@ export const GET_ELEMENT = {
     },
     getCompletionText(): COMPLETION_TEXT_TYPE {
         return document.getElementById(COMPLETION_TEXT_ID) as COMPLETION_TEXT_TYPE;
+    },
+    getNotesInfo(): NOTES_INFO_TYPE {
+        return document.getElementById(NOTES_INFO_ID) as NOTES_INFO_TYPE;
     }
 }

@@ -45,6 +45,7 @@ function underlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElemen
     })
     const timout = window.setTimeout(() => {
         Object.keys(notesToUnderline).forEach((noteText) => {
+            hideNotesInfo();
             const color = notesToUnderline[noteText].color;
             const colorNumber = UNDERLINE_COLORS.indexOf(color) + 1;
             const notesElement = GET_ELEMENT.getNotes();
@@ -88,6 +89,7 @@ function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElem
             })
         });
         if (removeNotes) {
+            showNotesInfo();
             removalNumber[0]++;
             const noteTextElement = document.getElementById(noteText) as NOTE_TYPE;
             noteTextElement.id = removalNumber.toString();
@@ -117,4 +119,16 @@ function getAssociatedNotes(wordSection: string): AssociatedNotesType {
         }
     })
     return associatedNotes
+}
+
+function hideNotesInfo() {
+    const notesInfo = GET_ELEMENT.getNotesInfo();
+    notesInfo.classList.remove('noteTextIn');
+    notesInfo.classList.add('noteTextOut');
+}
+
+function showNotesInfo() {
+    const notesInfo = GET_ELEMENT.getNotesInfo();
+    notesInfo.classList.remove('noteTextOut');
+    notesInfo.classList.add('noteTextIn');
 }
