@@ -130,9 +130,24 @@ export function initialise() {
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;
     state.wordsNotCompletedPreserved = [...wordsThatHaveBeenReplaced];
     state.focusedWord = wordsThatHaveBeenReplaced[0];
+    fixWidth();
 }
 
 function clear() {
     removeGreenCompletionBorder();
     hideTryAgainButton();
+    unfixWidth();
+}
+
+function unfixWidth() {
+    const html = GET_ELEMENT.getHtmlElement();
+    html.style.setProperty('--main-content-container-width', 'fit-content');
+}
+
+function fixWidth() {
+    const html = GET_ELEMENT.getHtmlElement();
+    const poemContainer = GET_ELEMENT.getPoemContainer();
+    const fixedWidth = poemContainer.clientWidth;
+    const fixedWidthInPixels = fixedWidth.toString()+'px'
+    html.style.setProperty('--main-content-container-width', fixedWidthInPixels);
 }

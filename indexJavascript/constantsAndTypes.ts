@@ -127,5 +127,8 @@ export const GET_ELEMENT = {
     },
     getNotesInfo(): NOTES_INFO_TYPE {
         return document.getElementById(NOTES_INFO_ID) as NOTES_INFO_TYPE;
+    },
+    getHtmlElement(): HTMLHtmlElement {
+        return document.getElementsByTagName('html')[0] as HTMLHtmlElement;
     }
 }

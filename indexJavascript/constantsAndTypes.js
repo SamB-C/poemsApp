@@ -58,5 +58,8 @@ export const GET_ELEMENT = {
     },
     getNotesInfo() {
         return document.getElementById(NOTES_INFO_ID);
+    },
+    getHtmlElement() {
+        return document.getElementsByTagName('html')[0];
     }
 };

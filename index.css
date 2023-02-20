@@ -10,7 +10,9 @@ html {
     --third-highlight-color: darkkhaki;
     --variable-font-size: 3.1vh;
     --font-family: 'Poppins', sans-serif;
+    
     --main-content-padding: 6vh;
+    --main-content-container-width: fit-content;
 }
 
 
@@ -160,6 +162,7 @@ select:hover {
     padding: var(--main-content-padding);
     background: rgb(256, 256, 256, .1);
     margin-bottom: 2vh;
+    width: var(--main-content-container-width);
 }
 
 .card {
