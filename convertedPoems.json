@@ -2004,11 +2004,259 @@
         "centered": false
     },
     "Valentine": {
-        "convertedPoem": "1Not1 1a1 1red1 1rose1 1or1 2a2 1satin1 1heart1|+|1,1\n11\n1I1 1give1 1you1 1an1 1onion1|+|1.1\n1It1 1is1 3a3 1moon1 1wrapped1 1in1 1brown1 1paper1|+|2.2\n2It2 1promises1 1light1\n1like1 1the1 1careful1 1undressing1 1of1 1love1|+|3.3\n22\n1Here1|+|4.4\n3It3 1will1 1blind1 2you2 1with1 1tears1\n2like2 4a4 1lover1|+|5.5\n4It4 2will2 1make1 1your1 1reflection1\n5a5 1wobbling1 1photo1 2of2 1grief1|+|6.6\n33\n2I2 1am1 1trying1 1to1 1be1 1truthful1|+|7.7\n44\n2Not2 6a6 1cute1 1card1 2or2 7a7 1kissogram1|+|8.8\n55\n3I3 2give2 3you3 2an2 2onion2|+|9.9\n1Its1 1fierce1 1kiss1 3will3 1stay1 1on1 2your2 1lips1|+|2,2\n1possessive1 1and1 1faithful1\n1as1 1we1 1are1|+|3,3\n1for1 2as2 1long1 3as3 2we2 2are2|+|10.10\n66\n1Take1 1it1|+|11.11\n2Its2 1platinum1 1loops1 1shrink1 2to2 8a8 1wedding-ring1|+|4,4\n1if1 4you4 3like3|+|12.12\n1Lethal1|+|13.13\n3Its3 1scent1 4will4 1cling1 3to3 3your3 1fingers1|+|5,5\n2cling2 4to4 4your4 1knife1|+|14.14",
+        "convertedPoem": "1Not1 1a1 1red1 1rose1 1or1 2a2 1satin1 1heart1|+|1.1\n11\n1I1 1give1 1you1 1an1 1onion1|+|2.2\n1It1 1is1 3a3 1moon1 1wrapped1 1in1 1brown1 1paper1|+|3.3\n2It2 1promises1 1light1\n1like1 1the1 1careful1 1undressing1 1of1 1love1|+|4.4\n22\n1Here1|+|5.5\n3It3 1will1 1blind1 2you2 1with1 1tears1\n2like2 4a4 1lover1|+|6.6\n4It4 2will2 1make1 1your1 1reflection1\n5a5 1wobbling1 1photo1 2of2 1grief1|+|7.7\n33\n2I2 1am1 1trying1 1to1 1be1 1truthful1|+|8.8\n44\n2Not2 6a6 1cute1 1card1 2or2 7a7 1kissogram1|+|9.9\n55\n3I3 2give2 3you3 2an2 2onion2|+|10.10\n1Its1 1fierce1 1kiss1 3will3 1stay1 1on1 2your2 1lips1|+|1,1\n1possessive1 1and1 1faithful1\n1as1 1we1 1are1|+|2,2\n1for1 2as2 1long1 3as3 2we2 2are2|+|11.11\n66\n1Take1 1it1|+|12.12\n2Its2 1platinum1 1loops1 1shrink1 2to2 8a8 1wedding-ring1|+|3,3\n1if1 4you4 3like3|+|13.13\n1Lethal1|+|14.14\n3Its3 1scent1 4will4 1cling1 3to3 3your3 1fingers1|+|4,4\n2cling2 4to4 4your4 1knife1|+|15.15",
         "wordCount": 112,
         "author": "Carol Ann Duffy",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1I1",
+                "1give1",
+                "1you1",
+                "1an1",
+                "1onion1"
+            ],
+            [
+                "1promises1",
+                "1light1"
+            ],
+            [
+                "1like1",
+                "1the1",
+                "1careful1",
+                "1undressing1",
+                "1of1",
+                "1love1"
+            ],
+            [
+                "1blind1",
+                "2you2",
+                "1with1",
+                "1tears1"
+            ],
+            [
+                "1wobbling1",
+                "1photo1",
+                "2of2",
+                "1grief1"
+            ],
+            [
+                "1trying1",
+                "1to1",
+                "1be1",
+                "1truthful1"
+            ],
+            [
+                "1fierce1",
+                "1kiss1"
+            ],
+            [
+                "1possessive1",
+                "1and1",
+                "1faithful1"
+            ],
+            [
+                "1platinum1",
+                "1loops1",
+                "1shrink1",
+                "2to2",
+                "8a8",
+                "1wedding-ring1"
+            ],
+            [
+                "1cling1",
+                "3to3",
+                "3your3",
+                "1fingers1",
+                "4,4",
+                "2cling2",
+                "4to4",
+                "4your4",
+                "1knife1",
+                "15.15"
+            ]
+        ],
+        "notes": {
+            "Starting a poem with a negative word such as not gives an assertive tone": [
+                "1Not1"
+            ],
+            "The word not dismisses materialism and clichés": [
+                "1Not1",
+                "1a1",
+                "1red1",
+                "1rose1",
+                "1or1",
+                "2a2",
+                "1satin1",
+                "1heart1",
+                "1.1",
+                "2Not2",
+                "6a6",
+                "1cute1",
+                "1card1",
+                "2or2",
+                "7a7",
+                "1kissogram1",
+                "9.9"
+            ],
+            "Repetition shows the importance of the extended metaphor that is the onion": [
+                "1I1",
+                "1give1",
+                "1you1",
+                "1an1",
+                "1onion1",
+                "2.2",
+                "3I3",
+                "2give2",
+                "3you3",
+                "2an2",
+                "2onion2",
+                "10.10"
+            ],
+            "An onion is a very unique gift, which shows the thought put into choosing the gift. The poem repeatedly dismisses materialism and shows the value of a thoughtful gift": [
+                "1onion1",
+                "2onion2"
+            ],
+            "The moon is consistent, like love - though it may wane over time, it will always regain strength (like the cycles of a moon)": [
+                "1moon1"
+            ],
+            "Light should bring trust and goodness": [
+                "1promises1",
+                "1light1"
+            ],
+            "Love has layers, like an onion - it is important for both people to fully understand each other in a relationship": [
+                "1careful1",
+                "1undressing1",
+                "1of1",
+                "1love1"
+            ],
+            "These concise and assertive lines shows that there are no strings attached, just like there is no strings attached to love of the person reciting the poem": [
+                "1Here1",
+                "5.5",
+                "1Take1",
+                "1it1",
+                "12.12"
+            ],
+            "This is Duffy being pragmatic, she knows that love always results in tears, both good and bad": [
+                "1will1",
+                "1blind1",
+                "2you2",
+                "1with1",
+                "1tears1",
+                "2like2",
+                "4a4",
+                "1lover1"
+            ],
+            "Love is blinding": [
+                "1blind1",
+                "2you2"
+            ],
+            "Shows that love is not easy": [
+                "1tears1"
+            ],
+            "Imagery of someone crying": [
+                "4It4",
+                "2will2",
+                "1make1",
+                "1your1",
+                "1reflection1",
+                "5a5",
+                "1wobbling1",
+                "1photo1",
+                "2of2",
+                "1grief1",
+                "7.7"
+            ],
+            "Here Duffy admits that love will create negative experiences": [
+                "2will2",
+                "1make1",
+                "1your1",
+                "1reflection1",
+                "5a5",
+                "1wobbling1",
+                "1photo1",
+                "2of2",
+                "1grief1"
+            ],
+            "Emotive language": [
+                "1grief1"
+            ],
+            "The speaker emphasises their realistic views": [
+                "1truthful1"
+            ],
+            "This shows the belief that love/hate relationships are memorable, and that the bad experiences are not easily forgotten": [
+                "1fierce1",
+                "1kiss1",
+                "3will3",
+                "1stay1",
+                "1on1",
+                "2your2",
+                "1lips1"
+            ],
+            "A reference to how hard it is to forget a lover": [
+                "1stay1",
+                "1on1",
+                "2your2",
+                "1lips1"
+            ],
+            "These adjectives show both the good and bad in a relationship even though they have similar meaning, showing the fine line between a healthy and unhealthy relationship": [
+                "1possessive1",
+                "1and1",
+                "1faithful1"
+            ],
+            "The use of the pronoun we shows that people in love are a team": [
+                "1we1",
+                "1are1"
+            ],
+            "Shows a loving and enduring relationship": [
+                "1for1",
+                "2as2",
+                "1long1",
+                "3as3",
+                "2we2",
+                "2are2",
+                "11.11"
+            ],
+            "The ring of this onion is comparable to an expensive wedding ring, showing thought is more important than material gifts": [
+                "1platinum1",
+                "1loops1",
+                "1shrink1",
+                "2to2",
+                "8a8",
+                "1wedding-ring1"
+            ],
+            "Shows that this metaphor is adaptive to any stage of a relationship": [
+                "1shrink1",
+                "2to2",
+                "8a8",
+                "1wedding-ring1",
+                "3,3",
+                "1if1",
+                "4you4",
+                "3like3",
+                "13.13"
+            ],
+            "Could be used as hint by the person reciting the poem to their partner": [
+                "1if1",
+                "4you4",
+                "3like3"
+            ],
+            "Duffy explores the ideas of domestic violence in her poems, including this one": [
+                "1Lethal1",
+                "2cling2",
+                "4to4",
+                "4your4",
+                "1knife1"
+            ],
+            "Love is dangerous": [
+                "1Lethal1"
+            ],
+            "Could mean that love stays with you forever, or could be a link to stalking": [
+                "1cling1",
+                "3to3",
+                "3your3",
+                "1fingers1"
+            ]
+        },
         "centered": false
     },
     "A Wife in London": {
