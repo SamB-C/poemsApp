@@ -5,6 +5,7 @@ html {
     --secondary-background: #212121;
     --primary-color: white;
     --secondary-color: #c6c5c5;
+    --credit-color: #525151;
     --first-highlight-color: lightsalmon;
     --second-highlight-color: tan;
     --third-highlight-color: darkkhaki;
@@ -170,8 +171,18 @@ select:hover {
     background: var(--secondary-background);
     border-radius: 10px;
     padding: 1vh;
+    z-index: 2;
 }
 
+
+#__credit__ {
+    position: fixed;
+    bottom: 0;
+    font-size: 1.5vh;
+    z-index: 1;
+    text-align: center;
+    color: var(--credit-color);
+}
 
 
 
