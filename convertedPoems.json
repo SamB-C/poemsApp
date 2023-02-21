@@ -2260,11 +2260,291 @@
         "centered": false
     },
     "A Wife in London": {
-        "convertedPoem": "1I1 1-1 1The1 1Tradegy1\n11\n1She1 1sits1 1in1 1the1 1tawny1 1vapour1\n22 33 44 55 1That1 2the2 1City1 1lanes1 1have1 1uprolled1|+|1,1\n66 77 88 99 1Behind1 1whose1 1webby1 1fold1 1on1 2fold2\n1Like1 1a1 1waning1 1taper1\n1010 1111 1212 1313 2The2 1street-lamp1 1glimmers1 1cold1|+|1.1\n1414\n1515\n1A1 1messenger's1 1knock1 1cracks1 1smartly1|+|2,2\n1616 1717 1818 1919 1Flashed1 1news1 2in2 1her1 1hand1\n2020 2121 2222 2323 1Of1 1meaning1 1it1 1dazes1 1to1 1understand1\n1Though1 1shaped1 1so1 1shortly1|+|1:1\n2424 2525 2626 2727 1He1 2-2 1has1 1fallen1 3-3 3in3 3the3 1far1 1south1 1land1 2828|+|2.2|+|3.3|+|4.4\n2929\n1II1 4-4 3The3 1Irony1\n3030\n1'Tis1 4the4 1morrow1|+|1;1 5the5 1fog1 1hangs1 1thicker1|+|3,3\n3131 3232 3333 3434 4The4 1postman1 1nears1 1and1 1goes1|+|2:2\n3535 3636 3737 3838 2A2 1letter1 1is1 1brought1 2whose2 1lines1 1disclose1\n1By1 6the6 1firelight1 1flicker1\n3939 4040 4141 4242 1His1 2hand2|+|4,4 1whom1 7the7 1worm1 1now1 1knows1|+|3:3\n4343\n4444\n1Fresh1 5-5 1firm1 6-6 1penned1 4in4 1highest1 1feather1 7-7\n4545 4646 4747 4848 1Page-full1 1of1 1his1 1hoped1 1return1|+|5,5\n4949 5050 5151 5252 1And1 2of2 1home-planned1 1jaunts1 1by1 1brake1 2and2 1burn1\n1In1 8the8 1summer1 1weather1|+|6,6\n5353 5454 5555 5656 2And2 3of3 1new1 1love1 1that1 1they1 1would1 1learn1|+|5.5",
-        "wordCount": 129,
+        "convertedPoem": "1I1 1-1 1The1 1Tragedy1\n11\n1She1 1sits1 1in1 1the1 1tawny1 1vapour1\n22 33 44 55 1That1 2the2 1City1 1lanes1 1have1 1uprolled1|+|1,1\n66 77 88 99 1Behind1 1whose1 1webby1 1fold1 1on1 2fold2\n1Like1 1a1 1waning1 1taper1\n1010 1111 1212 1313 2The2 1street-lamp1 1glimmers1 1cold1|+|1.1\n1414\n1515\n1A1 1messenger's1 1knock1 1cracks1 1smartly1|+|2,2\n1616 1717 1818 1919 1Flashed1 1news1 1is1 2in2 1her1 1hand1\n2020 2121 2222 2323 1Of1 1meaning1 1it1 1dazes1 1to1 1understand1\n1Though1 1shaped1 1so1 1shortly1|+|1:1\n2424 2525 2626 2727 1He1 2-2 1has1 1fallen1 3-3 3in3 3the3 1far1 1South1 1Land1 2828|+|2.2|+|3.3|+|4.4\n2929\n1II1 4-4 3The3 1Irony1\n3030\n1'Tis1 4the4 1morrow1|+|1;1 5the5 1fog1 1hangs1 1thicker1|+|3,3\n3131 3232 3333 3434 4The4 1postman1 1nears1 1and1 1goes1|+|2:2\n3535 3636 3737 3838 2A2 1letter1 2is2 1brought1 2whose2 1lines1 1disclose1\n1By1 6the6 1firelight1 1flicker1\n3939 4040 4141 4242 1His1 2hand2|+|4,4 1whom1 7the7 1worm1 1now1 1knows1|+|3:3\n4343\n4444\n1Fresh1 5-5 1firm1 6-6 1penned1 4in4 1highest1 1feather1 7-7\n4545 4646 4747 4848 1Page-full1 1of1 1his1 1hoped1 1return1|+|5,5\n4949 5050 5151 5252 1And1 2of2 1home-planned1 1jaunts1 1by1 1brake1 2and2 1burn1\n1In1 8the8 1summer1 1weather1|+|6,6\n5353 5454 5555 5656 2And2 3of3 1new1 1love1 1that1 1they1 1would1 1learn1|+|5.5",
+        "wordCount": 130,
         "author": "Thomas Hardy",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1I1",
+                "1-1",
+                "1The1",
+                "1Tragedy1"
+            ],
+            [
+                "1sits1",
+                "1in1",
+                "1the1",
+                "1tawny1",
+                "1vapour1"
+            ],
+            [
+                "1street-lamp1",
+                "1glimmers1",
+                "1cold1"
+            ],
+            [
+                "1knock1",
+                "1cracks1",
+                "1smartly1"
+            ],
+            [
+                "1Flashed1",
+                "1news1"
+            ],
+            [
+                "1shaped1",
+                "1so1",
+                "1shortly1"
+            ],
+            [
+                "1He1",
+                "2-2",
+                "1has1",
+                "1fallen1",
+                "3-3",
+                "3in3",
+                "3the3",
+                "1far1",
+                "1South1",
+                "1Land1"
+            ],
+            [
+                "1II1",
+                "4-4",
+                "3The3",
+                "1Irony1"
+            ],
+            [
+                "1fog1",
+                "1hangs1",
+                "1thicker1"
+            ],
+            [
+                "1His1",
+                "2hand2",
+                "4,4",
+                "1whom1",
+                "7the7",
+                "1worm1",
+                "1now1",
+                "1knows1"
+            ],
+            [
+                "1Fresh1"
+            ],
+            [
+                "1penned1",
+                "4in4",
+                "1highest1",
+                "1feather1"
+            ],
+            [
+                "1hoped1",
+                "1return1"
+            ],
+            [
+                "1home-planned1",
+                "1jaunts1"
+            ],
+            [
+                "1new1",
+                "1love1",
+                "1that1",
+                "1they1",
+                "1would1",
+                "1learn1",
+                "5.5"
+            ]
+        ],
+        "notes": {
+            "Life without her husband is so dull all she does is sit": [
+                "1sits1"
+            ],
+            "The vapour is tawny, showing how it is not comparable to a fine mist, but is closer to, or is, pollution/smog": [
+                "1tawny1",
+                "1vapour1"
+            ],
+            "The city itself has created this misery, it is not natural": [
+                "1City1",
+                "1lanes1",
+                "1have1",
+                "1uprolled1"
+            ],
+            "May give a sense that the wife is feeling trapped in London and society, akin to being trapped in a spider's web": [
+                "1Behind1",
+                "1whose1",
+                "1webby1",
+                "1fold1",
+                "1on1",
+                "2fold2"
+            ],
+            "Not giving of much light - represents her lack of hope for her husband": [
+                "1waning1",
+                "1taper1"
+            ],
+            "Shows a dark image of London, setting the tone for the news that is to come": [
+                "1cold1"
+            ],
+            "A very plosive sounding phrase, harsh like the news that is being delivered": [
+                "1knock1",
+                "1cracks1",
+                "1smartly1"
+            ],
+            "The messenger is used to doing this showing how many times he has had to deliver this news": [
+                "1knock1",
+                "1cracks1",
+                "1smartly1"
+            ],
+            "Shows that the messenger is probably in the military": [
+                "1smartly1"
+            ],
+            "Shows how quickly it all happens - the messenger delivers the letter and leaves instantly": [
+                "1Flashed1",
+                "1news1"
+            ],
+            "The wife is denying the news as she can't believe it - it makes her feel faint": [
+                "1dazes1",
+                "1to1",
+                "1understand1"
+            ],
+            "Reinforces the idea that the news is brief and sudden": [
+                "1Though1",
+                "1shaped1",
+                "1so1",
+                "1shortly1"
+            ],
+            "Sibilance - links to evil": [
+                "1shaped1",
+                "1so1",
+                "1shortly1"
+            ],
+            "The speaker has substituted in a less harsh phrase for died to garner sympathy for the wife": [
+                "2-2",
+                "1has1",
+                "1fallen1",
+                "3-3"
+            ],
+            "South Africa - The husband likely died in the second Boer war": [
+                "1South1",
+                "1Land1"
+            ],
+            "By not explicitly mentioning South Africa, Hardy is showing that this is the same in all wars": [
+                "1South1",
+                "1Land1"
+            ],
+            "Ellipsis shows that the meaning of the rest of the letter is not important, the only part the wife cares about is that her husband has died - in war": [
+                "2.2",
+                "3.3",
+                "4.4"
+            ],
+            "Only the next day": [
+                "4the4",
+                "1morrow1"
+            ],
+            "Pathetic fallacy to prepare the reader for the irony": [
+                "1fog1",
+                "1hangs1",
+                "1thicker1"
+            ],
+            "Shows the development of her grief and sadness, it has become thicker": [
+                "1fog1",
+                "1hangs1",
+                "1thicker1"
+            ],
+            "The world goes on, even when - to the wife - it feels like the world is ending": [
+                "1postman1",
+                "1nears1",
+                "1and1",
+                "1goes1"
+            ],
+            "The wife receives a letter": [
+                "1postman1",
+                "1nears1",
+                "1and1",
+                "1goes1",
+                "2:2",
+                "2A2",
+                "1letter1",
+                "2is2",
+                "1brought1"
+            ],
+            "Shows the lack of light, which shows the lack of joy and hope in the life of the wife": [
+                "1firelight1",
+                "1flicker1"
+            ],
+            "Shows the poverty of the wife, she has to rely on fire , this will only become worse now she is widowed": [
+                "1firelight1",
+                "1flicker1"
+            ],
+            "This macabre phrase links to death, whilst not explicitly mentioning death, once again intentional, gaining sympathy for the wife": [
+                "1His1",
+                "2hand2",
+                "4,4",
+                "1whom1",
+                "7the7",
+                "1worm1",
+                "1now1",
+                "1knows1",
+                "3:3"
+            ],
+            "He is dead and buried, so worms can literally touch his hands": [
+                "1His1",
+                "2hand2",
+                "1whom1",
+                "7the7",
+                "1worm1",
+                "1now1",
+                "1knows1",
+                "3:3"
+            ],
+            "Shows the wife pausing to think about him, she finds it difficult to accept the truth": [
+                "4,4"
+            ],
+            "This shows that he died recently": [
+                "1Fresh1"
+            ],
+            "This shows that the husband didn't believe he would die soon, else it may be shaky": [
+                "5-5",
+                "1firm1",
+                "6-6"
+            ],
+            "The superlative shows his care and precision, representative of their deep love for each other": [
+                "1highest1",
+                "1feather1"
+            ],
+            "This would have been more than ironic, it would have been agonising and harrowing to the wife to receive this letter after learning of his death": [
+                "1Page-full1",
+                "1of1",
+                "1his1",
+                "1hoped1",
+                "1return1",
+                "5,5"
+            ],
+            "All the exciting and fun things they would do": [
+                "1home-planned1",
+                "1jaunts1",
+                "1by1",
+                "1brake1",
+                "2and2",
+                "1burn1"
+            ],
+            "Summer has connotations of happiness and joy, a far cry from the tawny vapour currently in London": [
+                "1summer1",
+                "1weather1"
+            ],
+            "He has been away for so long that they would've needed to learn their love all over again": [
+                "1new1",
+                "1love1",
+                "1that1",
+                "1they1",
+                "1would1",
+                "1learn1"
+            ],
+            "He believes that they will be able to live a different and better life after his return": [
+                "1new1",
+                "1love1"
+            ]
+        },
         "centered": false
     },
     "Death of a Naturalist": {
