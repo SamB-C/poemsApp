@@ -1381,8 +1381,8 @@
         "centered": false
     },
     "As Imperceptibly as Grief": {
-        "convertedPoem": "1As1 1imperceptibly1 1as1 1Grief1\n1The1 1Summer1 1lapsed1 1away1 1-1\n1Too1 1imperceptible1 1at1 1last1\n1To1 1seem1 1like1 1Perfidy1 2-2\n1A1 1Quietness1 1distilled1\n2As2 1Twilight1 1long1 1begun1|+|1,1\n1Or1 1Nature1 1spending1 1with1 1herself1\n1Sequestered1 1Afternoon1 3-3\n2The2 1Dusk1 1drew1 1earlier1 1in1 4-4\n3The3 1Morning1 1foreign1 1shone1 5-5\n2A2 1courteous1|+|2,2 1yeet1 1harrowing1 1Grace1|+|3,3\n1And1 1thus1|+|4,4 1without1 1a1 1Wing1\n2Or2 1service1 1of1 2a2 1Keel1\n1Our1 2Summer2 1made1 1her1 1light1 1escape1\n1Into1 1the1 1Beautiful1",
-        "wordCount": 68,
+        "convertedPoem": "1As1 1imperceptibly1 1as1 1Grief1\n1The1 1Summer1 1lapsed1 1away1 1-1\n1Too1 1imperceptible1 1at1 1last1\n1To1 1seem1 1like1 1Perfidy1 2-2\n1A1 1Quietness1 1distilled1\n2As2 1Twilight1 1long1 1begun1|+|1,1\n1Or1 1Nature1 1spending1 1with1 1herself1\n1Sequestered1 1Afternoon1 3-3\n2The2 1Dusk1 1drew1 1earlier1 1in1 4-4\n3The3 1Morning1 1foreign1 1shone1 5-5\n2A2 1courteous1|+|2,2 1yet1 1harrowing1 1Grace1|+|3,3\n3As3 1Guest1|+|4,4 1that1 1would1 1be1 1gone1 6-6\n1And1 1thus1|+|5,5 1without1 1a1 1Wing1\n2Or2 1service1 1of1 2a2 1Keel1\n1Our1 2Summer2 1made1 1her1 1light1 1escape1\n1Into1 1the1 1Beautiful1|+|1.1",
+        "wordCount": 75,
         "author": "Emily Dickinson",
         "quotes": [
             [
@@ -1406,7 +1406,7 @@
             [
                 "1courteous1",
                 "2,2",
-                "1yeet1",
+                "1yet1",
                 "1harrowing1",
                 "1Grace1"
             ],
@@ -1528,7 +1528,7 @@
             "The change she experienced was subtle enough to be kind, but harrowing since she doesn't want it to happen": [
                 "1courteous1",
                 "2,2",
-                "1yeet1",
+                "1yet1",
                 "1harrowing1",
                 "1Grace1"
             ],
@@ -1559,32 +1559,992 @@
                 "1Into1",
                 "1the1",
                 "1Beautiful1"
+            ],
+            "The only full-stop in the poem, it shows that Dickinson believes that grief only ends in death, and that death is final": [
+                "1.1"
             ]
         },
         "centered": false
     },
     "Cozy Apologia": {
-        "convertedPoem": "11 22 33 44 55 66 77 88 99 1010 1111 1212 1313 1414 1515 1616 1717 1818 1-for1 1Fred1\n1919\n1I1 1could1 1pick1 1anything1 1and1 1think1 1of1 1you-1\n1This1 1lamp1|+|1,1 1the1 1wind-still1 1rain1|+|2,2 2the2 1glossy1 1blue1\n1My1 1pen1 1exudes1|+|3,3 1drying1 1matte1|+|4,4 1upon1 3the3 1page1|+|1.1\n2I2 2could2 1choose1 1any1 1hero1|+|5,5 2any2 1cause1 1or1 1age1\n1And1|+|6,6 1sure1 1as1 1shooting1 1arrows1 1to1 4the4 1heart1|+|7,7\n1Astride1 1a1 1dappled1 1mare1|+|8,8 1legs1 1braced1 2as2 1far1 1apart1\n1As1 1standing1 1in1 1silver1 1stirrups1 1will1 1allow-1\n1There1 1you'll1 1be1|+|9,9 1with1 1furrowed1 1brow1\n2And2 1chain1 1mail1 1glinting1|+|10,10 2to2 1set1 1me1 1free1|+|1:1\n1One1 1eye1 1smiling1|+|11,11 5the5 1other1 1firm1 2upon2 6the6 1enemy1|+|12,12\n2020\n2This2 1post-post-modern1 2age2 1is1 1all1 1business1|+|2:2 1compact1 1disks1\n3And3 1faxes1|+|13,13 2a2 1do-it-now-and-take-no-risks1\n1Event1|+|2.2 1Today1 3a3 1hurricane1 2is2 1nudging1 1up1 7the7 1coast1|+|14,14\n1Oddly1 1male1|+|3:3 1Big1 1Bad1 1Floyd1|+|15,15 1who1 1bring1 4a4 1host1 2of2\n1Of1 1daydreams1|+|4:4 1awkward1 1reminiscences1\n2Of2 1teenage1 1crushes1 1on1 1worthless1 1boys1\n1Whose1 1only1 1talent1 1was1 3to3 1kiss1 1you1 1senseless1|+|3.3\n1They1 2all2 1had1 1sissy1 1names-Marcel1|+|16,16 1Percy1|+|17,17 1Dewey1|+|1;1\n1Were1 1thin1 5a5 1licorice1 2and2 3as3 1chewy1|+|18,18\n1Sweet1 2with2 6a6 1dark1 3and3 1hollow1 1center1|+|4.4 1Floyd's1\n2121\n1Cussing1 2up2 7a7 1storm1|+|5.5 1You're1 1bunkered1 2in2 1your1\n1Aerie1|+|19,19 1I'm1 1perched1 3in3 1mine1\n1(Twin1 1desks1|+|20,20 1computers1|+|21,21 1hardwood1 1floors)1|+|5:5\n1We're1 1content1|+|22,22 1but1 1fall1 1short1 3of3 8the8 1Divine1|+|6.6\n1Still1|+|23,23 1it's1 1embarrassing1|+|24,24 1this1 1happiness-1\n1Who's1 1satisfied1 3with3 1what's1 1good1 1for1 1us1|+|25,25\n1When1 1has1 9the9 1ordinary1 1ever1 1been1 1news?1\n4And4 1yet1|+|26,26 1because1 1nothing1 1else1 2will2 1do1\n1To1 1keep1 2me2 1from1 1melancholy1 1(call1 1it1 1blues)1|+|27,27\n3I3 1fill1 2this2 1stolen1 1time1 4with4 2you2|+|7.7",
+        "convertedPoem": "11 22 33 44 55 66 77 88 99 1010 1111 1212 1313 1414 1515 1616 1717 1818 1-for1 1Fred1\n1919\n1I1 1could1 1pick1 1anything1 1and1 1think1 1of1 1you-1\n1This1 1lamp1|+|1,1 1the1 1wind-still1 1rain1|+|2,2 2the2 1glossy1 1blue1\n1My1 1pen1 1exudes1|+|3,3 1drying1 1matte1|+|4,4 1upon1 3the3 1page1|+|1.1\n2I2 2could2 1choose1 1any1 1hero1|+|5,5 2any2 1cause1 1or1 1age1\n1And1|+|6,6 1sure1 1as1 1shooting1 1arrows1 1to1 4the4 1heart1|+|7,7\n1Astride1 1a1 1dappled1 1mare1|+|8,8 1legs1 1braced1 2as2 1far1 1apart1\n1As1 1standing1 1in1 1silver1 1stirrups1 1will1 1allow-1\n1There1 1you'll1 1be1|+|9,9 1with1 1furrowed1 1brow1\n2And2 1chain1 1mail1 1glinting1|+|10,10 2to2 1set1 1me1 1free1|+|1:1\n1One1 1eye1 1smiling1|+|11,11 5the5 1other1 1firm1 2upon2 6the6 1enemy1|+|12,12\n2020\n2This2 1post-post-modern1 2age2 1is1 1all1 1business1|+|2:2 1compact1 1disks1\n3And3 1faxes1|+|13,13 2a2 1do-it-now-and-take-no-risks1\n1Event1|+|2.2 1Today1 3a3 1hurricane1 2is2 1nudging1 1up1 7the7 1coast1|+|14,14\n1Oddly1 1male1|+|3:3 1Big1 1Bad1 1Floyd1|+|15,15 1who1 1brings1 4a4 1host1\n1Of1 1daydreams1|+|4:4 1awkward1 1reminiscences1\n2Of2 1teenage1 1crushes1 1on1 1worthless1 1boys1\n1Whose1 1only1 1talent1 1was1 3to3 1kiss1 1you1 1senseless1|+|3.3\n1They1 2all2 1had1 1sissy1 1names-Marcel1|+|16,16 1Percy1|+|17,17 1Dewey1|+|1;1\n1Were1 1thin1 3as3 1licorice1 2and2 4as4 1chewy1|+|18,18\n1Sweet1 2with2 5a5 1dark1 3and3 1hollow1 1center1|+|4.4 1Floyd's1\n2121\n1Cussing1 2up2 6a6 1storm1|+|5.5 1You're1 1bunkered1 2in2 1your1\n1Aerie1|+|19,19 1I'm1 1perched1 3in3 1mine1\n1(Twin1 1desks1|+|20,20 1computers1|+|21,21 1hardwood1 1floors)1|+|5:5\n1We're1 1content1|+|22,22 1but1 1fall1 1short1 2of2 8the8 1Divine1|+|6.6\n1Still1|+|23,23 1it's1 1embarrassing1|+|24,24 1this1 1happiness-1\n1Who's1 1satisfied1 1simply1 3with3 1what's1 1good1 1for1 1us1|+|25,25\n1When1 1has1 9the9 1ordinary1 1ever1 1been1 1news?1\n4And4 1yet1|+|26,26 1because1 1nothing1 1else1 2will2 1do1\n1To1 1keep1 2me2 1from1 1melancholy1 1(call1 1it1 1blues)1|+|27,27\n3I3 1fill1 2this2 1stolen1 1time1 4with4 2you2|+|7.7",
         "wordCount": 220,
         "author": "Rita Dove",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1I1",
+                "1could1",
+                "1pick1",
+                "1anything1",
+                "1and1",
+                "1think1",
+                "1of1",
+                "1you-1"
+            ],
+            [
+                "2the2",
+                "1glossy1",
+                "1blue1",
+                "1My1",
+                "1pen1",
+                "1exudes1"
+            ],
+            [
+                "2I2",
+                "2could2",
+                "1choose1",
+                "1any1",
+                "1hero1"
+            ],
+            [
+                "1There1",
+                "1you'll1",
+                "1be1"
+            ],
+            [
+                "1One1",
+                "1eye1",
+                "1smiling1",
+                "11,11",
+                "5the5",
+                "1other1",
+                "1firm1",
+                "2upon2",
+                "6the6",
+                "1enemy1",
+                "12,12"
+            ],
+            [
+                "1post-post-modern1",
+                "2age2",
+                "1is1",
+                "1all1",
+                "1business1"
+            ],
+            [
+                "3a3",
+                "1hurricane1",
+                "2is2",
+                "1nudging1",
+                "1up1",
+                "7the7",
+                "1coast1"
+            ],
+            [
+                "1Big1",
+                "1Bad1",
+                "1Floyd1"
+            ],
+            [
+                "1awkward1",
+                "1reminiscences1"
+            ],
+            [
+                "1teenage1",
+                "1crushes1"
+            ],
+            [
+                "1worthless1",
+                "1boys1"
+            ],
+            [
+                "1thin1",
+                "3as3",
+                "1licorice1",
+                "2and2",
+                "4as4",
+                "1chewy1"
+            ],
+            [
+                "1Sweet1",
+                "2with2",
+                "5a5",
+                "1dark1",
+                "3and3",
+                "1hollow1",
+                "1center1"
+            ],
+            [
+                "1You're1",
+                "1bunkered1",
+                "2in2",
+                "1your1",
+                "1Aerie1",
+                "19,19",
+                "1I'm1",
+                "1perched1",
+                "3in3",
+                "1mine1"
+            ],
+            [
+                "1(Twin1",
+                "1desks1",
+                "20,20",
+                "1computers1",
+                "21,21",
+                "1hardwood1",
+                "1floors)1"
+            ],
+            [
+                "1content1",
+                "22,22",
+                "1but1",
+                "1fall1",
+                "1short1",
+                "2of2",
+                "8the8",
+                "1Divine1"
+            ],
+            [
+                "1When1",
+                "1has1",
+                "9the9",
+                "1ordinary1",
+                "1ever1",
+                "1been1",
+                "1news?1"
+            ],
+            [
+                "1To1",
+                "1keep1",
+                "2me2",
+                "1from1",
+                "1melancholy1",
+                "1(call1",
+                "1it1",
+                "1blues)1",
+                "27,27",
+                "3I3",
+                "1fill1",
+                "2this2",
+                "1stolen1",
+                "1time1",
+                "4with4",
+                "2you2"
+            ]
+        ],
+        "notes": {
+            "Fred is Rita Dove's husband": [
+                "1-for1",
+                "1Fred1"
+            ],
+            "First person pronoun shows the poem is autobiographical": [
+                "1I1",
+                "1My1",
+                "2I2",
+                "1me1",
+                "1I'm1",
+                "1We're1",
+                "1us1",
+                "2me2",
+                "3I3"
+            ],
+            "Shows her deep love for him and only him": [
+                "1pick1",
+                "1anything1",
+                "1and1",
+                "1think1",
+                "1of1",
+                "1you-1"
+            ],
+            "The first and last line end with you, showing that Fred fills her thoughts completely": [
+                "1you-1",
+                "2you2"
+            ],
+            "Ordinary, concrete objects that remind her of her husband": [
+                "1This1",
+                "1lamp1",
+                "1,1",
+                "1the1",
+                "1wind-still1",
+                "1rain1",
+                "2,2",
+                "2the2",
+                "1glossy1",
+                "1blue1",
+                "1My1",
+                "1pen1",
+                "1exudes1"
+            ],
+            "The light of her lamp reminds her of his goodness": [
+                "1lamp1"
+            ],
+            "She feels he can stop the rain to protect her": [
+                "1wind-still1",
+                "1rain1"
+            ],
+            "Here, Dove is admitting that the heroes in her writing are inspired by him": [
+                "2the2",
+                "1glossy1",
+                "1blue1",
+                "1drying1",
+                "1matte1",
+                "4,4",
+                "1upon1",
+                "3the3",
+                "1page1"
+            ],
+            "She loves writing, just like she loves Fred": [
+                "1glossy1",
+                "1blue1",
+                "1My1",
+                "1pen1",
+                "1exudes1"
+            ],
+            "Anyone could be the hero, but he always fits the mould": [
+                "1choose1",
+                "1any1",
+                "1hero1",
+                "5,5",
+                "2any2",
+                "1cause1",
+                "1or1",
+                "1age1"
+            ],
+            "Imagery of Cupid": [
+                "1shooting1",
+                "1arrows1",
+                "1to1",
+                "4the4",
+                "1heart1"
+            ],
+            "Imagery of a stereotypical knight racing as fast as possible to rescue her": [
+                "1Astride1",
+                "1a1",
+                "1dappled1",
+                "1mare1",
+                "8,8",
+                "1legs1",
+                "1braced1",
+                "2as2",
+                "1far1",
+                "1apart1",
+                "1As1",
+                "1standing1",
+                "1in1",
+                "1silver1",
+                "1stirrups1",
+                "1will1",
+                "1allow-1"
+            ],
+            "A good looking and decked out horse": [
+                "1dappled1",
+                "1mare1"
+            ],
+            "The husband is the knight": [
+                "1There1",
+                "1you'll1",
+                "1be1"
+            ],
+            "He is worried about her, and his only focus is to protect her": [
+                "1furrowed1",
+                "1brow1"
+            ],
+            "Shows Fred's chivalry, he is determined to rescue her": [
+                "2to2",
+                "1set1",
+                "1me1",
+                "1free1"
+            ],
+            "He is able to both comfort her whilst also focusing on defeating the enemy": [
+                "1One1",
+                "1eye1",
+                "1smiling1",
+                "11,11",
+                "5the5",
+                "1other1",
+                "1firm1",
+                "2upon2",
+                "6the6",
+                "1enemy1"
+            ],
+            "Coming back to reality after her daydream": [
+                "1is1",
+                "1all1",
+                "1business1"
+            ],
+            "Modern technology at the time": [
+                "1compact1",
+                "1disks1",
+                "1faxes1"
+            ],
+            "Describes a boring life, compared to the one she envisioned in the previous stanza": [
+                "1do-it-now-and-take-no-risks1"
+            ],
+            "Shows the hurricane is moving slowly, this gives her time to daydream": [
+                "1nudging1"
+            ],
+            "Hurricanes are typically given female names": [
+                "1Oddly1",
+                "1male1"
+            ],
+            "Shows the magnitude of the threat that Fred is supposedly saving Dove from": [
+                "1Big1",
+                "1Bad1",
+                "1Floyd1"
+            ],
+            "The hurricane gives her lots of time to think": [
+                "1Of1",
+                "1daydreams1",
+                "1stolen1",
+                "1time1"
+            ],
+            "Shows a feeling of regret": [
+                "1awkward1",
+                "1reminiscences1",
+                "1worthless1",
+                "1boys1"
+            ],
+            "Dove believes they were all worthless as they couldn't compare to Fred's maturity": [
+                "1worthless1",
+                "1boys1"
+            ],
+            "They didn't know how to love her properly, whilst Fred does": [
+                "1only1",
+                "1talent1",
+                "1was1",
+                "3to3",
+                "1kiss1",
+                "1you1",
+                "1senseless1"
+            ],
+            "Event their names don't compare to Fred's, reinforced by the use of a triplet": [
+                "1sissy1",
+                "1names-Marcel1",
+                "16,16",
+                "1Percy1",
+                "17,17",
+                "1Dewey1"
+            ],
+            "Licorice is something everyone either loves or hates, and Dove feels like she has wasted time on something she doesn't like": [
+                "1thin1",
+                "3as3",
+                "1licorice1",
+                "2and2",
+                "4as4",
+                "1chewy1"
+            ],
+            "The boys had good looks, but have no substance to their love": [
+                "1Sweet1",
+                "2with2",
+                "5a5",
+                "1dark1",
+                "3and3",
+                "1hollow1",
+                "1center1"
+            ],
+            "Has an informal tone": [
+                "1Cussing1",
+                "2up2",
+                "6a6",
+                "1storm1"
+            ],
+            "Reminds the reader that the storm is still ongoing": [
+                "1Cussing1",
+                "2up2",
+                "6a6",
+                "1storm1"
+            ],
+            "Shows he is safe and hiding away": [
+                "1bunkered1"
+            ],
+            "An aerie is a nest of a large bird of prey, may show their success together": [
+                "1Aerie1"
+            ],
+            "Shows the symmetry between their lives": [
+                "1(Twin1",
+                "1desks1",
+                "20,20",
+                "1computers1",
+                "21,21",
+                "1hardwood1",
+                "1floors)1"
+            ],
+            "Dove explicitly mentions how happy they are": [
+                "1We're1",
+                "1content1"
+            ],
+            "Their relationship is not special or heavenly, yet it is enough to make them happy": [
+                "1short1",
+                "2of2",
+                "8the8",
+                "1Divine1"
+            ],
+            "Dove is embarrassed that they are still so happy after so much ordinary time together": [
+                "1it's1",
+                "1embarrassing1",
+                "24,24",
+                "1this1",
+                "1happiness-1"
+            ],
+            "Dove believes their love is important, even if it is ordinary": [
+                "1When1",
+                "1has1",
+                "9the9",
+                "1ordinary1",
+                "1ever1",
+                "1been1",
+                "1news?1"
+            ],
+            "This shows how Dove is sad when she can't be with him": [
+                "1To1",
+                "1keep1",
+                "2me2",
+                "1from1",
+                "1melancholy1",
+                "1(call1",
+                "1it1",
+                "1blues)1"
+            ],
+            "This stolen time is stolen from the busy modern age": [
+                "1stolen1",
+                "1time1"
+            ]
+        },
         "centered": false
     },
     "Valentine": {
-        "convertedPoem": "1Not1 1a1 1red1 1rose1 1or1 2a2 1satin1 1heart1|+|1,1\n11\n1I1 1give1 1you1 1an1 1onion1|+|1.1\n1It1 1is1 3a3 1moon1 1wrapped1 1in1 1brown1 1paper1|+|2.2\n2It2 1promises1 1light1\n1like1 1the1 1careful1 1undressing1 1of1 1love1|+|3.3\n22\n1Here1|+|4.4\n3It3 1will1 1blind1 2you2 1with1 1tears1\n2like2 4a4 1lover1|+|5.5\n4It4 2will2 1make1 1your1 1reflection1\n5a5 1wobbling1 1photo1 2of2 1grief1|+|6.6\n33\n2I2 1am1 1trying1 1to1 1be1 1truthful1|+|7.7\n44\n2Not2 6a6 1cute1 1card1 2or2 7a7 1kissogram1|+|8.8\n55\n3I3 2give2 3you3 2an2 2onion2|+|9.9\n1Its1 1fierce1 1kiss1 3will3 1stay1 1on1 2your2 1lips1|+|2,2\n1possessive1 1and1 1faithful1\n1as1 1we1 1are1|+|3,3\n1for1 2as2 1long1 3as3 2we2 2are2|+|10.10\n66\n1Take1 1it1|+|11.11\n2Its2 1platinum1 1loops1 1shrink1 2to2 8a8 1wedding-ring1|+|4,4\n1if1 4you4 3like3|+|12.12\n1Lethal1|+|13.13\n3Its3 1scent1 4will4 1cling1 3to3 3your3 1fingers1|+|5,5\n2cling2 4to4 4your4 1knife1|+|14.14",
+        "convertedPoem": "1Not1 1a1 1red1 1rose1 1or1 2a2 1satin1 1heart1|+|1.1\n11\n1I1 1give1 1you1 1an1 1onion1|+|2.2\n1It1 1is1 3a3 1moon1 1wrapped1 1in1 1brown1 1paper1|+|3.3\n2It2 1promises1 1light1\n1like1 1the1 1careful1 1undressing1 1of1 1love1|+|4.4\n22\n1Here1|+|5.5\n3It3 1will1 1blind1 2you2 1with1 1tears1\n2like2 4a4 1lover1|+|6.6\n4It4 2will2 1make1 1your1 1reflection1\n5a5 1wobbling1 1photo1 2of2 1grief1|+|7.7\n33\n2I2 1am1 1trying1 1to1 1be1 1truthful1|+|8.8\n44\n2Not2 6a6 1cute1 1card1 2or2 7a7 1kissogram1|+|9.9\n55\n3I3 2give2 3you3 2an2 2onion2|+|10.10\n1Its1 1fierce1 1kiss1 3will3 1stay1 1on1 2your2 1lips1|+|1,1\n1possessive1 1and1 1faithful1\n1as1 1we1 1are1|+|2,2\n1for1 2as2 1long1 3as3 2we2 2are2|+|11.11\n66\n1Take1 1it1|+|12.12\n2Its2 1platinum1 1loops1 1shrink1 2to2 8a8 1wedding-ring1|+|3,3\n1if1 4you4 3like3|+|13.13\n1Lethal1|+|14.14\n3Its3 1scent1 4will4 1cling1 3to3 3your3 1fingers1|+|4,4\n2cling2 4to4 4your4 1knife1|+|15.15",
         "wordCount": 112,
         "author": "Carol Ann Duffy",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1I1",
+                "1give1",
+                "1you1",
+                "1an1",
+                "1onion1"
+            ],
+            [
+                "1promises1",
+                "1light1"
+            ],
+            [
+                "1like1",
+                "1the1",
+                "1careful1",
+                "1undressing1",
+                "1of1",
+                "1love1"
+            ],
+            [
+                "1blind1",
+                "2you2",
+                "1with1",
+                "1tears1"
+            ],
+            [
+                "1wobbling1",
+                "1photo1",
+                "2of2",
+                "1grief1"
+            ],
+            [
+                "1trying1",
+                "1to1",
+                "1be1",
+                "1truthful1"
+            ],
+            [
+                "1fierce1",
+                "1kiss1"
+            ],
+            [
+                "1possessive1",
+                "1and1",
+                "1faithful1"
+            ],
+            [
+                "1platinum1",
+                "1loops1",
+                "1shrink1",
+                "2to2",
+                "8a8",
+                "1wedding-ring1"
+            ],
+            [
+                "1cling1",
+                "3to3",
+                "3your3",
+                "1fingers1",
+                "4,4",
+                "2cling2",
+                "4to4",
+                "4your4",
+                "1knife1",
+                "15.15"
+            ]
+        ],
+        "notes": {
+            "Starting a poem with a negative word such as not gives an assertive tone": [
+                "1Not1"
+            ],
+            "The word not dismisses materialism and clichés": [
+                "1Not1",
+                "1a1",
+                "1red1",
+                "1rose1",
+                "1or1",
+                "2a2",
+                "1satin1",
+                "1heart1",
+                "1.1",
+                "2Not2",
+                "6a6",
+                "1cute1",
+                "1card1",
+                "2or2",
+                "7a7",
+                "1kissogram1",
+                "9.9"
+            ],
+            "Repetition shows the importance of the extended metaphor that is the onion": [
+                "1I1",
+                "1give1",
+                "1you1",
+                "1an1",
+                "1onion1",
+                "2.2",
+                "3I3",
+                "2give2",
+                "3you3",
+                "2an2",
+                "2onion2",
+                "10.10"
+            ],
+            "An onion is a very unique gift, which shows the thought put into choosing the gift. The poem repeatedly dismisses materialism and shows the value of a thoughtful gift": [
+                "1onion1",
+                "2onion2"
+            ],
+            "The moon is consistent, like love - though it may wane over time, it will always regain strength (like the cycles of a moon)": [
+                "1moon1"
+            ],
+            "Light should bring trust and goodness": [
+                "1promises1",
+                "1light1"
+            ],
+            "Love has layers, like an onion - it is important for both people to fully understand each other in a relationship": [
+                "1careful1",
+                "1undressing1",
+                "1of1",
+                "1love1"
+            ],
+            "These concise and assertive lines shows that there are no strings attached, just like there is no strings attached to love of the person reciting the poem": [
+                "1Here1",
+                "5.5",
+                "1Take1",
+                "1it1",
+                "12.12"
+            ],
+            "This is Duffy being pragmatic, she knows that love always results in tears, both good and bad": [
+                "1will1",
+                "1blind1",
+                "2you2",
+                "1with1",
+                "1tears1",
+                "2like2",
+                "4a4",
+                "1lover1"
+            ],
+            "Love is blinding": [
+                "1blind1",
+                "2you2"
+            ],
+            "Shows that love is not easy": [
+                "1tears1"
+            ],
+            "Imagery of someone crying": [
+                "4It4",
+                "2will2",
+                "1make1",
+                "1your1",
+                "1reflection1",
+                "5a5",
+                "1wobbling1",
+                "1photo1",
+                "2of2",
+                "1grief1",
+                "7.7"
+            ],
+            "Here Duffy admits that love will create negative experiences": [
+                "2will2",
+                "1make1",
+                "1your1",
+                "1reflection1",
+                "5a5",
+                "1wobbling1",
+                "1photo1",
+                "2of2",
+                "1grief1"
+            ],
+            "Emotive language": [
+                "1grief1"
+            ],
+            "The speaker emphasises their realistic views": [
+                "1truthful1"
+            ],
+            "This shows the belief that love/hate relationships are memorable, and that the bad experiences are not easily forgotten": [
+                "1fierce1",
+                "1kiss1",
+                "3will3",
+                "1stay1",
+                "1on1",
+                "2your2",
+                "1lips1"
+            ],
+            "A reference to how hard it is to forget a lover": [
+                "1stay1",
+                "1on1",
+                "2your2",
+                "1lips1"
+            ],
+            "These adjectives show both the good and bad in a relationship even though they have similar meaning, showing the fine line between a healthy and unhealthy relationship": [
+                "1possessive1",
+                "1and1",
+                "1faithful1"
+            ],
+            "The use of the pronoun we shows that people in love are a team": [
+                "1we1",
+                "1are1"
+            ],
+            "Shows a loving and enduring relationship": [
+                "1for1",
+                "2as2",
+                "1long1",
+                "3as3",
+                "2we2",
+                "2are2",
+                "11.11"
+            ],
+            "The ring of this onion is comparable to an expensive wedding ring, showing thought is more important than material gifts": [
+                "1platinum1",
+                "1loops1",
+                "1shrink1",
+                "2to2",
+                "8a8",
+                "1wedding-ring1"
+            ],
+            "Shows that this metaphor is adaptive to any stage of a relationship": [
+                "1shrink1",
+                "2to2",
+                "8a8",
+                "1wedding-ring1",
+                "3,3",
+                "1if1",
+                "4you4",
+                "3like3",
+                "13.13"
+            ],
+            "Could be used as hint by the person reciting the poem to their partner": [
+                "1if1",
+                "4you4",
+                "3like3"
+            ],
+            "Duffy explores the ideas of domestic violence in her poems, including this one": [
+                "1Lethal1",
+                "2cling2",
+                "4to4",
+                "4your4",
+                "1knife1"
+            ],
+            "Love is dangerous": [
+                "1Lethal1"
+            ],
+            "Could mean that love stays with you forever, or could be a link to stalking": [
+                "1cling1",
+                "3to3",
+                "3your3",
+                "1fingers1"
+            ]
+        },
         "centered": false
     },
     "A Wife in London": {
-        "convertedPoem": "1I1 1-1 1The1 1Tradegy1\n11\n1She1 1sits1 1in1 1the1 1tawny1 1vapour1\n22 33 44 55 1That1 2the2 1City1 1lanes1 1have1 1uprolled1|+|1,1\n66 77 88 99 1Behind1 1whose1 1webby1 1fold1 1on1 2fold2\n1Like1 1a1 1waning1 1taper1\n1010 1111 1212 1313 2The2 1street-lamp1 1glimmers1 1cold1|+|1.1\n1414\n1515\n1A1 1messenger's1 1knock1 1cracks1 1smartly1|+|2,2\n1616 1717 1818 1919 1Flashed1 1news1 2in2 1her1 1hand1\n2020 2121 2222 2323 1Of1 1meaning1 1it1 1dazes1 1to1 1understand1\n1Though1 1shaped1 1so1 1shortly1|+|1:1\n2424 2525 2626 2727 1He1 2-2 1has1 1fallen1 3-3 3in3 3the3 1far1 1south1 1land1 2828|+|2.2|+|3.3|+|4.4\n2929\n1II1 4-4 3The3 1Irony1\n3030\n1'Tis1 4the4 1morrow1|+|1;1 5the5 1fog1 1hangs1 1thicker1|+|3,3\n3131 3232 3333 3434 4The4 1postman1 1nears1 1and1 1goes1|+|2:2\n3535 3636 3737 3838 2A2 1letter1 1is1 1brought1 2whose2 1lines1 1disclose1\n1By1 6the6 1firelight1 1flicker1\n3939 4040 4141 4242 1His1 2hand2|+|4,4 1whom1 7the7 1worm1 1now1 1knows1|+|3:3\n4343\n4444\n1Fresh1 5-5 1firm1 6-6 1penned1 4in4 1highest1 1feather1 7-7\n4545 4646 4747 4848 1Page-full1 1of1 1his1 1hoped1 1return1|+|5,5\n4949 5050 5151 5252 1And1 2of2 1home-planned1 1jaunts1 1by1 1brake1 2and2 1burn1\n1In1 8the8 1summer1 1weather1|+|6,6\n5353 5454 5555 5656 2And2 3of3 1new1 1love1 1that1 1they1 1would1 1learn1|+|5.5",
-        "wordCount": 129,
+        "convertedPoem": "1I1 1-1 1The1 1Tragedy1\n11\n1She1 1sits1 1in1 1the1 1tawny1 1vapour1\n22 33 44 55 1That1 2the2 1City1 1lanes1 1have1 1uprolled1|+|1,1\n66 77 88 99 1Behind1 1whose1 1webby1 1fold1 1on1 2fold2\n1Like1 1a1 1waning1 1taper1\n1010 1111 1212 1313 2The2 1street-lamp1 1glimmers1 1cold1|+|1.1\n1414\n1515\n1A1 1messenger's1 1knock1 1cracks1 1smartly1|+|2,2\n1616 1717 1818 1919 1Flashed1 1news1 1is1 2in2 1her1 1hand1\n2020 2121 2222 2323 1Of1 1meaning1 1it1 1dazes1 1to1 1understand1\n1Though1 1shaped1 1so1 1shortly1|+|1:1\n2424 2525 2626 2727 1He1 2-2 1has1 1fallen1 3-3 3in3 3the3 1far1 1South1 1Land1 2828|+|2.2|+|3.3|+|4.4\n2929\n1II1 4-4 3The3 1Irony1\n3030\n1'Tis1 4the4 1morrow1|+|1;1 5the5 1fog1 1hangs1 1thicker1|+|3,3\n3131 3232 3333 3434 4The4 1postman1 1nears1 1and1 1goes1|+|2:2\n3535 3636 3737 3838 2A2 1letter1 2is2 1brought1 2whose2 1lines1 1disclose1\n1By1 6the6 1firelight1 1flicker1\n3939 4040 4141 4242 1His1 2hand2|+|4,4 1whom1 7the7 1worm1 1now1 1knows1|+|3:3\n4343\n4444\n1Fresh1 5-5 1firm1 6-6 1penned1 4in4 1highest1 1feather1 7-7\n4545 4646 4747 4848 1Page-full1 1of1 1his1 1hoped1 1return1|+|5,5\n4949 5050 5151 5252 1And1 2of2 1home-planned1 1jaunts1 1by1 1brake1 2and2 1burn1\n1In1 8the8 1summer1 1weather1|+|6,6\n5353 5454 5555 5656 2And2 3of3 1new1 1love1 1that1 1they1 1would1 1learn1|+|5.5",
+        "wordCount": 130,
         "author": "Thomas Hardy",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1I1",
+                "1-1",
+                "1The1",
+                "1Tragedy1"
+            ],
+            [
+                "1sits1",
+                "1in1",
+                "1the1",
+                "1tawny1",
+                "1vapour1"
+            ],
+            [
+                "1street-lamp1",
+                "1glimmers1",
+                "1cold1"
+            ],
+            [
+                "1knock1",
+                "1cracks1",
+                "1smartly1"
+            ],
+            [
+                "1Flashed1",
+                "1news1"
+            ],
+            [
+                "1shaped1",
+                "1so1",
+                "1shortly1"
+            ],
+            [
+                "1He1",
+                "2-2",
+                "1has1",
+                "1fallen1",
+                "3-3",
+                "3in3",
+                "3the3",
+                "1far1",
+                "1South1",
+                "1Land1"
+            ],
+            [
+                "1II1",
+                "4-4",
+                "3The3",
+                "1Irony1"
+            ],
+            [
+                "1fog1",
+                "1hangs1",
+                "1thicker1"
+            ],
+            [
+                "1His1",
+                "2hand2",
+                "4,4",
+                "1whom1",
+                "7the7",
+                "1worm1",
+                "1now1",
+                "1knows1"
+            ],
+            [
+                "1Fresh1"
+            ],
+            [
+                "1penned1",
+                "4in4",
+                "1highest1",
+                "1feather1"
+            ],
+            [
+                "1hoped1",
+                "1return1"
+            ],
+            [
+                "1home-planned1",
+                "1jaunts1"
+            ],
+            [
+                "1new1",
+                "1love1",
+                "1that1",
+                "1they1",
+                "1would1",
+                "1learn1",
+                "5.5"
+            ]
+        ],
+        "notes": {
+            "Life without her husband is so dull all she does is sit": [
+                "1sits1"
+            ],
+            "The vapour is tawny, showing how it is not comparable to a fine mist, but is closer to, or is, pollution/smog": [
+                "1tawny1",
+                "1vapour1"
+            ],
+            "The city itself has created this misery, it is not natural": [
+                "1City1",
+                "1lanes1",
+                "1have1",
+                "1uprolled1"
+            ],
+            "May give a sense that the wife is feeling trapped in London and society, akin to being trapped in a spider's web": [
+                "1Behind1",
+                "1whose1",
+                "1webby1",
+                "1fold1",
+                "1on1",
+                "2fold2"
+            ],
+            "Not giving of much light - represents her lack of hope for her husband": [
+                "1waning1",
+                "1taper1"
+            ],
+            "Shows a dark image of London, setting the tone for the news that is to come": [
+                "1cold1"
+            ],
+            "A very plosive sounding phrase, harsh like the news that is being delivered": [
+                "1knock1",
+                "1cracks1",
+                "1smartly1"
+            ],
+            "The messenger is used to doing this showing how many times he has had to deliver this news": [
+                "1knock1",
+                "1cracks1",
+                "1smartly1"
+            ],
+            "Shows that the messenger is probably in the military": [
+                "1smartly1"
+            ],
+            "Shows how quickly it all happens - the messenger delivers the letter and leaves instantly": [
+                "1Flashed1",
+                "1news1"
+            ],
+            "The wife is denying the news as she can't believe it - it makes her feel faint": [
+                "1dazes1",
+                "1to1",
+                "1understand1"
+            ],
+            "Reinforces the idea that the news is brief and sudden": [
+                "1Though1",
+                "1shaped1",
+                "1so1",
+                "1shortly1"
+            ],
+            "Sibilance - links to evil": [
+                "1shaped1",
+                "1so1",
+                "1shortly1"
+            ],
+            "The speaker has substituted in a less harsh phrase for died to garner sympathy for the wife": [
+                "2-2",
+                "1has1",
+                "1fallen1",
+                "3-3"
+            ],
+            "South Africa - The husband likely died in the second Boer war": [
+                "1South1",
+                "1Land1"
+            ],
+            "By not explicitly mentioning South Africa, Hardy is showing that this is the same in all wars": [
+                "1South1",
+                "1Land1"
+            ],
+            "Ellipsis shows that the meaning of the rest of the letter is not important, the only part the wife cares about is that her husband has died - in war": [
+                "2.2",
+                "3.3",
+                "4.4"
+            ],
+            "Only the next day": [
+                "4the4",
+                "1morrow1"
+            ],
+            "Pathetic fallacy to prepare the reader for the irony": [
+                "1fog1",
+                "1hangs1",
+                "1thicker1"
+            ],
+            "Shows the development of her grief and sadness, it has become thicker": [
+                "1fog1",
+                "1hangs1",
+                "1thicker1"
+            ],
+            "The world goes on, even when - to the wife - it feels like the world is ending": [
+                "1postman1",
+                "1nears1",
+                "1and1",
+                "1goes1"
+            ],
+            "The wife receives a letter": [
+                "1postman1",
+                "1nears1",
+                "1and1",
+                "1goes1",
+                "2:2",
+                "2A2",
+                "1letter1",
+                "2is2",
+                "1brought1"
+            ],
+            "Shows the lack of light, which shows the lack of joy and hope in the life of the wife": [
+                "1firelight1",
+                "1flicker1"
+            ],
+            "Shows the poverty of the wife, she has to rely on fire , this will only become worse now she is widowed": [
+                "1firelight1",
+                "1flicker1"
+            ],
+            "This macabre phrase links to death, whilst not explicitly mentioning death, once again intentional, gaining sympathy for the wife": [
+                "1His1",
+                "2hand2",
+                "4,4",
+                "1whom1",
+                "7the7",
+                "1worm1",
+                "1now1",
+                "1knows1",
+                "3:3"
+            ],
+            "He is dead and buried, so worms can literally touch his hands": [
+                "1His1",
+                "2hand2",
+                "1whom1",
+                "7the7",
+                "1worm1",
+                "1now1",
+                "1knows1",
+                "3:3"
+            ],
+            "Shows the wife pausing to think about him, she finds it difficult to accept the truth": [
+                "4,4"
+            ],
+            "This shows that he died recently": [
+                "1Fresh1"
+            ],
+            "This shows that the husband didn't believe he would die soon, else it may be shaky": [
+                "5-5",
+                "1firm1",
+                "6-6"
+            ],
+            "The superlative shows his care and precision, representative of their deep love for each other": [
+                "1highest1",
+                "1feather1"
+            ],
+            "This would have been more than ironic, it would have been agonising and harrowing to the wife to receive this letter after learning of his death": [
+                "1Page-full1",
+                "1of1",
+                "1his1",
+                "1hoped1",
+                "1return1",
+                "5,5"
+            ],
+            "All the exciting and fun things they would do": [
+                "1home-planned1",
+                "1jaunts1",
+                "1by1",
+                "1brake1",
+                "2and2",
+                "1burn1"
+            ],
+            "Summer has connotations of happiness and joy, a far cry from the tawny vapour currently in London": [
+                "1summer1",
+                "1weather1"
+            ],
+            "He has been away for so long that they would've needed to learn their love all over again": [
+                "1new1",
+                "1love1",
+                "1that1",
+                "1they1",
+                "1would1",
+                "1learn1"
+            ],
+            "He believes that they will be able to live a different and better life after his return": [
+                "1new1",
+                "1love1"
+            ]
+        },
         "centered": false
     },
     "Death of a Naturalist": {
