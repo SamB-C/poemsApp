@@ -2548,11 +2548,430 @@
         "centered": false
     },
     "Death of a Naturalist": {
-        "convertedPoem": "1All1 1year1 1round1 1the1 1flax-dam1 1festered1 1in1 2the2 1heart1\n1Of1 3the3 1townland1|+|1;1 1green1 1and1 1heavy1 1headed1\n1Flax1 1had1 1rotted1 1there1|+|1,1 1weighted1 1down1 1by1 1huge1 1sods1|+|1.1\n1Daily1 1it1 1sweltered1 2in2 4the4 1punishing1 1sun1|+|2.2\n1Bubbles1 1gargled1 1delicately1|+|2,2 1bluebottles1\n1Wove1 1a1 1strong1 1gauze1 1of1 1sound1 1around1 5the5 1smell1|+|3.3\n1There1 1were1 1dragon-flies1|+|3,3 1spotted1 1butterflies1|+|4,4\n1But1 1best1 2of2 1all1 1was1 6the6 1warm1 1thick1 1slobber1\n2Of2 1frogspawn1 1that1 1grew1 1like1 1clotted1 1water1\n1In1 7the7 1shade1 3of3 8the8 1banks1|+|4.4 1Here1|+|5,5 1every1 1spring1\n1I1 1would1 1fill1 1jampotfuls1 4of4 9the9 1jellied1\n1Specks1 1to1 1range1 1on1 1window-sills1 1at1 1home1|+|6,6\n1On1 1sheleves1 2at2 1school1|+|7,7 2and2 1wait1 3and3 1watch1 1until1\n1The1 1fattening1 1dots1 1burst1 1into1 1nimble-1\n1swimming1 1tadpoles1|+|5.5 1Miss1 1Walls1 2would2 1tell1 1us1 1how1\n2The2 1daddy1 1frog1 2was2 1called1 2a2 1bullfrog1\n1And1 2how2 1he1 1croaked1 4and4 3how3 10the10 1mammy1 2frog2\n1Laid1 1hundreds1 5of5 1little1 1eggs1 5and5 1this1 3was3\n1Frogspawn1|+|6.6 1You1 1could1 2tell2 11the11 1weather1 2by2 1frogs1 1too1\n1For1 1they1 2were2 1yellow1 3in3 12the12 2sun2 6and6 1brown1\n2In2 1rain1|+|7.7\n11\n22 33 44 55 1Then1 1one1 1hot1 1day1 1when1 1fields1 3were3 1rank1\n1With1 1cowdung1 4in4 13the13 1grass1 7and7 1angry1 2frogs2\n1Invaded1 14the14 2flax-dam2|+|2;2 2I2 1ducked1 1through1 15the15 1hedges1\n1To1 3a3 1coarse1 1croaking1 2that2 3I3 2had2 1not1 1heard1\n1Before1|+|8.8 3The3 1air1 4was4 1thich1 1with1 4a4 1bass1 1chorus1|+|9.9\n1Right1 2down2 16the16 1dam1 1gross-bellied1 3frogs3 4were4 1cocked1\n2On2 2sods2|+|3;3 1their1 1loose1 1necks1 1pulsed1 2like2 1sails1|+|10.10 1Some1 1hopped1|+|1:1\n4The4 1slap1 8and8 1plop1 5were5 1obscene1 1threats1|+|11.11 2Some2 1sat1\n1Poised1 3like3 1mud1 1grenades1|+|8,8 2their2 1blunt1 1heads1 1farting1|+|12.12\n4I4 1sickened1|+|9,9 1turned1 9and9 1ran1|+|13.13 5The5 1great1 1slime1 1kings1\n1Were1 1gathered1 2there2 1for1 1vengance1 10and10 5I5 1knew1\n1That1 1if1 6I6 1dipped1 1my1 1hand1 17the17 1spawn1 3would3 1clutch1 2it2|+|14.14",
-        "wordCount": 261,
+        "convertedPoem": "1All1 1year1 1the1 1flax-dam1 1festered1 1in1 2the2 1heart1\n1Of1 3the3 1townland1|+|1;1 1green1 1and1 1heavy1 1headed1\n1Flax1 1had1 1rotted1 1there1|+|1,1 1weighted1 1down1 1by1 1huge1 1sods1|+|1.1\n1Daily1 1it1 1sweltered1 2in2 4the4 1punishing1 1sun1|+|2.2\n1Bubbles1 1gargled1 1delicately1|+|2,2 1bluebottles1\n1Wove1 1a1 1strong1 1gauze1 1of1 1sound1 1around1 5the5 1smell1|+|3.3\n1There1 1were1 1dragon-flies1|+|3,3 1spotted1 1butterflies1|+|4,4\n1But1 1best1 2of2 1all1 1was1 6the6 1warm1 1thick1 1slobber1\n2Of2 1frogspawn1 1that1 1grew1 1like1 1clotted1 1water1\n1In1 7the7 1shade1 3of3 8the8 1banks1|+|4.4 1Here1|+|5,5 1every1 1spring1\n1I1 1would1 1fill1 1jampotfuls1 4of4 9the9 1jellied1\n1Specks1 1to1 1range1 1on1 1window-sills1 1at1 1home1|+|6,6\n1On1 1sheleves1 2at2 1school1|+|7,7 2and2 1wait1 3and3 1watch1 1until1\n1The1 1fattening1 1dots1 1burst1 1into1 1nimble-1\n1Swimming1 1tadpoles1|+|5.5 1Miss1 1Walls1 2would2 1tell1 1us1 1how1\n2The2 1daddy1 1frog1 2was2 1called1 2a2 1bullfrog1\n1And1 2how2 1he1 1croaked1 4and4 3how3 10the10 1mammy1 2frog2\n1Laid1 1hundreds1 5of5 1little1 1eggs1 5and5 1this1 3was3\n1Frogspawn1|+|6.6 1You1 1could1 2tell2 11the11 1weather1 2by2 1frogs1 1too1\n1For1 1they1 2were2 1yellow1 3in3 12the12 2sun2 6and6 1brown1\n2In2 1rain1|+|7.7\n11\n22 33 44 55 1Then1 1one1 1hot1 1day1 1when1 1fields1 3were3 1rank1\n1With1 1cowdung1 4in4 13the13 1grass1 7and7 1angry1 2frogs2\n1Invaded1 14the14 2flax-dam2|+|2;2 2I2 1ducked1 1through1 1hedges1\n1To1 3a3 1coarse1 1croaking1 2that2 3I3 2had2 1not1 1heard1\n1Before1|+|8.8 3The3 1air1 4was4 2thick2 1with1 4a4 1bass1 1chorus1|+|9.9\n1Right1 2down2 15the15 1dam1 1gross-bellied1 3frogs3 4were4 1cocked1\n2On2 2sods2|+|3;3 1their1 1loose1 1necks1 1pulsed1 2like2 1sails1|+|10.10 1Some1 1hopped1|+|1:1\n4The4 1slap1 8and8 1plop1 5were5 1obscene1 1threats1|+|11.11 2Some2 1sat1\n1Poised1 3like3 1mud1 1grenades1|+|8,8 2their2 1blunt1 1heads1 1farting1|+|12.12\n4I4 1sickened1|+|9,9 1turned1 9and9 1ran1|+|13.13 5The5 1great1 1slime1 1kings1\n1Were1 1gathered1 2there2 1for1 1vengance1 10and10 5I5 1knew1\n1That1 1if1 6I6 1dipped1 1my1 1hand1 16the16 1spawn1 3would3 1clutch1 2it2|+|14.14",
+        "wordCount": 259,
         "author": "Seamus Heaney",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1flax-dam1",
+                "1festered1"
+            ],
+            [
+                "1huge1",
+                "1sods1"
+            ],
+            [
+                "1sweltered1",
+                "2in2",
+                "4the4",
+                "1punishing1",
+                "1sun1"
+            ],
+            [
+                "1Bubbles1",
+                "1gargled1",
+                "1delicately1"
+            ],
+            [
+                "1best1",
+                "2of2",
+                "1all1",
+                "1was1",
+                "6the6",
+                "1warm1",
+                "1thick1",
+                "1slobber1",
+                "2Of2",
+                "1frogspawn1"
+            ],
+            [
+                "1clotted1",
+                "1water1"
+            ],
+            [
+                "1jellied1",
+                "1Specks1"
+            ],
+            [
+                "1nimble-1",
+                "1Swimming1",
+                "1tadpoles1"
+            ],
+            [
+                "1when1",
+                "1fields1",
+                "3were3",
+                "1rank1"
+            ],
+            [
+                "1angry1",
+                "2frogs2",
+                "1Invaded1",
+                "14the14",
+                "2flax-dam2",
+                "2;2"
+            ],
+            [
+                "1coarse1",
+                "1croaking1"
+            ],
+            [
+                "3I3",
+                "2had2",
+                "1not1",
+                "1heard1",
+                "1Before1"
+            ],
+            [
+                "1Right1",
+                "2down2",
+                "15the15",
+                "1dam1",
+                "1gross-bellied1",
+                "3frogs3",
+                "4were4",
+                "1cocked1",
+                "2On2",
+                "2sods2"
+            ],
+            [
+                "4The4",
+                "1slap1",
+                "8and8",
+                "1plop1",
+                "5were5",
+                "1obscene1",
+                "1threats1"
+            ],
+            [
+                "1Poised1",
+                "3like3",
+                "1mud1",
+                "1grenades1"
+            ],
+            [
+                "1blunt1",
+                "1heads1",
+                "1farting1",
+                "12.12"
+            ],
+            [
+                "4I4",
+                "1sickened1",
+                "9,9",
+                "1turned1",
+                "9and9",
+                "1ran1"
+            ],
+            [
+                "1great1",
+                "1slime1",
+                "1kings1"
+            ],
+            [
+                "1gathered1",
+                "2there2",
+                "1for1",
+                "1vengance1"
+            ],
+            [
+                "16the16",
+                "1spawn1",
+                "3would3",
+                "1clutch1",
+                "2it2",
+                "14.14"
+            ]
+        ],
+        "notes": {
+            "A plant that is grown and collected": [
+                "1flax-dam1"
+            ],
+            "Shows that it is a place of decay": [
+                "1festered1",
+                "1Flax1",
+                "1had1",
+                "1rotted1",
+                "1there1"
+            ],
+            "The speaker explored deep into the countryside and nature in their youth": [
+                "1heart1"
+            ],
+            "As a child, the speaker enjoyed experiences that an adult who has lost their childhood innocence would not": [
+                "1sweltered1",
+                "2in2",
+                "4the4",
+                "1punishing1",
+                "1sun1"
+            ],
+            "Oxymoron, gargling can't be delicate, shows the seeming naivety of young children who enjoy these things": [
+                "1Bubbles1",
+                "1gargled1",
+                "1delicately1"
+            ],
+            "A type of fly, but the name bluebottles makes it seem more interesting than a regular fly": [
+                "1bluebottles1"
+            ],
+            "This sentence represents childhood fascination of nature": [
+                "1There1",
+                "1were1",
+                "1dragon-flies1",
+                "3,3",
+                "1spotted1",
+                "1butterflies1",
+                "4,4",
+                "1But1",
+                "1best1",
+                "2of2",
+                "1all1",
+                "1was1",
+                "6the6",
+                "1warm1",
+                "1thick1",
+                "1slobber1",
+                "2Of2",
+                "1frogspawn1",
+                "1that1",
+                "1grew1",
+                "1like1",
+                "1clotted1",
+                "1water1",
+                "1In1",
+                "7the7",
+                "1shade1",
+                "3of3",
+                "8the8",
+                "1banks1",
+                "4.4"
+            ],
+            "The adjectives seem disgusting to an adult, but the superlative 'best' shows that it was amazing as a child ": [
+                "1best1",
+                "2of2",
+                "1all1",
+                "1warm1",
+                "1thick1",
+                "1slobber1"
+            ],
+            "Simile showing the amount of frogspawn there was": [
+                "1grew1",
+                "1like1",
+                "1clotted1",
+                "1water1"
+            ],
+            "Shows that this was an interest of the speaker's over many years": [
+                "1Here1",
+                "5,5",
+                "1every1",
+                "1spring1"
+            ],
+            "Shows that this is one of the Speaker's memories": [
+                "1I1",
+                "1would1",
+                "1fill1"
+            ],
+            "Shows the age of the speaker in the memory, they didn't know that there were eggs": [
+                "1jellied1",
+                "1Specks1"
+            ],
+            "A memory of a science lesson": [
+                "1On1",
+                "1sheleves1",
+                "2at2",
+                "1school1",
+                "7,7",
+                "2and2",
+                "1wait1",
+                "3and3",
+                "1watch1",
+                "1until1",
+                "1The1",
+                "1fattening1",
+                "1dots1",
+                "1burst1",
+                "1into1",
+                "1nimble-1",
+                "1Swimming1",
+                "1tadpoles1",
+                "5.5"
+            ],
+            "A very detailed memory, showing that this topic was of great fascination to the speaker as a child": [
+                "1Miss1",
+                "1Walls1",
+                "2would2",
+                "1tell1",
+                "1us1",
+                "1how1",
+                "2The2",
+                "1daddy1",
+                "1frog1",
+                "2was2",
+                "1called1",
+                "2a2",
+                "1bullfrog1",
+                "1And1",
+                "2how2",
+                "1he1",
+                "1croaked1",
+                "4and4",
+                "3how3",
+                "10the10",
+                "1mammy1",
+                "2frog2",
+                "1Laid1",
+                "1hundreds1",
+                "5of5",
+                "1little1",
+                "1eggs1",
+                "5and5",
+                "1this1",
+                "3was3",
+                "1Frogspawn1",
+                "6.6",
+                "1You1",
+                "1could1",
+                "2tell2",
+                "11the11",
+                "1weather1",
+                "2by2",
+                "1frogs1",
+                "1too1",
+                "1For1",
+                "1they1",
+                "2were2",
+                "1yellow1",
+                "3in3",
+                "12the12",
+                "2sun2",
+                "6and6",
+                "1brown1",
+                "2In2",
+                "1rain1",
+                "7.7"
+            ],
+            "Enjambment shows childhood excitement": [
+                "1how1",
+                "1bullfrog1",
+                "2frog2",
+                "3was3",
+                "1too1",
+                "1brown1"
+            ],
+            "Irish dialect": [
+                "1mammy1",
+                "1dam1",
+                "1cocked1",
+                "2On2",
+                "2sods2"
+            ],
+            "Shows the passing of time from childhood to adulthood": [
+                "1Then1",
+                "1one1",
+                "1hot1",
+                "1day1"
+            ],
+            "Painting a negative and unpleasant sensory image, compared to when the speaker was a child": [
+                "1rank1",
+                "1With1",
+                "1cowdung1"
+            ],
+            "Semantic field for war and violence": [
+                "1angry1",
+                "2frogs2",
+                "1Invaded1",
+                "1coarse1",
+                "1bass1",
+                "1chorus1",
+                "1cocked1",
+                "1pulsed1",
+                "1slap1",
+                "1plop1",
+                "1obscene1",
+                "1threats1",
+                "1grenades1",
+                "1blunt1",
+                "1vengance1"
+            ],
+            "Shows that the speaker has grown up as they now need to duck to get to their old favourite places": [
+                "2I2",
+                "1ducked1",
+                "1through1",
+                "1hedges1"
+            ],
+            "The frogs have grown up and their voices have broken like men, it may seem threatening": [
+                "1coarse1",
+                "1croaking1"
+            ],
+            "Shows how the speaker is seeing the natural world in a new light now they are grown up": [
+                "3I3",
+                "2had2",
+                "1not1",
+                "1heard1",
+                "1Before1"
+            ],
+            "Shows that there are lots of frogs, which would be intimidating": [
+                "1air1",
+                "4was4",
+                "2thick2",
+                "1with1",
+                "4a4",
+                "1bass1",
+                "1chorus1"
+            ],
+            "Like a military marching band": [
+                "1bass1",
+                "1chorus1"
+            ],
+            "Now seem disgusting to the speaker": [
+                "1gross-bellied1",
+                "3frogs3"
+            ],
+            "Poised, ready to attack": [
+                "1cocked1"
+            ],
+            "Even the frogs breathing could be seen as threatening": [
+                "1loose1",
+                "1necks1",
+                "1pulsed1",
+                "2like2",
+                "1sails1"
+            ],
+            "Onomatopoeia - the sound of the frogs by itself is threatening to the speaker": [
+                "1slap1",
+                "1plop1"
+            ],
+            "The speaker finds the frogs threatening": [
+                "1obscene1",
+                "1threats1"
+            ],
+            "A disgusting and ugly image to an adult": [
+                "1blunt1",
+                "1heads1",
+                "1farting1"
+            ],
+            "This triplet of verbs is in direct contrast to the speaker's earlier interest in frogs, which shows a loss of childhood innocence": [
+                "1sickened1",
+                "9,9",
+                "1turned1",
+                "9and9",
+                "1ran1"
+            ],
+            "These verbs present the frogs as big, powerful and disgusting, showing a transfer of power from the speaker to them": [
+                "1great1",
+                "1slime1",
+                "1kings1"
+            ],
+            "He feels the spawn would kidnap him, when he previously kidnapped them": [
+                "16the16",
+                "1spawn1",
+                "3would3",
+                "1clutch1",
+                "2it2",
+                "14.14"
+            ],
+            "There are more than one that would be trying to clutch him": [
+                "1spawn1"
+            ]
+        },
         "centered": false
     },
     "Hawk Roosting": {
