@@ -2975,11 +2975,304 @@
         "centered": false
     },
     "Hawk Roosting": {
-        "convertedPoem": "1I1 1sit1 1in1 1the1 1top1 1of1 2the2 1wood1|+|1,1 1my1 1eyes1 1closed1|+|1.1\n1Inaction1|+|2,2 1no1 1falsifying1 1dream1\n1Between1 2my2 1hooked1 1head1 1and1 2hooked2 1feet1|+|1:1\n1Or1 2in2 1sleep1 1rehearse1 1perfect1 1kills1 2and2 1eat1|+|2.2\n11\n1The1 1convinence1 2of2 3the3 1high1 1trees!1\n2The2 1air's1 1buoyancy1 3and3 4the4 1sun's1 1ray1\n1Are1 3of3 1advantage1 1to1 1me1|+|1;1\n1And1 5the5 1earth's1 1face1 1upwards1 1for1 3my3 1inspection1|+|3.3\n22\n1My1 2feet2 1are1 1locked1 1upon1 6the6 1rough1 1bark1|+|4.4\n1It1 1took1 7the7 1whole1 4of4 1Creation1\n1To1 1produce1 4my4 1each1 1foot1|+|3,3 5my5 2each2 1feather1|+|2:2\n1Now1 2I2 1hold1 2Creation2 3in3 6my6 2foot2\n33\n2Or2 1fly1 1up1|+|4,4 4and4 1revolve1 1it1 1all1 1slowly1 1-1\n3I3 1kill1 1where1 4I4 1please1 1because1 2it2 1is1 2all2 1mine1|+|5.5\n1There1 2is2 2no2 1sophistry1 4in4 7my7 1body1|+|3:3\n2My2 1manners1 2are2 1tearing1 1off1 1heads1 2-2\n44\n3The3 1allotment1 5of5 1death1|+|6.6\n1For1 8the8 1one1 1path1 6of6 8my8 1flight1 3is3 1direct1\n1Through1 9the9 1bones1 7of7 10the10 1living1|+|7.7\n1No1 1arguments1 1assert1 9my9 1right1|+|4:4\n55\n4The4 1sun1 4is4 1behind1 2me2|+|8.8\n1Nothing1 1has1 1changed1 1since1 5I5 1began1|+|9.9\n3My3 1eye1 2has2 1permitted1 3no3 1change1|+|10.10\n6I6 1am1 1going1 2to2 1keep1 1things1 1like1 1this1|+|11.11",
-        "wordCount": 167,
+        "convertedPoem": "1I1 1sit1 1in1 1the1 1top1 1of1 2the2 1wood1|+|1,1 1my1 1eyes1 1closed1|+|1.1\n1Inaction1|+|2,2 1no1 1falsifying1 1dream1\n1Between1 2my2 1hooked1 1head1 1and1 2hooked2 1feet1|+|1:1\n1Or1 2in2 1sleep1 1rehearse1 1perfect1 1kills1 2and2 1eat1|+|2.2\n11\n1The1 1convenience1 2of2 3the3 1high1 1trees!1\n2The2 1air's1 1buoyancy1 3and3 4the4 1sun's1 1ray1\n1Are1 3of3 1advantage1 1to1 1me1|+|1;1\n1And1 5the5 1earth's1 1face1 1upward1 1for1 3my3 1inspection1|+|3.3\n22\n1My1 2feet2 1are1 1locked1 1upon1 6the6 1rough1 1bark1|+|4.4\n1It1 1took1 7the7 1whole1 4of4 1Creation1\n1To1 1produce1 4my4 1foot1|+|3,3 5my5 1each1 1feather1|+|2:2\n1Now1 2I2 1hold1 2Creation2 3in3 6my6 2foot2\n33\n2Or2 1fly1 1up1|+|4,4 4and4 1revolve1 1it1 1all1 1slowly1 1-1\n3I3 1kill1 1where1 4I4 1please1 1because1 2it2 1is1 2all2 1mine1|+|5.5\n1There1 2is2 2no2 1sophistry1 4in4 7my7 1body1|+|3:3\n2My2 1manners1 2are2 1tearing1 1off1 1heads1 2-2\n44\n3The3 1allotment1 5of5 1death1|+|6.6\n1For1 8the8 1one1 1path1 6of6 8my8 1flight1 3is3 1direct1\n1Through1 9the9 1bones1 7of7 10the10 1living1|+|7.7\n1No1 1arguments1 1assert1 9my9 1right1|+|4:4\n55\n4The4 1sun1 4is4 1behind1 2me2|+|8.8\n1Nothing1 1has1 1changed1 1since1 5I5 1began1|+|9.9\n3My3 1eye1 2has2 1permitted1 3no3 1change1|+|10.10\n6I6 1am1 1going1 2to2 1keep1 1things1 1like1 1this1|+|11.11",
+        "wordCount": 166,
         "author": "Ted Hughes",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1Inaction1",
+                "2,2",
+                "1no1",
+                "1falsifying1",
+                "1dream1"
+            ],
+            [
+                "2in2",
+                "1sleep1",
+                "1rehearse1",
+                "1perfect1",
+                "1kills1",
+                "2and2",
+                "1eat1",
+                "2.2"
+            ],
+            [
+                "1earth's1",
+                "1face1",
+                "1upward1",
+                "1for1",
+                "3my3",
+                "1inspection1"
+            ],
+            [
+                "1whole1",
+                "4of4",
+                "1Creation1"
+            ],
+            [
+                "2I2",
+                "1hold1",
+                "2Creation2",
+                "3in3",
+                "6my6",
+                "2foot2"
+            ],
+            [
+                "3I3",
+                "1kill1",
+                "1where1",
+                "4I4",
+                "1please1",
+                "1because1",
+                "2it2",
+                "1is1",
+                "2all2",
+                "1mine1",
+                "5.5"
+            ],
+            [
+                "2no2",
+                "1sophistry1",
+                "4in4",
+                "7my7",
+                "1body1"
+            ],
+            [
+                "1tearing1",
+                "1off1",
+                "1heads1"
+            ],
+            [
+                "1allotment1",
+                "5of5",
+                "1death1",
+                "6.6"
+            ],
+            [
+                "8the8",
+                "1one1",
+                "1path1",
+                "6of6",
+                "8my8",
+                "1flight1",
+                "3is3",
+                "1direct1",
+                "1Through1",
+                "9the9",
+                "1bones1",
+                "7of7",
+                "10the10",
+                "1living1",
+                "7.7"
+            ],
+            [
+                "3My3",
+                "1eye1",
+                "2has2",
+                "1permitted1",
+                "3no3",
+                "1change1",
+                "10.10"
+            ],
+            [
+                "6I6",
+                "1am1",
+                "1going1",
+                "2to2",
+                "1keep1",
+                "1things1",
+                "1like1",
+                "1this1",
+                "11.11"
+            ]
+        ],
+        "notes": {
+            "The hawk has not allowed any challengers to arrive - it is comfortable in it's current environment": [],
+            "First person pronouns show that the speaker is a hawk": [
+                "1I1",
+                "1me1",
+                "1My1",
+                "4my4",
+                "5my5",
+                "6my6",
+                "3I3",
+                "4I4",
+                "1mine1",
+                "2My2",
+                "8my8",
+                "9my9",
+                "2me2",
+                "3My3",
+                "6I6"
+            ],
+            "Representative of the hawk's position in the food chain - at the top": [
+                "1top1",
+                "1of1",
+                "2the2",
+                "1wood1"
+            ],
+            "The hawk feels no caution, nothing scares it": [
+                "1my1",
+                "1eyes1",
+                "1closed1"
+            ],
+            "The hawk has no predators, so can switch off and sleep without fear of being eaten": [
+                "1Inaction1"
+            ],
+            "Other animals can only dream of resting easy, but this is reality for the mighty hawk": [
+                "1no1",
+                "1falsifying1",
+                "1dream1"
+            ],
+            "Repetition of 'hooked' shows that all of the hawk's body is deadly": [
+                "1hooked1",
+                "1head1",
+                "1and1",
+                "2hooked2",
+                "1feet1"
+            ],
+            "All the hawk can think about is killing, it only dreams of death and violence": [
+                "2in2",
+                "1sleep1",
+                "1rehearse1",
+                "1perfect1",
+                "1kills1",
+                "2and2",
+                "1eat1"
+            ],
+            "The hawk believes that the world was designed for them": [
+                "1convenience1"
+            ],
+            "The hawk believes that these aspects of nature were made intentionally to aid it": [
+                "1air's1",
+                "1buoyancy1",
+                "3and3",
+                "4the4",
+                "1sun's1",
+                "1ray1"
+            ],
+            "The hawk is at the top, so the hawk can inspect everything by looking down": [
+                "1earth's1",
+                "1face1",
+                "1upward1",
+                "1for1",
+                "3my3",
+                "1inspection1"
+            ],
+            "Shows the hawks position in pecking order is secure, like its feet are secured on the branch": [
+                "1locked1",
+                "1upon1"
+            ],
+            "The hawk was created so well it can lock onto any bark, no matter how rough": [
+                "1locked1",
+                "1upon1",
+                "6the6",
+                "1rough1",
+                "1bark1"
+            ],
+            "So concentrated on its prey it can ignore the roughness of the bark": [
+                "1rough1",
+                "1bark1"
+            ],
+            "The hawk believes that it was God's finest creation, just as humans do": [
+                "1whole1",
+                "4of4",
+                "1Creation1"
+            ],
+            "The hawk believes that it is very powerful, important, and valuable": [
+                "4my4",
+                "1foot1",
+                "3,3",
+                "5my5",
+                "1each1",
+                "1feather1"
+            ],
+            "The hawk is arrogant in believing it is more powerful than God": [
+                "2I2",
+                "1hold1",
+                "2Creation2",
+                "3in3",
+                "6my6",
+                "2foot2"
+            ],
+            "A hawk circles in the air to spot its prey": [
+                "1revolve1",
+                "1it1",
+                "1all1",
+                "1slowly1"
+            ],
+            "The adverb 'slowly' shows the hawks power and control": [
+                "1slowly1"
+            ],
+            "So powerful it is above diplomacy and politics": [
+                "2no2",
+                "1sophistry1"
+            ],
+            "The hawk doesn't negotiate, it kills to get what it wants": [
+                "1manners1",
+                "2are2",
+                "1tearing1",
+                "1off1",
+                "1heads1"
+            ],
+            "The hawk chooses who lives and dies, making it comparable to God": [
+                "1allotment1",
+                "5of5",
+                "1death1"
+            ],
+            "May refer to the idea that the hawk feels it has been allotted this place, and all food is his": [
+                "1allotment1"
+            ],
+            "Shows that the hawk can kill with ease, it doesn't miss and anything it intends to kill dies": [
+                "1direct1",
+                "1Through1",
+                "9the9",
+                "1bones1",
+                "7of7",
+                "10the10",
+                "1living1"
+            ],
+            "The hawk has no opposition, and can kill any potential challengers": [
+                "1No1",
+                "1arguments1",
+                "1assert1",
+                "9my9",
+                "1right1",
+                "4:4"
+            ],
+            "Reinforces the idea that the hawk is always at the top, all animals must look up to see it, so it always appears to have the sun behind it": [
+                "1sun1",
+                "4is4",
+                "1behind1",
+                "2me2"
+            ],
+            "Suggests that the hawk has been in power for a long time": [
+                "1since1",
+                "5I5",
+                "1began1"
+            ],
+            "The hawk has not evolved as it believes it is perfect": [
+                "1permitted1",
+                "3no3",
+                "1change1"
+            ],
+            "The hawk is so powerful it dictates the terms of its environment": [
+                "1permitted1",
+                "3no3",
+                "1change1"
+            ],
+            "The hawk likes its power, so doesn't see any need for change": [
+                "6I6",
+                "1am1",
+                "1going1",
+                "2to2",
+                "1keep1",
+                "1things1",
+                "1like1",
+                "1this1",
+                "11.11"
+            ]
+        },
         "centered": false
     },
     "To Autumn": {
