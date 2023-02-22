@@ -175,12 +175,10 @@ select:hover {
 }
 
 
-#__credit__ {
+.credit {
     position: fixed;
     bottom: 0;
     font-size: 1.5vh;
-    z-index: 1;
-    text-align: center;
     color: var(--credit-color);
 }
 
