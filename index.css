@@ -43,7 +43,10 @@ h1 {
     font-family: var(--font-family);
 }
 
-input, select {
+
+
+.letter_input {
+    width: 2.5vh;
     border: none;
     resize: none;
     outline: none;
@@ -51,16 +54,8 @@ input, select {
     padding: 0;
     margin: 0;
     color: var(--primary-color);
-}
-
-input {
     color: orange;
     background-color: transparent;
-}
-
-.letter_input {
-    width: 2.5vh;
-    font-size: var(--variable-font-size);
 }
 
 #__range_slider_container__ {
@@ -83,6 +78,11 @@ select {
     border-radius: 5px;
     font-family: var(--font-family);
     background-color: var(--secondary-background) rgb(256, 256, 256, .1);
+    color: var(--primary-color);
+}
+
+option {
+    color: var(--primary-background);
 }
 
 select:hover {
