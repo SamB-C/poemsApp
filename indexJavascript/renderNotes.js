@@ -1,6 +1,7 @@
 import { GET_ELEMENT, NOTE_REMOVAL_DELAY, UNDERLINE_COLORS } from "./constantsAndTypes.js";
 import { state } from "./index.js";
 import { getAllWordSectionsInPoem } from "./utilities.js";
+let numberOfDisplayedNotes = 0;
 export function initialiseNotesForPoem() {
     const currentPoemContent = state.poemData[state.currentPoemName].convertedPoem;
     const allWordSectionsInPoem = getAllWordSectionsInPoem(currentPoemContent);
@@ -47,6 +48,7 @@ function underlineNotes(notesToUnderline, wordSectionElement) {
             const colorNumber = UNDERLINE_COLORS.indexOf(color) + 1;
             const notesElement = GET_ELEMENT.getNotes();
             notesElement.insertAdjacentHTML('beforeend', `<p id="${noteText}" class="underline${colorNumber} ${color} noteTextIn noteText">${noteText}</p>`);
+            numberOfDisplayedNotes++;
         });
         wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, true, undefined);
     }, 500);
@@ -83,7 +85,11 @@ function unUnderlineNotes(notesToUnderline, wordSectionElement, removeNotes, tim
             });
         });
         if (removeNotes) {
-            showNotesInfo();
+            setTimeout(() => {
+                if (getNumberOfDisplayedNotes() === 0) {
+                    showNotesInfo();
+                }
+            }, NOTE_REMOVAL_DELAY + 2000);
             removalNumber[0]++;
             const noteTextElement = document.getElementById(noteText);
             noteTextElement.id = removalNumber.toString();
@@ -93,6 +99,7 @@ function unUnderlineNotes(notesToUnderline, wordSectionElement, removeNotes, tim
             setTimeout(() => {
                 const elementToRemove = document.getElementById(numberCopy.toString());
                 elementToRemove.remove();
+                numberOfDisplayedNotes--;
             }, NOTE_REMOVAL_DELAY);
             wordSectionElement.onpointerout = () => unUnderlineNotes(notesToUnderline, wordSectionElement, false, undefined);
         }
@@ -116,11 +123,14 @@ function getAssociatedNotes(wordSection) {
 }
 function hideNotesInfo() {
     const notesInfo = GET_ELEMENT.getNotesInfo();
-    notesInfo.classList.remove('noteTextIn');
-    notesInfo.classList.add('noteTextOut');
+    notesInfo.classList.remove('noteInfoIn');
+    notesInfo.classList.add('noteInfoOut');
 }
 function showNotesInfo() {
     const notesInfo = GET_ELEMENT.getNotesInfo();
-    notesInfo.classList.remove('noteTextOut');
-    notesInfo.classList.add('noteTextIn');
+    notesInfo.classList.remove('noteInfoOut');
+    notesInfo.classList.add('noteInfoIn');
+}
+function getNumberOfDisplayedNotes() {
+    return numberOfDisplayedNotes;
 }

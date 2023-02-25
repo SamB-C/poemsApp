@@ -22,7 +22,7 @@ export type NOTES_INFO_TYPE = HTMLParagraphElement;
 
 export type NOTE_TYPE = HTMLParagraphElement;
 
-export const NOTE_REMOVAL_DELAY = 10000;
+export const NOTE_REMOVAL_DELAY = 1000;
 
 export type UnderlineColorType = 'red' | 'blue' | 'green'
 export const UNDERLINE_COLORS: Array<UnderlineColorType> = ['red', 'blue', 'green'];

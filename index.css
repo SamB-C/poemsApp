@@ -253,6 +253,19 @@ select:hover {
     margin: 0;
 }
 
+
+.noteInfoIn {
+    animation: slidein 1s forwards;
+}
+
+.noteInfoOut {
+    animation: slideout 1s forwards;
+}
+
+#__notes_info__ {
+    margin: 0.7vh 0
+}
+
 .noteTextIn {
     animation: slidein 1s forwards;
 }
