@@ -45,17 +45,17 @@ h1 {
 
 input, select {
     border: none;
-    background-color: transparent;
     resize: none;
     outline: none;
     font-size: var(--variable-font-size);
     padding: 0;
     margin: 0;
-    color: var(--primary-color)
+    color: var(--primary-color);
 }
 
 input {
     color: orange;
+    background-color: transparent;
 }
 
 .letter_input {
@@ -82,6 +82,7 @@ select {
     border: 1px solid transparent;
     border-radius: 5px;
     font-family: var(--font-family);
+    background-color: var(--secondary-background) rgb(256, 256, 256, .1);
 }
 
 select:hover {
