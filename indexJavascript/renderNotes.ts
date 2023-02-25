@@ -97,6 +97,7 @@ function unUnderlineNotes(notesToUnderline: AssociatedNotesType, wordSectionElem
                 if (getNumberOfDisplayedNotes() === 0) {
                     showNotesInfo();
                 }
+            }, NOTE_REMOVAL_DELAY + 2000)
             removalNumber[0]++;
             const noteTextElement = document.getElementById(noteText) as NOTE_TYPE;
             noteTextElement.id = removalNumber.toString();
