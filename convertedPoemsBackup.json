@@ -2548,27 +2548,1119 @@
         "centered": false
     },
     "Death of a Naturalist": {
-        "convertedPoem": "1All1 1year1 1round1 1the1 1flax-dam1 1festered1 1in1 2the2 1heart1\n1Of1 3the3 1townland1|+|1;1 1green1 1and1 1heavy1 1headed1\n1Flax1 1had1 1rotted1 1there1|+|1,1 1weighted1 1down1 1by1 1huge1 1sods1|+|1.1\n1Daily1 1it1 1sweltered1 2in2 4the4 1punishing1 1sun1|+|2.2\n1Bubbles1 1gargled1 1delicately1|+|2,2 1bluebottles1\n1Wove1 1a1 1strong1 1gauze1 1of1 1sound1 1around1 5the5 1smell1|+|3.3\n1There1 1were1 1dragon-flies1|+|3,3 1spotted1 1butterflies1|+|4,4\n1But1 1best1 2of2 1all1 1was1 6the6 1warm1 1thick1 1slobber1\n2Of2 1frogspawn1 1that1 1grew1 1like1 1clotted1 1water1\n1In1 7the7 1shade1 3of3 8the8 1banks1|+|4.4 1Here1|+|5,5 1every1 1spring1\n1I1 1would1 1fill1 1jampotfuls1 4of4 9the9 1jellied1\n1Specks1 1to1 1range1 1on1 1window-sills1 1at1 1home1|+|6,6\n1On1 1sheleves1 2at2 1school1|+|7,7 2and2 1wait1 3and3 1watch1 1until1\n1The1 1fattening1 1dots1 1burst1 1into1 1nimble-1\n1swimming1 1tadpoles1|+|5.5 1Miss1 1Walls1 2would2 1tell1 1us1 1how1\n2The2 1daddy1 1frog1 2was2 1called1 2a2 1bullfrog1\n1And1 2how2 1he1 1croaked1 4and4 3how3 10the10 1mammy1 2frog2\n1Laid1 1hundreds1 5of5 1little1 1eggs1 5and5 1this1 3was3\n1Frogspawn1|+|6.6 1You1 1could1 2tell2 11the11 1weather1 2by2 1frogs1 1too1\n1For1 1they1 2were2 1yellow1 3in3 12the12 2sun2 6and6 1brown1\n2In2 1rain1|+|7.7\n11\n22 33 44 55 1Then1 1one1 1hot1 1day1 1when1 1fields1 3were3 1rank1\n1With1 1cowdung1 4in4 13the13 1grass1 7and7 1angry1 2frogs2\n1Invaded1 14the14 2flax-dam2|+|2;2 2I2 1ducked1 1through1 15the15 1hedges1\n1To1 3a3 1coarse1 1croaking1 2that2 3I3 2had2 1not1 1heard1\n1Before1|+|8.8 3The3 1air1 4was4 1thich1 1with1 4a4 1bass1 1chorus1|+|9.9\n1Right1 2down2 16the16 1dam1 1gross-bellied1 3frogs3 4were4 1cocked1\n2On2 2sods2|+|3;3 1their1 1loose1 1necks1 1pulsed1 2like2 1sails1|+|10.10 1Some1 1hopped1|+|1:1\n4The4 1slap1 8and8 1plop1 5were5 1obscene1 1threats1|+|11.11 2Some2 1sat1\n1Poised1 3like3 1mud1 1grenades1|+|8,8 2their2 1blunt1 1heads1 1farting1|+|12.12\n4I4 1sickened1|+|9,9 1turned1 9and9 1ran1|+|13.13 5The5 1great1 1slime1 1kings1\n1Were1 1gathered1 2there2 1for1 1vengance1 10and10 5I5 1knew1\n1That1 1if1 6I6 1dipped1 1my1 1hand1 17the17 1spawn1 3would3 1clutch1 2it2|+|14.14",
-        "wordCount": 261,
+        "convertedPoem": "1All1 1year1 1the1 1flax-dam1 1festered1 1in1 2the2 1heart1\n1Of1 3the3 1townland1|+|1;1 1green1 1and1 1heavy1 1headed1\n1Flax1 1had1 1rotted1 1there1|+|1,1 1weighted1 1down1 1by1 1huge1 1sods1|+|1.1\n1Daily1 1it1 1sweltered1 2in2 4the4 1punishing1 1sun1|+|2.2\n1Bubbles1 1gargled1 1delicately1|+|2,2 1bluebottles1\n1Wove1 1a1 1strong1 1gauze1 1of1 1sound1 1around1 5the5 1smell1|+|3.3\n1There1 1were1 1dragon-flies1|+|3,3 1spotted1 1butterflies1|+|4,4\n1But1 1best1 2of2 1all1 1was1 6the6 1warm1 1thick1 1slobber1\n2Of2 1frogspawn1 1that1 1grew1 1like1 1clotted1 1water1\n1In1 7the7 1shade1 3of3 8the8 1banks1|+|4.4 1Here1|+|5,5 1every1 1spring1\n1I1 1would1 1fill1 1jampotfuls1 4of4 9the9 1jellied1\n1Specks1 1to1 1range1 1on1 1window-sills1 1at1 1home1|+|6,6\n1On1 1sheleves1 2at2 1school1|+|7,7 2and2 1wait1 3and3 1watch1 1until1\n1The1 1fattening1 1dots1 1burst1 1into1 1nimble-1\n1Swimming1 1tadpoles1|+|5.5 1Miss1 1Walls1 2would2 1tell1 1us1 1how1\n2The2 1daddy1 1frog1 2was2 1called1 2a2 1bullfrog1\n1And1 2how2 1he1 1croaked1 4and4 3how3 10the10 1mammy1 2frog2\n1Laid1 1hundreds1 5of5 1little1 1eggs1 5and5 1this1 3was3\n1Frogspawn1|+|6.6 1You1 1could1 2tell2 11the11 1weather1 2by2 1frogs1 1too1\n1For1 1they1 2were2 1yellow1 3in3 12the12 2sun2 6and6 1brown1\n2In2 1rain1|+|7.7\n11\n22 33 44 55 1Then1 1one1 1hot1 1day1 1when1 1fields1 3were3 1rank1\n1With1 1cowdung1 4in4 13the13 1grass1 7and7 1angry1 2frogs2\n1Invaded1 14the14 2flax-dam2|+|2;2 2I2 1ducked1 1through1 1hedges1\n1To1 3a3 1coarse1 1croaking1 2that2 3I3 2had2 1not1 1heard1\n1Before1|+|8.8 3The3 1air1 4was4 2thick2 1with1 4a4 1bass1 1chorus1|+|9.9\n1Right1 2down2 15the15 1dam1 1gross-bellied1 3frogs3 4were4 1cocked1\n2On2 2sods2|+|3;3 1their1 1loose1 1necks1 1pulsed1 2like2 1sails1|+|10.10 1Some1 1hopped1|+|1:1\n4The4 1slap1 8and8 1plop1 5were5 1obscene1 1threats1|+|11.11 2Some2 1sat1\n1Poised1 3like3 1mud1 1grenades1|+|8,8 2their2 1blunt1 1heads1 1farting1|+|12.12\n4I4 1sickened1|+|9,9 1turned1 9and9 1ran1|+|13.13 5The5 1great1 1slime1 1kings1\n1Were1 1gathered1 2there2 1for1 1vengance1 10and10 5I5 1knew1\n1That1 1if1 6I6 1dipped1 1my1 1hand1 16the16 1spawn1 3would3 1clutch1 2it2|+|14.14",
+        "wordCount": 259,
         "author": "Seamus Heaney",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1flax-dam1",
+                "1festered1"
+            ],
+            [
+                "1huge1",
+                "1sods1"
+            ],
+            [
+                "1sweltered1",
+                "2in2",
+                "4the4",
+                "1punishing1",
+                "1sun1"
+            ],
+            [
+                "1Bubbles1",
+                "1gargled1",
+                "1delicately1"
+            ],
+            [
+                "1best1",
+                "2of2",
+                "1all1",
+                "1was1",
+                "6the6",
+                "1warm1",
+                "1thick1",
+                "1slobber1",
+                "2Of2",
+                "1frogspawn1"
+            ],
+            [
+                "1clotted1",
+                "1water1"
+            ],
+            [
+                "1jellied1",
+                "1Specks1"
+            ],
+            [
+                "1nimble-1",
+                "1Swimming1",
+                "1tadpoles1"
+            ],
+            [
+                "1when1",
+                "1fields1",
+                "3were3",
+                "1rank1"
+            ],
+            [
+                "1angry1",
+                "2frogs2",
+                "1Invaded1",
+                "14the14",
+                "2flax-dam2",
+                "2;2"
+            ],
+            [
+                "1coarse1",
+                "1croaking1"
+            ],
+            [
+                "3I3",
+                "2had2",
+                "1not1",
+                "1heard1",
+                "1Before1"
+            ],
+            [
+                "1Right1",
+                "2down2",
+                "15the15",
+                "1dam1",
+                "1gross-bellied1",
+                "3frogs3",
+                "4were4",
+                "1cocked1",
+                "2On2",
+                "2sods2"
+            ],
+            [
+                "4The4",
+                "1slap1",
+                "8and8",
+                "1plop1",
+                "5were5",
+                "1obscene1",
+                "1threats1"
+            ],
+            [
+                "1Poised1",
+                "3like3",
+                "1mud1",
+                "1grenades1"
+            ],
+            [
+                "1blunt1",
+                "1heads1",
+                "1farting1",
+                "12.12"
+            ],
+            [
+                "4I4",
+                "1sickened1",
+                "9,9",
+                "1turned1",
+                "9and9",
+                "1ran1"
+            ],
+            [
+                "1great1",
+                "1slime1",
+                "1kings1"
+            ],
+            [
+                "1gathered1",
+                "2there2",
+                "1for1",
+                "1vengance1"
+            ],
+            [
+                "16the16",
+                "1spawn1",
+                "3would3",
+                "1clutch1",
+                "2it2",
+                "14.14"
+            ]
+        ],
+        "notes": {
+            "A plant that is grown and collected": [
+                "1flax-dam1"
+            ],
+            "Shows that it is a place of decay": [
+                "1festered1",
+                "1Flax1",
+                "1had1",
+                "1rotted1",
+                "1there1"
+            ],
+            "The speaker explored deep into the countryside and nature in their youth": [
+                "1heart1"
+            ],
+            "As a child, the speaker enjoyed experiences that an adult who has lost their childhood innocence would not": [
+                "1sweltered1",
+                "2in2",
+                "4the4",
+                "1punishing1",
+                "1sun1"
+            ],
+            "Oxymoron, gargling can't be delicate, shows the seeming naivety of young children who enjoy these things": [
+                "1Bubbles1",
+                "1gargled1",
+                "1delicately1"
+            ],
+            "A type of fly, but the name bluebottles makes it seem more interesting than a regular fly": [
+                "1bluebottles1"
+            ],
+            "This sentence represents childhood fascination of nature": [
+                "1There1",
+                "1were1",
+                "1dragon-flies1",
+                "3,3",
+                "1spotted1",
+                "1butterflies1",
+                "4,4",
+                "1But1",
+                "1best1",
+                "2of2",
+                "1all1",
+                "1was1",
+                "6the6",
+                "1warm1",
+                "1thick1",
+                "1slobber1",
+                "2Of2",
+                "1frogspawn1",
+                "1that1",
+                "1grew1",
+                "1like1",
+                "1clotted1",
+                "1water1",
+                "1In1",
+                "7the7",
+                "1shade1",
+                "3of3",
+                "8the8",
+                "1banks1",
+                "4.4"
+            ],
+            "The adjectives seem disgusting to an adult, but the superlative 'best' shows that it was amazing as a child ": [
+                "1best1",
+                "2of2",
+                "1all1",
+                "1warm1",
+                "1thick1",
+                "1slobber1"
+            ],
+            "Simile showing the amount of frogspawn there was": [
+                "1grew1",
+                "1like1",
+                "1clotted1",
+                "1water1"
+            ],
+            "Shows that this was an interest of the speaker's over many years": [
+                "1Here1",
+                "5,5",
+                "1every1",
+                "1spring1"
+            ],
+            "Shows that this is one of the Speaker's memories": [
+                "1I1",
+                "1would1",
+                "1fill1"
+            ],
+            "Shows the age of the speaker in the memory, they didn't know that there were eggs": [
+                "1jellied1",
+                "1Specks1"
+            ],
+            "A memory of a science lesson": [
+                "1On1",
+                "1sheleves1",
+                "2at2",
+                "1school1",
+                "7,7",
+                "2and2",
+                "1wait1",
+                "3and3",
+                "1watch1",
+                "1until1",
+                "1The1",
+                "1fattening1",
+                "1dots1",
+                "1burst1",
+                "1into1",
+                "1nimble-1",
+                "1Swimming1",
+                "1tadpoles1",
+                "5.5"
+            ],
+            "A very detailed memory, showing that this topic was of great fascination to the speaker as a child": [
+                "1Miss1",
+                "1Walls1",
+                "2would2",
+                "1tell1",
+                "1us1",
+                "1how1",
+                "2The2",
+                "1daddy1",
+                "1frog1",
+                "2was2",
+                "1called1",
+                "2a2",
+                "1bullfrog1",
+                "1And1",
+                "2how2",
+                "1he1",
+                "1croaked1",
+                "4and4",
+                "3how3",
+                "10the10",
+                "1mammy1",
+                "2frog2",
+                "1Laid1",
+                "1hundreds1",
+                "5of5",
+                "1little1",
+                "1eggs1",
+                "5and5",
+                "1this1",
+                "3was3",
+                "1Frogspawn1",
+                "6.6",
+                "1You1",
+                "1could1",
+                "2tell2",
+                "11the11",
+                "1weather1",
+                "2by2",
+                "1frogs1",
+                "1too1",
+                "1For1",
+                "1they1",
+                "2were2",
+                "1yellow1",
+                "3in3",
+                "12the12",
+                "2sun2",
+                "6and6",
+                "1brown1",
+                "2In2",
+                "1rain1",
+                "7.7"
+            ],
+            "Enjambment shows childhood excitement": [
+                "1how1",
+                "1bullfrog1",
+                "2frog2",
+                "3was3",
+                "1too1",
+                "1brown1"
+            ],
+            "Irish dialect": [
+                "1mammy1",
+                "1dam1",
+                "1cocked1",
+                "2On2",
+                "2sods2"
+            ],
+            "Shows the passing of time from childhood to adulthood": [
+                "1Then1",
+                "1one1",
+                "1hot1",
+                "1day1"
+            ],
+            "Painting a negative and unpleasant sensory image, compared to when the speaker was a child": [
+                "1rank1",
+                "1With1",
+                "1cowdung1"
+            ],
+            "Semantic field for war and violence": [
+                "1angry1",
+                "2frogs2",
+                "1Invaded1",
+                "1coarse1",
+                "1bass1",
+                "1chorus1",
+                "1cocked1",
+                "1pulsed1",
+                "1slap1",
+                "1plop1",
+                "1obscene1",
+                "1threats1",
+                "1grenades1",
+                "1blunt1",
+                "1vengance1"
+            ],
+            "Shows that the speaker has grown up as they now need to duck to get to their old favourite places": [
+                "2I2",
+                "1ducked1",
+                "1through1",
+                "1hedges1"
+            ],
+            "The frogs have grown up and their voices have broken like men, it may seem threatening": [
+                "1coarse1",
+                "1croaking1"
+            ],
+            "Shows how the speaker is seeing the natural world in a new light now they are grown up": [
+                "3I3",
+                "2had2",
+                "1not1",
+                "1heard1",
+                "1Before1"
+            ],
+            "Shows that there are lots of frogs, which would be intimidating": [
+                "1air1",
+                "4was4",
+                "2thick2",
+                "1with1",
+                "4a4",
+                "1bass1",
+                "1chorus1"
+            ],
+            "Like a military marching band": [
+                "1bass1",
+                "1chorus1"
+            ],
+            "Now seem disgusting to the speaker": [
+                "1gross-bellied1",
+                "3frogs3"
+            ],
+            "Poised, ready to attack": [
+                "1cocked1"
+            ],
+            "Even the frogs breathing could be seen as threatening": [
+                "1loose1",
+                "1necks1",
+                "1pulsed1",
+                "2like2",
+                "1sails1"
+            ],
+            "Onomatopoeia - the sound of the frogs by itself is threatening to the speaker": [
+                "1slap1",
+                "1plop1"
+            ],
+            "The speaker finds the frogs threatening": [
+                "1obscene1",
+                "1threats1"
+            ],
+            "A disgusting and ugly image to an adult": [
+                "1blunt1",
+                "1heads1",
+                "1farting1"
+            ],
+            "This triplet of verbs is in direct contrast to the speaker's earlier interest in frogs, which shows a loss of childhood innocence": [
+                "1sickened1",
+                "9,9",
+                "1turned1",
+                "9and9",
+                "1ran1"
+            ],
+            "These verbs present the frogs as big, powerful and disgusting, showing a transfer of power from the speaker to them": [
+                "1great1",
+                "1slime1",
+                "1kings1"
+            ],
+            "He feels the spawn would kidnap him, when he previously kidnapped them": [
+                "16the16",
+                "1spawn1",
+                "3would3",
+                "1clutch1",
+                "2it2",
+                "14.14"
+            ],
+            "There are more than one that would be trying to clutch him": [
+                "1spawn1"
+            ]
+        },
         "centered": false
     },
     "Hawk Roosting": {
-        "convertedPoem": "1I1 1sit1 1in1 1the1 1top1 1of1 2the2 1wood1|+|1,1 1my1 1eyes1 1closed1|+|1.1\n1Inaction1|+|2,2 1no1 1falsifying1 1dream1\n1Between1 2my2 1hooked1 1head1 1and1 2hooked2 1feet1|+|1:1\n1Or1 2in2 1sleep1 1rehearse1 1perfect1 1kills1 2and2 1eat1|+|2.2\n11\n1The1 1convinence1 2of2 3the3 1high1 1trees!1\n2The2 1air's1 1buoyancy1 3and3 4the4 1sun's1 1ray1\n1Are1 3of3 1advantage1 1to1 1me1|+|1;1\n1And1 5the5 1earth's1 1face1 1upwards1 1for1 3my3 1inspection1|+|3.3\n22\n1My1 2feet2 1are1 1locked1 1upon1 6the6 1rough1 1bark1|+|4.4\n1It1 1took1 7the7 1whole1 4of4 1Creation1\n1To1 1produce1 4my4 1each1 1foot1|+|3,3 5my5 2each2 1feather1|+|2:2\n1Now1 2I2 1hold1 2Creation2 3in3 6my6 2foot2\n33\n2Or2 1fly1 1up1|+|4,4 4and4 1revolve1 1it1 1all1 1slowly1 1-1\n3I3 1kill1 1where1 4I4 1please1 1because1 2it2 1is1 2all2 1mine1|+|5.5\n1There1 2is2 2no2 1sophistry1 4in4 7my7 1body1|+|3:3\n2My2 1manners1 2are2 1tearing1 1off1 1heads1 2-2\n44\n3The3 1allotment1 5of5 1death1|+|6.6\n1For1 8the8 1one1 1path1 6of6 8my8 1flight1 3is3 1direct1\n1Through1 9the9 1bones1 7of7 10the10 1living1|+|7.7\n1No1 1arguments1 1assert1 9my9 1right1|+|4:4\n55\n4The4 1sun1 4is4 1behind1 2me2|+|8.8\n1Nothing1 1has1 1changed1 1since1 5I5 1began1|+|9.9\n3My3 1eye1 2has2 1permitted1 3no3 1change1|+|10.10\n6I6 1am1 1going1 2to2 1keep1 1things1 1like1 1this1|+|11.11",
-        "wordCount": 167,
+        "convertedPoem": "1I1 1sit1 1in1 1the1 1top1 1of1 2the2 1wood1|+|1,1 1my1 1eyes1 1closed1|+|1.1\n1Inaction1|+|2,2 1no1 1falsifying1 1dream1\n1Between1 2my2 1hooked1 1head1 1and1 2hooked2 1feet1|+|1:1\n1Or1 2in2 1sleep1 1rehearse1 1perfect1 1kills1 2and2 1eat1|+|2.2\n11\n1The1 1convenience1 2of2 3the3 1high1 1trees!1\n2The2 1air's1 1buoyancy1 3and3 4the4 1sun's1 1ray1\n1Are1 3of3 1advantage1 1to1 1me1|+|1;1\n1And1 5the5 1earth's1 1face1 1upward1 1for1 3my3 1inspection1|+|3.3\n22\n1My1 2feet2 1are1 1locked1 1upon1 6the6 1rough1 1bark1|+|4.4\n1It1 1took1 7the7 1whole1 4of4 1Creation1\n1To1 1produce1 4my4 1foot1|+|3,3 5my5 1each1 1feather1|+|2:2\n1Now1 2I2 1hold1 2Creation2 3in3 6my6 2foot2\n33\n2Or2 1fly1 1up1|+|4,4 4and4 1revolve1 1it1 1all1 1slowly1 1-1\n3I3 1kill1 1where1 4I4 1please1 1because1 2it2 1is1 2all2 1mine1|+|5.5\n1There1 2is2 2no2 1sophistry1 4in4 7my7 1body1|+|3:3\n2My2 1manners1 2are2 1tearing1 1off1 1heads1 2-2\n44\n3The3 1allotment1 5of5 1death1|+|6.6\n1For1 8the8 1one1 1path1 6of6 8my8 1flight1 3is3 1direct1\n1Through1 9the9 1bones1 7of7 10the10 1living1|+|7.7\n1No1 1arguments1 1assert1 9my9 1right1|+|4:4\n55\n4The4 1sun1 4is4 1behind1 2me2|+|8.8\n1Nothing1 1has1 1changed1 1since1 5I5 1began1|+|9.9\n3My3 1eye1 2has2 1permitted1 3no3 1change1|+|10.10\n6I6 1am1 1going1 2to2 1keep1 1things1 1like1 1this1|+|11.11",
+        "wordCount": 166,
         "author": "Ted Hughes",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1Inaction1",
+                "2,2",
+                "1no1",
+                "1falsifying1",
+                "1dream1"
+            ],
+            [
+                "2in2",
+                "1sleep1",
+                "1rehearse1",
+                "1perfect1",
+                "1kills1",
+                "2and2",
+                "1eat1",
+                "2.2"
+            ],
+            [
+                "1earth's1",
+                "1face1",
+                "1upward1",
+                "1for1",
+                "3my3",
+                "1inspection1"
+            ],
+            [
+                "1whole1",
+                "4of4",
+                "1Creation1"
+            ],
+            [
+                "2I2",
+                "1hold1",
+                "2Creation2",
+                "3in3",
+                "6my6",
+                "2foot2"
+            ],
+            [
+                "3I3",
+                "1kill1",
+                "1where1",
+                "4I4",
+                "1please1",
+                "1because1",
+                "2it2",
+                "1is1",
+                "2all2",
+                "1mine1",
+                "5.5"
+            ],
+            [
+                "2no2",
+                "1sophistry1",
+                "4in4",
+                "7my7",
+                "1body1"
+            ],
+            [
+                "1tearing1",
+                "1off1",
+                "1heads1"
+            ],
+            [
+                "1allotment1",
+                "5of5",
+                "1death1",
+                "6.6"
+            ],
+            [
+                "8the8",
+                "1one1",
+                "1path1",
+                "6of6",
+                "8my8",
+                "1flight1",
+                "3is3",
+                "1direct1",
+                "1Through1",
+                "9the9",
+                "1bones1",
+                "7of7",
+                "10the10",
+                "1living1",
+                "7.7"
+            ],
+            [
+                "3My3",
+                "1eye1",
+                "2has2",
+                "1permitted1",
+                "3no3",
+                "1change1",
+                "10.10"
+            ],
+            [
+                "6I6",
+                "1am1",
+                "1going1",
+                "2to2",
+                "1keep1",
+                "1things1",
+                "1like1",
+                "1this1",
+                "11.11"
+            ]
+        ],
+        "notes": {
+            "The hawk has not allowed any challengers to arrive - it is comfortable in it's current environment": [],
+            "First person pronouns show that the speaker is a hawk": [
+                "1I1",
+                "1me1",
+                "1My1",
+                "4my4",
+                "5my5",
+                "6my6",
+                "3I3",
+                "4I4",
+                "1mine1",
+                "2My2",
+                "8my8",
+                "9my9",
+                "2me2",
+                "3My3",
+                "6I6"
+            ],
+            "Representative of the hawk's position in the food chain - at the top": [
+                "1top1",
+                "1of1",
+                "2the2",
+                "1wood1"
+            ],
+            "The hawk feels no caution, nothing scares it": [
+                "1my1",
+                "1eyes1",
+                "1closed1"
+            ],
+            "The hawk has no predators, so can switch off and sleep without fear of being eaten": [
+                "1Inaction1"
+            ],
+            "Other animals can only dream of resting easy, but this is reality for the mighty hawk": [
+                "1no1",
+                "1falsifying1",
+                "1dream1"
+            ],
+            "Repetition of 'hooked' shows that all of the hawk's body is deadly": [
+                "1hooked1",
+                "1head1",
+                "1and1",
+                "2hooked2",
+                "1feet1"
+            ],
+            "All the hawk can think about is killing, it only dreams of death and violence": [
+                "2in2",
+                "1sleep1",
+                "1rehearse1",
+                "1perfect1",
+                "1kills1",
+                "2and2",
+                "1eat1"
+            ],
+            "The hawk believes that the world was designed for them": [
+                "1convenience1"
+            ],
+            "The hawk believes that these aspects of nature were made intentionally to aid it": [
+                "1air's1",
+                "1buoyancy1",
+                "3and3",
+                "4the4",
+                "1sun's1",
+                "1ray1"
+            ],
+            "The hawk is at the top, so the hawk can inspect everything by looking down": [
+                "1earth's1",
+                "1face1",
+                "1upward1",
+                "1for1",
+                "3my3",
+                "1inspection1"
+            ],
+            "Shows the hawks position in pecking order is secure, like its feet are secured on the branch": [
+                "1locked1",
+                "1upon1"
+            ],
+            "The hawk was created so well it can lock onto any bark, no matter how rough": [
+                "1locked1",
+                "1upon1",
+                "6the6",
+                "1rough1",
+                "1bark1"
+            ],
+            "So concentrated on its prey it can ignore the roughness of the bark": [
+                "1rough1",
+                "1bark1"
+            ],
+            "The hawk believes that it was God's finest creation, just as humans do": [
+                "1whole1",
+                "4of4",
+                "1Creation1"
+            ],
+            "The hawk believes that it is very powerful, important, and valuable": [
+                "4my4",
+                "1foot1",
+                "3,3",
+                "5my5",
+                "1each1",
+                "1feather1"
+            ],
+            "The hawk is arrogant in believing it is more powerful than God": [
+                "2I2",
+                "1hold1",
+                "2Creation2",
+                "3in3",
+                "6my6",
+                "2foot2"
+            ],
+            "A hawk circles in the air to spot its prey": [
+                "1revolve1",
+                "1it1",
+                "1all1",
+                "1slowly1"
+            ],
+            "The adverb 'slowly' shows the hawks power and control": [
+                "1slowly1"
+            ],
+            "So powerful it is above diplomacy and politics": [
+                "2no2",
+                "1sophistry1"
+            ],
+            "The hawk doesn't negotiate, it kills to get what it wants": [
+                "1manners1",
+                "2are2",
+                "1tearing1",
+                "1off1",
+                "1heads1"
+            ],
+            "The hawk chooses who lives and dies, making it comparable to God": [
+                "1allotment1",
+                "5of5",
+                "1death1"
+            ],
+            "May refer to the idea that the hawk feels it has been allotted this place, and all food is his": [
+                "1allotment1"
+            ],
+            "Shows that the hawk can kill with ease, it doesn't miss and anything it intends to kill dies": [
+                "1direct1",
+                "1Through1",
+                "9the9",
+                "1bones1",
+                "7of7",
+                "10the10",
+                "1living1"
+            ],
+            "The hawk has no opposition, and can kill any potential challengers": [
+                "1No1",
+                "1arguments1",
+                "1assert1",
+                "9my9",
+                "1right1",
+                "4:4"
+            ],
+            "Reinforces the idea that the hawk is always at the top, all animals must look up to see it, so it always appears to have the sun behind it": [
+                "1sun1",
+                "4is4",
+                "1behind1",
+                "2me2"
+            ],
+            "Suggests that the hawk has been in power for a long time": [
+                "1since1",
+                "5I5",
+                "1began1"
+            ],
+            "The hawk has not evolved as it believes it is perfect": [
+                "1permitted1",
+                "3no3",
+                "1change1"
+            ],
+            "The hawk is so powerful it dictates the terms of its environment": [
+                "1permitted1",
+                "3no3",
+                "1change1"
+            ],
+            "The hawk likes its power, so doesn't see any need for change": [
+                "6I6",
+                "1am1",
+                "1going1",
+                "2to2",
+                "1keep1",
+                "1things1",
+                "1like1",
+                "1this1",
+                "11.11"
+            ]
+        },
         "centered": false
     },
     "To Autumn": {
-        "convertedPoem": "1Seasons1 1of1 1mist1 1and1 1mellow1 1fruitfulness!1\n11 22 1Close1 1bosom-friend1 2of2 1the1 1maturing1 1sun1|+|1;1\n1Conspiring1 1with1 1him1 1how1 1to1 1load1 2and2 1bless1\n33 44 1With1 1fruit1 2the2 1vines1 1that1 1round1 3the3 1thatch-eaves1 1run1|+|2;2\n1To1 1bend1 2with2 1apples1 4the4 1moss'd1 1cottage-trees1|+|1,1\n55 66 1And1 1fill1 1all1 2fruit2 3with3 1ripeness1 2to2 5the5 1core1|+|3;3\n77 88 99 1010 2To2 1swell1 6the6 1gourd1|+|2,2 3and3 1plump1 7the7 1hazel1 1shells1\n1111 1212 2With2 1a1 1sweet1 1kernel1|+|4;4 3to3 1set1 1budding1 1more1|+|3,3\n2And2 1still1 2more2|+|4,4 1later1 1flowers1 1for1 8the8 1bees1|+|5,5\n1Until1 1they1 1think1 1worm1 1days1 1will1 1never1 1cease1|+|6,6\n1313 1414 1515 1616 1For1 1Summer1 1has1 1o'erbrimmed1 1their1 1clammy1 1cells1|+|1.1\n1717\n1Who1 1hath1 1not1 1seen1 1thee1 1oft1 1amid1 1thy1 1store?1\n1818 1919 1Sometimes1 1whoever1 1seeks1 1abroad1 1may1 1find1\n1Thee1 1sitting1 1careless1 1on1 2a2 1granary1 1floor1|+|7,7\n2020 2121 1Thy1 1hair1 1soft-linted1 1by1 1winnowing1 1wind1|+|5;5\n1Or1 2on2 3a3 1half-reap'd1 1furrow1 1sound1 1asleep1|+|8,8\n2222 2323 1Drows'd1 4with4 9the9 1fume1 3of3 1poppies1|+|9,9 1while1 2thy2 1hook1\n2424 2525 2626 2727 1Spares1 10the10 1next1 1swath1 4and4 2all2 1its1 1twined1 2flowers2|+|6;6\n3And3 1sometimes1 1like1 4a4 1gleaner1 1thou1 1dost1 1keep1\n2828 2929 1Steady1 3thy3 1laden1 1head1 1across1 5a5 1brook1|+|7;7\n3030 3131 2Or2 2by2 6a6 1cyder-press1|+|10,10 5with5 1patient1 1look1|+|11,11\n3232 3333 3434 3535 1Thou1 1watchest1 11the11 1last1 1oozing1 1hours1 3by3 2hours2|+|2.2\n3636\n1Where1 1are1 12the12 1songs1 4of4 1Spring?1 1Ay1|+|12,12 1where1 2are2 1they?1\n3737 3838 1Think1 2not2 5of5 1them1|+|13,13 2thou2 1hast1 4thy4 1music1 1too1|+|14,14 1-1\n1While1 1barred1 1clouds1 1bloom1 13the13 1soft-dying1 1day1|+|15,15\n3939 4040 4And4 1touch1 14the14 1stubble-plains1 6with6 1rosy1 1hue1|+|8;8\n1Then1 1in1 7a7 1wailful1 1choir1 15the15 1small1 1gnats1 1mourn1\n4141 4242 1Among1 16the16 1river1 1sallows1|+|16,16 1borne1 1aloft1\n4343 4444 4545 4646 3Or3 1sinking1 1as1 17the17 1light1 2wind2 1lives1 1or1 1dies1|+|9;9\n5And5 1full-grown1 1lambs1 1loud1 1bleat1 1from1 1hilly1 1bourn1|+|10;10\n4747 4848 1Hedge-crickets1 1sing1|+|11;11 5and5 1now1 7with7 1treble1 1soft1\n4949 5050 1The1 1red-brest1 1whistles1 2from2 8a8 1garden-croft1|+|12;12\n5151 5252 5353 5454 6And6 1gathering1 1swollows1 1twitter1 2in2 18the18 1skies1|+|3.3",
-        "wordCount": 254,
+        "convertedPoem": "1Seasons1 1of1 1mist1 1and1 1mellow1 1fruitfulness!1\n11 22 1Close1 1bosom-friend1 2of2 1the1 1maturing1 1sun1|+|1;1\n1Conspiring1 1with1 1him1 1how1 1to1 1load1 2and2 1bless1\n33 44 1With1 1fruit1 2the2 1vines1 1that1 1round1 3the3 1thatch-eaves1 1run1|+|2;2\n1To1 1bend1 2with2 1apples1 4the4 1moss'd1 1cottage-trees1|+|1,1\n55 66 1And1 1fill1 1all1 2fruit2 3with3 1ripeness1 2to2 5the5 1core1|+|3;3\n77 88 99 1010 2To2 1swell1 6the6 1gourd1|+|2,2 3and3 1plump1 7the7 1hazel1 1shells1\n1111 1212 2With2 1a1 1sweet1 1kernel1|+|4;4 3to3 1set1 1budding1 1more1|+|3,3\n2And2 1still1 2more2|+|4,4 1later1 1flowers1 1for1 8the8 1bees1|+|5,5\n1Until1 1they1 1think1 1warm1 1days1 1will1 1never1 1cease1|+|6,6\n1313 1414 1515 1616 1For1 1Summer1 1has1 1o'erbrimmed1 1their1 1clammy1 1cells1|+|1.1\n1717\n1Who1 1hath1 1not1 1seen1 1thee1 1oft1 1amid1 1thy1 1store?1\n1818 1919 1Sometimes1 1whoever1 1seeks1 1abroad1 1may1 1find1\n1Thee1 1sitting1 1careless1 1on1 2a2 1granary1 1floor1|+|7,7\n2020 2121 1Thy1 1hair1 1soft-lifted1 1by1 9the9 1winnowing1 1wind1|+|5;5\n1Or1 2on2 3a3 1half-reap'd1 1furrow1 1sound1 1asleep1|+|8,8\n2222 2323 1Drows'd1 4with4 10the10 1fume1 3of3 1poppies1|+|9,9 1while1 2thy2 1hook1\n2424 2525 2626 2727 1Spares1 11the11 1next1 1swath1 4and4 2all2 1its1 1twined1 2flowers2|+|6;6\n3And3 1sometimes1 1like1 4a4 1gleaner1 1thou1 1dost1 1keep1\n2828 2929 1Steady1 3thy3 1laden1 1head1 1across1 5a5 1brook1|+|7;7\n3030 3131 2Or2 2by2 6a6 1cyder-press1|+|10,10 5with5 1patient1 1look1|+|11,11\n3232 3333 3434 3535 1Thou1 1watchest1 12the12 1last1 1oozings1 1hours1 3by3 2hours2|+|2.2\n3636\n1Where1 1are1 13the13 1songs1 4of4 1Spring?1 1Ay1|+|12,12 1where1 2are2 1they?1\n3737 3838 1Think1 2not2 5of5 1them1|+|13,13 2thou2 1hast1 4thy4 1music1 1too1|+|14,14 1-1\n1While1 1barred1 1clouds1 1bloom1 14the14 1soft-dying1 1day1|+|15,15\n3939 4040 4And4 1touch1 15the15 1stubble-plains1 6with6 1rosy1 1hue1|+|8;8\n1Then1 1in1 7a7 1wailful1 1choir1 16the16 1small1 1gnats1 1mourn1\n4141 4242 1Among1 17the17 1river1 1sallows1|+|16,16 1borne1 1aloft1\n4343 4444 4545 4646 3Or3 1sinking1 1as1 18the18 1light1 2wind2 1lives1 1or1 1dies1|+|9;9\n5And5 1full-grown1 1lambs1 1loud1 1bleat1 1from1 1hilly1 1bourn1|+|10;10\n4747 4848 1Hedge-crickets1 1sing1|+|11;11 5and5 1now1 7with7 1treble1 1soft1\n4949 5050 1The1 1red-breast1 1whistles1 2from2 8a8 1garden-croft1|+|12;12\n5151 5252 5353 5454 6And6 1gathering1 1swallows1 1twitter1 2in2 19the19 1skies1|+|3.3",
+        "wordCount": 255,
         "author": "John Keats",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1bend1",
+                "2with2",
+                "1apples1",
+                "4the4",
+                "1moss'd1",
+                "1cottage-trees1",
+                "1,1"
+            ],
+            [
+                "1fill1",
+                "1all1",
+                "2fruit2",
+                "3with3",
+                "1ripeness1",
+                "2to2",
+                "5the5",
+                "1core1"
+            ],
+            [
+                "1swell1",
+                "6the6",
+                "1gourd1"
+            ],
+            [
+                "1plump1",
+                "7the7",
+                "1hazel1",
+                "1shells1"
+            ],
+            [
+                "1more1",
+                "3,3",
+                "2And2",
+                "1still1",
+                "2more2"
+            ],
+            [
+                "1think1",
+                "1warm1",
+                "1days1",
+                "1will1",
+                "1never1",
+                "1cease1"
+            ],
+            [
+                "1Summer1",
+                "1has1",
+                "1o'erbrimmed1"
+            ],
+            [
+                "1sitting1",
+                "1careless1",
+                "1on1",
+                "2a2",
+                "1granary1",
+                "1floor1",
+                "7,7"
+            ],
+            [
+                "1Drows'd1",
+                "4with4",
+                "10the10",
+                "1fume1",
+                "3of3",
+                "1poppies1"
+            ],
+            [
+                "1Steady1",
+                "3thy3",
+                "1laden1",
+                "1head1",
+                "1across1",
+                "5a5",
+                "1brook1",
+                "7;7"
+            ],
+            [
+                "1Where1",
+                "1are1",
+                "13the13",
+                "1songs1",
+                "4of4",
+                "1Spring?1"
+            ],
+            [
+                "2thou2",
+                "1hast1",
+                "4thy4",
+                "1music1",
+                "1too1"
+            ],
+            [
+                "1soft-dying1",
+                "1day1"
+            ],
+            [
+                "1wailful1"
+            ],
+            [
+                "1small1",
+                "1gnats1",
+                "1mourn1"
+            ],
+            [
+                "1full-grown1",
+                "1lambs1"
+            ],
+            [
+                "1gathering1",
+                "1swallows1",
+                "1twitter1",
+                "2in2",
+                "19the19",
+                "1skies1",
+                "3.3"
+            ]
+        ],
+        "notes": {
+            "Shows that autumn has arrived as there is no mist in summer": [
+                "1Seasons1",
+                "1of1",
+                "1mist1"
+            ],
+            "Autumn is both abundant and mellow, mellow meaning it is not harsh, as many would expect the time before winter (death) to be": [
+                "1mellow1",
+                "1fruitfulness!1"
+            ],
+            "Exclamatory sentence shows Keats' surprise at how pleasant autumn is": [
+                "1fruitfulness!1"
+            ],
+            "A good friend": [
+                "1Close1",
+                "1bosom-friend1"
+            ],
+            "The sun has shone for most of summer, so is getting old in the year, before it retreats for winter": [
+                "1maturing1",
+                "1sun1"
+            ],
+            "As the sun matures, it loses power and becomes cooler, just as Keats is slowly dying": [
+                "1maturing1",
+                "1sun1"
+            ],
+            "Imagery of abundance, Keats is beginning to learn the value of life as it draws to a close": [
+                "1load1",
+                "1bless1",
+                "1fruit1",
+                "1apples1",
+                "2fruit2",
+                "1ripeness1",
+                "1gourd1",
+                "1hazel1",
+                "1shells1",
+                "1sweet1",
+                "1kernel1",
+                "1later1",
+                "1flowers1"
+            ],
+            "Shows growth and admiration of the life that thrives in autumn, so close to winter (death)": [
+                "1thatch-eaves1",
+                "1run1"
+            ],
+            "There are so many apples on the tree it is bending under their weight": [
+                "1bend1",
+                "2with2",
+                "1apples1",
+                "4the4",
+                "1moss'd1",
+                "1cottage-trees1"
+            ],
+            "As fruit gets older, it becomes riper, before becoming over-ripe, like how Keats is becoming over-ripe to the core as his body dies on him": [
+                "1fill1",
+                "1all1",
+                "2fruit2",
+                "3with3",
+                "1ripeness1",
+                "2to2",
+                "5the5",
+                "1core1"
+            ],
+            "Shows that there is not only lots of fruit, it is also of a high quality": [
+                "1swell1",
+                "6the6",
+                "1gourd1",
+                "1plump1",
+                "7the7",
+                "1hazel1",
+                "1shells1"
+            ],
+            "Repetition of 'more' on separate lines emphasises the abundance of autumn": [
+                "1more1",
+                "3,3",
+                "2And2",
+                "1still1",
+                "2more2"
+            ],
+            "There are so many flowers still that the bees think summer will never end": [
+                "1think1",
+                "1warm1",
+                "1days1",
+                "1will1",
+                "1never1",
+                "1cease1"
+            ],
+            "Capitalisation shows personification of summer": [
+                "1Summer1"
+            ],
+            "Shows that Keats has overstayed his welcome in the world of the living": [
+                "1o'erbrimmed1",
+                "1their1",
+                "1clammy1",
+                "1cells1"
+            ],
+            "Everyone has seen and can celebrate autumn's plentifulness": [
+                "1Who1",
+                "1hath1",
+                "1not1",
+                "1seen1",
+                "1thee1"
+            ],
+            "Meaning often": [
+                "1oft1"
+            ],
+            "Autumn harvest is so plentiful, there are mounds of grain all over the granary floor": [
+                "1Thee1",
+                "1sitting1",
+                "1careless1",
+                "1on1",
+                "2a2",
+                "1granary1",
+                "1floor1"
+            ],
+            "Everyone needs to and can rest before winter - links to retirement and the tiredness that comes before death (represented by winter)": [
+                "1sitting1",
+                "1careless1",
+                "1sound1",
+                "1asleep1",
+                "1Drows'd1",
+                "1Steady1",
+                "3thy3",
+                "1laden1",
+                "1head1"
+            ],
+            "High so isn't finishing their work": [
+                "1half-reap'd1",
+                "1furrow1",
+                "1sound1",
+                "1asleep1",
+                "1Drows'd1"
+            ],
+            "Opioids are made from poppies, so this phrase is talking about being high off opioids": [
+                "1Drows'd1",
+                "4with4",
+                "10the10",
+                "1fume1",
+                "3of3",
+                "1poppies1"
+            ],
+            "Presents the idea that the end of life is very peaceful, like sleeping in a meadow": [
+                "1Steady1",
+                "3thy3",
+                "1laden1",
+                "1head1",
+                "1across1",
+                "5a5",
+                "1brook1"
+            ],
+            "Shows that there is still work to be done": [
+                "2by2",
+                "6a6",
+                "1cyder-press1"
+            ],
+            "Representative of the patience that comes with later life, this person can watch this press work for hours": [
+                "1patient1",
+                "1look1",
+                "1watchest1",
+                "12the12",
+                "1last1",
+                "1oozings1",
+                "1hours1",
+                "3by3",
+                "2hours2"
+            ],
+            "May represent watching the life slowly leave your body as you gradually die, as Keats did": [
+                "1last1",
+                "1oozings1",
+                "1hours1",
+                "3by3",
+                "2hours2"
+            ],
+            "People celebrate spring for its plentifulness, but autumn also provides and deserves songs": [
+                "1Where1",
+                "1are1",
+                "13the13",
+                "1songs1",
+                "4of4",
+                "1Spring?1"
+            ],
+            "Could be interpreted that in later life, (late autumn/winter), you begin to miss the joys of childhood (spring)": [
+                "1Where1",
+                "1are1",
+                "13the13",
+                "1songs1",
+                "4of4",
+                "1Spring?1"
+            ],
+            "Repetition of rhetorical questions shows Keats strong belief that the end of life should be celebrated like new life is": [
+                "1Spring?1",
+                "1Ay1",
+                "12,12",
+                "1where1",
+                "2are2",
+                "1they?1"
+            ],
+            "The music of late autumn is sorrowful, compared to the energetic sounds of new life in spring": [
+                "1hast1",
+                "4thy4",
+                "1music1",
+                "1too1",
+                "1wailful1",
+                "1choir1",
+                "1mourn1",
+                "1full-grown1",
+                "1lambs1",
+                "1loud1",
+                "1bleat1",
+                "1Hedge-crickets1",
+                "1sing1",
+                "1red-breast1",
+                "1whistles1",
+                "1swallows1",
+                "1twitter1"
+            ],
+            "Oxymoron since death is not soft - Keats is showing acceptance of death": [
+                "1soft-dying1",
+                "1day1"
+            ],
+            "Showing how the days are gradually, imperceptibly, getting shorter, like how Keats is gradually dying": [
+                "1soft-dying1",
+                "1day1"
+            ],
+            "A testament to the amazing sunsets in autumn, showing how the end of life can also be spectacular": [
+                "1rosy1",
+                "1hue1"
+            ],
+            "There is a lack of food as winter arrives, and death arrives": [
+                "1wailful1",
+                "1choir1",
+                "16the16",
+                "1small1",
+                "1gnats1",
+                "1mourn1"
+            ],
+            "Personification of gnats showing their sadness shows the grief associated with death": [
+                "1gnats1",
+                "1mourn1"
+            ],
+            "The light wind of autumn is personified, it is said to be in-between life and death, showing how the end of autumn means death": [
+                "18the18",
+                "1light1",
+                "2wind2",
+                "1lives1",
+                "1or1",
+                "1dies1"
+            ],
+            "A common image of spring is the abundance of lambs, now they are grown up and ready to die in winter - the circle of life represented by seasons": [
+                "1full-grown1",
+                "1lambs1"
+            ],
+            "Red-breast's are associated with winter, showing how winter (and therefore death) is drawing in": [
+                "1red-breast1"
+            ],
+            "The birds are ready to migrate, just like Keats is ready to move on, through death": [
+                "1gathering1",
+                "1swallows1",
+                "1twitter1"
+            ],
+            "End-stop signifies the finality of death": [
+                "3.3"
+            ]
+        },
         "centered": false
     },
     "Afternoons": {
