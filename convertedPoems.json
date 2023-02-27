@@ -3664,11 +3664,245 @@
         "centered": false
     },
     "Afternoons": {
-        "convertedPoem": "1Summer1 1is1 1fading1|+|1:1\n1The1 1leaves1 1fall1 1in1 1ones1 1and1 1twos1\n1From1 1trees1 1bordering1\n2The2 1new1 1recreation1 1ground1|+|1.1\n1In1 1the1 1hollows1 1of1 1afternoons1\n1Young1 1mothers1 1assemble1\n1At1 1swing1 2and2 1sandpit1\n1Setting1 1free1 1their1 1children1|+|2.2\n11\n1Behind1 1them1|+|1,1 1at1 1intervals1|+|2,2\n1Stand1 1husbands1 2in2 1skilled1 1trades1|+|3,3\n1An1 1estateful1 2of2 1washing1\n1And1 2the2 1albums1|+|4,4 1lettered1\n1Our1 1Wedding1|+|5,5 1lying1\n1Near1 3the3 1television1|+|2:2\n1Before1 2them2|+|6,6 4the4 1wind1\n1Is1 1ruining1 2their2 1courting-places1\n22\n1That1 1are1 1still1 2courting-places2\n1(But1 5the5 1lovers1 2are2 1all1 3in3 1school)1|+|7,7\n2And2 3their3 2children2|+|8,8 1so1 1intent1 1on1\n1Finding1 1more1 1unripe1 1acorns1|+|9,9\n1Expect1 1to1 1be1 1taken1 1home1|+|3.3\n1Their1 1beauty1 1has1 1thickened1|+|4.4\n1Something1 2is2 1pushing1 3them3\n1To1 6the6 1side1 3of3 4their4 1own1 1lives1|+|5.5",
+        "convertedPoem": "1Summer1 1is1 1fading1|+|1:1\n1The1 1leaves1 1fall1 1in1 1ones1 1and1 1twos1\n1From1 1trees1 1bordering1\n2The2 1new1 1recreation1 1ground1|+|1.1\n1In1 1the1 1hollows1 1of1 1afternoons1\n1Young1 1mothers1 1assemble1\n1At1 1swing1 2and2 1sandpit1\n1Setting1 1free1 1their1 1children1|+|2.2\n11\n1Behind1 1them1|+|1,1 1at1 1intervals1|+|2,2\n1Stand1 1husbands1 2in2 1skilled1 1trades1|+|3,3\n1An1 1estateful1 2of2 1washing1|+|4,4\n1And1 2the2 1albums1|+|5,5 1lettered1\n1Our1 1Wedding1|+|6,6 1lying1\n1Near1 3the3 1television1|+|2:2\n1Before1 2them2|+|7,7 4the4 1wind1\n1Is1 1ruining1 2their2 1courting-places1\n22\n1That1 1are1 1still1 2courting-places2\n1(But1 5the5 1lovers1 2are2 1all1 3in3 1school)1|+|8,8\n2And2 3their3 2children2|+|9,9 1so1 1intent1 1on1\n1Finding1 1more1 1unripe1 1acorns1|+|10,10\n1Expect1 1to1 1be1 1taken1 1home1|+|3.3\n1Their1 1beauty1 1has1 1thickened1|+|4.4\n1Something1 2is2 1pushing1 3them3\n1To1 6the6 1side1 3of3 4their4 1own1 1lives1|+|5.5",
         "wordCount": 105,
         "author": "Philip Larkin",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1Summer1",
+                "1is1",
+                "1fading1"
+            ],
+            [
+                "1Young1",
+                "1mothers1"
+            ],
+            [
+                "1Setting1",
+                "1free1",
+                "1their1",
+                "1children1"
+            ],
+            [
+                "1at1",
+                "1intervals1",
+                "2,2",
+                "1Stand1",
+                "1husbands1"
+            ],
+            [
+                "1Our1",
+                "1Wedding1",
+                "6,6",
+                "1lying1",
+                "1Near1",
+                "3the3",
+                "1television1",
+                "2:2"
+            ],
+            [
+                "4the4",
+                "1wind1",
+                "1Is1",
+                "1ruining1",
+                "2their2",
+                "1courting-places1"
+            ],
+            [
+                "1That1",
+                "1are1",
+                "1still1",
+                "2courting-places2"
+            ],
+            [
+                "1Finding1",
+                "1more1",
+                "1unripe1",
+                "1acorns1"
+            ],
+            [
+                "1beauty1",
+                "1has1",
+                "1thickened1"
+            ],
+            [
+                "1Something1",
+                "2is2",
+                "1pushing1",
+                "3them3",
+                "1To1",
+                "6the6",
+                "1side1",
+                "3of3",
+                "4their4",
+                "1own1",
+                "1lives1",
+                "5.5"
+            ]
+        ],
+        "notes": {
+            "The government built many parks and green areas": [],
+            "The change away from the happy time of their lives - summer - is gradual and imperceptible": [
+                "1Summer1",
+                "1is1",
+                "1fading1",
+                "1:1",
+                "1The1",
+                "1leaves1",
+                "1fall1",
+                "1in1",
+                "1ones1",
+                "1and1",
+                "1twos1"
+            ],
+            "Enjambment shows time moving on": [
+                "1twos1"
+            ],
+            "The mothers are trapped, enclosed by the trees, like how they are trapped in society": [
+                "1trees1",
+                "1bordering1"
+            ],
+            "The mothers are comparable to trees, as they border the recreation ground also, showing how they have become lethargic like trees": [
+                "1trees1",
+                "1bordering1"
+            ],
+            "The mothers are now in parenthood, it is new to them, yet repetitive and boring": [
+                "1new1",
+                "1recreation1",
+                "1ground1"
+            ],
+            "No afternoon has any meaning, they are hollow, as they are all the same": [
+                "1hollows1",
+                "1of1",
+                "1afternoons1"
+            ],
+            "The action 'assemble' seems regimented, and practiced, showing how repetitive the mothers' lives are": [
+                "1Young1",
+                "1mothers1",
+                "1assemble1"
+            ],
+            "Sibilance shows how the mothers are sad and can no longer play as children": [
+                "1swing1",
+                "1sandpit1",
+                "1Setting1"
+            ],
+            "The children are free compared to the mothers, emphasising the mothers' loss of freedom": [
+                "1Setting1",
+                "1free1",
+                "1their1",
+                "1children1"
+            ],
+            "The husbands don't help, only watch, and only when they aren't working": [
+                "1Behind1",
+                "1them1",
+                "1,1",
+                "1at1",
+                "1intervals1",
+                "2,2"
+            ],
+            "The caesura represents the intervals mentioned": [
+                "1,1",
+                "2,2"
+            ],
+            "The men are expected to be bread-winners who work in the background to feed the family": [
+                "1husbands1",
+                "2in2",
+                "1skilled1",
+                "1trades1"
+            ],
+            "All the mothers are washing at the same time, showing a loss of individuality in suburban society": [
+                "1An1",
+                "1estateful1",
+                "2of2",
+                "1washing1"
+            ],
+            "Washing is dull, showing how dull the mothers lives are": [
+                "1washing1"
+            ],
+            "Their wedding photos, supposedly a precious reminder of the 'happiest day' of their lives": [
+                "2the2",
+                "1albums1",
+                "5,5",
+                "1lettered1",
+                "1Our1",
+                "1Wedding1"
+            ],
+            "These important photos are uncared for and forgotten, representing a loss of love in the relationship": [
+                "1lying1"
+            ],
+            "This new technology is more important than their wedding photos": [
+                "1television1"
+            ],
+            "Places important to the mothers are changing before their eyes, but they are powerless to stop it (they cannot stop the wind)": [
+                "1Before1",
+                "2them2",
+                "7,7",
+                "4the4",
+                "1wind1",
+                "1Is1",
+                "1ruining1",
+                "2their2",
+                "1courting-places1"
+            ],
+            "Since they are 'still courting-places' it shows that the mothers' perception of these areas has changed, not the places themseleves": [
+                "1still1",
+                "2courting-places2"
+            ],
+            "A new generation are coming through, following in the mothers' footsteps, showing how Larkin believes they will have the same fate": [
+                "1(But1",
+                "5the5",
+                "1lovers1",
+                "2are2",
+                "1all1",
+                "3in3",
+                "1school)1"
+            ],
+            "Shows the children's impatience as they cannot wait for the acorns to be ripe": [
+                "1more1",
+                "1unripe1",
+                "1acorns1"
+            ],
+            "Demonstrates the responsibility of the mothers": [
+                "1Expect1",
+                "1to1",
+                "1be1",
+                "1taken1",
+                "1home1"
+            ],
+            "Shows the power of the children over their mothers": [
+                "1Expect1"
+            ],
+            "Shows how routine and repetitive the mothers lives have become, that the children recognise when it is time to go home": [
+                "1Expect1",
+                "1to1",
+                "1be1",
+                "1taken1",
+                "1home1"
+            ],
+            "They are still beautiful, just in a more mature way": [
+                "1Their1",
+                "1beauty1",
+                "1has1",
+                "1thickened1"
+            ],
+            "The women have developed internally through becoming a mother and are beautiful in this way": [
+                "1thickened1"
+            ],
+            "Pregnancy forces women to share their body and life - Larkin suggests this doesn't end after the child is born": [
+                "1Something1",
+                "2is2",
+                "1pushing1",
+                "3them3",
+                "1To1",
+                "6the6",
+                "1side1",
+                "3of3",
+                "4their4",
+                "1own1",
+                "1lives1",
+                "5.5"
+            ]
+        },
         "centered": false
     },
     "Dulce et Decorum Est": {
