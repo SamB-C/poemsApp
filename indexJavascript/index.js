@@ -108,8 +108,13 @@ export function initialise() {
     // Replace words
     let wordsThatHaveBeenReplaced = getWordsThatHaveBeenReplaced(currentPoemContent);
     initialiseNotesForPoem();
-    focusFirstWord(wordsThatHaveBeenReplaced);
-    updateStateINITIALISE(wordsThatHaveBeenReplaced);
+    if (wordsThatHaveBeenReplaced.length !== 0) {
+        focusFirstWord(wordsThatHaveBeenReplaced);
+        updateStateINITIALISE(wordsThatHaveBeenReplaced);
+    }
+    else {
+        setStateToZero();
+    }
     fixWidth();
 }
 function getWordsThatHaveBeenReplaced(currentPoemContent) {
@@ -128,6 +133,11 @@ function updateStateINITIALISE(wordsThatHaveBeenReplaced) {
     state.wordsNotCompleted = wordsThatHaveBeenReplaced;
     state.wordsNotCompletedPreserved = [...wordsThatHaveBeenReplaced];
     state.focusedWord = wordsThatHaveBeenReplaced[0];
+}
+function setStateToZero() {
+    state.wordsNotCompleted = [];
+    state.wordsNotCompletedPreserved = [];
+    state.focusedWord = '';
 }
 function reset() {
     clearups.forEach(clearup => clearup());

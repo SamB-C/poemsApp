@@ -12,6 +12,9 @@ import { getArrayOfChildrenThatAreInputs, GET_ID, isIlleagalLetter, WORD_FUNCS }
 export function replaceQuotes(quotes: Quotes): Array<string> {
     const quotesToReplace: Array<Array<string>> = [];
     const numberOfQuotesToReplace = Math.ceil((state.percentageWordsToRemove / 100) * quotes.length);
+    if (numberOfQuotesToReplace === 0) {
+        return [];
+    }
     while (quotesToReplace.length < numberOfQuotesToReplace) {
         const potentialQuote = quotes[Math.floor(Math.random() * quotes.length)];
         let wordAlreadySelected = false;
@@ -41,6 +44,9 @@ export function replaceQuotes(quotes: Quotes): Array<string> {
 export function replaceWords(currentPoem: string): Array<string> {
     const wordsReplaced: Array<string> = [];
     const numberOfWordsToReplace = Math.ceil((state.percentageWordsToRemove / 100) * state.poemData[state.currentPoemName].wordCount)
+    if (numberOfWordsToReplace === 0) {
+        return [];
+    }
     while (wordsReplaced.length < numberOfWordsToReplace) {
         const potentialWord: string = selectRandomWordFromPoem(currentPoem);
         if (!wordsReplaced.includes(potentialWord)) {

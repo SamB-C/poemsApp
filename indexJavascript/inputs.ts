@@ -9,7 +9,7 @@ export function initialiseRangebar() {
     const rangeBar = GET_ELEMENT.getRangeBar();
     // Sets min/max values for rangebar
     rangeBar.value = `${state.percentageWordsToRemove}`;
-    rangeBar.min = "1";
+    rangeBar.min = "0";
     rangeBar.max = "100";
     // Sets up the element that displays the value of the rangebar
     const rangeBarResult = GET_ELEMENT.getRangeBarResult();
