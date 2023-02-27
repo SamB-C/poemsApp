@@ -3906,11 +3906,392 @@
         "centered": false
     },
     "Dulce et Decorum Est": {
-        "convertedPoem": "1Bent1 1double1|+|1,1 1like1 1old1 1beggars1 1under1 1sacks1|+|2,2\n1Knock-kneed1|+|3,3 1coughing1 2like2 1hags1|+|4,4 1we1 1cursed1 1through1 1sludge1|+|5,5\n1Till1 1on1 1the1 1hauting1 1flares1 2we2 1turned1 1our1 1backs1\n1And1 1towards1 2our2 1distant1 1rest1 1began1 1to1 1trudge1|+|1.1\n1Men1 1marched1 1asleep1|+|2.2 1Many1 1had1 1lost1 1their1 1boots1\n1But1 1limped1 2on2|+|6,6 1blood-shod1|+|3.3 1All1 1went1 1lame1|+|1;1 1all1 1blind1|+|2;2\n1Drunkn1 1with1 1fatigue1|+|3;3 1deaf1 1even1 2to2 2the2 1hoots1\n1Of1 1gas1 1shells1 1dropping1 1softly1 1behind1|+|4.4\n11\n1Gas!1 2Gas!2 1Quick1|+|7,7 1boys!1 1-1 1An1 1ecstasy1 1of1 1fumbling1|+|8,8\n1Fitting1 3the3 1clumsy1 1helmets1 1just1 1in1 1time1|+|4;4\n2But2 1someone1 1still1 1was1 1yelling1 1out1 1and1 1stumbling1|+|9,9\n2And2 1flound'ring1 3like3 1a1 1man1 2in2 1fire1 1or1 1lime1 22|+|5.5|+|6.6|+|7.7\n1Dim1|+|10,10 2through2 4the4 1misty1 1panes1 2and2 1thick1 1green1 1light1|+|11,11\n1As1 2under2 2a2 2green2 1sea1|+|12,12 1I1 1saw1 1him1 1drowning1|+|8.8\n33\n1In1 2all2 1my1 1dreams1|+|13,13 1before1 2my2 1helpless1 1sight1|+|14,14\n1He1 1plunges1 1at1 1me1|+|15,15 1guttering1|+|16,16 1chocking1|+|17,17 2drowning2|+|9.9\n44\n1If1 3in3 1some1 1smothering1 2dreams2 1you1 1too1 1could1 1pace1\n1Behind1 5the5 1wagon1 1that1 3we3 1flung1 2him2 4in4|+|18,18\n3And3 1watch1 6the6 1white1 1eyes1 1writhing1 5in5 1his1 1face1|+|19,19\n1His1 1hanging1 2face2|+|20,20 4like4 3a3 1devil's1 1sick1 2of2 1sin1|+|5;5\n2If2 2you2 2could2 1hear1|+|21,21 2at2 1every1 1jolt1|+|22,22 7the7 1blood1 55\n1Come1 1gargling1 1from1 8the8 1froth-corrupted1 1lungs1|+|23,23\n1Obscene1 1as1 1cancer1|+|24,24 1bitter1 2as2 9the9 1cud1\n2Of2 1vile1|+|25,25 1incurable1 1sores1 3on3 1innocent1 1tounges1|+|26,26 2-2\n1My1 1friend1|+|27,27 3you3 1would1 1not1 1tell1 2with2 1such1 1high1 1zest1\n1To1 1children1 1ardent1 1for1 2some2 1desperate1 1glory1|+|28,28\n1The1 2old2 1Lie1|+|1:1 1Dulce1 1et1 1decorum1 1est1\n1Pro1 1patria1 1mori1",
+        "convertedPoem": "1Bent1 1double1|+|1,1 1like1 1old1 1beggars1 1under1 1sacks1|+|2,2\n1Knock-kneed1|+|3,3 1coughing1 2like2 1hags1|+|4,4 1we1 1cursed1 1through1 1sludge1|+|5,5\n1Till1 1on1 1the1 1haunting1 1flares1 2we2 1turned1 1our1 1backs1\n1And1 1towards1 2our2 1distant1 1rest1 1began1 1to1 1trudge1|+|1.1\n1Men1 1marched1 1asleep1|+|2.2 1Many1 1had1 1lost1 1their1 1boots1\n1But1 1limped1 2on2|+|6,6 1blood-shod1|+|3.3 1All1 1went1 1lame1|+|1;1 1all1 1blind1|+|2;2\n1Drunk1 1with1 1fatigue1|+|3;3 1deaf1 1even1 2to2 2the2 1hoots1\n1Of1 1gas1 1shells1 1dropping1 1softly1 1behind1|+|4.4\n11\n1Gas!1 2Gas!2 1Quick1|+|7,7 1boys!1 1-1 1An1 1ecstasy1 1of1 1fumbling1|+|8,8\n1Fitting1 3the3 1clumsy1 1helmets1 1just1 1in1 1time1|+|4;4\n2But2 1someone1 1still1 1was1 1yelling1 1out1 1and1 1stumbling1|+|9,9\n2And2 1flound'ring1 3like3 1a1 1man1 2in2 1fire1 1or1 1lime1 22|+|5.5|+|6.6|+|7.7\n1Dim1|+|10,10 2through2 4the4 1misty1 1panes1 2and2 1thick1 1green1 1light1|+|11,11\n1As1 2under2 2a2 2green2 1sea1|+|12,12 1I1 1saw1 1him1 1drowning1|+|8.8\n33\n1In1 2all2 1my1 1dreams1|+|13,13 1before1 2my2 1helpless1 1sight1|+|14,14\n1He1 1plunges1 1at1 1me1|+|15,15 1guttering1|+|16,16 1chocking1|+|17,17 2drowning2|+|9.9\n44\n1If1 3in3 1some1 1smothering1 2dreams2 1you1 1too1 1could1 1pace1\n1Behind1 5the5 1wagon1 1that1 3we3 1flung1 2him2 4in4|+|18,18\n3And3 1watch1 6the6 1white1 1eyes1 1writhing1 5in5 1his1 1face1|+|19,19\n1His1 1hanging1 2face2|+|20,20 4like4 3a3 1devil's1 1sick1 2of2 1sin1|+|5;5\n2If2 2you2 2could2 1hear1|+|21,21 2at2 1every1 1jolt1|+|22,22 7the7 1blood1 55\n1Come1 1gargling1 1from1 8the8 1froth-corrupted1 1lungs1|+|23,23\n1Obscene1 1as1 1cancer1|+|24,24 1bitter1 2as2 9the9 1cud1\n2Of2 1vile1|+|25,25 1incurable1 1sores1 3on3 1innocent1 1tongues1|+|26,26 2-2\n1My1 1friend1|+|27,27 3you3 1would1 1not1 1tell1 2with2 1such1 1high1 1zest1\n1To1 1children1 1ardent1 1for1 2some2 1desperate1 1glory1|+|28,28\n1The1 2old2 1Lie1|+|1:1 1Dulce1 1et1 1decorum1 1est1\n1Pro1 1patria1 1mori1",
         "wordCount": 222,
         "author": "Wilfred Owen",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1Bent1",
+                "1double1"
+            ],
+            [
+                "1old1",
+                "1beggars1",
+                "1under1",
+                "1sacks1"
+            ],
+            [
+                "1coughing1",
+                "2like2",
+                "1hags1"
+            ],
+            [
+                "1cursed1"
+            ],
+            [
+                "1haunting1",
+                "1flares1"
+            ],
+            [
+                "1All1",
+                "1went1",
+                "1lame1",
+                "1;1",
+                "1all1",
+                "1blind1",
+                "2;2"
+            ],
+            [
+                "1gas1",
+                "1shells1",
+                "1dropping1",
+                "1softly1",
+                "1behind1"
+            ],
+            [
+                "1Gas!1",
+                "2Gas!2",
+                "1Quick1",
+                "7,7",
+                "1boys!1"
+            ],
+            [
+                "1flound'ring1",
+                "3like3",
+                "1a1",
+                "1man1",
+                "2in2",
+                "1fire1",
+                "1or1",
+                "1lime1"
+            ],
+            [
+                "1thick1",
+                "1green1",
+                "1light1"
+            ],
+            [
+                "2under2",
+                "2a2",
+                "2green2",
+                "1sea1",
+                "12,12",
+                "1I1",
+                "1saw1",
+                "1him1",
+                "1drowning1"
+            ],
+            [
+                "1guttering1",
+                "16,16",
+                "1chocking1",
+                "17,17",
+                "2drowning2",
+                "9.9"
+            ],
+            [
+                "3we3",
+                "1flung1",
+                "2him2",
+                "4in4",
+                "18,18"
+            ],
+            [
+                "1white1",
+                "1eyes1",
+                "1writhing1",
+                "5in5",
+                "1his1",
+                "1face1"
+            ],
+            [
+                "1devil's1",
+                "1sick1",
+                "2of2",
+                "1sin1"
+            ],
+            [
+                "1froth-corrupted1",
+                "1lungs1"
+            ],
+            [
+                "1Obscene1",
+                "1as1",
+                "1cancer1"
+            ],
+            [
+                "1vile1",
+                "25,25",
+                "1incurable1",
+                "1sores1",
+                "3on3",
+                "1innocent1",
+                "1tongues1"
+            ],
+            [
+                "1My1",
+                "1friend1"
+            ],
+            [
+                "1ardent1",
+                "1for1",
+                "2some2",
+                "1desperate1",
+                "1glory1"
+            ],
+            [
+                "1The1",
+                "2old2",
+                "1Lie1"
+            ]
+        ],
+        "notes": {
+            "The soldiers had to walk hunched over to stay in the trench and not get shot": [
+                "1Bent1",
+                "1double1"
+            ],
+            "Their packs are heavy, forcing them to lean over": [
+                "1Bent1",
+                "1double1"
+            ],
+            "The soldiers should be young, but have been turned old and homeless": [
+                "1old1",
+                "1beggars1"
+            ],
+            "The men can't stand straight - they are sore": [
+                "1Knock-kneed1"
+            ],
+            "Many soldiers are ill due to the poor living conditions": [
+                "1coughing1",
+                "2like2",
+                "1hags1"
+            ],
+            "Simile saying soldiers are old before their time, suggests that they are closer to death than they should be": [
+                "1coughing1",
+                "2like2",
+                "1hags1"
+            ],
+            "It is hard to walk, so much so that the soldiers are cursing": [
+                "1cursed1",
+                "1through1",
+                "1sludge1"
+            ],
+            "Links to PTSD/shell shock - these images will stay with the soldiers forever": [
+                "1haunting1",
+                "1flares1"
+            ],
+            "The soldiers shift is over, but they are not out of the woods yet": [
+                "2we2",
+                "1turned1",
+                "1our1",
+                "1backs1"
+            ],
+            "Their rest is far away, like their true rest (the war ending) showing a lack of hope": [
+                "1distant1",
+                "1rest1"
+            ],
+            "Everything happens at a slow and grudging pace, there are no such luxuries as cars": [
+                "1trudge1"
+            ],
+            "The metaphor emphasises their exhausting conditions through hyperbole": [
+                "1Men1",
+                "1marched1",
+                "1asleep1"
+            ],
+            "The men are too tired to care about pain and discomfort": [
+                "1But1",
+                "1limped1",
+                "2on2"
+            ],
+            "Implies to the reader that it is night time, and the soldiers can't have light as it would put them at risk of snipers": [
+                "1all1",
+                "1blind1"
+            ],
+            "Gas attacks happen so often the soldiers are normalised to the sound and don't hear them": [
+                "1gas1",
+                "1shells1",
+                "1dropping1",
+                "1softly1",
+                "1behind1"
+            ],
+            "Short, exclamatory sentences shows panic and fear": [
+                "1Gas!1",
+                "2Gas!2",
+                "1Quick1",
+                "7,7",
+                "1boys!1"
+            ],
+            "The soldiers are hardly men, they are closer to boys": [
+                "1boys!1"
+            ],
+            "Shows the fear of the soldiers, the kick of adrenaline is only making fitting the helmets harder": [
+                "1ecstasy1",
+                "1of1",
+                "1fumbling1"
+            ],
+            "The helmets are low quality and the soldiers are tired and inexperienced, making it hard to survive the attack": [
+                "1Fitting1",
+                "3the3",
+                "1clumsy1",
+                "1helmets1",
+                "1just1",
+                "1in1",
+                "1time1"
+            ],
+            "The soldier isn't named, showing that no-one deserves this death": [
+                "1someone1"
+            ],
+            "The effect of the gas on a person, burning them inside and out": [
+                "1fire1",
+                "1or1",
+                "1lime1"
+            ],
+            "The colour of the gas": [
+                "1thick1",
+                "1green1",
+                "1light1"
+            ],
+            "A metaphor showing the danger of gas attacks": [
+                "2under2",
+                "2a2",
+                "2green2",
+                "1sea1"
+            ],
+            "Seas aren't green, showing how unnatural the war is": [
+                "2green2",
+                "1sea1"
+            ],
+            "By rhyming drowning with drowning, it sticks out in the poem, allowing Owen to emphasise how the man is dying": [
+                "1drowning1",
+                "2drowning2"
+            ],
+            "The man can't breathe, and is literally drowning in gas": [
+                "1drowning1"
+            ],
+            "Owen gets PTSD about this event, and is constantly forced to revisit it": [
+                "1In1",
+                "2all2",
+                "1my1",
+                "1dreams1"
+            ],
+            "The gas is so deadly, there is nothing they can do to help him - he just has to die slowly": [
+                "1helpless1",
+                "1sight1"
+            ],
+            "The use of a triplet showing the stages of drowning show the pain the soldier experienced": [
+                "1guttering1",
+                "16,16",
+                "1chocking1",
+                "17,17",
+                "2drowning2"
+            ],
+            "The end-stop shows the finality of the man's death - there is no saving him": [
+                "9.9"
+            ],
+            "The adjective 'smothering' shows the unpleasantness of Owen's reoccurring dream": [
+                "1smothering1",
+                "2dreams2"
+            ],
+            "Owen delivers the message by directly addressing the reader": [
+                "1you1",
+                "1too1"
+            ],
+            "Dying people are transported in an ambulance, and a dead person, a hearse - this soldier gets neither of these": [
+                "1wagon1"
+            ],
+            "The soldiers are desensitised to death, they are careless in how they treat the body": [
+                "1flung1",
+                "2him2",
+                "4in4"
+            ],
+            "Owen uses lots of very gory imagery to portray the horrors of war to the reader": [
+                "1white1",
+                "1eyes1",
+                "1writhing1",
+                "1hanging1",
+                "2face2",
+                "1devil's1",
+                "1sick1",
+                "2of2",
+                "1sin1",
+                "1jolt1",
+                "1blood1",
+                "1Come1",
+                "1gargling1",
+                "1froth-corrupted1",
+                "1lungs1",
+                "1Obscene1",
+                "1cancer1",
+                "1bitter1",
+                "1cud1",
+                "1vile1",
+                "1incurable1",
+                "1sores1"
+            ],
+            "His eyes are writhing in pain, yet he cannot cry out as his lungs are full of poisonous gas": [
+                "1white1",
+                "1eyes1",
+                "1writhing1"
+            ],
+            "The image of this soldier dying would appal event the devil": [
+                "1devil's1",
+                "1sick1",
+                "2of2",
+                "1sin1"
+            ],
+            "Caesura represents the jolts that the dying soldier is feeling": [
+                "21,21",
+                "22,22"
+            ],
+            "Onomatopoeia gives the reader the most accurate description of the horrific death": [
+                "1gargling1"
+            ],
+            "The corruptness of war has taken over the body of this soldier, slowly killing him": [
+                "1froth-corrupted1",
+                "1lungs1"
+            ],
+            "Owen describes what blood is really like - gruesome and horrid": [
+                "1Obscene1",
+                "1as1",
+                "1cancer1",
+                "24,24",
+                "1bitter1",
+                "2as2",
+                "9the9",
+                "1cud1"
+            ],
+            "The soldiers don't deserve to die like this": [
+                "1innocent1",
+                "1tongues1"
+            ],
+            "Referring to Miss Jesse Pope, the woman the poem was addressed to": [
+                "1My1",
+                "1friend1"
+            ],
+            "Makes this poem personal": [
+                "1My1",
+                "1friend1"
+            ],
+            "Meaning with confidence and authority": [
+                "1high1",
+                "1zest1"
+            ],
+            "Shows that the soldiers are very young, groomed since childhood, just to die": [
+                "1To1",
+                "1children1"
+            ],
+            "Propaganda has made children feel guilty that they are not on the battlefield": [
+                "1ardent1",
+                "1for1",
+                "2some2",
+                "1desperate1",
+                "1glory1"
+            ],
+            "Shows that the passage is outdated - event the language is old": [
+                "2old2",
+                "1Lie1"
+            ]
+        },
         "centered": false
     },
     "Ozymandias": {

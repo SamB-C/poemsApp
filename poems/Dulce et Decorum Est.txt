@@ -2,11 +2,11 @@ Dulce et Decorum Est
 
 Bent double, like old beggars under sacks,
 Knock-kneed, coughing like hags, we cursed through sludge,
-Till on the hauting flares we turned our backs
+Till on the haunting flares we turned our backs
 And towards our distant rest began to trudge.
 Men marched asleep. Many had lost their boots
 But limped on, blood-shod. All went lame; all blind;
-Drunkn with fatigue; deaf even to the hoots
+Drunk with fatigue; deaf even to the hoots
 Of gas shells dropping softly behind.
 
 Gas! Gas! Quick, boys! - An ecstasy of fumbling,
@@ -26,7 +26,7 @@ His hanging face, like a devil's sick of sin;
 If you could hear, at every jolt, the blood 
 Come gargling from the froth-corrupted lungs,
 Obscene as cancer, bitter as the cud
-Of vile, incurable sores on innocent tounges, -
+Of vile, incurable sores on innocent tongues, -
 My friend, you would not tell with such high zest
 To children ardent for some desperate glory,
 The old Lie: Dulce et decorum est
