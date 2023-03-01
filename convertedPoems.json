@@ -4905,11 +4905,318 @@
         "centered": false
     },
     "Excerpt from The Prelude": {
-        "convertedPoem": "11 22 33 44 1And1 1in1 1the1 1frosty1 1season1|+|1,1 1when1 2the2 1sun1\n1Was1 1set1|+|2,2 1and1 1visible1 1for1 1many1 1a1 1mile1\n1The1 1cottage1 1windows1 1through1 3the3 1twilight1 1blaz'd1|+|3,3\n1I1 1heeded1 1not1 4the4 1summons1|+|1:1 1-1 1happy1 1time1\n1It1 1was1|+|4,4 1indeed1|+|5,5 2for2 1all1 1of1 1us1|+|2:2 1to1 1me1\n2It2 2was2 2a2 2time2 1rapture1|+|3:3 1clear1 2and2 1loud1\n2The2 1village1 1clock1 1tolled1 1six1|+|4:4 2I2 1wheel'd1 1about1|+|6,6\n1Pround1 3and3 1exulting1|+|7,7 1like1 1an1 1untir'ed1 1horse1|+|8,8\n1That1 1cares1 2not2 3for3 1his1 1home1|+|1.1 2-2 1All1 1shod1 1with1 1steel1|+|9,9\n1We1 1hiss'd1 1along1 5the5 1polish'd1 1ice1|+|10,10 2in2 1games1\n1Confederate1|+|11,11 1imitative1 2of2 6the6 1chace1\n2And2 1woodland1 1pleasures1|+|12,12 7the7 1resounding1 1horn1|+|13,13\n3The3 1Pack1 2loud2 1bellowing1|+|14,14 4and4 8the8 1hunted1 1hare1|+|2.2\n1So1 2through2 9the9 1darkness1 5and5 10the10 1cold1 1we1 1flew1|+|15,15\n3And3 3not3 3a3 1voice1 3was3 1idle1|+|1;1 2with2 11the11 1din1|+|16,16\n1Meanwhile1|+|17,17 12the12 1precipices1 1rang1 1aloud1|+|18,18\n4The4 1leafless1 1trees1|+|19,19 6and6 1every1 1icy1 1crag1\n1Tinkled1 2like2 1iron1|+|20,20 1while1 13the13 1distant1 1hills1\n1Into1 14the14 1tumult1 1sent1 2an2 1alien1 1sound1\n1Of1 1melancholy1|+|21,21 4not4 1unnoticed1|+|22,22 2while2 15the15 1stars1|+|23,23\n1Eastward1|+|24,24 1were1 1sparkling1 2clear2|+|25,25 7and7 3in3 16the16 1west1\n5The5 1orange1 1sky1 3of3 1evening1 1died1 1away1|+|3.3",
-        "wordCount": 167,
+        "convertedPoem": "11 22 33 44 1And1 1in1 1the1 1frosty1 1season1|+|1,1 1when1 2the2 1sun1\n1Was1 1set1|+|2,2 1and1 1visible1 1for1 1many1 1a1 1mile1\n1The1 1cottage1 1windows1 1through1 3the3 1twilight1 1blaz'd1|+|3,3\n1I1 1heeded1 1not1 4the4 1summons1|+|1:1 1-1 1happy1 1time1\n1It1 1was1|+|4,4 1indeed1|+|5,5 2for2 1all1 1of1 1us1|+|1;1 1to1 1me1\n2It2 2was2 2a2 2time2 2of2 1rapture1|+|2:2 1clear1 2and2 1loud1\n2The2 1village1 1clock1 1toll'd1 1six1|+|2;2 2I2 1wheel'd1 1about1|+|6,6\n1Proud1 3and3 1exulting1|+|7,7 1like1 1an1 1untir'd1 1horse1|+|8,8\n1That1 1cares1 2not2 3for3 1his1 1home1|+|1.1 2-2 1All1 1shod1 1with1 1steel1|+|9,9\n1We1 1hiss'd1 1along1 5the5 1polish'd1 1ice1|+|10,10 2in2 1games1\n1Confederate1|+|11,11 1imitative1 3of3 6the6 1chace1\n2And2 1woodland1 1pleasures1|+|12,12 7the7 1resounding1 1horn1|+|13,13\n3The3 1Pack1 2loud2 1bellowing1|+|14,14 4and4 8the8 1hunted1 1hare1|+|2.2\n1So1 2through2 9the9 1darkness1 5and5 10the10 1cold1 1we1 1flew1|+|15,15\n3And3 3not3 3a3 1voice1 3was3 1idle1|+|3;3 2with2 11the11 1din1|+|16,16\n1Meanwhile1|+|17,17 12the12 1precipices1 1rang1 1aloud1|+|18,18\n4The4 1leafless1 1trees1|+|19,19 6and6 1every1 1icy1 1crag1\n1Tinkled1 2like2 1iron1|+|20,20 1while1 13the13 1distant1 1hills1\n1Into1 14the14 1tumult1 1sent1 2an2 1alien1 1sound1\n1Of1 1melancholy1|+|21,21 4not4 1unnoticed1|+|22,22 2while2 15the15 1stars1|+|23,23\n1Eastward1|+|24,24 1were1 1sparkling1 2clear2|+|25,25 7and7 3in3 16the16 1west1\n5The5 1orange1 1sky1 4of4 1evening1 1died1 1away1|+|3.3",
+        "wordCount": 168,
         "author": "William Wordsworth",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1frosty1",
+                "1season1"
+            ],
+            [
+                "1cottage1",
+                "1windows1",
+                "1through1",
+                "3the3",
+                "1twilight1",
+                "1blaz'd1"
+            ],
+            [
+                "1heeded1",
+                "1not1",
+                "4the4",
+                "1summons1"
+            ],
+            [
+                "1happy1",
+                "1time1"
+            ],
+            [
+                "1to1",
+                "1me1",
+                "2It2",
+                "2was2",
+                "2a2",
+                "2time2",
+                "2of2",
+                "1rapture1",
+                "2:2"
+            ],
+            [
+                "1Proud1",
+                "3and3",
+                "1exulting1"
+            ],
+            [
+                "1hiss'd1",
+                "1along1",
+                "5the5",
+                "1polish'd1"
+            ],
+            [
+                "1games1",
+                "1Confederate1"
+            ],
+            [
+                "1imitative1",
+                "3of3",
+                "6the6",
+                "1chace1"
+            ],
+            [
+                "3The3",
+                "1Pack1",
+                "2loud2",
+                "1bellowing1"
+            ],
+            [
+                "1hunted1",
+                "1hare1"
+            ],
+            [
+                "2through2",
+                "9the9",
+                "1darkness1",
+                "5and5",
+                "10the10",
+                "1cold1",
+                "1we1",
+                "1flew1"
+            ],
+            [
+                "3not3",
+                "3a3",
+                "1voice1",
+                "3was3",
+                "1idle1"
+            ],
+            [
+                "1precipices1",
+                "1rang1",
+                "1aloud1"
+            ],
+            [
+                "1leafless1",
+                "1trees1"
+            ],
+            [
+                "1every1",
+                "1icy1",
+                "1crag1",
+                "1Tinkled1",
+                "2like2",
+                "1iron1"
+            ],
+            [
+                "1Into1",
+                "14the14",
+                "1tumult1",
+                "1sent1",
+                "2an2",
+                "1alien1",
+                "1sound1",
+                "1Of1",
+                "1melancholy1"
+            ],
+            [
+                "1unnoticed1"
+            ],
+            [
+                "5The5",
+                "1orange1",
+                "1sky1",
+                "4of4",
+                "1evening1",
+                "1died1",
+                "1away1"
+            ]
+        ],
+        "notes": {
+            "Informs the reader that it was winter": [
+                "1frosty1",
+                "1season1"
+            ],
+            "Informs the reader that it was evening": [
+                "2the2",
+                "1sun1",
+                "1Was1",
+                "1set1"
+            ],
+            "Gives a cozy and warming feeling": [
+                "1cottage1",
+                "1windows1",
+                "1blaz'd1"
+            ],
+            "The fire in the cottages connotes warmth and comfort": [
+                "1blaz'd1"
+            ],
+            "First person pronoun suggests the poem is autobiographical": [
+                "1I1",
+                "1us1",
+                "1me1",
+                "2I2",
+                "1We1",
+                "1we1"
+            ],
+            "The speaker is enjoying themselves so much that they ignore their parents, as children tend to do": [
+                "1I1",
+                "1heeded1",
+                "1not1",
+                "4the4",
+                "1summons1"
+            ],
+            "Repeated caesura all throughout the poem shows the speaker taking pauses to reflect on the happiness of the memory ": [
+                "1:1",
+                "1-1",
+                "1;1",
+                "2:2",
+                "1.1",
+                "2-2",
+                "3;3"
+            ],
+            "A time of immense joy and happiness": [
+                "1happy1",
+                "1time1",
+                "2time2",
+                "2of2",
+                "1rapture1"
+            ],
+            "Enjambment shows the happiness is ongoing all through the memory": [
+                "1time1",
+                "1It1"
+            ],
+            "Gives a sense of community": [
+                "1village1",
+                "1clock1",
+                "1toll'd1",
+                "1six1"
+            ],
+            "It is not that late, but the sun sets early in winter": [
+                "1clock1",
+                "1toll'd1",
+                "1six1"
+            ],
+            "Shows the enjoyment and passion the speaker felt when ice skating": [
+                "1Proud1",
+                "3and3",
+                "1exulting1"
+            ],
+            "A horse without a rope keeping them in place, he is free to move": [
+                "1like1",
+                "1an1",
+                "1untir'd1",
+                "1horse1"
+            ],
+            "Sibilance shows the danger that the children are in, but they don't care": [
+                "1All1",
+                "1shod1",
+                "1with1",
+                "1steel1",
+                "1We1",
+                "1hiss'd1",
+                "1along1",
+                "5the5",
+                "1polish'd1",
+                "1ice1"
+            ],
+            "Onomatopoeia shows their speed and a lack of caution that only children have": [
+                "1hiss'd1",
+                "1along1",
+                "5the5",
+                "1polish'd1",
+                "1ice1"
+            ],
+            "Shows that they are children as they are playing games": [
+                "1games1",
+                "1Confederate1"
+            ],
+            "Pretending to be in a hunt": [
+                "2And2",
+                "1woodland1",
+                "1pleasures1",
+                "12,12",
+                "7the7",
+                "1resounding1",
+                "1horn1",
+                "13,13",
+                "3The3",
+                "1Pack1",
+                "2loud2",
+                "1bellowing1",
+                "14,14",
+                "4and4",
+                "8the8",
+                "1hunted1",
+                "1hare1",
+                "2.2"
+            ],
+            "Nature has provided these experiences for them": [
+                "1woodland1",
+                "1pleasures1"
+            ],
+            "They are working together, as a team, showing a sense of community": [
+                "3The3",
+                "1Pack1"
+            ],
+            "A reference to the ignorance of children towards the troubles of the world, they fly through the dark times without realising that they are dark times": [
+                "2through2",
+                "9the9",
+                "1darkness1",
+                "5and5",
+                "10the10",
+                "1cold1",
+                "1we1",
+                "1flew1"
+            ],
+            "Everyone was involved, once again a sign of community": [
+                "3not3",
+                "3a3",
+                "1voice1",
+                "3was3",
+                "1idle1"
+            ],
+            "The echoes make it sound like nature is joining in on their fun": [
+                "1precipices1",
+                "1rang1",
+                "1aloud1"
+            ],
+            "Bare, unsightly and cold nature suddenly seems beautiful and warming": [
+                "1every1",
+                "1icy1",
+                "1crag1",
+                "1Tinkled1",
+                "2like2",
+                "1iron1"
+            ],
+            "The sound of silence as people leave is sad, as it represents the fun ending": [
+                "1sent1",
+                "2an2",
+                "1alien1",
+                "1sound1",
+                "1Of1",
+                "1melancholy1"
+            ],
+            "The speaker has been aware that this joy has been gradually seeping out of their life since their childhood": [
+                "4not4",
+                "1unnoticed1"
+            ],
+            "Shows that the sun is setting, as the stars can be seen clearly": [
+                "15the15",
+                "1stars1",
+                "1were1",
+                "1sparkling1",
+                "2clear2"
+            ],
+            "These times of childhood innocence have gone, like the setting of the sun disrupting the fun by forcing everyone to go inside": [
+                "5The5",
+                "1orange1",
+                "1sky1",
+                "4of4",
+                "1evening1",
+                "1died1",
+                "1away1"
+            ]
+        },
         "centered": false
     }
 }
