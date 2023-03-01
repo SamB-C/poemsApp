@@ -4540,11 +4540,368 @@
         "centered": false
     },
     "Mametz Wood": {
-        "convertedPoem": "1For1 1years1 1afterwards1 1the1 1farmers1 1found1 1them1 1-1\n2the2 1wasted1 1young1|+|1,1 1turning1 1up1 1under1 1their1 1plough1 1blades1\n1as1 1they1 1tended1 3the3 1land1 1back1 1into1 1inself1|+|1.1\n11\n1A1 1chit1 1of1|+|2,2 4the4 1china1 1plate1 2of2 1a1 1shoulder1 1blade1|+|3,3\n5the5 1relic1 3of3 2a2 1finger1|+|4,4 6the6 1blown1\n1and1 1broken1 1bird's1 1egg1 4of4 3a3 1skull1|+|5,5\n22\n1all1 1mimicked1 1now1 1in1 1flint1|+|6,6 1breaking1 1blue1 2in2 1white1\n1across1 7the7 1field1 1where1 2they2 1were1 1told1 1to1 1walk1|+|7,7 1not1 1run1|+|8,8\n1towards1 8the8 1wood1 2and2 1its1 1nesting1 1machine1 1guns1|+|2.2\n33\n1And1 1even1 2now2 9the9 1earth1 1sounds1 1sentinel1|+|9,9\n1reaching1 2back2 2into2 1itself1 1for1 1reminders1 5of5 1what1 1happened1\n1like1 4a4 1wound1 1working1 5a5 1foreign1 1body1 2to2 10the10 1surface1 6of6 11the11 1skin1|+|3.3\n44\n1This1 1morning1|+|10,10 1twenty1 1men1 1buried1 3in3 1one1 1long1 1grave1|+|11,11\n6a6 2broken2 1mosaic1 7of7 1bone1 1linked1 1arm1 4in4 2arm2|+|12,12\n2their2 1skeletons1 1paused1 1mid1 1dance-macarbe1\n55\n5in5 1boots1 1that1 1outlasted1 2them2|+|13,13\n3their3 1socketed1 1heads1 1tilted1 3back3 1at1 1an1 1angle1\n3and3 4their4 1jaws1|+|14,14 1those1 2that2 1have1 3them3|+|15,15 1dropped1 1open1|+|4.4\n66\n1As1 1if1 12the12 1notes1 3they3 1had1 1sung1\n2have2 1only1 3now3|+|16,16 1with1 1this1 1unearthing1|+|17,17\n1slipped1 1from1 5their5 1absent1 1tongues1|+|5.5",
-        "wordCount": 169,
+        "convertedPoem": "1For1 1years1 1afterwards1 1the1 1farmers1 1found1 1them1 1-1\n2the2 1wasted1 1young1|+|1,1 1turning1 1up1 1under1 1their1 1plough1 1blades1\n1as1 1they1 1tended1 3the3 1land1 1back1 1into1 1itself1|+|1.1\n11\n1A1 1chit1 1of1 1bone1|+|2,2 4the4 1china1 1plate1 2of2 1a1 1shoulder1 1blade1|+|3,3\n5the5 1relic1 3of3 2a2 1finger1|+|4,4 6the6 1blown1\n1and1 1broken1 1bird's1 1egg1 4of4 3a3 1skull1|+|5,5\n22\n1all1 1mimicked1 1now1 1in1 1flint1|+|6,6 1breaking1 1blue1 2in2 1white1\n1across1 1this1 1field1 1where1 2they2 1were1 1told1 1to1 1walk1|+|7,7 1not1 1run1|+|8,8\n1towards1 7the7 1wood1 2and2 1its1 1nesting1 1machine1 1guns1|+|2.2\n33\n1And1 1even1 2now2 8the8 1earth1 1stands1 1sentinel1|+|9,9\n1reaching1 2back2 2into2 2itself2 1for1 1reminders1 5of5 1what1 1happened1\n1like1 4a4 1wound1 1working1 5a5 1foreign1 1body1 2to2 9the9 1surface1 6of6 10the10 1skin1|+|3.3\n44\n1This1 1morning1|+|10,10 1twenty1 1men1 1buried1 3in3 1one1 1long1 1grave1|+|11,11\n6a6 2broken2 1mosaic1 7of7 2bone2 1linked1 1arm1 4in4 2arm2|+|12,12\n2their2 1skeletons1 1paused1 1mid1 1dance-macabre1\n55\n5in5 1boots1 1that1 1outlasted1 2them2|+|13,13\n3their3 1socketed1 1heads1 1tilted1 3back3 1at1 1an1 1angle1\n3and3 4their4 1jaws1|+|14,14 1those1 2that2 1have1 3them3|+|15,15 1dropped1 1open1|+|4.4\n66\n1As1 1if1 11the11 1notes1 3they3 1had1 1sung1\n2have2 1only1 3now3|+|16,16 1with1 2this2 1unearthing1|+|17,17\n1slipped1 1from1 5their5 1absent1 1tongues1|+|5.5",
+        "wordCount": 170,
         "author": "Owen Sheers",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1wasted1",
+                "1young1"
+            ],
+            [
+                "1tended1",
+                "3the3",
+                "1land1",
+                "1back1",
+                "1into1",
+                "1itself1",
+                "1.1"
+            ],
+            [
+                "1chit1",
+                "1of1",
+                "1bone1"
+            ],
+            [
+                "1china1",
+                "1plate1",
+                "2of2",
+                "1a1",
+                "1shoulder1",
+                "1blade1"
+            ],
+            [
+                "1relic1",
+                "3of3",
+                "2a2",
+                "1finger1"
+            ],
+            [
+                "1broken1",
+                "1bird's1",
+                "1egg1",
+                "4of4",
+                "3a3",
+                "1skull1"
+            ],
+            [
+                "1mimicked1",
+                "1now1",
+                "1in1",
+                "1flint1"
+            ],
+            [
+                "1told1",
+                "1to1",
+                "1walk1",
+                "7,7",
+                "1not1",
+                "1run1",
+                "8,8"
+            ],
+            [
+                "1its1",
+                "1nesting1",
+                "1machine1",
+                "1guns1"
+            ],
+            [
+                "8the8",
+                "1earth1",
+                "1stands1",
+                "1sentinel1"
+            ],
+            [
+                "1reaching1",
+                "2back2",
+                "2into2",
+                "2itself2"
+            ],
+            [
+                "1like1",
+                "4a4",
+                "1wound1",
+                "1working1",
+                "5a5",
+                "1foreign1",
+                "1body1",
+                "2to2",
+                "9the9",
+                "1surface1",
+                "6of6",
+                "10the10",
+                "1skin1",
+                "3.3"
+            ],
+            [
+                "1This1",
+                "1morning1"
+            ],
+            [
+                "2broken2",
+                "1mosaic1"
+            ],
+            [
+                "1skeletons1",
+                "1paused1",
+                "1mid1",
+                "1dance-macabre1"
+            ],
+            [
+                "1boots1",
+                "1that1",
+                "1outlasted1",
+                "2them2"
+            ],
+            [
+                "1socketed1",
+                "1heads1"
+            ],
+            [
+                "11the11",
+                "1notes1",
+                "3they3",
+                "1had1",
+                "1sung1"
+            ],
+            [
+                "1unearthing1"
+            ],
+            [
+                "1slipped1",
+                "1from1",
+                "5their5",
+                "1absent1",
+                "1tongues1"
+            ]
+        ],
+        "notes": {
+            "Shows the sheer number that died since it is taking years to unearth them all": [
+                "1For1",
+                "1years1",
+                "1afterwards1"
+            ],
+            "The soldiers were young, with lots of potential that became wasted when they died": [
+                "1wasted1",
+                "1young1"
+            ],
+            "Shows how war is unnatural and requires humans to fix, as nature can't repair itself due to the sheer number of bodies": [
+                "1tended1",
+                "3the3",
+                "1land1",
+                "1back1",
+                "1into1",
+                "1itself1"
+            ],
+            "Their skeletons are broken into pieces, showing the brutality of war": [
+                "1chit1",
+                "1of1",
+                "1bone1",
+                "1china1",
+                "1plate1",
+                "2of2",
+                "1a1",
+                "1shoulder1",
+                "1blade1",
+                "1relic1",
+                "3of3",
+                "2a2",
+                "1finger1",
+                "1broken1",
+                "1bird's1",
+                "1egg1",
+                "4of4",
+                "3a3",
+                "1skull1"
+            ],
+            "China breaks easily, showing how bones seemed brittle in war": [
+                "1china1",
+                "1plate1"
+            ],
+            "Shows how long that these soldiers have been dead, that the finger is now a 'relic'": [
+                "1relic1",
+                "3of3",
+                "2a2",
+                "1finger1"
+            ],
+            "Alliteration shows severity, and how the war was consistently brutal": [
+                "1blown1",
+                "1broken1",
+                "1bird's1"
+            ],
+            "Plosive 'b's represent the explosive power needed to mutilate the bodies in this way": [
+                "1blown1",
+                "1broken1",
+                "1bird's1"
+            ],
+            "Connotations to being early on in life, as well as being fragile and easy to crack": [
+                "1egg1",
+                "4of4",
+                "3a3",
+                "1skull1"
+            ],
+            "They all died together, they were a team": [
+                "1all1",
+                "2they2"
+            ],
+            "Their skeletons look like broken flint - and are as common as flint": [
+                "1mimicked1",
+                "1now1",
+                "1in1",
+                "1flint1"
+            ],
+            "The generals thought that it was safer to walk, due to their large packs, as it would mean they were less likely to fall over": [
+                "2they2",
+                "1were1",
+                "1told1",
+                "1to1",
+                "1walk1",
+                "7,7",
+                "1not1",
+                "1run1",
+                "8,8"
+            ],
+            "Cynical tone, Sheers disapproves of this decision": [
+                "1told1",
+                "1to1",
+                "1walk1",
+                "7,7",
+                "1not1",
+                "1run1",
+                "8,8"
+            ],
+            "Walking was a sign of bravery, and may have been intimidating for the opponents": [
+                "1told1",
+                "1to1",
+                "1walk1"
+            ],
+            "The machine guns were established and were seemingly hidden in the trees, on the high ground": [
+                "1nesting1",
+                "1machine1",
+                "1guns1"
+            ],
+            "End-stop shows the power of the machine guns and how they can end life": [
+                "2.2"
+            ],
+            "Brings the reader back to the present": [
+                "1even1",
+                "2now2"
+            ],
+            "Meaning watching over, standing still": [
+                "1earth1",
+                "1stands1",
+                "1sentinel1"
+            ],
+            "The ground is literally reaching into itself and pulling out dead bodies": [
+                "1reaching1",
+                "2back2",
+                "2into2",
+                "2itself2",
+                "1for1",
+                "1reminders1",
+                "5of5",
+                "1what1",
+                "1happened1"
+            ],
+            "Could refer to how the soldiers were fighting in a foreign country": [
+                "1foreign1",
+                "1body1"
+            ],
+            "Shows how bodies are still being found, so the. number of casualties must be huge": [
+                "1This1",
+                "1morning1"
+            ],
+            "They all shared a grave, they were not important enough for individual graves": [
+                "1twenty1",
+                "1men1",
+                "1buried1",
+                "3in3",
+                "1one1",
+                "1long1",
+                "1grave1",
+                "1linked1",
+                "1arm1",
+                "4in4",
+                "2arm2"
+            ],
+            "The bodies have been distorted and destroyed by war - showing its violence": [
+                "2broken2",
+                "1mosaic1"
+            ],
+            "They all were killed mid fight, some may have been killed in friendly fire": [
+                "1skeletons1",
+                "1paused1",
+                "1mid1",
+                "1dance-macabre1"
+            ],
+            "Shows how little the soldiers were valued, their low quality boots lasted longer than them": [
+                "1boots1",
+                "1that1",
+                "1outlasted1",
+                "2them2"
+            ],
+            "All the muscles that would support the head decomposed long ago": [
+                "1socketed1",
+                "1heads1",
+                "1tilted1",
+                "3back3",
+                "1at1",
+                "1an1",
+                "1angle1"
+            ],
+            "War was so violent that some of their jaws were broken off": [
+                "1those1",
+                "2that2",
+                "1have1",
+                "3them3"
+            ],
+            "As they were unearthed and the jaws were no longer supported, they dropped open": [
+                "1dropped1",
+                "1open1"
+            ],
+            "The welsh division was well known for their singing in an effort to boost morale": [
+                "1dropped1",
+                "1open1",
+                "1As1",
+                "1if1",
+                "11the11",
+                "1notes1",
+                "3they3",
+                "1had1",
+                "1sung1",
+                "2have2",
+                "1only1",
+                "3now3",
+                "1slipped1",
+                "1from1",
+                "5their5",
+                "1absent1",
+                "1tongues1",
+                "5.5"
+            ],
+            "May be a reference to how little the soldiers had to say in war": [
+                "1only1",
+                "3now3",
+                "1slipped1",
+                "1from1",
+                "5their5",
+                "1absent1",
+                "1tongues1"
+            ],
+            "Only now is their story being told, as their sacrifice was never really remembered or commemorated": [
+                "1only1",
+                "3now3",
+                "16,16",
+                "1with1",
+                "2this2",
+                "1unearthing1",
+                "17,17"
+            ],
+            "Reminder of the absence caused by their death and the effect it had back home when they died": [
+                "1absent1",
+                "1tongues1"
+            ]
+        },
         "centered": false
     },
     "Excerpt from The Prelude": {
