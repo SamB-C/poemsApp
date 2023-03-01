@@ -4295,11 +4295,248 @@
         "centered": false
     },
     "Ozymandias": {
-        "convertedPoem": "1I1 1met1 1a1 1traveller1 1from1 1an1 1antique1 1land1\n1Who1 1said1|+|1:1 1Two1 1vast1 1and1 1trunkless1 1legs1 1of1 1stone1\n1Stand1 1in1 1the1 1desert1|+|1.1 11|+|2.2 22|+|3.3 1Near1 1them1|+|1,1 1on1 2the2 1sand1|+|2,2\n1Half1 1sunk1|+|3,3 2a2 1shattered1 1visage1 1lies1|+|4,4 1whose1 1frown1|+|5,5\n1And1 1wrinkled1 1lip1|+|6,6 2and2 1sneer1 2of2 1cold1 1command1|+|7,7\n1Tell1 1that1 1its1 1sculptor1 1well1 1those1 1passions1 1read1\n1Which1 1yet1 1survive1|+|8,8 1stamped1 2on2 1these1 1lifeless1 1things1|+|9,9\n1The1 1hand1 2that2 1mocked1 2them2|+|10,10 3and3 3the3 1heart1 3that3 1fed1|+|1;1\n2And2 3on3 4the4 1pedestal1 2these2 1words1 1appear1|+|2:2\n1'My1 1name1 1is1 1Ozymandias1|+|11,11 1king1 3of3 1kings1|+|3:3\n1Look1 4on4 1my1 1works1|+|12,12 1ye1 1Mighty1|+|13,13 4and4 1despair!'1\n1Nothing1 1beside1 1remains1|+|4.4 1Round1 5the5 1decay1\n1Of1 4that4 1colossal1 1wreck1|+|14,14 1boundless1 5and5 1bare1\n2The2 1lone1 6and6 1level1 1sands1 1stretch1 1far1 1away1|+|5.5",
+        "convertedPoem": "1I1 1met1 1a1 1traveller1 1from1 1an1 1antique1 1land1\n1Who1 1said1|+|1:1 1Two1 1vast1 1and1 1trunkless1 1legs1 1of1 1stone1\n1Stand1 1in1 1the1 1desert1|+|1.1 11|+|2.2 22|+|3.3 1Near1 1them1|+|1,1 1on1 2the2 1sand1|+|2,2\n1Half1 1sunk1|+|3,3 2a2 1shattered1 1visage1 1lies1|+|4,4 1whose1 1frown1|+|5,5\n1And1 1wrinkled1 1lip1|+|6,6 2and2 1sneer1 2of2 1cold1 1command1|+|7,7\n1Tell1 1that1 1its1 1sculptor1 1well1 1those1 1passions1 1read1\n1Which1 1yet1 1survive1|+|8,8 1stamped1 2on2 1these1 1lifeless1 1things1|+|9,9\n1The1 1hand1 2that2 1mocked1 2them2|+|10,10 3and3 3the3 1heart1 3that3 1fed1|+|2:2\n2And2 3on3 4the4 1pedestal1 2these2 1words1 1appear1|+|3:3\n1'My1 1name1 1is1 1Ozymandias1|+|11,11 1king1 3of3 1kings1|+|4:4\n1Look1 4on4 1my1 1works1|+|12,12 1ye1 1Mighty1|+|13,13 4and4 1despair!'1\n1Nothing1 1beside1 1remains1|+|4.4 1Round1 5the5 1decay1\n1Of1 4that4 1colossal1 1wreck1|+|14,14 1boundless1 5and5 1bare1\n2The2 1lone1 6and6 1level1 1sands1 1stretch1 1far1 1away1|+|5.5",
         "wordCount": 113,
         "author": "Percy Bysshe Shelley",
-        "quotes": [],
-        "notes": {},
+        "quotes": [
+            [
+                "1antique1",
+                "1land1"
+            ],
+            [
+                "1vast1",
+                "1and1",
+                "1trunkless1",
+                "1legs1",
+                "1of1",
+                "1stone1"
+            ],
+            [
+                "1Half1",
+                "1sunk1"
+            ],
+            [
+                "1shattered1",
+                "1visage1",
+                "1lies1"
+            ],
+            [
+                "1frown1"
+            ],
+            [
+                "1wrinkled1",
+                "1lip1"
+            ],
+            [
+                "1sneer1",
+                "2of2",
+                "1cold1",
+                "1command1"
+            ],
+            [
+                "1Tell1",
+                "1that1",
+                "1its1",
+                "1sculptor1",
+                "1well1",
+                "1those1",
+                "1passions1",
+                "1read1"
+            ],
+            [
+                "1Which1",
+                "1yet1",
+                "1survive1"
+            ],
+            [
+                "1hand1",
+                "2that2",
+                "1mocked1"
+            ],
+            [
+                "1heart1",
+                "3that3",
+                "1fed1"
+            ],
+            [
+                "1king1",
+                "3of3",
+                "1kings1",
+                "4:4"
+            ],
+            [
+                "1Look1",
+                "4on4",
+                "1my1",
+                "1works1",
+                "12,12",
+                "1ye1",
+                "1Mighty1",
+                "13,13",
+                "4and4",
+                "1despair!'1"
+            ],
+            [
+                "1Nothing1",
+                "1beside1",
+                "1remains1"
+            ],
+            [
+                "1colossal1",
+                "1wreck1"
+            ],
+            [
+                "2The2",
+                "1lone1",
+                "6and6",
+                "1level1",
+                "1sands1",
+                "1stretch1",
+                "1far1",
+                "1away1",
+                "5.5"
+            ]
+        ],
+        "notes": {
+            "Someone had to work hard and travel to find the statue - no one knows about it or remembers it": [
+                "1traveller1"
+            ],
+            "Shows how the land is nearly forgotten, and how it is no longer relevant, which is ironic due to Ozymandias' arrogance": [
+                "1antique1",
+                "1land1"
+            ],
+            "Vast means very big, showing the scale of the statue": [
+                "1vast1"
+            ],
+            "The statue has lost its body, the head lies on the ground, like the person is defeated and decapitated": [
+                "1trunkless1",
+                "1legs1"
+            ],
+            "The desert is inhospitable so there is no-one there to admire the statue, or to worship the leader it represents": [
+                "1Stand1",
+                "1in1",
+                "1the1",
+                "1desert1"
+            ],
+            "Ellipsis shows that there is nothing more there, there is the remains of a statue, and then nothing else": [
+                "1.1",
+                "2.2",
+                "3.3"
+            ],
+            "This shows that the statue is unkept, no-one cares for it anymore": [
+                "1Half1",
+                "1sunk1"
+            ],
+            "His legacy is shattering, as visage can mean depiction as well as face": [
+                "1shattered1",
+                "1visage1"
+            ],
+            "Nature has shattered, and therefore defeated this emperor, showing natures longevity and power over humans": [
+                "1shattered1",
+                "1visage1"
+            ],
+            "Suggests the person depicted had lots of negative emotions": [
+                "1frown1"
+            ],
+            "Implies that the ruler did not care for their subjects, and looked upon them with disgust and disdain": [
+                "1wrinkled1",
+                "1lip1"
+            ],
+            "Alliteration and repetition of plosive 'c's, emphasises the unpleasantness of the person depicted in the statue": [
+                "1sneer1",
+                "2of2",
+                "1cold1",
+                "1command1"
+            ],
+            "Shows that the person has authority": [
+                "1command1"
+            ],
+            "A nod to the power of the sculptor, they were able to create a very accurate depiction": [
+                "1its1",
+                "1sculptor1",
+                "1well1",
+                "1those1",
+                "1passions1",
+                "1read1"
+            ],
+            "Informs the reader that the ruler was in fact cold and uncaring": [
+                "1well1",
+                "1those1",
+                "1passions1",
+                "1read1"
+            ],
+            "The only thing that has survived is the ruler's disgusted look": [
+                "1Which1",
+                "1yet1",
+                "1survive1"
+            ],
+            "Natural stone, has outlasted the living empire": [
+                "1these1",
+                "1lifeless1",
+                "1things1"
+            ],
+            "The ruler clearly instilled fear in the populace, and threatened them": [
+                "1hand1",
+                "2that2",
+                "1mocked1",
+                "2them2"
+            ],
+            "This shows that he did care somewhat for his empire, else it would not have been at all prosperous": [
+                "1heart1",
+                "3that3",
+                "1fed1"
+            ],
+            "Biased view, as is what Ozymandias thinks": [
+                "1'My1",
+                "1name1"
+            ],
+            "Ozymandias' power is self proclaimed, no one else may be calling him king of kings": [
+                "1Ozymandias1",
+                "11,11",
+                "1king1",
+                "3of3",
+                "1kings1",
+                "3:3"
+            ],
+            "Ozymandias is trying to show off what he has created": [
+                "1Look1",
+                "4on4",
+                "1my1",
+                "1works1"
+            ],
+            "Works refers to the empire that Ozymandias has built": [
+                "1works1"
+            ],
+            "Capitalisation of 'M' suggests Ozymandias is trying to compare himself to, or even intimidate God": [
+                "1ye1",
+                "1Mighty1"
+            ],
+            "Shows Ozymandias' nature, he intends to inspire fear and despair": [
+                "1despair!'1"
+            ],
+            "This is ironic, due to what what written on the pedestal, as only the statue (created by the sculptor), remains": [
+                "1Nothing1",
+                "1beside1",
+                "1remains1"
+            ],
+            "Explicitly, this refers to the size of the ruined statue": [
+                "1colossal1",
+                "1wreck1"
+            ],
+            "Implicitly, this may refer to how much of a failure, or 'wreck' that Ozymandias' empire has become since it no longer exists": [
+                "1colossal1",
+                "1wreck1"
+            ],
+            "This shows that there is no other evidence of his rule, nature has outlasted his empire and has inevitably made him be forgotten": [
+                "1lone1",
+                "6and6",
+                "1level1",
+                "1sands1",
+                "1stretch1",
+                "1far1",
+                "1away1"
+            ]
+        },
         "centered": false
     },
     "Mametz Wood": {
