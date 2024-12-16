@@ -1,7 +1,7 @@
 import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, LETTER_INPUT_TYPE, NUMBER_ONLY_REGEX, SPECIAL_CHARACTER_REGEX } from "./constantsAndTypes.js";
 import { clearups, initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
-import { FOCUS, WORD_FUNCS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs } from "./utilities.js";
+import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
 
 // =========================== Letter input onchange event handler ===========================
 
@@ -32,14 +32,6 @@ function compareInputToLetterId(input: string, id: string): boolean {
     return input === letter || (letter === '—' && input === '-')
 }
 
-/**
- * 
- * @param id - The id of the input element
- * @returns The correct letter for the input element
- * 
- * Gets the letter for an input element using the char code in the id
- * 
- */
 function getLetterFromId(id: string): string {
     // Splits the id into a list [word, letterInBinary]
     const wordAndLetterList: Array<string> = id.split('_');
@@ -52,15 +44,6 @@ function getLetterFromId(id: string): string {
 
 // --------------------------- Letter Wrong ---------------------------
 
-/**
- * @param targetInput - The input element containing the incorrect letter
- * @param word - The word that the incorrect letter is in
- * @param poem - The poem that the word is in
- * 
- * If the user has made 3 incorrect attempts on the same letter, the letter is revealed and the user is moved onto the next letter.
- * Otherwise, the word is reset to empty and the user can try again.
- * 
- */
 function handleIncorrectLetter(targetInput: LETTER_INPUT_TYPE, word: string, poem: string): void {
     targetInput.style.color = 'red';
     updateUserAid();
@@ -69,7 +52,6 @@ function handleIncorrectLetter(targetInput: LETTER_INPUT_TYPE, word: string, poe
     const parent = targetInput.parentElement as HTMLSpanElement;
     parent.oninput = () => {};
     if (state.userAid.numberOfIncorrectAttempts === 3) {
-        // Reveal the letter
         setTimeout(() => {
             targetInput.value = getLetterFromId(targetInput.id);
             parent.oninput = (event) => onInputEventHandler(word, event, poem);
@@ -79,17 +61,14 @@ function handleIncorrectLetter(targetInput: LETTER_INPUT_TYPE, word: string, poe
     } else {
         setTimeout(() => {
             resetLetterIndex();
+            revertWordToEmpty(word);
             parent.oninput = (event) => onInputEventHandler(word, event, poem);
-            targetInput.value = '';
             targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
             targetInput.style.textAlign = 'start';
         }, 1000)
     }
 }
 
-/**
-* Updates the number of consecutive incorrect attempts on a letter
-*/
 function updateUserAid() {
     if (state.userAid.letterIndex === state.userAid.letterIndexOfLatestIncorrectLetter) {
         state.userAid.numberOfIncorrectAttempts++;
@@ -99,7 +78,18 @@ function updateUserAid() {
     }
 }
 
-
+// Reverts a word back to underscores after incorrect input
+function revertWordToEmpty(word: string):void {
+    // Retrive all inputs
+    const wordElement: HTMLSpanElement = GET_ELEMENT.getElementOfWord(word);
+    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(wordElement);
+    // Resets word
+    for (let i: number = 0; i < arrayOfChildren.length; i++) {
+        arrayOfChildren[i].value = '';
+        arrayOfChildren[i].style.textAlign = 'start';
+        FOCUS.focusFirstLetterOfWord(word);
+    }
+}
 
 // --------------------------- Letter Right ---------------------------
 
@@ -259,9 +249,6 @@ function resetUserAid() {
     state.userAid.numberOfIncorrectAttempts = 0;
 }
 
-/**
- * Resets the index of the last incorrect letter to 0 in the userAid object
- */
 function resetLetterIndex() {
     state.userAid.letterIndex = 0;
 }
