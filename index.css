@@ -70,6 +70,15 @@ h1 {
     text-align: center;
 }
 
+#__range_bar_result__:hover {
+    cursor: default;
+}
+
+#__range_bar__:hover, #__words__:hover, #__quotes__:hover, #__words_radio_button_label__, #__quotes_radio_button_label__ {
+    cursor: pointer;
+}
+
+
 select {
     font-size: calc(var(--variable-font-size) * 1.4);
     font-weight: bolder;
