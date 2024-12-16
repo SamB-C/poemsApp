@@ -7,4 +7,4 @@ Developer Notes:
    then input localhost:8080/modifyNotesAndKeyQuotes.html into the browser
 
 2. Typescript compiler
-   To run the Typescript compiler in watch mode, run the command 'npm run tsc --watch'
+   To run the Typescript compiler in watch mode, run the command 'npx tsc --watch'
