@@ -49,7 +49,7 @@ export const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPAC
 export const ANIMATION_SPEED: number = 20
 export const COVER_OVER_COMPLETED_WORDS = true;
 export const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
-export const NUMBER_OF_INCORRECT_ATTEMPTS_FOR_AID = 4;
+export const NUMBER_OF_INCORRECT_ATTEMPTS_FOR_AID = 3;
 
 export const LETTER_INPUT_DEFAULT_COLOR = 'orange';
 export type LETTER_INPUT_TYPE = HTMLInputElement;
