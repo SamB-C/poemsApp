@@ -49,7 +49,7 @@ export const FAKE_SPACE_HTML_ELEMENT: string = `<p class="fakeSpace">${FAKE_SPAC
 export const ANIMATION_SPEED: number = 20
 export const COVER_OVER_COMPLETED_WORDS = true;
 export const INPUT_OPTIONS: string = 'placeholder="_" size="1" maxlength="1" autocapitalize="off" class="letter_input"';
-export const NUMBER_OF_INCORRECT_ATTEMPTS_FOR_AID = 4;
+export const NUMBER_OF_INCORRECT_ATTEMPTS_FOR_AID = 3;
 
 export const LETTER_INPUT_DEFAULT_COLOR = 'orange';
 export type LETTER_INPUT_TYPE = HTMLInputElement;
@@ -85,14 +85,18 @@ export type State = {
     wordsNotCompleted: Array<string>,
     wordsNotCompletedPreserved: Array<string>,
     userAid: {
-        letterIndexOfLatestIncorrectLetter: number,
         letterIndex: number,
+        letterIndexOfLatestIncorrectLetter: number,
         numberOfIncorrectAttempts: number
     }
 }
 
 
 export const GET_ELEMENT = {
+    /**
+     * @param word - The word whose element is to be found in the DOM
+     * @returns The element of the word in DOM
+     */
     getElementOfWord(word: string): WORD_SECTION_TYPE {
         return document.getElementById(GET_ID.getIdForWord(word)) as WORD_SECTION_TYPE;
     },

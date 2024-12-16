@@ -29,7 +29,11 @@ export function isIlleagalLetter(letter) {
     return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(letter);
 }
 export const FOCUS = {
-    // Finds the element for the first letter of a missing word
+    /**
+     * @param word - The word to focus the first letter of
+     *
+     * Finds the element for the first letter of a missing word
+    */
     focusFirstLetterOfWord(word) {
         const firstLetter = WORD_FUNCS.removeNumberFromWord(word)[0];
         const inputToFocusId = `${GET_ID.getIdForLetter(word, firstLetter)}`;
@@ -37,6 +41,12 @@ export const FOCUS = {
         firstInputElement.focus();
     }
 };
+/**
+ * @param element - The element of the word to return the children of
+ * @returns An array of the children of the element
+ *
+ * The element parameter must be a span element containing only input elements
+ */
 export function getArrayOfChildrenThatAreInputs(element) {
     const arrayOfChildren = Array.from(element.children);
     return arrayOfChildren;
