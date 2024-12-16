@@ -35,8 +35,8 @@ function initialiseState(poems: convertedPoemsJSON) {
         wordsNotCompleted: [],
         wordsNotCompletedPreserved: [],
         userAid: {
-            letterIndexOfLatestIncorrectLetter: 0,
             letterIndex: 0,
+            letterIndexOfLatestIncorrectLetter: 0,
             numberOfIncorrectAttempts: 0
         }
     }

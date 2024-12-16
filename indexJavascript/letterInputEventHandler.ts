@@ -79,8 +79,6 @@ function handleIncorrectLetter(targetInput: LETTER_INPUT_TYPE, word: string, poe
     } else {
         setTimeout(() => {
             resetLetterIndex();
-            // IF CHOOSING TO BACKTRACK TO CLEARING THE ENTIRE WORD
-            // revertWordToEmpty(word);
             parent.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.value = '';
             targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
@@ -102,23 +100,6 @@ function updateUserAid() {
 }
 
 
-/**
- * @param word - The word to revert to empty
- * 
- * Reverts a word back to underscores after incorrect input
-*/
-/*
-function revertWordToEmpty(word: string):void {
-    // Retrive all inputs
-    const wordElement: HTMLSpanElement = GET_ELEMENT.getElementOfWord(word);
-    const arrayOfChildren: Array<HTMLInputElement> = getArrayOfChildrenThatAreInputs(wordElement);
-    arrayOfChildren.forEach((letterInput: HTMLInputElement) => {
-        letterInput.value = '';
-        letterInput.style.textAlign = 'start';
-        FOCUS.focusFirstLetterOfWord(word);
-    });
-}
-*/
 
 // --------------------------- Letter Right ---------------------------
 

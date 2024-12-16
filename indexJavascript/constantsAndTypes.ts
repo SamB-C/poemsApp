@@ -85,8 +85,8 @@ export type State = {
     wordsNotCompleted: Array<string>,
     wordsNotCompletedPreserved: Array<string>,
     userAid: {
-        letterIndexOfLatestIncorrectLetter: number,
         letterIndex: number,
+        letterIndexOfLatestIncorrectLetter: number,
         numberOfIncorrectAttempts: number
     }
 }
