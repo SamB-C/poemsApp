@@ -24,6 +24,10 @@ export const REPLACE_QUOTES_RADIO_BUTTON_ID = '__quotes__';
 export const WORDS = 'words';
 export const QUOTES = 'quotes';
 export const GET_ELEMENT = {
+    /**
+     * @param word - The word whose element is to be found in the DOM
+     * @returns The element of the word in DOM
+     */
     getElementOfWord(word) {
         return document.getElementById(GET_ID.getIdForWord(word));
     },

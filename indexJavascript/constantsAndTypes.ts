@@ -93,6 +93,10 @@ export type State = {
 
 
 export const GET_ELEMENT = {
+    /**
+     * @param word - The word whose element is to be found in the DOM
+     * @returns The element of the word in DOM
+     */
     getElementOfWord(word: string): WORD_SECTION_TYPE {
         return document.getElementById(GET_ID.getIdForWord(word)) as WORD_SECTION_TYPE;
     },
