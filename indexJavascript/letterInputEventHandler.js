@@ -1,7 +1,7 @@
 import { ANIMATION_SPEED, COVER_OVER_COMPLETED_WORDS, GET_ELEMENT, LETTER_INPUT_DEFAULT_COLOR, NUMBER_ONLY_REGEX, SPECIAL_CHARACTER_REGEX } from "./constantsAndTypes.js";
 import { clearups, initialise, state } from "./index.js";
 import { disableInputs, resetInputs, updateRangeBar } from "./inputs.js";
-import { FOCUS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs, WORD_FUNCS } from "./utilities.js";
+import { FOCUS, WORD_FUNCS, getAllWordSectionsInPoem, getArrayOfChildrenThatAreInputs } from "./utilities.js";
 // =========================== Letter input onchange event handler ===========================
 // Event handler for each individual letter input
 export function onInputEventHandler(word, event, poem) {
@@ -53,7 +53,7 @@ function handleIncorrectLetter(targetInput, word, poem) {
     else {
         setTimeout(() => {
             resetLetterIndex();
-            revertWordToEmpty(word);
+            targetInput.value = '';
             parent.oninput = (event) => onInputEventHandler(word, event, poem);
             targetInput.style.color = LETTER_INPUT_DEFAULT_COLOR;
             targetInput.style.textAlign = 'start';
@@ -67,18 +67,6 @@ function updateUserAid() {
     else {
         state.userAid.letterIndexOfLatestIncorrectLetter = state.userAid.letterIndex;
         state.userAid.numberOfIncorrectAttempts = 1;
-    }
-}
-// Reverts a word back to underscores after incorrect input
-function revertWordToEmpty(word) {
-    // Retrive all inputs
-    const wordElement = GET_ELEMENT.getElementOfWord(word);
-    const arrayOfChildren = getArrayOfChildrenThatAreInputs(wordElement);
-    // Resets word
-    for (let i = 0; i < arrayOfChildren.length; i++) {
-        arrayOfChildren[i].value = '';
-        arrayOfChildren[i].style.textAlign = 'start';
-        FOCUS.focusFirstLetterOfWord(word);
     }
 }
 // --------------------------- Letter Right ---------------------------
