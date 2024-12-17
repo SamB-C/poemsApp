@@ -80,10 +80,14 @@ export function initialiseWordsOrQuotesRadioButtons() {
 
 function radioButtonOnInput(removalType: WordsOrQuotesType) {
     state.removalType = removalType;
+    updateRangeBarTitles(removalType);
     initialise();
 }
 
-
+function updateRangeBarTitles(removalType: WordsOrQuotesType) {
+    GET_ELEMENT.getRangeBar().title = `Drag to adjust the percentage of ${removalType} removed from the poem`;
+    GET_ELEMENT.getRangeBarResult().title = `The percentage of ${removalType} removed from the poem`;
+}
 
 
 // =========================== Disable and enable inputs ===========================

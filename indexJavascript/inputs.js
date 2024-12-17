@@ -66,7 +66,12 @@ export function initialiseWordsOrQuotesRadioButtons() {
 }
 function radioButtonOnInput(removalType) {
     state.removalType = removalType;
+    updateRangeBarTitles(removalType);
     initialise();
+}
+function updateRangeBarTitles(removalType) {
+    GET_ELEMENT.getRangeBar().title = `Drag to adjust the percentage of ${removalType} removed from the poem`;
+    GET_ELEMENT.getRangeBarResult().title = `The percentage of ${removalType} removed from the poem`;
 }
 // =========================== Disable and enable inputs ===========================
 // Disables inputs that re-render the poem, so it is not re-rendered mid-animation (opposite to resetInputs)

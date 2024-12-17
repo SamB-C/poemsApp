@@ -35,13 +35,13 @@
                 <h1 class="center-text">Options</h1>
                 <div id="__words_or_quotes_radio__" class="inline_container">
                     <input type="radio" id="__words__" value="words" name="words_or_quotes">
-                    <label for="__words__" id="__words_radio_button_label__"><p>Words</p></label>
+                    <label for="__words__" id="__words_radio_button_label__" title="Select to remove random words from the poem"><p>Words</p></label>
                     <input type="radio" id="__quotes__" value="quotes" name="words_or_quotes">
-                    <label for="__quotes__" id="__quotes_radio_button_label__"><p>Quotes</p></label>
+                    <label for="__quotes__" id="__quotes_radio_button_label__" title="Select to remove random quotes from a curated list from the poem"><p>Quotes</p></label>
                 </div>
                 <div id="__range_slider_container__">
-                    <input type="range" id="__range_bar__" value="1" min="1" max="10">
-                    <p id="__range_bar_result__"></p>
+                    <input type="range" id="__range_bar__" value="1" min="1" max="10" title="Drag to adjust the percentage of words removed from the poem">
+                    <p id="__range_bar_result__" title="The percentage of words removed from the poem"></p>
                 </div>
             </div>
             <div id="__extra_info_container__" class="card">
